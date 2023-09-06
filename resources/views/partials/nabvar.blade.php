@@ -89,7 +89,7 @@
           <i class="far fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-          <a href="#" class="dropdown-item"> Cerrar sesión
+          <a href="{{route('logout')}}" class="dropdown-item"> Cerrar sesión
           </a>
         </div>
       </li>
