@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-09-2023 a las 08:07:34
+-- Tiempo de generación: 10-09-2023 a las 07:03:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -78,9 +78,11 @@ CREATE TABLE `citas` (
   `celular` varchar(12) DEFAULT NULL,
   `fecha` varchar(10) DEFAULT NULL,
   `hora` varchar(10) DEFAULT NULL,
-  `email` varchar(25) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   `motivo` text DEFAULT NULL,
-  `estado_cita` int(11) NOT NULL
+  `estado_cita` int(11) NOT NULL,
+  `created_at` varchar(25) NOT NULL,
+  `updated_at` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -252,13 +254,6 @@ CREATE TABLE `usuarios` (
   `categoria` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nombre`, `direccion`, `dui`, `telefono`, `email`, `usuario`, `password`, `categoria`, `estado`) VALUES
-(1, 'Jose Administrador', 'San Salvador', '99340323-1', '7447-4903', 'josedeodanes99@gmail.com', 'jose', '$2y$10$00AiaGU.OzGuZGqSIRv7ResQ50.uibIumdBd43msOGBGZ5Ttt1iYu', 'Admin', 1);
 
 -- --------------------------------------------------------
 
@@ -463,7 +458,7 @@ ALTER TABLE `tratamiento`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
