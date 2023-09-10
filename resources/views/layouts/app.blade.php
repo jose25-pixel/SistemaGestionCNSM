@@ -89,7 +89,7 @@
 <script src="{{asset('plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('plugins/fullcalendar/main.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+{{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}}
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
@@ -114,6 +114,7 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <script src="{{asset('js/axios/axios.min.js')}}"></script>
 <script src="{{asset('plugins/sweetalert2/sweetalert2.all.js')}}"></script>
+<script src="{{asset('js/cleave/Cleave.js')}}"></script>
 @yield('scripts')
 @stack('js_scripts')
 </body>

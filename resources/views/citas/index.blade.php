@@ -29,4 +29,16 @@
 
 @push('js_scripts')
     <script src="{{asset('js/cita.js')}}"></script>
+    <script>
+        //Validaciones de input
+        var cleave = new Cleave('#celular', {
+        delimiter: '-',
+        blocks: [4,4],
+        });
+        //Validaciones de input dui
+        var cleave = new Cleave('#dui', {
+        delimiter: '-',
+        blocks: [8,1],
+        });
+    </script>
 @endpush

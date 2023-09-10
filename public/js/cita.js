@@ -62,3 +62,9 @@ try{
 }catch(err){
 
 }
+
+//Mayus input
+
+function mayus(element){
+  element.value = element.value.toUpperCase();
+}
