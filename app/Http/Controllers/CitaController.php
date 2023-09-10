@@ -21,21 +21,26 @@ class CitaController extends Controller
 
     public function guardarCita(Request $request)
     {    
-       //instanciar el modelo
-       $cita= new Cita();
-       //tomar los datos de request
-       $cita->paciente = $request->paciente;
-       $cita->dui = $request->dui;
-       $cita->celular= $request->celular;
-       $cita->fecha = $request->fecha;
-       $cita->hora = $request->hora;
-       $cita->email = $request->email;
-       $cita->motivo = $request->motivo;
-           //guardar el objeto en la tabla
-        $cita->save();
-    
-        
-        
+       //Manejar los estados de la cita
+       //Estado == 0 : Cita creada
+       // Estado == 1: El paciente ya se realizo la consulta
+       //Inserted 
+       $data = [
+        'paciente' => request()->input('paciente'),
+        'dui' => request()->input('dui'),
+        'celular' => request()->input('celular'),
+        'fecha' => request()->input('fecha'),
+        'hora' => request()->input('hora'),
+        'email' => request()->input('email'),
+        'motivo' => request()->input('motivo'),
+        'estado_cita' => 0
+       ];
+       Cita::create($data);
+       return response()->json([
+        'status' => 'inserted',
+        'data' => ''
+       ]);
+       
     }
     
 }
