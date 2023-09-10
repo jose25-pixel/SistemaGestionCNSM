@@ -23,16 +23,16 @@ class LoginController extends Controller
         ]);
         $userBD = User::where('usuario', $credentials['user'])->first();
         //return response()->json(bcrypt($credentials['password']));
-        if (Hash::check($credentials['password'], $userBD['password'])) {
+        if ($userBD && Hash::check($credentials['password'], $userBD['password'])) {
             if($userBD['estado'] == 1){
                 // Credenciales válidas, redirigir al dashboard
                 Auth::login($userBD);
                 return redirect()->route('home');
             }else{
-                return redirect()->back();    
+                return redirect()->back()->with('status', 'Usuario inhabilitado!');;    
             }
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('status','Usuario o contraseña incorrectos');
         }
     }
 }
