@@ -22,6 +22,8 @@ Route::get('/',[HomeController::class,'home'])->name('home')->middleware('auth')
 Route::get('/citas/diarias',[CitaController::class,'index'])->name('cita.index')->middleware('auth');
 
 Route::post('/citas/guardar', [CitaController::class, 'guardarCita'])->name('citas.guardar');
+Route::post('cita/verificar/disponibilidad',[CitaController::class,'disponibilidaHora']);
+Route::get('citas/cantidades',[CitaController::class,'getCountDateCita']);
 
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');

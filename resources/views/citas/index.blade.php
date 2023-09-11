@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
   @include('citas.modal_agendar_cita')
+  @include('citas.modal_list_citas_dia')
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

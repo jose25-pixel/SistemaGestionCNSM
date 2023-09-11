@@ -1,7 +1,7 @@
 <div class="modal fade" id="citaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 90%">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header py-1 bg-primary">
           <h5 class="modal-title" id="exampleModalLabel">Programar Cita</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -17,7 +17,9 @@
             </div>
             <div class="form-group col-sm-12 col-md-2">
               <label for="hora">Hora:</label>
-              <input type="time" class="form-control" id="hora" name="hora" required>
+              <select class="form-control" name="hora" id="hora">
+              </select>  
+              
             </div>
             <div class="form-group col-sm-12 col-md-6">
               <label for="nombre">Nombre completo:</label>
