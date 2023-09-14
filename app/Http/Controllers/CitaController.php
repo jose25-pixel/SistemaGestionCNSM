@@ -49,6 +49,29 @@ class CitaController extends Controller
         $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` GROUP BY fecha;");
         return response()->json($data);
     }
+    /**
+     * DATATABLE
+     */
+    public function getCitasPaciDT($fecha){
+        $citas = Cita::where('fecha','=',$fecha)->get();
+        $data = [];
+        foreach($citas as $row){
+            $array = [];
+            $array[] = $row->id;
+            $array[] = $row->paciente; 
+            $array[] = $row->dui;
+            $array[] = $row->celular;
+            $array[] = date('m-d-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
+            $data[] = $array;
+        }
+        $response = array(
+            "data" => $data,
+            "recordsTotal" => count($data),
+            "recordsFiltered" => count($data)
+        );
+        return response()->json($response);
+    }
 }
 
 

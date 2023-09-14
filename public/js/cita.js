@@ -58,8 +58,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         },
         eventClick: function(info){
             //Modal para mostrar los pacientes citados ese dia
+            //Datatable
+            var dateClicked = info.date;
+            var date = moment(dateClicked).format("YYYY-MM-DD");
+            let url = window.location.origin + "/cita/pacientes/datatable/" + date;
+            dataTable('dt_listados_paci_cita',url,{});
             $("#listar_citas_dia").modal('show');
-            console.log('clicked')
         },
         dateClick: function(info) {
             // Se ejecutará cuando un usuario haga clic en cualquier día del calendario

@@ -1,0 +1,15 @@
+
+/**
+** MI DATATABLE STYLE
+**/
+
+/* table{
+
+} */
+.table-custom thead{
+    height: 10px;
+    background: #343a40!important;
+    font-family: Helvetica, sans-serif;
+    color: #fff;
+    font-size: 14px;
+}
