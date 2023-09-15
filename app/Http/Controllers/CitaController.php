@@ -61,7 +61,7 @@ class CitaController extends Controller
             $array[] = $row->paciente; 
             $array[] = $row->dui;
             $array[] = $row->celular;
-            $array[] = date('m-d-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
             $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
             $data[] = $array;
         }

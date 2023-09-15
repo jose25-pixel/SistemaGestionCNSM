@@ -1,5 +1,9 @@
 function dataTable(id,url,data = {},pageLength = 25){
-
+// Verificamos si ya existe
+    if ($.fn.DataTable.isDataTable('#' + id)) {
+        // Si existe destruimos
+        $('#' + id).DataTable().destroy();
+    }
     $('#' + id).DataTable({
         "processing": true,
         "serverSide": true,

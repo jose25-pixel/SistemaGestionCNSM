@@ -14,7 +14,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="dt_listados_paci_cita" class="table table-custom table-striped">
+              <table id="dt_listados_paci_cita" class="table table-custom table-hover">
                 <thead style="text-align: center">
                   <th>#</th>
                   <th>Paciente</th>
