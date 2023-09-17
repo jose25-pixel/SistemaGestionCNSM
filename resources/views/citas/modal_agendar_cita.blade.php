@@ -17,7 +17,7 @@
             </div>
             <div class="form-group col-sm-12 col-md-2">
               <label for="hora">Hora:</label>
-              <select class="form-control" name="hora" id="hora">
+              <select class="form-control" name="hora" id="hora" required>
               </select>  
               
             </div>
