@@ -53,20 +53,23 @@ class CitaController extends Controller
     public function getCitasPaciDT($fecha){
         $citas = Cita::where('fecha','=',$fecha)->orderBy('id','desc')->get();
         $data = [];
+        $counter = count($citas);
         foreach($citas as $row){
             $array = [];
-            $array[] = $row->id;
+            $array[] = $counter;
             $array[] = $row->paciente; 
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
             $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
             $data[] = $array;
+            $counter --;
         }
         $response = array(
-            "data" => $data,
-            "recordsTotal" => count($data),
-            "recordsFiltered" => count($data)
+            "sEcho" => 1, //Información para el datatables
+			"iTotalRecords" => count($data), //enviamos el total registros al datatable
+			"iTotalDisplayRecords" => count($data), //enviamos el total registros a visualizar
+			"aaData" => $data
         );
         return response()->json($response);
     }
@@ -82,6 +85,32 @@ class CitaController extends Controller
         return response()->json([
             'status' => 'not-data'
         ]);
+    }
+    /**
+     * GET LIST General
+     */
+    public function getListadoGenCita(){
+        $citas = Cita::orderBy('id','desc')->get();
+        $data = [];
+        $contador = count($citas);
+        foreach($citas as $row){
+            $array = [];
+            $array[] = $contador;
+            $array[] = $row->paciente; 
+            $array[] = $row->dui;
+            $array[] = $row->celular;
+            $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
+            $data[] = $array;
+            $contador --;
+        }
+        $response = array(
+            "sEcho" => 1, //Información para el datatables
+			"iTotalRecords" => count($data), //enviamos el total registros al datatable
+			"iTotalDisplayRecords" => count($data), //enviamos el total registros a visualizar
+			"aaData" => $data
+        );
+        return response()->json($response);
     }
 }
 

@@ -239,3 +239,20 @@ function getValidationDUI(dui){
         console.log(err)
     })
 }
+
+/**
+ * Listar todas las citas
+ */
+try{
+    let btnCitaAll = document.getElementById('btn-citas-all');
+    btnCitaAll.addEventListener('click', ()=>{
+        listarCitasAll();
+    })
+}catch(err){
+    console.log(err);
+}
+function listarCitasAll(){
+    let url = window.location.origin + "/citas/all";
+    dataTable('dt_listado_general_cita',url,{},5);
+    $("#listarCitasAll").modal('show');
+}

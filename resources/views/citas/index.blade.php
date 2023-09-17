@@ -3,6 +3,7 @@
 @section('content')
   @include('citas.modal_agendar_cita')
   @include('citas.modal_list_citas_dia')
+  @include('citas.modal_citas_all')
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -11,7 +12,7 @@
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header">
-                        <button class="btn btn-outline-success btn-xs">Citas diarias</button>
+                        <button class="btn btn-outline-success btn-xs" id="btn-citas-all">Citas</button>
                       </div>
                         <div class="card-body p-0">
                             <!-- THE CALENDAR -->

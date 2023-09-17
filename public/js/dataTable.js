@@ -5,8 +5,8 @@ function dataTable(id,url,data = {},pageLength = 25){
         $('#' + id).DataTable().destroy();
     }
     $('#' + id).DataTable({
-        "processing": true,
-        "serverSide": true,
+        "aProcessing": true,//Activamos el procesamiento del datatables
+        "aServerSide": true,//Paginación y filtrado realizados por el servidor
         "responsive": true, "lengthChange": false, "autoWidth": false,
         dom: 'Bfrtip',
         "buttons": [
@@ -17,7 +17,7 @@ function dataTable(id,url,data = {},pageLength = 25){
             "url": url, // URL del archivo PHP del servidor
             "type": "GET" // Método de solicitud
         },
-        "pageLength": pageLength, // Cantidad fija de datos por página
+        "iDisplayLength": pageLength, // Cantidad fija de datos por página
         "language": {
             "zeroRecords": "No se encontraron resultados", // Texto para cuando no se encuentran registros
             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros", // Texto informativo del paginado
