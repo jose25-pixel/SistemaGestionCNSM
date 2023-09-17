@@ -1,3 +1,6 @@
+//Initial variables
+var calendar = null; //Library Fullcalendar
+var arrayCitasEvents = [];
 var horarios = [
     {
         value: "8:00 AM",
@@ -32,10 +35,14 @@ var horarios = [
         status: false,
     },
 ];
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
+    CalendarEvents();
+});
+
+async function CalendarEvents(){
     var calendarEl = document.getElementById("calendar");
-    let results = await getCantidadCitas();
-    let arrayCitas = results.map((result)=>{
+    arrayCitasEvents = await getCantidadCitas();
+    let arrayCitas = arrayCitasEvents.map((result)=>{
         return{
             title: 'Citas: ' + result.cantidad_citas,
             start: result.fecha,
@@ -44,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             allDay: true,
         }
     })
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: "dayGridMonth",
         locale: "es",
         themeSystem: "bootstrap",
@@ -69,6 +76,19 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Se ejecutará cuando un usuario haga clic en cualquier día del calendario
             var dateClicked = info.date;
             var formattedDate = moment(dateClicked).format("YYYY-MM-DD");
+            //Validation fecha, si es inferior a la actual
+            let fechaActual = moment();
+            fechaActual = fechaActual.format("YYYY-MM-DD");
+            let dateInf = new Date(formattedDate);
+            let dateActual = new Date(fechaActual);
+            if(dateInf < dateActual){
+                Swal.fire({
+                    icon: "warning",
+                    title: "Fecha incorrecta",
+                    text: "No puede registrar una fecha anterior a la actual!",
+                });
+                return 0;
+            }
             $("#fecha").val(formattedDate); // Llena el campo de fecha con el dia selecionado automaticamente
             // Por ejemplo, puedes mostrar un modal de Bootstrap
             //Verificar disponibilidad
@@ -78,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     calendar.render();
-});
+}
 
 /**
  * Codigo para registrar la cita del paciente
@@ -104,6 +124,10 @@ try {
                     });
                     $("#citaModal").modal("hide");
                     formCita.reset();
+                    //Get Events DB
+                    CalendarEvents();
+                    //Refresca el calendario
+                    calendar.refetchEvents();
                 }
             })
             .catch((err) => {
@@ -173,4 +197,45 @@ async function getCantidadCitas(){
     let url = window.location.origin + '/citas/cantidades';
     let data = await axios.get(url);
     return data.data
+}
+
+/**
+ * NEW CODE --- VALIDATION DUI
+ * :::: Desarrollador :::: José Deodanes
+ * ::::: Implementado:::::16-09-2023::::::
+ * ::::::@Jose-developer-start:::GITHUB
+ */
+try{
+    let inputDUI = document.getElementById('dui');
+    inputDUI.addEventListener('keyup', (e)=>{
+        let dui = e.target.value;
+        if(dui.length > 9){
+            getValidationDUI(dui);
+        }
+    })
+}catch(err){
+
+}
+function getValidationDUI(dui){
+    console.log(dui)
+    let urlValidDui = window.location.origin + "/cita/validation/dui";
+    let formData = new FormData();
+    formData.append('dui',dui);
+    axios.post(urlValidDui,formData)
+    .then((response)=>{
+        if(response.data.status === "not-data"){
+            document.getElementById('dui').classList.remove('is-invalid');
+        }else{
+            document.getElementById('dui').classList.add('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Existe DUI",
+                text: "Este DUI ya ha sido registrado en el sistema!",
+            });
+            document.getElementById('dui').value = '';
+        }
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 }

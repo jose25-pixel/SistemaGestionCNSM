@@ -25,6 +25,7 @@ Route::post('/citas/guardar', [CitaController::class, 'guardarCita'])->name('cit
 Route::post('cita/verificar/disponibilidad',[CitaController::class,'disponibilidaHora']);
 Route::get('citas/cantidades',[CitaController::class,'getCountDateCita']);
 Route::get('cita/pacientes/datatable/{fecha}',[CitaController::class,'getCitasPaciDT']);
+Route::post('cita/validation/dui',[CitaController::class,'validationDUICita']);
 
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');

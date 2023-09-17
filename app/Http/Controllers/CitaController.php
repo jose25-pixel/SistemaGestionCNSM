@@ -13,8 +13,6 @@ class CitaController extends Controller
         return view('citas.index');
     }
 
-
-
     public function guardarCita(Request $request)
     {    
        //Manejar los estados de la cita
@@ -22,12 +20,12 @@ class CitaController extends Controller
        // Estado == 1: El paciente ya se realizo la consulta
        //Inserted 
        $data = [
-        'paciente' => request()->input('paciente'),
+        'paciente' => trim(request()->input('paciente')),
         'dui' => request()->input('dui'),
         'celular' => request()->input('celular'),
         'fecha' => request()->input('fecha'),
         'hora' => request()->input('hora'),
-        'email' => request()->input('email'),
+        'email' => trim(request()->input('email')),
         'motivo' => request()->input('motivo'),
         'estado_cita' => 0
        ];
@@ -53,7 +51,7 @@ class CitaController extends Controller
      * DATATABLE
      */
     public function getCitasPaciDT($fecha){
-        $citas = Cita::where('fecha','=',$fecha)->get();
+        $citas = Cita::where('fecha','=',$fecha)->orderBy('id','desc')->get();
         $data = [];
         foreach($citas as $row){
             $array = [];
@@ -71,6 +69,19 @@ class CitaController extends Controller
             "recordsFiltered" => count($data)
         );
         return response()->json($response);
+    }
+    //Validation si existe el DUI
+    public function validationDUICita(){
+        $dui = request()->input('dui');
+        $exists = Cita::where('dui','=',$dui)->exists();
+        if($exists){
+            return response()->json([
+                'status' => 'exists'
+            ]);
+        }
+        return response()->json([
+            'status' => 'not-data'
+        ]);
     }
 }
 
