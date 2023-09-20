@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'home'])->name('home')->middleware('auth');
 //Rutas para citas y control citas
 Route::get('/citas/diarias',[CitaController::class,'index'])->name('cita.index')->middleware('auth');
+Route::get('/paciente',[PacienteController::class,'index'])->name('paciente.index')->middleware('auth');
 
 Route::post('/citas/guardar', [CitaController::class, 'guardarCita'])->name('citas.guardar');
 Route::post('cita/verificar/disponibilidad',[CitaController::class,'disponibilidaHora']);

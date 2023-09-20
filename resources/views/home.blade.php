@@ -14,5 +14,5 @@
   </div><!-- /.row -->
 @endsection
 @section('content')
-Hola Zabaleta 
+Bienvenidos
 @endsection
