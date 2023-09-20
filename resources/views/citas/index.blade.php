@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title','CNSM | Citas pacientes')
 @section('content')
-  @include('citas.modal_agendar_cita')
-  @include('citas.modal_list_citas_dia')
-  @include('citas.modal_citas_all')
+@include('citas.modal_list_citas_dia')
+@include('citas.modal_citas_all')
+@include('citas.modal_agendar_cita')
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

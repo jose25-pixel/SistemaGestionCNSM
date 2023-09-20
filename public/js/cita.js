@@ -301,17 +301,26 @@ function cancelCita(element){
 function updateCita(element){
     let url = window.location.origin + "/citas/edit";
     let id_cita = element.dataset.id_cita;
-    axios.post(url,id_cita)
+    let formData = new FormData();
+    formData.append('id_cita',id_cita);
+    axios.post(url,formData)
     .then((response)=>{
         console.log(response)
+        let data = response.data;
+        setTimeout(()=>{
+            document.getElementById('hora').value = data.hora;
+        },1200)
+        document.getElementById('paciente').value = data.paciente;
+        document.getElementById('dui').value = data.dui;
+        document.getElementById('email').value = data.email;
+        document.getElementById('celular').value = data.celular;
+        document.getElementById('motivo').value = data.motivo;
+        let fechaActual = moment();
+        fechaActual = fechaActual.format("YYYY-MM-DD");
+        $("#fecha").val(fechaActual);
+        verifyDispHora(fechaActual);
+        $("#citaModal").modal('show');
     })
     .catch((err)=>console.log(err))
-    document.getElementById('fecha').value;
-    document.getElementById('hora').value;
-    document.getElementById('paciente').value;
-    document.getElementById('dui').value;
-    document.getElementById('email').value;
-    document.getElementById('celular').value;
-    document.getElementById('motivo').value;
 
 }
