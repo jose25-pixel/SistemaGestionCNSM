@@ -39,7 +39,7 @@ class CitaController extends Controller
     //Verificar disponibilida hora
     public function disponibilidaHora(){
         $fecha = request()->input('fecha');
-        $data = DB::select("SELECT COUNT(id) as cantidad_cita,fecha,hora FROM `citas` WHERE fecha = ? GROUP BY fecha,hora",[$fecha]);
+        $data = DB::select("SELECT COUNT(id) as cantidad_cita,fecha,hora FROM `citas` WHERE fecha = ? and estado_cita='0' GROUP BY fecha,hora",[$fecha]);
         return response()->json($data);
     }
     //Obtener la cantidad de citas por fecha
@@ -61,7 +61,18 @@ class CitaController extends Controller
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
-            $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
+            $badge = '';
+            if($row->estado_cita == 0){
+                $badge = '<span style="font-size: 12px" class="badge badge-info">Pendiente</span>';
+            } else if ($row->estado_cita == -1){
+                $badge = '<span style="font-size: 12px" class="badge badge-danger">Cancelado</span>';
+            }else{
+                $badge = '<span style="font-size: 12px" class="badge badge-success">Atendido</span>';
+            }
+            $array[] = $badge;
+            $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled"; 
+            $array[] = '<button data-id_cita="'.$row->id.'" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
+                        <button '.$disableBTNCancel.' class="btn btn-xs btn-outline-info" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
             $data[] = $array;
             $counter --;
         }
@@ -75,8 +86,10 @@ class CitaController extends Controller
     }
     //Validation si existe el DUI
     public function validationDUICita(){
+        date_default_timezone_set('America/El_Salvador');
         $dui = request()->input('dui');
-        $exists = Cita::where('dui','=',$dui)->exists();
+        $fechaActual = date('Y-m-d');
+        $exists = Cita::where('dui','=',$dui)->where('fecha','=',$fechaActual)->exists();
         if($exists){
             return response()->json([
                 'status' => 'exists'
@@ -100,6 +113,7 @@ class CitaController extends Controller
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = ($row->estado_cita == 0) ? 'Pendiente' : 'Cancelado';
             $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
             $data[] = $array;
             $contador --;
@@ -111,6 +125,23 @@ class CitaController extends Controller
 			"aaData" => $data
         );
         return response()->json($response);
+    }
+    //Cancelar cita
+    function cancelarCita(){
+        $id_cita = request()->input('id_cita');
+        Cita::where('id',$id_cita)->update([
+            'estado_cita' => -1
+        ]);
+        return response()->json([
+            'status' => 'cancelado',
+            'message' => 'La cita se ha cancelado exitosamente!'
+        ]);
+    }
+    //obtener cita
+    public function getCitaById(){
+        $id_cita = request()->input('id_cita');
+        $data = Cita::find($id_cita);
+        return response()->json($data);
     }
 }
 

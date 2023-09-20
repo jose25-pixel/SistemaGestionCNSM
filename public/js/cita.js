@@ -248,6 +248,8 @@ try{
     btnCitaAll.addEventListener('click', ()=>{
         listarCitasAll();
     })
+    //Cancelar cita
+
 }catch(err){
     console.log(err);
 }
@@ -255,4 +257,61 @@ function listarCitasAll(){
     let url = window.location.origin + "/citas/all";
     dataTable('dt_listado_general_cita',url,{},5);
     $("#listarCitasAll").modal('show');
+}
+
+function cancelarCita(id_cita){
+    let url = window.location.origin + "/citas/cancelar";
+}
+
+function cancelCita(element){
+    Swal.fire({
+        title: 'Cancelar cita?',
+        text: "La cita se cancelara!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            let url = window.location.origin + "/citas/cancelar";
+            let id_cita = element.dataset.id_cita;
+            let formData = new FormData();
+            formData.append('id_cita',id_cita);
+            axios.post(url,formData)
+            .then((response)=>{
+                console.log(response)
+                let data = response.data;
+                if(data.status === "cancelado"){
+                    Swal.fire(
+                        'Cancelado!',
+                        'La cita se ha cancelado exitosamente.',
+                        'success'
+                    )
+                    $("#dt_listados_paci_cita").DataTable().ajax.reload();
+                }
+            })
+            .catch((err)=> console.log(err))
+        }
+      })
+}
+
+//Editar datos del paciente y cita
+function updateCita(element){
+    let url = window.location.origin + "/citas/edit";
+    let id_cita = element.dataset.id_cita;
+    axios.post(url,id_cita)
+    .then((response)=>{
+        console.log(response)
+    })
+    .catch((err)=>console.log(err))
+    document.getElementById('fecha').value;
+    document.getElementById('hora').value;
+    document.getElementById('paciente').value;
+    document.getElementById('dui').value;
+    document.getElementById('email').value;
+    document.getElementById('celular').value;
+    document.getElementById('motivo').value;
+
 }

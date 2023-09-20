@@ -27,6 +27,9 @@ Route::get('citas/cantidades',[CitaController::class,'getCountDateCita']);
 Route::get('cita/pacientes/datatable/{fecha}',[CitaController::class,'getCitasPaciDT']);
 Route::post('cita/validation/dui',[CitaController::class,'validationDUICita']);
 Route::get('citas/all',[CitaController::class,'getListadoGenCita']);
+Route::post('citas/cancelar',[CitaController::class,'cancelarCita']);
+Route::post('citas/edit',[CitaController::class,'getCitaById']); 
+
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login'])->name('login.auth');
