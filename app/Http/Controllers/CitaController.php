@@ -71,8 +71,9 @@ class CitaController extends Controller
             }
             $array[] = $badge;
             $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled"; 
-            $array[] = '<button data-id_cita="'.$row->id.'" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
-                        <button '.$disableBTNCancel.' class="btn btn-xs btn-outline-info" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
+            $disableBtnEdit = $row->estado_cita == -1 ? "disabled" : '';
+            $array[] = '<button '.$disableBtnEdit.' data-id_cita="'.$row->id.'" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
+                        <button '.$disableBTNCancel.' class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
             $data[] = $array;
             $counter --;
         }
@@ -113,8 +114,19 @@ class CitaController extends Controller
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
-            $array[] = ($row->estado_cita == 0) ? 'Pendiente' : 'Cancelado';
-            $array[] = '<button class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>';
+            $badge = '';
+            if($row->estado_cita == 0){
+                $badge = '<span style="font-size: 12px" class="badge badge-info">Pendiente</span>';
+            } else if ($row->estado_cita == -1){
+                $badge = '<span style="font-size: 12px" class="badge badge-danger">Cancelado</span>';
+            }else{
+                $badge = '<span style="font-size: 12px" class="badge badge-success">Atendido</span>';
+            }
+            $array[] = $badge;
+            $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled"; 
+            $disableBtnEdit = $row->estado_cita == -1 ? "disabled" : '';
+            $array[] = '<button '.$disableBtnEdit.' data-id_cita="'.$row->id.'" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
+            <button '.$disableBTNCancel.' class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
             $data[] = $array;
             $contador --;
         }
@@ -140,8 +152,27 @@ class CitaController extends Controller
     //obtener cita
     public function getCitaById(){
         $id_cita = request()->input('id_cita');
+        session(['id_cita' => $id_cita]);
         $data = Cita::find($id_cita);
         return response()->json($data);
+    }
+    //Actualizar datos de la cita
+    public function updateCita(){
+        $id_cita = session('id_cita');
+        $data = [
+            'paciente' => trim(request()->input('paciente')),
+            'dui' => request()->input('dui'),
+            'celular' => request()->input('celular'),
+            'fecha' => request()->input('fecha'),
+            'hora' => request()->input('hora'),
+            'email' => trim(request()->input('email')),
+            'motivo' => request()->input('motivo'),
+           ];
+        Cita::where('id',$id_cita)->update($data);
+        return response()->json([
+            'status' => 'update',
+            'data' => ''
+           ]);
     }
 }
 

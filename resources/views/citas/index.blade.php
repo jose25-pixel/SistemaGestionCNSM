@@ -1,4 +1,4 @@
-@include('layouts.app')
+@extends('layouts.app')
 @section('title','CNSM | Citas pacientes')
 @section('content')
 @include('citas.modal_list_citas_dia')

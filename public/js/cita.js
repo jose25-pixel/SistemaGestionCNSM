@@ -2,38 +2,22 @@
 var calendar = null; //Library Fullcalendar
 var arrayCitasEvents = [];
 var horarios = [
-    {
-        value: "8:00 AM",
-        status: false,
-    },
-    {
-        value: "9:00 AM",
-        status: false,
-    },
-    {
-        value: "10:00 AM",
-        status: false,
-    },
-    {
-        value: "11:00 AM",
-        status: false,
-    },
-    {
-        value: "1:00 PM",
-        status: false,
-    },
-    {
-        value: "2:00 PM",
-        status: false,
-    },
-    {
-        value: "3:00 PM",
-        status: false,
-    },
-    {
-        value: "4:00 PM",
-        status: false,
-    },
+    { value: "8:00 AM", status: false },
+    { value: "8:30 AM", status: false }, // Nueva entrada
+    { value: "9:00 AM", status: false },
+    { value: "9:30 AM", status: false }, // Nueva entrada
+    { value: "10:00 AM", status: false },
+    { value: "10:30 AM", status: false }, // Nueva entrada
+    { value: "11:00 AM", status: false },
+    { value: "11:30 AM", status: false }, // Nueva entrada
+    { value: "1:00 PM", status: false },
+    { value: "1:30 PM", status: false },
+    { value: "2:00 PM", status: false },
+    { value: "2:30 PM", status: false }, // Nueva entrada
+    { value: "3:00 PM", status: false },
+    { value: "3:30 PM", status: false }, // Nueva entrada
+    { value: "4:00 PM", status: false },
+    { value: "4:30 PM", status: false }, // Nueva entrada
 ];
 document.addEventListener("DOMContentLoaded", function () {
     CalendarEvents();
@@ -60,8 +44,6 @@ async function CalendarEvents(){
         droppable: true, // this allows things to be dropped onto the calendar !!!
         eventDrop: function (info) {
             // Handle event drop here
-            console.log(info)
-            console.log('clicked')
         },
         eventClick: function(info){
             //Modal para mostrar los pacientes citados ese dia
@@ -93,6 +75,18 @@ async function CalendarEvents(){
             // Por ejemplo, puedes mostrar un modal de Bootstrap
             //Verificar disponibilidad
             verifyDispHora(formattedDate);
+            //Clear inputs
+            clsInput('clear-input')
+            //Set method form post
+            document.getElementById('_methodCita').value = 'post'; 
+            //Set title modal
+            document.getElementById('labelTitleModalCita').textContent = "AGENDAR CITA";
+            document.getElementById('btnLabelCita').textContent = " REGISTRAR";
+            //Add atribute readonly en input type date
+            let inputFecha = document.getElementById('fecha');
+            if(inputFecha !== undefined){
+                inputFecha.setAttribute('readonly',true);
+            }
             $("#citaModal").modal("show");
         },
     });
@@ -111,11 +105,14 @@ try {
     formCita.addEventListener("submit", (e) => {
         e.preventDefault();
         let formData = new FormData(formCita);
-        let url = window.location.origin + "/citas/guardar";
-        axios
-            .post(url, formData)
+        /**
+         * Obtener method para save or edit
+         */
+        let _method = document.getElementById('_methodCita').value;
+        if(_method === "post"){
+            let url = window.location.origin + "/citas/guardar";
+            axios.post(url, formData)
             .then((response) => {
-                console.log(response);
                 if (response.data.status === "inserted") {
                     Swal.fire({
                         icon: "success",
@@ -128,11 +125,45 @@ try {
                     CalendarEvents();
                     //Refresca el calendario
                     calendar.refetchEvents();
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: 'Error en solicitud',
+                        text: "Upps, ha ocurrido un error, intente nuevamente!",
+                    });
+                }
+            })
+            .catch((err) => console.log(err));
+        }else if(_method === "put"){
+            let url = window.location.origin + "/citas/update";
+            axios.post(url, formData)
+            .then((response) => {
+                if (response.data.status === "update") {
+                    Swal.fire({
+                        icon: "success",
+                        text: "La consulta se ha actualizado exitosamente!",
+                    });
+                    $("#citaModal").modal("hide");
+                    formCita.reset();
+                    //Get Events DB
+                    CalendarEvents();
+                    //Refresca el calendario
+                    calendar.refetchEvents();
+                    //Actualiza el datatable
+                    $("#dt_listados_paci_cita").DataTable().ajax.reload(null,false);
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: 'Error en solicitud',
+                        text: "Upps, ha ocurrido un error, intente nuevamente!",
+                    });
                 }
             })
             .catch((err) => {
                 console.log(err);
             });
+        }
+        
     });
 } catch (err) {}
 
@@ -217,7 +248,6 @@ try{
 
 }
 function getValidationDUI(dui){
-    console.log(dui)
     let urlValidDui = window.location.origin + "/cita/validation/dui";
     let formData = new FormData();
     formData.append('dui',dui);
@@ -281,7 +311,6 @@ function cancelCita(element){
             formData.append('id_cita',id_cita);
             axios.post(url,formData)
             .then((response)=>{
-                console.log(response)
                 let data = response.data;
                 if(data.status === "cancelado"){
                     Swal.fire(
@@ -305,7 +334,10 @@ function updateCita(element){
     formData.append('id_cita',id_cita);
     axios.post(url,formData)
     .then((response)=>{
-        console.log(response)
+        let inputFecha = document.getElementById('fecha');
+        if(inputFecha !== undefined){
+            inputFecha.removeAttribute('readonly');
+        }
         let data = response.data;
         setTimeout(()=>{
             document.getElementById('hora').value = data.hora;
@@ -319,8 +351,40 @@ function updateCita(element){
         fechaActual = fechaActual.format("YYYY-MM-DD");
         $("#fecha").val(fechaActual);
         verifyDispHora(fechaActual);
+        //Set method put update cita
+        document.getElementById('_methodCita').value = "put";
+        //Set title modal
+        document.getElementById('labelTitleModalCita').textContent = "ACTUALIZAR DATOS DE LA CITA";
+        document.getElementById('btnLabelCita').textContent = " ACTUALIZAR";
         $("#citaModal").modal('show');
     })
     .catch((err)=>console.log(err))
 
+}
+//Verificar fecha al momento de actualizar
+function verifyDate(element){
+    let fechaSelected = document.getElementById(element.id).value;
+    //Validation fecha, si es inferior a la actual
+    let fechaActual = moment();
+    fechaActual = fechaActual.format("YYYY-MM-DD");
+    let dateInf = new Date(fechaSelected);
+    let dateActual = new Date(fechaActual);
+    if(dateInf < dateActual){
+        $("#fecha").val(fechaActual); // Llena el campo de fecha con el dia selecionado automaticamente
+        Swal.fire({
+            icon: "warning",
+            title: "Fecha incorrecta",
+            text: "No puede registrar una fecha anterior a la actual!",
+        });
+        return 0;
+    }
+    $("#fecha").val(fechaSelected); // Llena el campo de fecha con el dia selecionado automaticamente
+    //Verificar disponibilidad
+    verifyDispHora(fechaSelected);
+}
+//Clear inputs 
+
+function clsInput(input){
+    let campos = document.querySelectorAll('.' + input);
+    campos.forEach(element => element.value = "");
 }
