@@ -4,6 +4,7 @@
 @include('citas.modal_list_citas_dia')
 @include('citas.modal_citas_all')
 @include('citas.modal_agendar_cita')
+@include('terapeuta.modal.modal_form_terapeuta')
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -32,6 +33,7 @@
 
 @push('js_scripts')
     <script src="{{asset('js/cita.js')}}"></script>
+    <script src="{{asset('js/terapeuta.js')}}"></script>
     <script>
     // Validaciones de input
     var celularCleave = new Cleave('#celular', {
@@ -43,7 +45,15 @@
         delimiter: '-',
         blocks: [8, 1],
     });
-
+    //Validaciones para terapeutas
+    var duiCleave = new Cleave('#dui_t', {
+        delimiter: '-',
+        blocks: [8, 1],
+    });
+    var celularCleave = new Cleave('#telefono_t', {
+        delimiter: '-',
+        blocks: [4, 4],
+    });
     // Función para validar números
     function validarNumeros(event) {
         var input = event.target;

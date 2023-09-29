@@ -5,6 +5,7 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TerapeutaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,9 @@ Route::get('citas/all',[CitaController::class,'getListadoGenCita']);
 Route::post('citas/cancelar',[CitaController::class,'cancelarCita']);
 Route::post('citas/edit',[CitaController::class,'getCitaById']); 
 Route::put('citas/update',[CitaController::class,'updateCita']); 
+//Routas para terapeuta
+Route::post('terapeuta/save',[TerapeutaController::class,'saveTerapeuta']);
+Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);
 
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');

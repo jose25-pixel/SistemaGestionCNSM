@@ -18,6 +18,9 @@ function dataTable(id,url,data = {},pageLength = 25){
             "type": "GET" // Método de solicitud
         },
         "iDisplayLength": pageLength, // Cantidad fija de datos por página
+        responsive: {
+            details: true //Datatable responsive
+        },
         "language": {
             "zeroRecords": "No se encontraron resultados", // Texto para cuando no se encuentran registros
             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros", // Texto informativo del paginado

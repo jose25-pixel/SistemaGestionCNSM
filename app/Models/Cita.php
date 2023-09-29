@@ -16,6 +16,8 @@ class Cita extends Model
         'hora',
         'email',
         'motivo',
-        'estado_cita'
+        'estado_cita',
+        'terapeuta_id',
+        'usuario_id'
     ];
 }

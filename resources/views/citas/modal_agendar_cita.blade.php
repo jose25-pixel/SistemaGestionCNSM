@@ -38,6 +38,19 @@
               <label for="numero">Celular:</label>
               <input type="text" id="celular" name="celular" class="form-control clear-input" required>
             </div>
+            <div class="form-group col-sm-12 col-md-6">
+              <label for="numero">Terapeutas:</label>
+              <div class="input-group is-invalid">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="terapeuta" onclick="openModalTerapeuta()"><i class="fas fa-plus"></i></label>
+                </div>
+                <select class="custom-select" name="terapeuta_id" id="terapeuta_id" required>
+                </select>
+              </div>
+              {{-- <div class="invalid-feedback">
+                Example invalid input group feedback
+              </div> --}}
+            </div>
             <div class="form-group col-sm-12 col-md-12 col-xl-12">
               <label for="comentario">Motivo:</label>
               <input id="motivo" name="motivo" class="form-control clear-input">

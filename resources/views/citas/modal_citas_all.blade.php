@@ -21,6 +21,7 @@
                   <th>DUI</th>
                   <th>Teléfono</th>
                   <th>Fecha & hora</th>
+                  <th>Terapeuta</th>
                   <th>Estado</th>
                   <th>Acciones</th>
                 </thead>

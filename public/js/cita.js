@@ -88,6 +88,7 @@ async function CalendarEvents(){
                 inputFecha.setAttribute('readonly',true);
             }
             $("#citaModal").modal("show");
+            getSelectTerapeutas(); //Obtenemos todos los terapeutas
         },
     });
 
@@ -334,29 +335,35 @@ function updateCita(element){
     formData.append('id_cita',id_cita);
     axios.post(url,formData)
     .then((response)=>{
-        let inputFecha = document.getElementById('fecha');
-        if(inputFecha !== undefined){
-            inputFecha.removeAttribute('readonly');
-        }
-        let data = response.data;
-        setTimeout(()=>{
-            document.getElementById('hora').value = data.hora;
-        },1200)
-        document.getElementById('paciente').value = data.paciente;
-        document.getElementById('dui').value = data.dui;
-        document.getElementById('email').value = data.email;
-        document.getElementById('celular').value = data.celular;
-        document.getElementById('motivo').value = data.motivo;
-        let fechaActual = moment();
-        fechaActual = fechaActual.format("YYYY-MM-DD");
-        $("#fecha").val(fechaActual);
-        verifyDispHora(fechaActual);
-        //Set method put update cita
-        document.getElementById('_methodCita').value = "put";
-        //Set title modal
-        document.getElementById('labelTitleModalCita').textContent = "ACTUALIZAR DATOS DE LA CITA";
-        document.getElementById('btnLabelCita').textContent = " ACTUALIZAR";
         $("#citaModal").modal('show');
+        getSelectTerapeutas((codeStatus)=>{
+            if(codeStatus === 200){
+                let inputFecha = document.getElementById('fecha');
+                if(inputFecha !== undefined){
+                    inputFecha.removeAttribute('readonly');
+                }
+                let data = response.data;
+                setTimeout(()=>{
+                    document.getElementById('hora').value = data.hora;
+                },1200)
+                document.getElementById('paciente').value = data.paciente;
+                document.getElementById('dui').value = data.dui;
+                document.getElementById('email').value = data.email;
+                document.getElementById('celular').value = data.celular;
+                document.getElementById('motivo').value = data.motivo;
+                document.getElementById('terapeuta_id').value = data.terapeuta_id;
+                let fechaActual = moment();
+                fechaActual = fechaActual.format("YYYY-MM-DD");
+                $("#fecha").val(fechaActual);
+                verifyDispHora(fechaActual);
+                //Set method put update cita
+                document.getElementById('_methodCita').value = "put";
+                //Set title modal
+                document.getElementById('labelTitleModalCita').textContent = "ACTUALIZAR DATOS DE LA CITA";
+                document.getElementById('btnLabelCita').textContent = " ACTUALIZAR";
+            }
+        })
+        
     })
     .catch((err)=>console.log(err))
 

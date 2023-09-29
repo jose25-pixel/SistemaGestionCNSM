@@ -5,7 +5,7 @@ use App\Models\Cita;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class CitaController extends Controller
 {
@@ -19,6 +19,7 @@ class CitaController extends Controller
        //Estado == 0 : Cita creada
        // Estado == 1: El paciente ya se realizo la consulta
        //Inserted 
+       $id_usuario = Auth::user()->id;
        $data = [
         'paciente' => trim(request()->input('paciente')),
         'dui' => request()->input('dui'),
@@ -27,7 +28,9 @@ class CitaController extends Controller
         'hora' => request()->input('hora'),
         'email' => trim(request()->input('email')),
         'motivo' => request()->input('motivo'),
-        'estado_cita' => 0
+        'estado_cita' => 0,
+        'terapeuta_id' => request()->input('terapeuta_id'),
+        'usuario_id' => $id_usuario
        ];
        Cita::create($data);
        return response()->json([
@@ -51,7 +54,7 @@ class CitaController extends Controller
      * DATATABLE
      */
     public function getCitasPaciDT($fecha){
-        $citas = Cita::where('fecha','=',$fecha)->orderBy('id','desc')->get();
+        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas` as c INNER join usuarios as u on c.terapeuta_id=u.id where c.fecha=? order by c.id desc",[$fecha]);
         $data = [];
         $counter = count($citas);
         foreach($citas as $row){
@@ -61,6 +64,7 @@ class CitaController extends Controller
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = $row->terapeuta;
             $badge = '';
             if($row->estado_cita == 0){
                 $badge = '<span style="font-size: 12px" class="badge badge-info">Pendiente</span>';
@@ -104,7 +108,7 @@ class CitaController extends Controller
      * GET LIST General
      */
     public function getListadoGenCita(){
-        $citas = Cita::orderBy('id','desc')->get();
+        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas` as c INNER join usuarios as u on c.terapeuta_id=u.id order by c.id desc");
         $data = [];
         $contador = count($citas);
         foreach($citas as $row){
@@ -114,6 +118,7 @@ class CitaController extends Controller
             $array[] = $row->dui;
             $array[] = $row->celular;
             $array[] = date('d-m-Y',strtotime($row->fecha)) . " ". $row->hora;
+            $array[] = $row->terapeuta;
             $badge = '';
             if($row->estado_cita == 0){
                 $badge = '<span style="font-size: 12px" class="badge badge-info">Pendiente</span>';
@@ -159,6 +164,7 @@ class CitaController extends Controller
     //Actualizar datos de la cita
     public function updateCita(){
         $id_cita = session('id_cita');
+        $id_usuario = Auth::user()->id;
         $data = [
             'paciente' => trim(request()->input('paciente')),
             'dui' => request()->input('dui'),
@@ -167,6 +173,8 @@ class CitaController extends Controller
             'hora' => request()->input('hora'),
             'email' => trim(request()->input('email')),
             'motivo' => request()->input('motivo'),
+            'terapeuta_id' => request()->input('terapeuta_id'),
+            'usuario_id' => $id_usuario
            ];
         Cita::where('id',$id_cita)->update($data);
         return response()->json([
