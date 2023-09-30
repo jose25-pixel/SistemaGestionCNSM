@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2023 a las 07:03:55
+-- Tiempo de generación: 30-09-2023 a las 04:16:03
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -81,6 +81,8 @@ CREATE TABLE `citas` (
   `email` varchar(50) DEFAULT NULL,
   `motivo` text DEFAULT NULL,
   `estado_cita` int(11) NOT NULL,
+  `terapeuta_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `created_at` varchar(25) NOT NULL,
   `updated_at` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -252,7 +254,9 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(25) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `password` varchar(200) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `categoria` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `estado` int(11) NOT NULL
+  `estado` int(11) NOT NULL,
+  `created_at` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `updated_at` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
