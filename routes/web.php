@@ -37,6 +37,12 @@ Route::put('citas/update',[CitaController::class,'updateCita']);
 Route::post('terapeuta/save',[TerapeutaController::class,'saveTerapeuta']);
 Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);
 
+//Routas de paciente
+
+Route::get('pacientes/datatable',[PacienteController::class,'getpacientes']);
+Route::get('pacientes/id',[PacienteController::class,'pacientegetid']);
+
+
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login'])->name('login.auth');
