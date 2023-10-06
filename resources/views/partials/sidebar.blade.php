@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
-      <img src="dist/img/logocsnm.jpeg" alt="Logo" class="brand-image img-circle elevation-2" style="opacity: .9">
+      <img src="{{ asset('dist/img/logocsnm.jpeg')}}" alt="Logo" class="brand-image img-circle elevation-2" style="opacity: .9">
       <span class="brand-text font-weight-light">CSNM</span>
     </a>
 
@@ -24,11 +24,11 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Citas
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">5</span>
+                <span class="badge badge-info right" id="info-count-citas">0</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -42,34 +42,19 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('paciente.index') }}" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Pacientes
+                Clientes
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
+            <a href="{{route('consulta.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-user-edit"></i>
               <p>
-                Consulta
-                <i class="fas fa-angle-left right"></i>
+                Consultas
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Consulta</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sintomas</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

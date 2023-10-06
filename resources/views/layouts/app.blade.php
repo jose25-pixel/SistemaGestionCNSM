@@ -43,7 +43,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ asset('dist/img/logocsnm.jpeg')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   @include('partials.nabvar')
@@ -61,7 +61,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div class="container-fluid p-1 m-1">
         @yield('content')
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
@@ -70,18 +70,12 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2023-2023 <a href="https://adminlte.io">CNSM</a>.</strong>
+    <strong>Copyright &copy; 2023-2023 <a href="https://centrodesaludmental.org">CNSM</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0
     </div>
   </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -137,6 +131,8 @@
 <script src="{{asset('plugins/sweetalert2/sweetalert2.all.js')}}"></script>
 <script src="{{asset('js/cleave/Cleave.js')}}"></script>
 <script src="{{asset('js/dataTable.js')}}"></script>
+<!-----Helpers------>
+<script src="{{asset('js/helpers.js')}}"></script>
 @yield('scripts')
 @stack('js_scripts')
 </body>

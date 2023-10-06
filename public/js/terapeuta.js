@@ -72,7 +72,7 @@ try{
     //SELECTED TERAPEUTA
     function selectedTerapeutaSelect(data){
         let select = document.getElementById('terapeuta_id');
-        select.textContent = '';
+        //select.textContent = '';
         let defaultOption = document.createElement('option');
         /* defaultOption.value = '';
         defaultOption.textContent = "Seleccionar"
@@ -80,7 +80,8 @@ try{
         let option = document.createElement('option');
         option.value = data.id;
         option.textContent = data.nombre + " (Tel. " + data.telefono + ")";
-        select.appendChild(option);
+        select.insertBefore(option,select.firstChild);
+        select.selectedIndex = 0;
     }
 }catch(err){
     console.log(err)

@@ -28,9 +28,9 @@
               <label for="email_t">Email:</label>
               <input type="text" class="form-control clear-input" id="email_t" name="email_t">
             </div>
-            <div class="form-group col-sm-12 col-md-12">
-                <label for="direccion_t">Dirección:</label>
-                <input type="text" class="form-control clear-input" id="direccion_t" name="direccion_t">
+            <div class="form-group col-sm-12 col-md-4">
+                <label for="direccion_t">JVPP:</label>
+                <input type="number" step="1" class="form-control clear-input" id="codigo_t" name="codigo_t">
               </div>
           </div>
             </div>

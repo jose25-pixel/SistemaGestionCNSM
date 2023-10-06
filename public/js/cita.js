@@ -1,3 +1,4 @@
+
 //Initial variables
 var calendar = null; //Library Fullcalendar
 var arrayCitasEvents = [];
@@ -126,6 +127,8 @@ try {
                     CalendarEvents();
                     //Refresca el calendario
                     calendar.refetchEvents();
+                    //Refresh number asider citas
+                    counterCitasDay();
                 }else{
                     Swal.fire({
                         icon: "error",

@@ -10,8 +10,8 @@ class TerapeutaController extends Controller
 {
     public function saveTerapeuta(){
         $datos = [
+            'codigo' => trim(request()->input('codigo_t')),
             'nombre' => trim(request()->input('terapeuta')),
-            'direccion' => trim(request()->input('direccion_t')),
             'dui' => request()->input('dui_t'),
             'telefono' => request()->input('telefono_t'),
             'email' => request()->input('email_t'),

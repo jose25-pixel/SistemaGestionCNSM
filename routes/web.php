@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -33,9 +34,16 @@ Route::get('citas/all',[CitaController::class,'getListadoGenCita']);
 Route::post('citas/cancelar',[CitaController::class,'cancelarCita']);
 Route::post('citas/edit',[CitaController::class,'getCitaById']); 
 Route::put('citas/update',[CitaController::class,'updateCita']); 
+Route::get('citas/contador/dia',[CitaController::class,'getCantidadCitaDay']);
 //Routas para terapeuta
 Route::post('terapeuta/save',[TerapeutaController::class,'saveTerapeuta']);
 Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);
+
+
+
+//Rutas para consulta
+Route::get('consultas',[ConsultasController::class,'index'])->name('consulta.index');
+Route::get('consultas/pacientes/datatable',[ConsultasController::class,'datatable_consulta']);
 
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');

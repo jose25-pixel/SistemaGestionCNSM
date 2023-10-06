@@ -182,6 +182,15 @@ class CitaController extends Controller
             'data' => ''
            ]);
     }
+    /**
+     * Method para contar la cantidad de citas por dia
+     */
+    public function getCantidadCitaDay(){
+        date_default_timezone_set('America/El_Salvador');
+        $day = date('Y-m-d');
+        $cantidadCita = Cita::where('fecha',$day)->count();
+        return response()->json($cantidadCita);
+    }
 }
 
 

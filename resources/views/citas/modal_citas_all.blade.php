@@ -17,7 +17,7 @@
               <table id="dt_listado_general_cita" class="table table-custom table-hover">
                 <thead style="text-align: center">
                   <th>#</th>
-                  <th>Paciente</th>
+                  <th>Cliente</th>
                   <th>DUI</th>
                   <th>Teléfono</th>
                   <th>Fecha & hora</th>
