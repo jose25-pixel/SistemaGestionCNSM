@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Cita;
+use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
@@ -32,10 +33,20 @@ class CitaController extends Controller
         'terapeuta_id' => request()->input('terapeuta_id'),
         'usuario_id' => $id_usuario
        ];
-       Cita::create($data);
+     
+     
+       //$cita = Cita::create($data);
+        Cita::create($data);
+      
+      // $paciente = new Paciente();
+       //$paciente->id_cita = $cita->id;
+       //$paciente->genero= 'masculino';
+       //$paciente->save();
+
+
        return response()->json([
         'status' => 'inserted',
-        'data' => ''
+        'data' =>   ''
        ]);
        
     }
@@ -161,6 +172,8 @@ class CitaController extends Controller
         $data = Cita::find($id_cita);
         return response()->json($data);
     }
+
+
     //Actualizar datos de la cita
     public function updateCita(){
         $id_cita = session('id_cita');

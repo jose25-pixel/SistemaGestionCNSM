@@ -1,64 +1,71 @@
 @extends('layouts.app')
-
+@include('pacientes.modal.modal_agregar_info')
+@include('pacientes.modal.modal_agregar')
 @section('content-header')
-<div class="row mb-2">
-    <div class="col-sm-6">
-      <h1 class="m-0">Dashboard</h1>
-    </div><!-- /.col -->
-    <div class="col-sm-6">
-      <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Dashboard v1</li>
-      </ol>
-    </div><!-- /.col -->
-  </div><!-- /.row -->
+<div class="col-sm-6">
+  <ol class="breadcrumb float-sm-right">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Dashboard v1</li>
+  </ol>
+</div><!-- /.col -->
 @endsection
 
 @section('content')
  <!-- Main content -->
  <section class="content">
     <div class="container-fluid">
-      <!-- SELECT2 EXAMPLE -->
-      <div class="card card-default">
-        <div class="card-header">
-          <h3 class="card-title">Select2 (Default Theme)</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Minimal</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Alabama</option>
-                  <option>Alaska</option>
-                  <option>California</option>
-                  <option>Delaware</option>
-                  <option>Tennessee</option>
-                  <option>Texas</option>
-                  <option>Washington</option>
-                </select>
-              </div>
-              <!-- /.form-group -->
-              <!-- /.form-group -->
+     
+      <div  id="" tabindex="-1" role="" aria-labelledby="" >
+        <div class="" style="max-width: 100%">
+          <div class="">
+            <div class="">
+              <h5 class="" id="exampleModalLabel">LISTADO GENERAl de pacientes</h5>
+             
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <!-- /.col -->
-            <!-- /.col -->
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-header py-1">
+                 
+                  <button type="button" class="btn btn-primary" onclick="Agregar(this)">AGREGAR  <i class="fas fa-plus"></i></button>
+                
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="tabla-pacientes" class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">DUI</th>
+                        <th scope="col">Paciente</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Celular</th>
+                        <th scope="col">Género</th>
+                        <th scope="col">Ocupación</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
           </div>
-          <!-- /.row -->
-          <!-- /.row -->
         </div>
-        <!-- /.card-body --
       </div>
       <!-- /.card -->
 
+
+
+   
+
 @endsection
+
+
+@push('js_scripts')
+    <script src="{{asset('js/paciente.js')}}"></script>
+@endpush

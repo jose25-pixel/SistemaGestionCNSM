@@ -39,11 +39,11 @@ Route::get('citas/contador/dia',[CitaController::class,'getCantidadCitaDay']);
 Route::post('terapeuta/save',[TerapeutaController::class,'saveTerapeuta']);
 Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);
 
-
-
-//Rutas para consulta
 Route::get('consultas',[ConsultasController::class,'index'])->name('consulta.index');
 Route::get('consultas/pacientes/datatable',[ConsultasController::class,'datatable_consulta']);
+
+Route::get('pacientes/datatable',[PacienteController::class,'getpacientes']);
+Route::get('pacientes/id',[PacienteController::class,'pacientegetid']);
 
 //Routas para login y register
 Route::get('/login',[LoginController::class,'index'])->name('login');

@@ -9,6 +9,7 @@ class Paciente extends Model
 {
     protected $table = 'paciente';
     protected $fillable = [
+        'cod_paciente',
         'fecha_naci',
         'genero',
         'ocupacion',
@@ -16,6 +17,22 @@ class Paciente extends Model
         'grado',
         'nivel_educativo',
         'direccion',
-        'departamento'
+        'departamento',
+        'municipio',
+        'celular_uno',
+        'celular_dos',
+        'celular_tres',
+        'fecha',
+        'id_cita'
     ];
+
+    //public function cita(){
+      //  return $this->belongsTo('App\Cita');
+   // }
+
+    public function cita()
+    {
+        return $this->belongsTo('App\Cita', 'id_cita', 'id');
+    }
+
 }

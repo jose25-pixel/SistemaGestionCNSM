@@ -20,4 +20,15 @@ class Cita extends Model
         'terapeuta_id',
         'usuario_id'
     ];
+
+   // public function paciente()
+    //{
+      //  return $this->hasMany('App\Paciente');
+   // }
+
+
+    public function paciente()
+    {
+        return $this->hasOne('App\Paciente', 'id_cita', 'id');
+    }
 }
