@@ -41,6 +41,7 @@ Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);
 
 Route::get('consultas',[ConsultasController::class,'index'])->name('consulta.index');
 Route::get('consultas/pacientes/datatable',[ConsultasController::class,'datatable_consulta']);
+Route::get('consultas/seleccionar/pacientes',[ConsultasController::class,'dt_pacientes']);
 
 Route::get('pacientes/datatable',[PacienteController::class,'getpacientes']);
 Route::get('pacientes/id',[PacienteController::class,'pacientegetid']); 
