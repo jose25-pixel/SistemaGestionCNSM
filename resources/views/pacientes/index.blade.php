@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@include('pacientes.modal.modal_agregar_info')
-@include('pacientes.modal.modal_agregar')
+
 @section('content-header')
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -25,13 +24,15 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        @include('pacientes.modal.modal_agregar_info')
+                        @include('pacientes.modal.modal_agregar')
                         <div class="modal-body">
                             <div class="card">
                                 <div class="card-header py-1">
-
+                                    
                                     <button type="button" class="btn btn-primary" onclick="Agregar(this)">AGREGAR <i
                                             class="fas fa-plus"></i></button>
-
+                                            
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <table id="tabla-pacientes" class="table table-striped table-bordered">
