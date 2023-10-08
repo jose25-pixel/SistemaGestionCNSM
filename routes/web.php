@@ -45,7 +45,7 @@ Route::get('consultas/pacientes/datatable',[ConsultasController::class,'datatabl
 Route::get('pacientes/datatable',[PacienteController::class,'getpacientes']);
 Route::get('pacientes/id',[PacienteController::class,'pacientegetid']); 
 Route::get('citas/select',[CitaController::class,'getCitas']); 
-Route::post('pacientes/save',[PacienteController::class,'guardarpaciente']);
+Route::post('pacientes/save',[PacienteController::class,'guardarp']);
 
 
 //Routas para login y register

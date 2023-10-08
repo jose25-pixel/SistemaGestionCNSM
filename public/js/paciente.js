@@ -47,7 +47,7 @@ function getSelectcitas(callback=''){
           data.forEach(element => {
               let option = document.createElement('option');
               option.value = element.id;
-              option.textContent = element.paciente + ' (DUI. ' + element.dui + ')';
+              option.textContent = element.paciente + ' (DUI. ' + element.dui + ')' +' (fecha: '+ element.fecha +')' + '(hora:'+ element.hora + ') ' ;
               selectT.appendChild(option);
           });
           if(callback !== ''){
@@ -79,17 +79,14 @@ document.addEventListener('DOMContentLoaded', function() {
       axios.post (url, datosFormulario)
           .then(function(response) {
 
+            Swal.fire(
+              'Agregado!',
+              'paciente agragdo exitosamente.',
+              'success'
+          )
 
-            if (response.data.status === "inserted") {
-              Swal.fire({
-                  icon: "success",
-                  title: "cliente registrada",
-                  text: "cliente se ha registrado exitosamente!",
-              });
-              $("#modalIngresoPaciente").modal("hide");
-              formCita.reset();
-            }
-
+            $("#modalIngresoPaciente").modal("hide");
+              pacienteForm.reset();
               // Maneja la respuesta del servidor si es necesario
               
           })
