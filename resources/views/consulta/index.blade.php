@@ -2,6 +2,7 @@
 @section('title','CNSM | Consulta')
 @section('content')
 @include('consulta.modal.modal_form_consulta')
+@include('consulta.modal.modal_pacientes_selected')
     <span>GESTIONAR CONSULTAS</span>
     <div class="card p-1 m-1">
         <div class="card-header" style="border-top:4px solid #050859">
