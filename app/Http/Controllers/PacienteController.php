@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\conyuge;  
+use App\Models\parentesco;
+use App\Models\responsable;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +61,7 @@ class PacienteController extends Controller
         return response()->json($response);
   } 
 
-  
+   
   //public function pacientegetid(){
     //$id_cita = request()->input('id_cita');
     //session(['id_cita' => $id_cita]);
@@ -65,72 +69,36 @@ class PacienteController extends Controller
     //return response()->json($data);
 //}
 
+ //fucnio para guardar primeramente los datos de paciente recordar que fecha de registro
+ // la toma de la fecha actual ademas l codigo de paciente es deinsertar tomando los datos del formulario
+public function guardarpaciente(Request $request)
+{
 
+ // Crear un nuevo paciente
+ $paciente = new Paciente;
+ $paciente->cita_id = $request->input('cita_id');
+ $paciente->fecha_naci = $request->input('fecha_naci');
+ 
+ $paciente->edad = $request->input('edad');
+ $paciente->genero = $request->input('genero');
+ 
+ $paciente->ocupacion = $request->input('ocupacion');
+ $paciente->lugar_estudio = $request->input('lugar_estudio');
+ $paciente->grado = $request->input('grado');
+ $paciente->nivel_educativo = $request->input('nivel_educativo');
+ $paciente->direccion = $request->input('direccion');
+ $paciente->departamento = $request->input('departamento');
+ $paciente->municipio = $request->input('municipio');
+ $paciente->celular_dos = $request->input('celular_dos');
+ $paciente->celular_tres = $request->input('celular_tres');
+ $paciente->save();
 
+ // Devolver una respuesta, por ejemplo, el ID del paciente creado
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Paciente $paciente)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Paciente $paciente)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Paciente $paciente)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Paciente  $paciente
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Paciente $paciente)
-    {
-        //
-    }
+ return response()->json([
+    'status' => 'inserted',
+    'data' =>   ''
+   ]);
 }
+}
+

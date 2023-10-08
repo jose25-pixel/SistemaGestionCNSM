@@ -22,73 +22,90 @@ function Ingresar(element){
 
 
 function Agregar(element){
-  $("#modalNuevaCita").modal('show');
+  $("#modalIngresoPaciente").modal('show');
 
   
 }
 
-// Obtener el elemento de selección de departamento
-const departamentoSelect = document.getElementById('departamento');
-
-// Obtener el elemento de entrada de texto del municipio
-const municipioInput = document.getElementById('municipio');
-
-// Datos de municipios por departamento (puedes obtener estos datos de tu base de datos o de donde sea que estén almacenados)
-const municipiosPorDepartamento = {
-  'San Salvador': ['San Salvador', 'Soyapango', 'Santa Tecla'],
-  'Santa Ana': ['Santa Ana', 'Metapán', 'Chalchuapa']
-  // Agrega más municipios según los departamentos aquí
+window.onload = function(){
+  getSelectcitas();
 };
 
-// Función para actualizar los municipios cuando se selecciona un departamento
-function actualizarMunicipios() {
-  const departamentoSeleccionado = departamentoSelect.value;
-  const municipios = municipiosPorDepartamento[departamentoSeleccionado] || [];
-  // Limpiar opciones existentes
-  municipioInput.value = '';
-  // Llenar el campo de municipio con las opciones correspondientes
-  municipios.forEach(municipio => {
-    municipioInput.value += municipio + ', ';
-  });
-}
-
-// Asociar la función de actualización al evento de cambio en el campo de selección de departamento
-departamentoSelect.addEventListener('change', actualizarMunicipios);
-
-
-
-function Ing(element){
-  let url = window.location.origin + "";
-  let id_cita = element.dataset.id_cita;
-  let formData = new FormData();
-  formData.append('id_cita',id_cita);
-  axios.post(url,formData)
+//SELECT citas 
+function getSelectcitas(callback=''){
+  let url = window.location.origin + "/citas/select";
+  axios.get(url)
   .then((response)=>{
-      $("#modal_paciente").modal('show');
-      //let data = response.data;
-      //document.getElementById('cod_paciente').value = data.cod_paciente;
-      //document.getElementById('paciente').value = data.fecha_naci;
-      //document.getElementById('fecha_naci').value = data.fecha_naci;
-      //document.getElementById('dui').value = data.dui;
-      //document.getElementById('celular').value = data.celular;
-      //document.getElementById('motivo').value = data.motivo;
-     // document.getElementById('fecha').value. format("YYYY-MM-DD")
-   //   = data.fecha;
-   
-    
-      //Set method put update cita
-      document.getElementById('_methodpaciente').value = "get";
-      //Set title modal
-      document.getElementById('labelTitleModalpaciente').textContent = "AGREGAR";
-      document.getElementById('btnpaciente').textContent = "AGREGAR";
-      
+      if(response.status === 200){
+          let data = response.data;
+          let selectT = document.getElementById('cita_id');
+          selectT.textContent = '';
+          let defaultOption = document.createElement('option');
+          defaultOption.value = 'none';
+          defaultOption.textContent = 'Seleccionar';
+          selectT.appendChild(defaultOption);
+          data.forEach(element => {
+              let option = document.createElement('option');
+              option.value = element.id;
+              option.textContent = element.paciente + ' (DUI. ' + element.dui + ')';
+              selectT.appendChild(option);
+          });
+          if(callback !== ''){
+              callback(response.status);
+          }
+      }
   })
   .catch((err)=>console.log(err))
-
 }
 
 
-//fuccion para abril modal para agragar mas informacion
+ // fucnion para enviar los datos a guardar
+document.addEventListener('DOMContentLoaded', function() {
+  var formulario = document.getElementById('pacienteForm');
+  formulario.addEventListener('submit', function(event) {
+      // Evita el envío tradicional del formulario
+      event.preventDefault();
+
+      // Obtén los datos del formulario
+      var datosFormulario = new FormData(formulario);
+      console.log(datosFormulario);
+
+      // Itera sobre los datos del formulario y muestra el nombre y el valor en la consola
+      for (var pair of datosFormulario.entries()) {
+          console.log(pair[0] + ': ' + pair[1]);
+      }
+      let url = window.location.origin + "/pacientes/save";
+      // Realiza la solicitud POST con Axios
+      axios.post (url, datosFormulario)
+          .then(function(response) {
+
+
+            if (response.data.status === "inserted") {
+              Swal.fire({
+                  icon: "success",
+                  title: "cliente registrada",
+                  text: "cliente se ha registrado exitosamente!",
+              });
+              $("#modalIngresoPaciente").modal("hide");
+              formCita.reset();
+            }
+
+              // Maneja la respuesta del servidor si es necesario
+              
+          })
+          .catch(function(error) {
+              // Maneja los errores si ocurren durante la solicitud
+              console.error(error);
+          });
+  });
+});
+
+
+
+
+
+
+
 
 
 

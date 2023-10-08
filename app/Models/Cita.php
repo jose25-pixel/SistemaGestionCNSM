@@ -29,6 +29,6 @@ class Cita extends Model
 
     public function paciente()
     {
-        return $this->hasOne('App\Paciente', 'id_cita', 'id');
+        return $this->hasMany(Paciente::class,'id');
     }
 }

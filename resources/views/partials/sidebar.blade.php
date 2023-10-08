@@ -44,7 +44,7 @@
             <a href="{{ route('paciente.index') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Clientes
+                Pacientes
               </p>
             </a>
           </li>

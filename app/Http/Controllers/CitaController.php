@@ -65,7 +65,10 @@ class CitaController extends Controller
      * DATATABLE
      */
     public function getCitasPaciDT($fecha){
-        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas` as c INNER join usuarios as u on c.terapeuta_id=u.id where c.fecha=? order by c.id desc",[$fecha]);
+        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,
+        c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono 
+        as tel_t FROM `citas` as c INNER join usuarios as u on
+         c.terapeuta_id=u.id where c.fecha=? order by c.id desc",[$fecha]);
         $data = [];
         $counter = count($citas);
         foreach($citas as $row){
@@ -119,7 +122,9 @@ class CitaController extends Controller
      * GET LIST General
      */
     public function getListadoGenCita(){
-        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas` as c INNER join usuarios as u on c.terapeuta_id=u.id order by c.id desc");
+        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
+        c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
+         as c INNER join usuarios as u on c.terapeuta_id=u.id order by c.id desc");
         $data = [];
         $contador = count($citas);
         foreach($citas as $row){
@@ -204,6 +209,19 @@ class CitaController extends Controller
         $cantidadCita = Cita::where('fecha',$day)->count();
         return response()->json($cantidadCita);
     }
+
+
+
+ //Get cits
+ public function getCitas(){
+    $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui
+    FROM citas
+    WHERE citas.id NOT IN (
+        SELECT id_cita
+        FROM paciente)");
+    return response()->json($citasp);
+}
+
 }
 
 
