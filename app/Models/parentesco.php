@@ -10,7 +10,7 @@ class parentesco extends Model
     use HasFactory;
 
 
-    protected $table = 'conyuge';
+    protected $table = 'parentesco';
     protected $fillable = [
         'nombre_madre',
         'edad_madre',
@@ -21,10 +21,9 @@ class parentesco extends Model
         'nombrep',
         'edadp', 
         'estado_civilp', 
-        'estado_civilp', 
-        'estado_civilp',
         'ocupacionp', 
-         
+        'nivel_educativop',
+        'vivep',
         'id_paciente',
         'usuario_id'
     ];

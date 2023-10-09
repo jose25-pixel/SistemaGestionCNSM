@@ -20,8 +20,8 @@
                             <div class="input-group is-invalid">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="cita""></label>
-              </div>
-              <select class=" custom-select" name="cita_id" id="cita_id" required>
+                                </div>
+                                <select class=" custom-select" name="cita_id" id="cita_id" required>
                                         </select>
                                 </div>
                             </div>
@@ -96,9 +96,15 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                            <!--     <div class="form-group col-sm-12 col-md-4 col-xl-4">  
                                 <label for="municipio">Municipio*:</label>
                                 <input id="municipio" name="municipio" class="form-control clear-input">
+                            </div> -->
+
+
+                            <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                <label for="municipio">Municipio*:</label>
+                                <select id="municipio" name="municipio" class="form-control clear-input"></select>
                             </div>
 
                             <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -189,8 +195,12 @@
 
 
                             <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                <label for="nivel_educativop">Nivel educativo madre:</label>
+                                <label for="nivel_educativop">Nivel educativo Padre:</label>
                                 <input type="text" class="form-control" id="nivel_educativop" name="nivel_educativop">
+                            </div>
+                            <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                <label for="vivep">Vive Padre: si/no</label>
+                                <input type="text" class="form-control" id="vivep" name="vivep">
                             </div>
 
                         </div>
@@ -237,90 +247,85 @@
                         <!-- input de responsable -->
                         <h4 class="text-center mt-2"><strong> Datos del Responsable </strong></h4>
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header " data-toggle="collapse" data-target="#datosResponsable" aria-expanded="false">
                                 <h3 class="card-title">Ingresar datos del responsable</h3>
 
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+
                                 </div>
                             </div>
-                            <div class="card-body p-0 m-0">
-                              <div class="form-row pt-4">
-                                <hr>
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nombrer">Nombre Resonsable:</label>
-                                    <input type="text" class="form-control" id="nombrer" name="nombrer">
+                            <div class="card-body collapse m-0 p-0" id="datosResponsable">
+                                <div class="form-row pt-4">
+                                    <hr>
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="nombrer">Nombre Resonsable:</label>
+                                        <input type="text" class="form-control" id="nombrer" name="nombrer">
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="edadr">Edad Responsable:</label>
+                                        <input type="number" class="form-control" id="edadr" name="edadr">
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="ocupacionr">Ocupacion Responsable:</label>
+                                        <input type="text" class="form-control" id="ocupacionr" name="ocupacionr">
+                                    </div>
+
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="nivel_educativor">Nivel educativo Responsable:</label>
+                                        <input type="text" class="form-control" id="nivel_educativor" name="nivel_educativor">
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="estado_civilr">Estado Civil Responsable:</label>
+                                        <select class="form-control" id="estado_civilr" name="estado_civilr">
+                                            <option value="soltero">Soltero</option>
+                                            <option value="casado">Casado</option>
+                                            <option value="acompañado">Acompañado</option>
+                                            <option value="viudo">Viudo</option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="nu_hermano">Numero de Hermanos:</label>
+                                        <input type="text" class="form-control" id="nu_hermano" name="nu_hermano">
+                                    </div>
+
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="lugar_ocupa">Lugar que Ocupa hermanos/as:</label>
+                                        <input type="text" class="form-control" id="lugar_ocupa" name="lugar_ocupa">
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="edad_hijo">Edades Hijos:</label>
+                                        <input type="text" class="form-control" id="edad_hijo" name="edad_hijo">
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="nombre_conyugue">Nombre Conyuge:</label>
+                                        <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue">
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="ano_casado">Años de casado</label>
+                                        <input type="number" class="form-control" id="ano_casado" name="ano_casado">
+                                    </div>
+
                                 </div>
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="edadr">Edad Responsable:</label>
-                                    <input type="number" class="form-control" id="edadr" name="edadr">
-                                </div>
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="ocupacionr">Ocupacion Responsable:</label>
-                                    <input type="text" class="form-control" id="ocupacionr" name="ocupacionr">
-                                </div>
-    
-    
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nivel_educativor">Nivel educativo Responsable:</label>
-                                    <input type="text" class="form-control" id="nivel_educativor" name="nivel_educativor">
-                                </div>
-    
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="estado_civilr">Estado Civil Responsable:</label>
-                                    <select class="form-control" id="estado_civilr" name="estado_civilr">
-                                        <option value="soltero">Soltero</option>
-                                        <option value="casado">Casado</option>
-                                        <option value="acompañado">Acompañado</option>
-                                        <option value="viudo">Viudo</option>
-    
-                                    </select>
-    
-                                </div>
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nu_hermano">Numero de Hermanos:</label>
-                                    <input type="text" class="form-control" id="nu_hermano" name="nu_hermano">
-                                </div>
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nu_hermano">Numero de Hermanos/as:</label>
-                                    <input type="text" class="form-control" id="nu_hermano" name="nu_hermano">
-                                </div>
-    
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="lugar_ocupa">Lugar que Ocupa hermanos/as:</label>
-                                    <input type="text" class="form-control" id="lugar_ocupa" name="lugar_ocupa">
-                                </div>
-    
-    
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="edad_hijo">Edades Hijos:</label>
-                                    <input type="text" class="form-control" id="edad_hijo" name="edad_hijo">
-                                </div>
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nombre_conyugue">Nombre Conyuge:</label>
-                                    <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue">
-                                </div>
-                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="ano_casado">Años de casado</label>
-                                    <input type="text" class="form-control" id="ano_casado" name="ano_casado">
-                                </div>
-    
-                            </div>
                             </div>
                             <!-- /.card-footer-->
                         </div>
-                        
+
 
 
 
@@ -333,7 +338,8 @@
 
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-success btn-lg"><i class="fas fa-save"></i> Ingresar<span id=""></span></button>
+                        <button type="submit" class="btn btn-outline-success btn-lg"><i class="fas fa-save"></i>
+                            Ingresar<span id=""></span></button>
                     </div>
                 </div>
             </form>
