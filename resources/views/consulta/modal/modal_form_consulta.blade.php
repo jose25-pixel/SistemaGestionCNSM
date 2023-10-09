@@ -7,21 +7,25 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="citaForm" method="POST">
+        <form id="consultaForm" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="_method" id="_methodCita" class="clear-input">
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-12 col-md-10">
               <div class="form-row">
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="numero">Paciente:</label>
+                <div class="form-group col-sm-12 col-md-2">
+                    <label for="numero">Cod.clinico:</label>
                     <div class="input-group is-invalid">
                       <div class="input-group-prepend">
-                        <label class="input-group-text" style="cursor: pointer" for="paciente" id="btnAddPaci"><i style="cursor: pointer" class="fas fa-plus"></i></label>
+                        <label class="input-group-text" style="cursor: pointer" for="cod_clinico" id="btnAddPaci"><i style="cursor: pointer" class="fas fa-plus"></i></label>
                       </div>
-                      <input class="form-control" type="text" name="paciente" id="paciente" readonly required>
+                      <input class="form-control" type="text" name="cod_clinico" id="cod_clinico" readonly required>
                     </div>
+                  </div>
+                  <div class="form-group col-sm-12 col-md-4">
+                    <label for="paciente">Cliente:</label>
+                    <input type="text" class="form-control clear-input" readonly id="paciente" name="paciente" required>
                   </div>
                   <div class="form-group col-sm-12 col-md-3">
                     <label for="dui">Dui:</label>
@@ -33,24 +37,24 @@
                   </div>
                 
                 <div class="form-group col-sm-12 col-md-6">
-                  <label for="email">Motivo de consulta:</label>
+                  <label for="consulta">Motivo de consulta:</label>
                   <input type="text" class="form-control clear-input" id="consulta" name="consulta" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                     <label for="diagnostico">Aprox. diagnóstico:</label>
-                    <input id="diagnostico" name="diagnostico" class="form-control clear-input">
+                    <input type="text" id="diagnostico" name="diagnostico" class="form-control clear-input">
                   </div>
                   <div class="form-group col-sm-12 col-md-6 col-xl-6">
                     <label for="sintomas">Sintomas:</label>
-                    <input id="sintomas" name="sintomas" class="form-control clear-input">
+                    <input id="sintomas" name="sintomas" class="form-control clear-input" type="text">
                   </div>
                   <div class="form-group col-sm-12 col-md-6 col-xl-6">
                     <label for="conflictos">Conflictos:</label>
-                    <input id="conflictos" name="conflictos" class="form-control clear-input">
+                    <input id="conflictos" name="conflictos" class="form-control clear-input" type="text">
                   </div>
                   <div class="form-group col-sm-12 col-md-6 col-xl-6">
                     <label for="situacion">Situación:</label>
-                    <input id="situacion" name="situacion" class="form-control clear-input">
+                    <input id="situacion" name="situacion" class="form-control clear-input" type="text">
                   </div>
               </div>
             </div>

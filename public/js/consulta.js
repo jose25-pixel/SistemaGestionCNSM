@@ -55,7 +55,47 @@ try{
     })
     function selectedPac(element){
         console.log(element)
+        let id_paciente = element.dataset.id_paciente;
+        let url = window.location.origin + "/consulta/getPaciente/selected";
+        let data = {
+          'id_paciente':id_paciente
+        }
+        axios.post(url,data)
+        .then((res)=>{
+          let data = res.data;
+          document.getElementById('cod_clinico').value = data.cod_paciente;
+          document.getElementById('paciente').value = data.paciente;
+          document.getElementById('dui').value = data.dui;
+          document.getElementById('telefono').value = data.telefono;
+          $("#modal_selected_pacientes").modal('hide');
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
     }
+    //Save consulta
+    const consultaForm = document.getElementById('consultaForm');
+    consultaForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      let formData = new FormData(consultaForm);
+      let url = window.location.origin + "/consulta/save";
+      axios.post(url,formData)
+      .then((res)=>{
+        console.log(res);
+        let data = res.data;
+        if(data.status === "inserted"){
+          Swal.fire({
+            icon: "success",
+            title: "Registro",
+            text: data.message,
+        });
+        $("#modalConsulta").modal('hide');
+        }
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    })
 }catch(err){
     console.log(err)
 }

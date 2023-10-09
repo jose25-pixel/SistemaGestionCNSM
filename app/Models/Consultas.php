@@ -16,7 +16,7 @@ class Consultas extends Model
         'motivo_consulta',
         'genograma',
         'aprox_diagnostico',
-        'id_paciente',
+        'paciente_id',
         'usuario_id'
     ];
 }

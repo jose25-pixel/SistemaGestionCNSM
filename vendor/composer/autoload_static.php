@@ -530,6 +530,7 @@ class ComposerStaticInitc387c0ff94b289fd40921a72f794b8c3
         'App\\Models\\Cita' => __DIR__ . '/../..' . '/app/Models/Cita.php',
         'App\\Models\\Consultas' => __DIR__ . '/../..' . '/app/Models/Consultas.php',
         'App\\Models\\Paciente' => __DIR__ . '/../..' . '/app/Models/Paciente.php',
+        'App\\Models\\Sintomas' => __DIR__ . '/../..' . '/app/Models/Sintomas.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\conyuge' => __DIR__ . '/../..' . '/app/Models/conyuge.php',
         'App\\Models\\parentesco' => __DIR__ . '/../..' . '/app/Models/parentesco.php',
