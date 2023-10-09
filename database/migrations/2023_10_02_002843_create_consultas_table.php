@@ -21,7 +21,7 @@ class CreateConsultasTable extends Migration
             $table->text('motivo_consulta')->nullable();
             $table->text('genograma')->nullable();
             $table->text('aprox_diagnostico')->nullable();
-            $table->unsignedBigInteger('id_paciente');
+            $table->unsignedBigInteger('paciente_id');
             $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
 

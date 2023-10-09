@@ -15,7 +15,16 @@ class CreateSintomasTable extends Migration
     {
         Schema::create('sintomas', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_regis');
+            $table->time('hora_regis');
+            $table->string('sintoma');
+            $table->text('conflicto');
+            $table->text('situacion');
+            $table->unsignedBigInteger('id_consulta');
             $table->timestamps();
+
+            // Clave foránea
+            $table->foreign('id_consulta')->references('id')->on('consultas');
         });
     }
 
