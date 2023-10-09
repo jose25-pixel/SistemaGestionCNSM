@@ -15,7 +15,20 @@ class CreateCitasTable extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
+            $table->string('paciente')->nullable();
+            $table->string('dui');
+            $table->string('celular')->nullable();
+            $table->date('fecha');
+            $table->time('hora');
+            $table->string('email')->nullable();
+            $table->string('motivo')->nullable();
+            $table->string('estado_cita');
+            $table->string('terapeuta_id');
+            $table->unsignedBigInteger('usuario_id'); // Cambié 'terapeuta_id' a 'usuario_id'
             $table->timestamps();
+
+            // Clave foránea
+            //$table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 

@@ -13,9 +13,26 @@ class CreateResponsablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('responsables', function (Blueprint $table) {
+        Schema::create('responsable', function (Blueprint $table) {
             $table->id();
+            $table->string('nombrer');
+            $table->string('estado_civilr');
+            $table->string('nivel_educativor');
+            $table->integer('edadr');
+            $table->string('ocupacionr');
+            $table->integer('nu_hermano');
+            $table->string('lugar_ocupa');
+            $table->integer('nu_hijo');
+            $table->integer('edad_hijo');
+            $table->string('nombre_conyugue');
+            $table->integer('ano_casado');
+            $table->unsignedBigInteger('id_paciente');
+            $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
+
+            // Claves foráneas
+            $table->foreign('id_paciente')->references('id')->on('paciente');
+           // $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 
@@ -26,6 +43,6 @@ class CreateResponsablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responsables');
+        Schema::dropIfExists('responsable');
     }
 }

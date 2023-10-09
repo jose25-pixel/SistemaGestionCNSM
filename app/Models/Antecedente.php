@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consultas extends Model
+class Antecedente extends Model
 {
+
+
     use HasFactory;
-    protected $table = "consultas";
+
+
+    protected $table = 'antecedentes_salud';
     protected $fillable = [
-        'num_clinico',
         'fecha',
-        'hora',
-        'motivo_consulta',
-        'genograma',
-        'aprox_diagnostico',
+        'patologia',
+        'enfergenetica',
+        'otros',
         'id_paciente',
         'usuario_id'
     ];
