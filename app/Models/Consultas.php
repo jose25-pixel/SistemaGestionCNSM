@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consultas extends Model
 {
     use HasFactory;
-    protected $table = "consulta";
+    protected $table = "consultas";
     protected $fillable = [
         'num_clinico',
         'fecha',
@@ -16,7 +16,7 @@ class Consultas extends Model
         'motivo_consulta',
         'genograma',
         'aprox_diagnostico',
-        'id_paciente',
+        'paciente_id',
         'usuario_id'
     ];
 }

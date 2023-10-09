@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2023 a las 17:24:36
+-- Tiempo de generación: 09-10-2023 a las 07:09:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -113,19 +113,35 @@ INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `consulta`
+-- Estructura de tabla para la tabla `consultas`
 --
 
-CREATE TABLE `consulta` (
+CREATE TABLE `consultas` (
   `id` int(11) NOT NULL,
   `num_clinico` varchar(25) NOT NULL,
   `fecha` varchar(25) NOT NULL,
   `hora` varchar(15) NOT NULL,
   `motivo_consulta` varchar(250) DEFAULT NULL,
-  `Genograma` varchar(200) NOT NULL,
+  `genograma` varchar(200) DEFAULT NULL,
   `aprox_diagnostico` text NOT NULL,
-  `id_paciente` int(11) DEFAULT NULL
+  `paciente_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `created_at` varchar(25) NOT NULL,
+  `updated_at` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id`, `num_clinico`, `fecha`, `hora`, `motivo_consulta`, `genograma`, `aprox_diagnostico`, `paciente_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, '7842', '2023-10-08', '22:10:32', 'Este paciente tiene dolor de cabeza', '-', '---', 0, 0, '2023-10-08 22:41:32', '2023-10-08 22:41:32'),
+(2, '7842', '2023-10-08', '22:10:43', 'Este paciente tiene dolor de cabeza', '-', '---', 2, 1, '2023-10-08 22:47:43', '2023-10-08 22:47:43'),
+(3, '011020231', '2023-10-08', '22:10:46', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:55:46', '2023-10-08 22:55:46'),
+(4, '011020231', '2023-10-08', '22:10:19', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:56:19', '2023-10-08 22:56:19'),
+(5, '011020231', '2023-10-08', '22:10:55', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:56:55', '2023-10-08 22:56:55'),
+(6, '011020231', '2023-10-08', '22:10:26', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
+(7, '7842', '2023-10-08', '23:10:57', 'Este paciente tiene dolor de cabeza', '-', '---', 2, 1, '2023-10-08 23:08:57', '2023-10-08 23:08:57');
 
 -- --------------------------------------------------------
 
@@ -284,8 +300,19 @@ CREATE TABLE `sintomas` (
   `sintoma` varchar(200) DEFAULT NULL,
   `conflicto` text DEFAULT NULL,
   `situacion` text DEFAULT NULL,
-  `id_consulta` int(11) DEFAULT NULL
+  `id_consulta` int(11) DEFAULT NULL,
+  `created_at` varchar(25) NOT NULL,
+  `updated_at` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `sintomas`
+--
+
+INSERT INTO `sintomas` (`id`, `fecha_regis`, `hora_regis`, `sintoma`, `conflicto`, `situacion`, `id_consulta`, `created_at`, `updated_at`) VALUES
+(1, '2023-10-08', '22:10:55', NULL, '---', '---', 5, '2023-10-08 22:56:55', '2023-10-08 22:56:55'),
+(2, '2023-10-08', '22:10:26', NULL, '---', '---', 6, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
+(3, '2023-10-08', '23:10:57', '---', '---', '---', 7, '2023-10-08 23:08:57', '2023-10-08 23:08:57');
 
 -- --------------------------------------------------------
 
@@ -381,11 +408,11 @@ ALTER TABLE `citas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `consulta`
+-- Indices de la tabla `consultas`
 --
-ALTER TABLE `consulta`
+ALTER TABLE `consultas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_paciente` (`id_paciente`);
+  ADD KEY `id_paciente` (`paciente_id`);
 
 --
 -- Indices de la tabla `control_atenciones`
@@ -491,10 +518,10 @@ ALTER TABLE `citas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT de la tabla `consulta`
+-- AUTO_INCREMENT de la tabla `consultas`
 --
-ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `consultas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `control_atenciones`
@@ -542,7 +569,7 @@ ALTER TABLE `responsable`
 -- AUTO_INCREMENT de la tabla `sintomas`
 --
 ALTER TABLE `sintomas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -579,10 +606,10 @@ ALTER TABLE `antecedentes_salud`
   ADD CONSTRAINT `antecedentes_salud_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
 
 --
--- Filtros para la tabla `consulta`
+-- Filtros para la tabla `consultas`
 --
-ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
+ALTER TABLE `consultas`
+  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
 
 --
 -- Filtros para la tabla `conyuge`
@@ -612,7 +639,7 @@ ALTER TABLE `parentesco`
 -- Filtros para la tabla `sintomas`
 --
 ALTER TABLE `sintomas`
-  ADD CONSTRAINT `sintomas_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `consulta` (`id`);
+  ADD CONSTRAINT `sintomas_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `consultas` (`id`);
 
 --
 -- Filtros para la tabla `tratamiento`
