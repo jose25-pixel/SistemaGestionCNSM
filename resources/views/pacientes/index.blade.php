@@ -29,10 +29,15 @@
                         <div class="modal-body">
                             <div class="card">
                                 <div class="card-header py-1">
-                                    
-                                    <button type="button" class="btn btn-primary" onclick="Agregar(this)">AGREGAR <i
-                                            class="fas fa-plus"></i></button>
-                                            
+
+
+
+
+                                    <button class="btn btn-outline-secondary btn-sm btn-rounded" onclick="Agregar(this)">
+                                        Agregar
+                                        <i class="fas fa-plus"></i></button>
+
+
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <table id="tabla-pacientes" class="table table-striped table-bordered">

@@ -36,4 +36,10 @@ class Paciente extends Model
         return $this->belongsTo(cita::class,'id_cita');
     }
 
+
+
+    public function conyuge()
+    {
+        return $this->hasMany(conyuge::class,'id');
+    }
 }

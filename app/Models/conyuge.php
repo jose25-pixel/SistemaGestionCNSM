@@ -9,7 +9,6 @@ class conyuge extends Model
 {
     //use HasFactory;
 
-
     protected $table = 'conyuge';
     protected $fillable = [
         'nombre',
@@ -21,6 +20,9 @@ class conyuge extends Model
         'id_paciente',
         'usuario_id'
     ];
-
+    public function paciente()
+    {
+        return $this->belongsTo(paciente::class,'id_paciente');
+    }
 
 }

@@ -214,11 +214,11 @@ class CitaController extends Controller
 
  //Get cits
  public function getCitas(){
-    $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui
+    $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora
     FROM citas
     WHERE citas.id NOT IN (
         SELECT id_cita
-        FROM paciente)");
+        FROM paciente) and estado_cita!='-1'");
     return response()->json($citasp);
 }
 
