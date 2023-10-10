@@ -26,7 +26,7 @@ class CreateConsultasTable extends Migration
             $table->timestamps();
 
             // Claves foráneas
-            $table->foreign('id_paciente')->references('id')->on('paciente');
+            $table->foreign('paciente_id')->references('id')->on('paciente');
            // $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }

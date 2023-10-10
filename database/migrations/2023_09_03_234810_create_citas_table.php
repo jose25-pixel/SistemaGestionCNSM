@@ -14,15 +14,15 @@ class CreateCitasTable extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->id();
+            $table->id('id', 11);
             $table->string('paciente')->nullable();
             $table->string('dui');
             $table->string('celular')->nullable();
             $table->date('fecha');
-            $table->time('hora');
+            $table->string('hora');
             $table->string('email')->nullable();
-            $table->string('motivo')->nullable();
-            $table->string('estado_cita');
+            $table->text('motivo')->nullable();
+            $table->integer('estado_cita');
             $table->string('terapeuta_id');
             $table->unsignedBigInteger('usuario_id'); // Cambié 'terapeuta_id' a 'usuario_id'
             $table->timestamps();
