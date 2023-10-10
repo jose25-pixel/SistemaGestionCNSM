@@ -45,7 +45,7 @@
                                                 <th scope="col">Código</th>
                                                 <th scope="col">DUI</th>
                                                 <th scope="col">Paciente</th>
-                                                <th scope="col">Fecha de Nacimiento</th>
+                                                <th scope="col">Fec_Nacimi</th>
                                                 <th scope="col">Celular</th>
                                                 <th scope="col">Género</th>
                                                 <th scope="col">Ocupación</th>

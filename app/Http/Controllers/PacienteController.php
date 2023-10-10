@@ -157,7 +157,7 @@ class PacienteController extends Controller
             'lugar_ocupa' => $request->input('lugar_ocupa'),
             'nu_hijo' => $request->input('nu_hijo'),
             'edad_hijo' => $request->input('edad_hijo'),
-            'nombre_conyugue' => $request->input('nombre_conyunge'),
+            'nombre_conyugue' => $request->input('nombrer'),
             'ano_casado' => $request->input('ano_casado'),
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
