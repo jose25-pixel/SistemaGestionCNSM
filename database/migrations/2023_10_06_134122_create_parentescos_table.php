@@ -21,12 +21,18 @@ class CreateParentescosTable extends Migration
             $table->string('nivel_educativom',100)->nullable();
             $table->string('ocupacionm',150)->nullable();
             $table->string('vivem',25)->nullable();
+            $table->string('duim',15)->nullable();
+            $table->text('notam')->nullable();
+            $table->string('viveaunm',15)->nullable();
             $table->string('nombrep',20)->nullable();
             $table->integer('edadp')->nullable();
             $table->string('estado_civilp',25)->nullable();
             $table->string('ocupacionp',30)->nullable();
             $table->string('nivel_educativop',30)->nullable();
             $table->string('vivep',30)->nullable();
+            $table->string('duip',15)->nullable();
+            $table->text('notap')->nullable();
+            $table->string('viveaunp',30)->nullable();
             $table->unsignedBigInteger('id_paciente');
             $table->Integer('usuario_id');
             $table->timestamps();

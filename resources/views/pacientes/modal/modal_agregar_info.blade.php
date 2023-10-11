@@ -2,7 +2,7 @@
     <div class="modal-dialog" style="max-width: 90%">
         <div class="modal-content">
             <div class="modal-header py-1 bg-primary">
-                <h2 class=" text-center" id=""><strong> Datos de paciente</strong> </h2>
+                <h2 class=" text-center" id=""><strong> Datos de consultante</strong> </h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,13 +12,13 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="modal-body" style="max-height: 550px; overflow-y: auto;">
 
-                    <h5 class="text-center mt-2" id=""><strong>Datos  del paciente</strong></h5>
+                    <h5 class="text-center mt-2" id=""><strong>Datos del consultante</strong></h5>
                     <!-- campos del paciente -->
                     <div class=" pt-3">
 
                         <div class="card">
                             <div class="card-header bg-light" data-toggle="collapse" data-target="#datospaciente" aria-expanded="false">
-                                <h3 class="card-title">Ingresar datos del paciente</h3>
+                                <h3 class="card-title">Ingresar datos del consultante</h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
@@ -30,7 +30,7 @@
                             <div class="card-body  m-0 p-3" id="datospaciente">
                                 <div class="form-row pt-4">
                                     <div class="form-group col-sm-12 col-md-3">
-                                        <label for="numero"> Selecione Paciente*:</label>
+                                        <label for="numero"> Selecione consultante*:</label>
                                         <div class="input-group is-invalid">
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="cita""></label>
@@ -44,11 +44,11 @@
                                             <input type="date" class="form-control" id="fecha_naci" name="fecha_naci" required>
                                         </div>
                                         <div class="form-group col-sm-12 col-md-3">
-                                            <label for="genero">Género*:</label>
+                                            <label for="genero">Sexo*:</label>
                                             <select class="form-control" id="genero" name="genero">
-                                                <option value="masculino">MACULINO</option>
-                                                <option value="femenino">FEMENINO</option>
-                                                <option value="femenino">LGTB</option>
+                                                <option value="masculino">HOMBRE</option>
+                                                <option value="femenino">MUJER</option>
+                                                <option value="femenino">OTRO</option>
                                             </select>
 
                                         </div>
@@ -124,6 +124,34 @@
                                             <label for="celular_tres">Celular Tres:</label>
                                             <input type="text" class="form-control" id="celular_tres" name="celular_tres">
                                         </div>
+
+                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                            <label for="nu_hermano">Numero de Hermanos:</label>
+                                            <input type="text" class="form-control" id="nu_hermano" name="nu_hermano">
+                                        </div>
+
+
+                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                            <label for="lugar_ocupa">Lugar que Ocupa hermanos/as:</label>
+                                            <input type="text" class="form-control" id="lugar_ocupa" name="lugar_ocupa">
+                                        </div>
+
+
+                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                            <label for="nu_hijo">Numero de Hijos:</label>
+                                            <input type="number" class="form-control" id="nu_hijo" name="nu_hijo">
+                                        </div>
+
+                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                            <label for="edad_hijo">Edades Hijos:</label>
+                                            <input type="text" class="form-control" id="edad_hijo" name="edad_hijo">
+                                        </div>
+
+                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                            <label for="ano_casado">Años de casado</label>
+                                            <input type="number" class="form-control" id="ano_casado" name="ano_casado">
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -179,11 +207,34 @@
                                         <label for="ocupacionm">Ocupacion madre:</label>
                                         <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="ocupacionm" name="ocupacionm">
                                     </div>
-                            
 
-                                    <div class="form-group col-sm-12 col-md-3 col-xl-4">
-                                        <label for="genero">Género*:</label>
-                                        <select class="form-control"onkeyup="mayupaciente(this)" id="vivem" name="vivem">
+
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="duim">Dui madre:</label>
+                                        <input type="text" class="form-control" id="duim" name="duim">
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="vivem">Vive con madre:</label>
+                                        <select class="form-control" onkeyup="mayupaciente(this)" id="vivem" name="vivem">
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="notam">Nota:</label>
+                                        <textarea class="form-control" id="notam" name="notam"></textarea>
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="viveaunm">Vive su madre Aun?:</label>
+                                        <select class="form-control" onkeyup="mayupaciente(this)" id="viveaunm" name="viveaunm">
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
 
@@ -245,9 +296,39 @@
                                         <label for="nivel_educativop">Nivel educativo Padre:</label>
                                         <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="nivel_educativop" name="nivel_educativop">
                                     </div>
+
+
+
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="vivep">Vive Padre: si/no</label>
-                                        <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="vivep" name="vivep">
+                                        <label for="duip">Dui padre:</label>
+                                        <input type="text" class="form-control" id="duip" name="duip">
+                                    </div>
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="viveaunp">Vive su Padre aun</label>
+                                        <select  type="text" class="form-control" id="viveaunp" name="viveaunp">
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="notap">Nota:</label>
+                                        <input type="text" class="form-control" id="notap" name="notap">
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                        <label for="vivep">Vive con su Padre: si/no</label>
+                                        <select type="text" class="form-control" onkeyup="mayupaciente(this)" id="vivep" name="vivep">
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+
+                                        </select>
+
                                     </div>
 
                                 </div>
@@ -274,7 +355,7 @@
                                     <hr>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="nombrec">Nombre Conyuge:</label>
-                                        <input type="text" class="form-control"onkeyup="mayupaciente(this)" id="nombrec" name="nombrec">
+                                        <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="nombrec" name="nombrec">
                                     </div>
 
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -295,15 +376,12 @@
                                     </div>
 
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="numero_hijo">Numero de Hijos:</label>
-                                        <input type="text" class="form-control" id="numero_hijo" name="numero_hijo">
+                                        <label for="notac">Nota:</label>
+                                        <input type="text" class="form-control" id="notac" name="notac">
                                     </div>
 
 
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="edades">Edades Hijos:</label>
-                                        <input type="text" class="form-control" id="edades" name="edades">
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -361,71 +439,58 @@
                                     </div>
 
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="nu_hermano">Numero de Hermanos:</label>
-                                        <input type="text" class="form-control" id="nu_hermano" name="nu_hermano">
+                                        <label for="duir">Dui Responsable:</label>
+                                        <input type="text" class="form-control" name="duir" id="duir">
                                     </div>
-
-
-
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="lugar_ocupa">Lugar que Ocupa hermanos/as:</label>
-                                        <input type="text" class="form-control" id="lugar_ocupa" name="lugar_ocupa">
-                                    </div>
-                     
-                                   
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="nu_hijo">Numero de Hijos:</label>
-                                        <input type="number" class="form-control" id="nu_hijo" name="nu_hijo">
-                                    </div>
-
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="edad_hijo">Edades Hijos:</label>
-                                        <input type="text" class="form-control" id="edad_hijo" name="edad_hijo">
-                                    </div>
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="nombre_conyugue">Nombre Conyuge:</label>
-                                        <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="nombre_conyugue" name="nombre_conyugue">
-                                    </div>
-                                    <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="ano_casado">Años de casado</label>
-                                        <input type="number" class="form-control" id="ano_casado" name="ano_casado">
-                                    </div>
-
                                 </div>
                             </div>
                             <!-- /.card-footer-->
                         </div>
 
-                        <h5 class="text-center mt-2"> <strong>Datos antecedentes de salud  </strong> </h5>
+                        <h5 class="text-center mt-2"> <strong>Datos antecedentes de salud </strong> </h5>
 
                         <div class="card">
                             <div class="card-header bg-light" data-toggle="collapse" data-target="#datosAntecedentes" aria-expanded="false">
- 
-                             <h3 class="card-title">Ingresar datos antecedentes de salud</h3>
- 
-                                 <div class="card-tools">
-                                     <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
-                                         <i class="fas fa-minus"></i>
-                                     </button>
- 
-                                 </div>
- 
+
+                                <h3 class="card-title">Ingresar datos antecedentes de salud</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                </div>
+
                             </div>
                             <div class="card-body collapse m-0 p-3" id="datosAntecedentes">
                                 <div class="form-row pt-4">
- 
-                                 <hr>
-                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                         <label for="nuevo">nuevos datos:</label>
-                                         <input type="text" class="form-control" id="nuevo" onkeyup="mayupaciente(this)" name="nuevo">
-                                     </div>
- 
+
+                                    <hr>
+                                    <div class="form-group col-sm-12 col-md-6 col-xl-4">
+                                        <label for="patologias">  Enfermedades cronicas hospitalizaciones:</label>
+                                        <input type="text" class="form-control" id="patologias" onkeyup="mayupaciente(this)" name="patologias">
+                                    </div>
+
+
+
+
+                                    <div class="form-group col-sm-12 col-md-6 col-xl-4">
+                                        <label for="enfergenetica">Enfermedades Cronicas, Geneticas de importancia de familiares:</label>
+                                        <input type="text" class="form-control" id="enfergenetica" onkeyup="mayupaciente(this)" name="enfergenetica">
+                                    </div>
+
+
+                                    <div class="form-group col-sm-12 col-md-6 col-xl-4">
+                                        <label for="otros"> Otras:</label>
+                                        <input type="text" class="form-control" id="otros" onkeyup="mayupaciente(this)" name="otros">
+                                    </div>
+
                                 </div>
- 
+
                             </div>
                         </div>
                     </div>
-                      
+
 
 
                     <div class="modal-footer">

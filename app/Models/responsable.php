@@ -15,12 +15,7 @@ class responsable extends Model
         'nivel_educativor',
         'edadr',
         'ocupacionr',
-        'nu_hermano',
-        'lugar_ocupa',
-        'nu_hijo',
-        'edad_hijo',
-        'nombre_conyugue',
-        'ano_casado',
+        'duir',
         'id_paciente',
         'usuario_id'
     ];

@@ -15,8 +15,7 @@ class conyuge extends Model
         'nivel_educativo',
         'ocupacion',
         'edad',
-        'numero_hijo',
-        'edades',
+        'notac',
         'id_paciente',
         'usuario_id'
     ];

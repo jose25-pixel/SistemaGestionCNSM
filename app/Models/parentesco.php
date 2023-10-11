@@ -18,12 +18,18 @@ class parentesco extends Model
         'nivel_educativom',
         'ocupacionm',
         'vivem',
+        'duim',
+        'notam',
+        'viveaunm',
         'nombrep',
         'edadp', 
         'estado_civilp', 
         'ocupacionp', 
         'nivel_educativop',
         'vivep',
+        'duip',
+        'notap',
+        'viveaunp',
         'id_paciente',
         'usuario_id'
     ];

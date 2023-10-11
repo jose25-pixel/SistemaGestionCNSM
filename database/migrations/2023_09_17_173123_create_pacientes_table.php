@@ -29,6 +29,11 @@ class CreatePacientesTable extends Migration
             $table->string('municipio',100)->nullable();
             $table->string('celular_dos',12)->nullable();
             $table->string('celular_tres', 12)->nullable();
+            $table->interger('nu_hermano',)->nullable();
+            $table->string('lugar_ocupa', 50)->nullable();
+            $table->integer('nu_hijo')->nullable();
+            $table->string('edad_hijo',30)->nullable();
+            $table->integer('ano_casado')->nullable();
             $table->unsignedBigInteger('id_cita');
             $table->unsignedBigInteger('usuario_id');
             $table->timestamps();

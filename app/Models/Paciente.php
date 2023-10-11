@@ -23,6 +23,11 @@ class Paciente extends Model
         'municipio',
         'celular_dos',
         'celular_tres',
+        'nu_hermano',
+        'lugar_ocupa',
+        'nu_hijo',
+        'edad_hijo',
+        'ano_casado',
         'id_cita',
         'usuario_id'
     ];

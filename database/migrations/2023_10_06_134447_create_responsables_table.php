@@ -20,12 +20,7 @@ class CreateResponsablesTable extends Migration
             $table->string('nivel_educativor',30)->nullable();
             $table->integer('edadr')->nullable();
             $table->string('ocupacionr',45)->nullable();
-            $table->integer('nu_hermano')->nullable();
-            $table->string('lugar_ocupa',45)->nullable();
-            $table->integer('nu_hijo')->nullable();
-            $table->string('edad_hijo',30)->nullable();
-            $table->string('nombre_conyugue',45)->nullable();
-            $table->integer('ano_casado')->nullable();
+            $table->integer('duir',15)->nullable();
             $table->unsignedBigInteger('id_paciente');
             $table->Integer('usuario_id');
             $table->timestamps();

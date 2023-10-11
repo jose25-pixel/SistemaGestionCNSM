@@ -90,6 +90,11 @@ class PacienteController extends Controller
         $paciente->municipio = $request->input('municipio');
         $paciente->celular_dos = $request->input('celular_dos');
         $paciente->celular_tres = $request->input('celular_tres');
+        $paciente->nu_hermano= $request->input('nu_hermano');
+        $paciente->lugar_ocupa = $request->input('lugar_ocupa');
+        $paciente->nu_hijo = $request->input('nu_hijo');
+        $paciente->edad_hijo =$request->input('edad_hijo');
+        $paciente->ano_casado = $request->input('ano_casado');
         $paciente->id_cita = $request->input('cita_id');
         $paciente->usuario_id = $id_usuario;
         $paciente->save(); // Guardo los datos en paciente
@@ -112,8 +117,7 @@ class PacienteController extends Controller
             'nivel_educativo' => $request->input('nivel_educativoc'),
             'ocupacion' => $request->input('ocupacionc'),
             'edad' => $request->input('edadc'),
-            'numero_hijo' => $request->input('numero_hijo'),
-            'edades' => $request->input('edades'),
+            'notac' => $request->input('notac'),
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
         ];
@@ -129,6 +133,12 @@ class PacienteController extends Controller
             'nivel_educativom' => $request->input('nivel_educativom'),
             'ocupacionm' => $request->input('ocupacionm'),
             'vivem' => $request->input('vivem'),
+            'duim' => $request->input('duim'),
+            'notam' => $request->input('notam'), 
+            'viveaunm' => $request->input('viveaunm'),
+            'duip' => $request->input('duip'),
+            'notap' => $request->input('notap'),
+            'viveaunp' => $request->input('viveaunp'),
             'nombrep' => $request->input('nombrep'),
             'edadp' => $request->input('edadp'),
             'estado_civilp' => $request->input('estado_civilp'),
@@ -153,12 +163,7 @@ class PacienteController extends Controller
             'nivel_educativor' => $request->input('nivel_educativor'),
             'edadr' => $request->input('edadr'),
             'ocupacionr' => $request->input('ocupacionr'),
-            'nu_hermano' => $request->input('nu_hermano'),
-            'lugar_ocupa' => $request->input('lugar_ocupa'),
-            'nu_hijo' => $request->input('nu_hijo'),
-            'edad_hijo' => $request->input('edad_hijo'),
-            'nombre_conyugue' => $request->input('nombrer'),
-            'ano_casado' => $request->input('ano_casado'),
+            'duir' => $request->input('duir'),
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
         ];

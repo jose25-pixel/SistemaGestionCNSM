@@ -21,6 +21,7 @@ class CreateConyugesTable extends Migration
             $table->integer('edad')->nullable();
             $table->integer('numero_hijo')->nullable();
             $table->string('edades',100)->nullable();
+            $table->text('notac')->nullable();
             $table->unsignedBigInteger('id_paciente');
             $table->Integer('usuario_id');
             $table->timestamps();
