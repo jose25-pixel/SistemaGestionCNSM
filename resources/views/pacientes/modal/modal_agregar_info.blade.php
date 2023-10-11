@@ -310,7 +310,7 @@
                         </div>
 
                         <!-- input de responsable -->
-                        <h5 class="text-center mt-2"><strong> Datos del Responsable </strong></h5>
+                        <h5 class="text-center mt-2"><strong>Datos del Responsable </strong></h5>
                         <div class="card">
                             <div class="card-header bg-light " data-toggle="collapse" data-target="#datosResponsable" aria-expanded="false">
                                 <h3 class="card-title">Ingresar datos del responsable</h3>
@@ -395,8 +395,37 @@
                             </div>
                             <!-- /.card-footer-->
                         </div>
-                    </div>
 
+                        <h5 class="text-center mt-2"> <strong>Datos antecedentes de salud  </strong> </h5>
+
+                        <div class="card">
+                            <div class="card-header bg-light" data-toggle="collapse" data-target="#datosAntecedentes" aria-expanded="false">
+ 
+                             <h3 class="card-title">Ingresar datos antecedentes de salud</h3>
+ 
+                                 <div class="card-tools">
+                                     <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
+                                         <i class="fas fa-minus"></i>
+                                     </button>
+ 
+                                 </div>
+ 
+                            </div>
+                            <div class="card-body collapse m-0 p-3" id="datosAntecedentes">
+                                <div class="form-row pt-4">
+ 
+                                 <hr>
+                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                         <label for="nuevo">nuevos datos:</label>
+                                         <input type="text" class="form-control" id="nuevo" onkeyup="mayupaciente(this)" name="nuevo">
+                                     </div>
+ 
+                                </div>
+ 
+                            </div>
+                        </div>
+                    </div>
+                      
 
 
                     <div class="modal-footer">

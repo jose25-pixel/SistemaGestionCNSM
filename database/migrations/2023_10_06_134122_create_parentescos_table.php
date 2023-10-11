@@ -15,20 +15,20 @@ class CreateParentescosTable extends Migration
     {
         Schema::create('parentesco', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_madre')->nullable();
+            $table->string('nombre_madre',25)->nullable();
             $table->integer('edad_madre')->nullable();
-            $table->string('estado_civilm')->nullable();
-            $table->string('nivel_educativom')->nullable();
-            $table->string('ocupacionm')->nullable();
-            $table->string('vivem')->nullable();
-            $table->string('nombrep')->nullable();
+            $table->string('estado_civilm',25)->nullable();
+            $table->string('nivel_educativom',100)->nullable();
+            $table->string('ocupacionm',150)->nullable();
+            $table->string('vivem',25)->nullable();
+            $table->string('nombrep',20)->nullable();
             $table->integer('edadp')->nullable();
-            $table->string('estado_civilp')->nullable();
-            $table->string('ocupacionp')->nullable();
-            $table->string('nivel_educativop')->nullable();
-            $table->string('vivep')->nullable();
+            $table->string('estado_civilp',25)->nullable();
+            $table->string('ocupacionp',30)->nullable();
+            $table->string('nivel_educativop',30)->nullable();
+            $table->string('vivep',30)->nullable();
             $table->unsignedBigInteger('id_paciente');
-            $table->unsignedBigInteger('usuario_id');
+            $table->Integer('usuario_id');
             $table->timestamps();
 
             // Claves foráneas

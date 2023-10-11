@@ -15,19 +15,19 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->string('num_clinico');
-            $table->date('fecha');
-            $table->time('hora')->nullable();
-            $table->text('motivo_consulta')->nullable();
-            $table->text('genograma')->nullable();
+            $table->string('num_clinico',25);
+            $table->string('fecha',25);
+            $table->string('hora',25)->nullable();
+            $table->string('motivo_consulta',200)->nullable();
+            $table->string('genograma',200)->nullable();
             $table->text('aprox_diagnostico')->nullable();
             $table->unsignedBigInteger('paciente_id');
-            $table->unsignedBigInteger('usuario_id');
+            $table->integer('usuario_id');
             $table->timestamps();
 
             // Claves foráneas
             $table->foreign('paciente_id')->references('id')->on('paciente');
-           // $table->foreign('usuario_id')->references('id')->on('usuarios');
+                    // $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
     }
 

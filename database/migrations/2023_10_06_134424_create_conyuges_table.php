@@ -15,14 +15,14 @@ class CreateConyugesTable extends Migration
     {
         Schema::create('conyuge', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();
-            $table->string('nivel_educativo')->nullable();
-            $table->string('ocupacion')->nullable();
+            $table->string('nombre',50)->nullable();
+            $table->string('nivel_educativo',150)->nullable();
+            $table->string('ocupacion',150)->nullable();
             $table->integer('edad')->nullable();
             $table->integer('numero_hijo')->nullable();
-            $table->text('edades')->nullable();
+            $table->string('edades',100)->nullable();
             $table->unsignedBigInteger('id_paciente');
-            $table->unsignedBigInteger('usuario_id');
+            $table->Integer('usuario_id');
             $table->timestamps();
 
             // Claves foráneas

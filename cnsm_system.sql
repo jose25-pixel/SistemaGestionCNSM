@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2023 a las 07:09:22
+-- Tiempo de generación: 11-10-2023 a las 00:09:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cnsm_system`
+-- Base de datos: `cnsm_3`
 --
 
 -- --------------------------------------------------------
@@ -46,9 +46,18 @@ CREATE TABLE `acciones_paciente` (
 CREATE TABLE `adicciones` (
   `id` int(11) NOT NULL,
   `fecha` varchar(25) DEFAULT NULL,
+  `atencioncnsm` varchar(75) DEFAULT NULL,
+  `tratamientos` varchar(100) DEFAULT NULL,
+  `tipotratamiento` varchar(50) DEFAULT NULL,
+  `nombreatendio` varchar(50) DEFAULT NULL,
+  `direcionatendio` varchar(100) DEFAULT NULL,
+  `telefonoatendio` varchar(50) DEFAULT NULL,
+  `tipofarmaco` varchar(100) DEFAULT NULL,
   `tipo_sustancia` varchar(100) DEFAULT NULL,
   `tiempo_consumo` varchar(100) DEFAULT NULL,
-  `id_paciente` int(11) DEFAULT NULL
+  `id_paciente` int(11) DEFAULT NULL,
+  `created_at` varchar(50) DEFAULT NULL,
+  `updated_at` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -61,8 +70,11 @@ CREATE TABLE `antecedentes_salud` (
   `id` int(11) NOT NULL,
   `fecha` varchar(25) DEFAULT NULL,
   `patologias` varchar(100) DEFAULT NULL,
+  `enfergenetica` varchar(100) DEFAULT NULL,
   `otros` text DEFAULT NULL,
-  `id_paciente` int(11) DEFAULT NULL
+  `id_paciente` int(11) DEFAULT NULL,
+  `created_at` varchar(50) NOT NULL,
+  `updated_at` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -93,7 +105,7 @@ CREATE TABLE `citas` (
 
 INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email`, `motivo`, `estado_cita`, `terapeuta_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
 (1, 'MANUEL', '67898765-5', '7897-6543', '2023-10-01', '8:30 AM', 'nomadelcarmen@gmail.com', 'revision', 0, 2, 1, '2023-09-30 18:59:38', '2023-09-30 18:59:38'),
-(2, 'JOSE', '78655446-5', '7865-7435', '2023-11-11', '8:30 AM', '--', 'revision', 0, 3, 1, '2023-10-01 15:13:02', '2023-10-01 15:13:02'),
+(2, 'JOSE', '78655446-5', '7865-7435', '2023-11-11', '8:30 AM', '--', 'revision', 1, 3, 1, '2023-10-01 15:13:02', '2023-10-01 15:13:02'),
 (3, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:06:05', '2023-10-03 02:06:05'),
 (4, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:06:33', '2023-10-03 02:06:33'),
 (5, 'JOSE', '78656556-6', '7654-3567', '2023-10-06', '9:30 AM', 'nomadelcarmen@gmail.com', 'revision', 0, 4, 1, '2023-10-03 02:09:19', '2023-10-03 02:09:19'),
@@ -105,10 +117,11 @@ INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email
 (11, 'MANUEL', '87777777-7', '7689-6789', '2023-10-10', '9:30 AM', '---', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:29:39', '2023-10-03 02:29:39'),
 (12, 'MANUEL', '87777777-7', '7689-6789', '2023-10-10', '9:30 AM', '---', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:29:39', '2023-10-03 02:29:39'),
 (13, 'OSCAR', '89321898-2', '7654-3467', '2023-10-02', '11:00 AM', '---', 'ddd', 0, 3, 1, '2023-10-03 02:30:58', '2023-10-03 02:31:44'),
-(14, 'SUSANA', '53553355-5', '4232-2232', '2023-10-12', '9:00 AM', '--', '4343', 0, 3, 1, '2023-10-03 02:54:30', '2023-10-03 02:54:30'),
-(15, 'OSCAR', '84928932-0', '7689-6789', '2023-10-13', '1:00 PM', '--', 'consulta', 0, 3, 1, '2023-10-03 03:01:50', '2023-10-03 03:01:50'),
-(16, 'OSCAR', '85340045-0', '5678-9876', '2023-10-11', '10:30 AM', 'refrigeradorazeta@gmail.com', '5345', 0, 4, 1, '2023-10-03 03:25:25', '2023-10-03 03:25:25'),
-(17, 'OSCAR', '78788866-7', '7689-6789', '2023-10-14', '9:30 AM', '--', 'revision', 0, 5, 1, '2023-10-03 22:06:53', '2023-10-03 22:06:53');
+(14, 'SUSANA', '53553355-5', '4232-2232', '2023-10-10', '9:00 AM', '--', '4343', 0, 3, 1, '2023-10-03 02:54:30', '2023-10-10 15:27:19'),
+(15, 'OSCAR', '84928932-0', '7689-6789', '2023-10-10', '11:30 AM', '--', 'consulta', 0, 3, 1, '2023-10-03 03:01:50', '2023-10-10 15:19:16'),
+(16, 'OSCAR', '85340045-0', '5678-9876', '2023-10-10', '10:30 AM', 'refrigeradorazeta@gmail.com', '5345', 0, 4, 1, '2023-10-03 03:25:25', '2023-10-10 20:10:29'),
+(17, 'ESTER', '78788866-7', '7689-6789', '2023-10-12', '8:30 AM', '--', 'revision', 0, 5, 1, '2023-10-03 22:06:53', '2023-10-10 22:00:10'),
+(18, 'OSCAR', '90923489-2', '7689-6789', '2023-10-18', '9:30 AM', 'nomadelcarmen@gmail.com', 'consulta', 1, 5, 1, '2023-10-10 13:23:35', '2023-10-10 13:23:35');
 
 -- --------------------------------------------------------
 
@@ -141,7 +154,8 @@ INSERT INTO `consultas` (`id`, `num_clinico`, `fecha`, `hora`, `motivo_consulta`
 (4, '011020231', '2023-10-08', '22:10:19', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:56:19', '2023-10-08 22:56:19'),
 (5, '011020231', '2023-10-08', '22:10:55', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:56:55', '2023-10-08 22:56:55'),
 (6, '011020231', '2023-10-08', '22:10:26', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
-(7, '7842', '2023-10-08', '23:10:57', 'Este paciente tiene dolor de cabeza', '-', '---', 2, 1, '2023-10-08 23:08:57', '2023-10-08 23:08:57');
+(7, '7842', '2023-10-08', '23:10:57', 'Este paciente tiene dolor de cabeza', '-', '---', 2, 1, '2023-10-08 23:08:57', '2023-10-08 23:08:57'),
+(8, '7842', '2023-10-10', '07:10:01', 'revision', '-', 'diagnostico de la varables', 2, 1, '2023-10-10 07:42:01', '2023-10-10 07:42:01');
 
 -- --------------------------------------------------------
 
@@ -166,15 +180,27 @@ CREATE TABLE `control_atenciones` (
 
 CREATE TABLE `conyuge` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
   `nivel_educativo` varchar(150) DEFAULT NULL,
   `ocupacion` varchar(150) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `numero_hijo` int(11) DEFAULT NULL,
   `edades` varchar(100) DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `created_at` varchar(50) NOT NULL,
+  `updated_at` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `conyuge`
+--
+
+INSERT INTO `conyuge` (`id`, `nombre`, `nivel_educativo`, `ocupacion`, `edad`, `numero_hijo`, `edades`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 34, 2, '21,34', 4, 1, '2023-10-10 13:32:13', '2023-10-10 13:32:13'),
+(2, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 34, 2, '21,34', 5, 1, '2023-10-10 13:33:27', '2023-10-10 13:33:27'),
+(3, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 34, 2, '21,34', 6, 1, '2023-10-10 13:39:43', '2023-10-10 13:39:43'),
+(4, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 45, 2, '21,34', 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35');
 
 -- --------------------------------------------------------
 
@@ -226,7 +252,12 @@ CREATE TABLE `paciente` (
 
 INSERT INTO `paciente` (`id`, `cod_paciente`, `fecha_naci`, `edad`, `fecha_reg`, `genero`, `ocupacion`, `lugar_estudio`, `grado`, `nivel_educativo`, `direccion`, `departamento`, `municipio`, `celular_dos`, `celular_tres`, `id_cita`, `usuario_id`, `created_at`, `updated_at`) VALUES
 (1, '011020231', '2000-10-10', 0, '2023-10-01', 'masculino', 'jjjjjjj', 'lkkhgf', 'noveno', 'sexto', 'hjkgfhgf', 'san salvador', 'santiago ', '37482947', '78675646', 1, 1, '', ''),
-(2, '7842', '1994/5/2023', 0, '398323', 'masculino', 'jdsjkjkfsjksf', 'kadjlkds', 'noveno', 'sexto', 'avenidad las olimpicas', 'san salvador', 'santiago tesacuangos', '37482947', '7867564', 14, 1, '', '');
+(2, '7842', '1994/5/2023', 0, '398323', 'masculino', 'jdsjkjkfsjksf', 'kadjlkds', 'noveno', 'sexto', 'avenidad las olimpicas', 'san salvador', 'santiago tesacuangos', '37482947', '7867564', 14, 1, '', ''),
+(3, '20231012864', '2023-10-12', 34, '2023-10-10 13:26:02', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Ahuachapan', 'San Pedro Puxtla', '7865-4334', '7865-432', 2, 1, '2023-10-10 13:26:02', '2023-10-10 13:26:02'),
+(4, '20231012972', '2023-10-12', 34, '2023-10-10 13:32:13', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Ahuachapan', 'San Pedro Puxtla', '7865-4334', '7865-432', 2, 1, '2023-10-10 13:32:13', '2023-10-10 13:32:13'),
+(5, '20231012450', '2023-10-12', 34, '2023-10-10 13:33:27', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Ahuachapan', 'San Pedro Puxtla', '7865-4334', '7865-432', 2, 1, '2023-10-10 13:33:27', '2023-10-10 13:33:27'),
+(6, '20231012797', '2023-10-12', 34, '2023-10-10 13:39:43', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Ahuachapan', 'San Pedro Puxtla', '7865-4334', '7865-432', 2, 1, '2023-10-10 13:39:43', '2023-10-10 13:39:43'),
+(7, '20231019818', '2023-10-19', 88, '2023-10-10 15:48:35', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Cabañas', 'Sensuntepeque', '7865-4334', '4555-3663', 18, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35');
 
 -- --------------------------------------------------------
 
@@ -244,13 +275,25 @@ CREATE TABLE `parentesco` (
   `vivem` varchar(25) DEFAULT NULL,
   `nombrep` varchar(20) DEFAULT NULL,
   `edadp` int(11) DEFAULT NULL,
-  `estado_civilp` varchar(25) NOT NULL,
-  `ocupacionp` varchar(30) NOT NULL,
-  `nivel_educativop` varchar(30) NOT NULL,
-  `vivep` varchar(30) NOT NULL,
+  `estado_civilp` varchar(25) DEFAULT NULL,
+  `ocupacionp` varchar(30) DEFAULT NULL,
+  `nivel_educativop` varchar(30) DEFAULT NULL,
+  `vivep` varchar(30) DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
-  `usuario_id` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `created_at` varchar(45) NOT NULL,
+  `updated_at` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `parentesco`
+--
+
+INSERT INTO `parentesco` (`id`, `nombre_madre`, `edad_madre`, `estado_civilm`, `nivel_educativom`, `ocupacionm`, `vivem`, `nombrep`, `edadp`, `estado_civilp`, `ocupacionp`, `nivel_educativop`, `vivep`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 'ALEJANDRA', 22, 'soltera', 'DDADDA', 'AMA DE CASA', 'NO', 'ALFREDO', 12, 'soltero', 'ABOGADO', 'SUPERIOR', 'NO', 4, 1, '2023-10-10 13:32:13', '2023-10-10 13:32:13'),
+(2, 'ALEJANDRA', 22, 'soltera', 'DDADDA', 'AMA DE CASA', 'NO', 'ALFREDO', 12, 'soltero', 'ABOGADO', 'SUPERIOR', 'NO', 5, 1, '2023-10-10 13:33:27', '2023-10-10 13:33:27'),
+(3, 'ALEJANDRA', 22, 'soltera', 'DDADDA', 'AMA DE CASA', 'NO', 'ALFREDO', 12, 'soltero', 'ABOGADO', 'SUPERIOR', 'NO', 6, 1, '2023-10-10 13:39:44', '2023-10-10 13:39:44'),
+(4, 'ALEJANDRA', 45, 'casada', 'DDADDA', 'AMA DE CASA', 'SI', 'ALFREDO', 56, 'casado', 'ABOGADO', 'SUPERIOR', 'NO', 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35');
 
 -- --------------------------------------------------------
 
@@ -272,20 +315,30 @@ CREATE TABLE `permisos` (
 
 CREATE TABLE `responsable` (
   `id` int(11) NOT NULL,
-  `nombrer` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
-  `estado_civilr` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `nivel_educativor` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `edadr` int(11) NOT NULL,
-  `ocupacion` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
-  `nu_hermano` int(11) NOT NULL,
-  `lugar_ocupa` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
-  `nu_hijo` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `edad_hijo` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `nombre_conyugue` varchar(45) COLLATE utf8_spanish2_ci NOT NULL,
-  `ano_casado` int(11) NOT NULL,
+  `nombrer` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `estado_civilr` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nivel_educativor` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `edadr` int(11) DEFAULT NULL,
+  `ocupacionr` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nu_hermano` int(11) DEFAULT NULL,
+  `lugar_ocupa` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nu_hijo` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `edad_hijo` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nombre_conyugue` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `ano_casado` int(11) DEFAULT NULL,
   `id_paciente` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL
+  `usuario_id` int(11) NOT NULL,
+  `created_at` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `updated_at` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `responsable`
+--
+
+INSERT INTO `responsable` (`id`, `nombrer`, `estado_civilr`, `nivel_educativor`, `edadr`, `ocupacionr`, `nu_hermano`, `lugar_ocupa`, `nu_hijo`, `edad_hijo`, `nombre_conyugue`, `ano_casado`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 'MARIA', 'soltero', 'BASICO', 45, 'ODONTOLOGO', 2, 'ultimo', '2', '23,45', NULL, 2, 6, 1, '2023-10-10 13:39:44', '2023-10-10 13:39:44'),
+(2, 'MARIA', 'acompañado', 'BASICO', 55, 'ODONTOLOGO', 2, NULL, NULL, NULL, 'MARIA', NULL, 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35');
 
 -- --------------------------------------------------------
 
@@ -312,7 +365,8 @@ CREATE TABLE `sintomas` (
 INSERT INTO `sintomas` (`id`, `fecha_regis`, `hora_regis`, `sintoma`, `conflicto`, `situacion`, `id_consulta`, `created_at`, `updated_at`) VALUES
 (1, '2023-10-08', '22:10:55', NULL, '---', '---', 5, '2023-10-08 22:56:55', '2023-10-08 22:56:55'),
 (2, '2023-10-08', '22:10:26', NULL, '---', '---', 6, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
-(3, '2023-10-08', '23:10:57', '---', '---', '---', 7, '2023-10-08 23:08:57', '2023-10-08 23:08:57');
+(3, '2023-10-08', '23:10:57', '---', '---', '---', 7, '2023-10-08 23:08:57', '2023-10-08 23:08:57'),
+(4, '2023-10-10', '07:10:01', 'fff', 'sdddd', 'sade', 8, '2023-10-10 07:42:01', '2023-10-10 07:42:01');
 
 -- --------------------------------------------------------
 
@@ -515,13 +569,13 @@ ALTER TABLE `antecedentes_salud`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `control_atenciones`
@@ -533,7 +587,7 @@ ALTER TABLE `control_atenciones`
 -- AUTO_INCREMENT de la tabla `conyuge`
 --
 ALTER TABLE `conyuge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `det_control_atenciones`
@@ -545,13 +599,13 @@ ALTER TABLE `det_control_atenciones`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `parentesco`
 --
 ALTER TABLE `parentesco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -563,13 +617,13 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `responsable`
 --
 ALTER TABLE `responsable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `sintomas`
 --
 ALTER TABLE `sintomas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -606,53 +660,10 @@ ALTER TABLE `antecedentes_salud`
   ADD CONSTRAINT `antecedentes_salud_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
 
 --
--- Filtros para la tabla `consultas`
---
-ALTER TABLE `consultas`
-  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
-
---
 -- Filtros para la tabla `conyuge`
 --
 ALTER TABLE `conyuge`
   ADD CONSTRAINT `conyuge_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
-
---
--- Filtros para la tabla `det_control_atenciones`
---
-ALTER TABLE `det_control_atenciones`
-  ADD CONSTRAINT `det_control_atenciones_ibfk_1` FOREIGN KEY (`id_control_atenciones`) REFERENCES `control_atenciones` (`id`);
-
---
--- Filtros para la tabla `paciente`
---
-ALTER TABLE `paciente`
-  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_cita`) REFERENCES `citas` (`id`);
-
---
--- Filtros para la tabla `parentesco`
---
-ALTER TABLE `parentesco`
-  ADD CONSTRAINT `parentesco_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
-
---
--- Filtros para la tabla `sintomas`
---
-ALTER TABLE `sintomas`
-  ADD CONSTRAINT `sintomas_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `consultas` (`id`);
-
---
--- Filtros para la tabla `tratamiento`
---
-ALTER TABLE `tratamiento`
-  ADD CONSTRAINT `tratamiento_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `paciente` (`id`);
-
---
--- Filtros para la tabla `usuario_permiso`
---
-ALTER TABLE `usuario_permiso`
-  ADD CONSTRAINT `fk_id_permiso` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id`),
-  ADD CONSTRAINT `fk_id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

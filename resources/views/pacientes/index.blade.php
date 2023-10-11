@@ -30,11 +30,7 @@
                                     <button class=" m-2 btn btn-outline-secondary btn-sm btn-rounded" onclick="Agregar(this)"> <i class="nav-icon fas fa-users"></i>
                                         Agregar
                                         <i class="fas fa-plus"></i></button>
-
                                 </div>
-
-
-
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -80,8 +76,6 @@
         delimiter: '-'
         , blocks: [4, 4]
     , });
-
-
 
     // Función para validar números
     function validarNupacientes(event) {

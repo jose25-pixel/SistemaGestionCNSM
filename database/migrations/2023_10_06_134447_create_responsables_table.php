@@ -15,19 +15,19 @@ class CreateResponsablesTable extends Migration
     {
         Schema::create('responsable', function (Blueprint $table) {
             $table->id();
-            $table->string('nombrer');
-            $table->string('estado_civilr');
-            $table->string('nivel_educativor');
-            $table->integer('edadr');
-            $table->string('ocupacionr');
-            $table->integer('nu_hermano');
-            $table->string('lugar_ocupa');
-            $table->integer('nu_hijo');
-            $table->integer('edad_hijo');
-            $table->string('nombre_conyugue');
-            $table->integer('ano_casado');
+            $table->string('nombrer',45)->nullable();
+            $table->string('estado_civilr',30)->nullable();
+            $table->string('nivel_educativor',30)->nullable();
+            $table->integer('edadr')->nullable();
+            $table->string('ocupacionr',45)->nullable();
+            $table->integer('nu_hermano')->nullable();
+            $table->string('lugar_ocupa',45)->nullable();
+            $table->integer('nu_hijo')->nullable();
+            $table->string('edad_hijo',30)->nullable();
+            $table->string('nombre_conyugue',45)->nullable();
+            $table->integer('ano_casado')->nullable();
             $table->unsignedBigInteger('id_paciente');
-            $table->unsignedBigInteger('usuario_id');
+            $table->Integer('usuario_id');
             $table->timestamps();
 
             // Claves foráneas

@@ -15,20 +15,20 @@ class CreatePacientesTable extends Migration
     {
         Schema::create('paciente', function (Blueprint $table) {
             $table->id();
-            $table->string('cod_paciente');
-            $table->date('fecha_naci')->nullable();
+            $table->string('cod_paciente',50);
+            $table->string('fecha_naci',25)->nullable();
             $table->integer('edad')->nullable();
-            $table->date('fecha_reg');
-            $table->string('genero')->nullable();
-            $table->string('ocupacion')->nullable();
-            $table->string('lugar_estudio')->nullable();
-            $table->string('grado')->nullable();
-            $table->string('nivel_educativo')->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('departamento')->nullable();
-            $table->string('municipio')->nullable();
-            $table->string('celular_dos')->nullable();
-            $table->string('celular_tres')->nullable();
+            $table->string('fecha_reg',25);
+            $table->string('genero',15)->nullable();
+            $table->string('ocupacion',150)->nullable();
+            $table->string('lugar_estudio',150)->nullable();
+            $table->string('grado',100)->nullable();
+            $table->string('nivel_educativo',100)->nullable();
+            $table->string('direccion',200)->nullable();
+            $table->string('departamento',100)->nullable();
+            $table->string('municipio',100)->nullable();
+            $table->string('celular_dos',12)->nullable();
+            $table->string('celular_tres', 12)->nullable();
             $table->unsignedBigInteger('id_cita');
             $table->unsignedBigInteger('usuario_id');
             $table->timestamps();
