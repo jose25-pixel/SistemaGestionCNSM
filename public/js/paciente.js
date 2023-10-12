@@ -3,6 +3,11 @@
  * ::::Implementado: 01-10-2023
  * 
  */
+/**
+ $(document).ready(function() {
+  $('#cita_id').select2();
+}); */
+
 
 // Funcion para mostrar los pacientes con datatables
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +24,7 @@ function Ingresar(element) {
 
 
 }
-
+// funcion para agregar datos de paciente
 
 function Agregar(element) {
   $("#modalIngresoPaciente").modal('show');
@@ -27,11 +32,12 @@ function Agregar(element) {
 
 }
 
-window.onload = function () {
+
+
+ /**
+  * window.onload = function () {
   getSelectcitas();
 };
-
-//SELECT citas 
 function getSelectcitas(callback = '') {
   let url = window.location.origin + "/citas/select";
   axios.get(url)
@@ -56,7 +62,7 @@ function getSelectcitas(callback = '') {
       }
     })
     .catch((err) => console.log(err))
-}
+}*/
 
 
 function mayupaciente(element) {
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     'Chalatenango': ['Chalatenango', 'Agua Caliente', 'Arcatao', 'Azacualpa', 'Cancasque', 'Citalá', 'Comalapa', 'Concepción Quezaltepeque', 'Dulce Nombre de María', 'El Carrizal', 'El Paraíso', 'La Laguna', 'La Palma', 'La Reina', 'Las Vueltas', 'Nombre de Jesús', 'Nueva Concepción', 'Nueva Trinidad', 'Ojos de Agua', 'Potonico', 'San Antonio de la Cruz', 'San Antonio Los Ranchos', 'San Fernando', 'San Francisco Lempa', 'San Francisco Morazán', 'San Ignacio', 'San Isidro Labrador', 'San José Cancasque', 'San José Las Flores', 'San Luis del Carmen', 'San Miguel de Mercedes', 'San Rafael', 'Santa Rita', 'Tejutla'],
     'San Vicente': ['San Vicente', 'Apastepeque', 'Guadalupe', 'San Cayetano Istepeque', 'San Esteban Catarina', 'San Ildefonso', 'San Lorenzo', 'San Sebastián', 'Santa Clara', 'Santo Domingo', 'Tecoluca', 'Tepetitán', 'Verapaz'],
     'Morazán': ['San Francisco Gotera', 'Arambala', 'Cacaopera', 'Chilanga', 'Corinto', 'Delicias de Concepción', 'El Divisadero', 'El Rosario', 'Gualococti', 'Guatajiagua', 'Joateca', 'Jocoaitique', 'Jocoro', 'Lolotiquillo', 'Meanguera', 'Osicala', 'Perquín', 'San Carlos', 'San Fernando', 'San Isidro', 'San Simón', 'Segundo Montes', 'Sensembra', 'Sociedad', 'Torola', 'Yamabal'],
-    'La Unión': ['La Unión', 'Anamorós', 'Bolívar', 'Concepción de Oriente', 'Conchagua', 'El Carmen', 'El Sauce', 'Intipucá', 'Lislique', 'Meanguera del Golfo', 'Nueva Esparta', 'Pasaquina', 'Polorós', 'San Alejo', 'San José', 'Santa Rosa de Lima', 'Yayantique', 'Yucuaiquín'],
+    'Union' : ['Anamorós', 'Bolívar', 'Concepción de Oriente', 'Conchagua', 'El Carmen', 'El Sauce', 'Intipucá', 'Lislique', 'Meanguera del Golfo', 'Nueva Esparta', 'Pasaquina', 'Polorós', 'San Alejo', 'San José', 'Santa Rosa de Lima', 'Yayantique', 'Yucuaiquín'],
     'Cabañas': ['Sensuntepeque', 'Cinquera', 'Dolores', 'Guacotecti', 'Ilobasco', 'Jutiapa', 'San Isidro', 'Tejutepeque', 'Victoria'],
     'Sonsonate':[ "Sonsonate","Nahuizalco","Izalco","Juayúa","Acajutla","Armenia","Caluco","Cuisnahuat","San Antonio del Monte","San Julián","Santo Domingo de Guzmán"],
     'Ahuachapan':[ "Ahuachapán","Apaneca","Atiquizaya","Concepción de Ataco","El Refugio","Guaymango","Jujutla","San Francisco Menéndez","San Lorenzo","San Pedro Puxtla", "Tacuba","Turín"],
@@ -102,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (departamentoSeleccionado !== '') {
       // Obtiene los municipios correspondientes al departamento seleccionado
       const municipios = municipiosPorDepartamento[departamentoSeleccionado];
+      console.log('Departamento seleccionado:', departamentoSeleccionado);
 
       // Agrega las opciones de municipios al campo de selección
       municipios.forEach(municipio => {
@@ -154,6 +161,71 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+
+
+// cerrar borrar informacion selecionada
+
+$(document).ready(function () {
+  // Restablecer el formulario cuando se cierra el modal
+  $('#modalIngresoPaciente').on('hidden.bs.modal', function () {
+    // Obtener el formulario por su ID
+    let formulario = document.getElementById('pacienteForm');
+
+    // Restablecer el contenido del formulario
+    formulario.reset();
+  });
+
+  // Resto de tu código aquí...
+});
+
+// funcion para slecionar los datos de la cita
+
+window.onload = function () {
+  
+  const btnAddSelectedPaci = document.getElementById('btnaddcita');
+  btnAddSelectedPaci.addEventListener('click', () => {
+    
+    $("#citasModal").modal('show');
+  });
+  
+  getSelectcitas();
+};
+
+function getSelectcitas(callback = '') {
+  
+  let url = window.location.origin + "/citas/select";
+  axios.get(url)
+    .then((response) => {
+      if (response.status === 200) {
+        let data = response.data;
+        let table = $('#citasTable').DataTable({
+          data: data,
+          columns: [
+            { data: 'paciente' },
+            { data: 'dui' },
+            { data: 'fecha' },
+            { data: 'hora' },
+            {
+              data: null,
+              render: function (data, type, row) {
+                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
+              }
+            }
+          ]
+        });
+
+        if (callback !== '') {
+          callback(response.status);
+        }
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+function selectCita(citaId) {
+  document.getElementById('cita_id').value = citaId;
+  $('#citasModal').modal('hide'); 
+}
 
 
 

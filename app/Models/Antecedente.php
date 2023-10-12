@@ -15,9 +15,16 @@ class Antecedente extends Model
     protected $table = 'antecedentes_salud';
     protected $fillable = [
         'fecha',
-        'patologia',
+        'patologias',
         'enfergenetica',
         'otros',
+        'iniciotrabajar',
+        'trabaja',
+        'trabaja_actualmente',
+        'duracion_empleo',
+        'despedido',
+        'causa',
+        'satisfecho',
         'id_paciente',
         'usuario_id'
     ];
