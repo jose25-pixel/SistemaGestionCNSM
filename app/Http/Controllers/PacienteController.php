@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Paciente;
 use App\Models\Cita;
+use App\Models\Adicciones;
+use App\Models\Antecedente;
 use App\Models\conyuge;
 use App\Models\parentesco;
 use App\Models\responsable;
@@ -101,6 +103,8 @@ class PacienteController extends Controller
         $this->saveconyuge($request, $paciente, $id_usuario); //se ejecuta la funion de guardar datos de conyuge
         $this->saveparentesco($request, $paciente, $id_usuario); // se ejecuta la funcion de guardar datos de parentesco (padre y madre) 
         $this->saveresponsable($request, $paciente, $id_usuario);
+        $this->saveadiccion($request, $paciente, $id_usuario); 
+        $this->saveAntecedente($request, $paciente, $id_usuario);  
 
         $citaId = $request->input('cita_id');
 
@@ -170,4 +174,46 @@ class PacienteController extends Controller
 
         responsable::create($datosr);
     }
+
+    public function saveadiccion($request,$paciente,$id_usuario){
+
+      $datosa= [
+
+        'fecha' => now(),
+        'atencioncnsm' => $request->input('atencioncnsm'),
+        'tratamientos'=> $request->input('tratamientos'), 
+        'tipotratamiento'=> $request->input('tipotratamiento'),
+        'nombreatendio'=> $request->input('nombreatendio'),
+        'direcionatendio'=> $request->input('direcionatendio'),
+        'telefonoatendio'=> $request->input('telefonoatendio'),
+        'tipofarmaco'=> $request->input('tipofarmaco'),
+        'tipo_sustancia'=> $request->input('tipo_sustancia'),
+        'tiempo_consumo'=> $request->input('tiempo_consumo'),
+        'id_paciente'=> $paciente->id,
+        'usuario_id'=> $id_usuario
+    ];
+    Adicciones::create($datosa);
+    }
+
+
+    public function saveAntecedente($request,$paciente,$id_usuario){
+
+        $datosa= [
+  
+          'fecha' => now(),
+          'patologias' => $request->input('patologias'),
+          'enfergenetica' => $request->input('enfergenetica'),
+          'otros' => $request->input('otros'),
+          'iniciotrabajar' => $request->input('iniciotrabajar'),
+          'trabaja' => $request->input('trabaja'),
+          'trabaja_actualmente' => $request->input('trabaja_actualmente'),
+          'duracion_empleo' => $request->input('duracion_empleo'),
+          'despedido' => $request->input('despedido'),
+          'causa' => $request->input('causa'),
+          'satisfecho' => $request->input('satisfecho'),
+          'id_paciente'=> $paciente->id,
+          'usuario_id'=> $id_usuario
+      ];
+      Antecedente::create($datosa);
+      }
 }

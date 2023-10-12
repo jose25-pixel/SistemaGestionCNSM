@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2023 a las 05:58:43
+-- Tiempo de generación: 12-10-2023 a las 05:24:13
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -56,9 +56,20 @@ CREATE TABLE `adicciones` (
   `tipo_sustancia` varchar(100) DEFAULT NULL,
   `tiempo_consumo` varchar(100) DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
   `created_at` varchar(50) DEFAULT NULL,
-  `updated_at` int(50) NOT NULL
+  `updated_at` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `adicciones`
+--
+
+INSERT INTO `adicciones` (`id`, `fecha`, `atencioncnsm`, `tratamientos`, `tipotratamiento`, `nombreatendio`, `direcionatendio`, `telefonoatendio`, `tipofarmaco`, `tipo_sustancia`, `tiempo_consumo`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, '2023-10-11 21:38:26', 'NO', 'eeeeeerrrrrrrrrrr', NULL, 'NO APLICA', 'NO AAPLICA', 'NO APLICA', 'RERREEERERE', 'NO APLICA', 'NINGUN', 15, 1, '2023-10-11 21:38:26', '2023-10-11 21:38:26'),
+(2, '2023-10-12 02:49:43', 'NO', 'sfssffsdffsd', NULL, 'NO APLICA', 'NO AAPLICA', 'NO APLICA', 'SDSF', 'NO APLICA', 'NINGUN', 16, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(3, '2023-10-12 03:11:29', 'PSICOLOGÍCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29'),
+(4, '2023-10-12 03:11:30', 'PSICOLOGÍCO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 18, 1, '2023-10-12 03:11:30', '2023-10-12 03:11:30');
 
 -- --------------------------------------------------------
 
@@ -70,12 +81,30 @@ CREATE TABLE `antecedentes_salud` (
   `id` int(11) NOT NULL,
   `fecha` varchar(25) DEFAULT NULL,
   `patologias` varchar(100) DEFAULT NULL,
-  `enfergenetica` varchar(100) DEFAULT NULL,
+  `enfergenetica` text DEFAULT NULL,
   `otros` text DEFAULT NULL,
-  `id_paciente` int(11) DEFAULT NULL,
+  `iniciotrabajar` varchar(50) DEFAULT NULL,
+  `trabaja` varchar(50) DEFAULT NULL,
+  `trabaja_actualmente` varchar(15) DEFAULT NULL,
+  `duracion_empleo` varchar(25) DEFAULT NULL,
+  `despedido` varchar(25) DEFAULT NULL,
+  `causa` varchar(100) DEFAULT NULL,
+  `satisfecho` varchar(100) DEFAULT NULL,
+  `id_paciente` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
   `created_at` varchar(50) NOT NULL,
   `updated_at` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `antecedentes_salud`
+--
+
+INSERT INTO `antecedentes_salud` (`id`, `fecha`, `patologias`, `enfergenetica`, `otros`, `iniciotrabajar`, `trabaja`, `trabaja_actualmente`, `duracion_empleo`, `despedido`, `causa`, `satisfecho`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, '2023-10-11 21:38:26', 'DE LOS NERVIOS Y LA PRESION', 'SI PRESENTAN', 'NO', '23', 'SI', 'SI', '2 AÑOS', 'NO', 'NINGUNA', 'ME GUSTARIA TENER MUCHO MAS TIEMPO PARA MIS HIJOS', 15, 1, '2023-10-11 21:38:26', '2023-10-11 21:38:26'),
+(2, '2023-10-12 02:49:43', 'LKSFKSFK', 'SFDKLKSDFJ', 'KSLFS', '23', 'SI', 'SI', '2 AÑOS', 'NO', 'FFSSFF', 'SF', 16, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(3, '2023-10-12 03:11:29', NULL, NULL, NULL, NULL, 'SI', 'SI', NULL, 'SI', NULL, NULL, 17, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29'),
+(4, '2023-10-12 03:11:30', NULL, NULL, NULL, NULL, 'SI', 'SI', NULL, 'SI', NULL, NULL, 18, 1, '2023-10-12 03:11:30', '2023-10-12 03:11:30');
 
 -- --------------------------------------------------------
 
@@ -106,15 +135,15 @@ CREATE TABLE `citas` (
 INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email`, `motivo`, `estado_cita`, `terapeuta_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
 (1, 'MANUEL', '67898765-5', '7897-6543', '2023-10-01', '8:30 AM', 'nomadelcarmen@gmail.com', 'revision', 0, 2, 1, '2023-09-30 18:59:38', '2023-09-30 18:59:38'),
 (2, 'JOSE', '78655446-5', '7865-7435', '2023-11-11', '8:30 AM', '--', 'revision', 1, 3, 1, '2023-10-01 15:13:02', '2023-10-01 15:13:02'),
-(3, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:06:05', '2023-10-03 02:06:05'),
-(4, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:06:33', '2023-10-03 02:06:33'),
+(3, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 1, 4, 1, '2023-10-03 02:06:05', '2023-10-03 02:06:05'),
+(4, 'JOSE', '75287523-4', '7689-6789', '2023-10-05', '8:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 1, 4, 1, '2023-10-03 02:06:33', '2023-10-03 02:06:33'),
 (5, 'JOSE', '78656556-6', '7654-3567', '2023-10-06', '9:30 AM', 'nomadelcarmen@gmail.com', 'revision', 0, 4, 1, '2023-10-03 02:09:19', '2023-10-03 02:09:19'),
 (6, 'JOSE', '89999999-9', '2242-2222', '2023-10-04', '10:00 AM', 'josezavaletac@gmail.com', 'df', 0, 3, 1, '2023-10-03 02:14:20', '2023-10-03 02:14:20'),
 (7, 'MANUEL', '89878899-7', '4434-3444', '2023-10-03', '9:00 AM', 'nomadelcarmen@gmail.com', 'uriereu', 0, 4, 1, '2023-10-03 02:15:42', '2023-10-03 02:15:42'),
 (8, 'MANUEL', '89878899-7', '4434-3444', '2023-10-03', '9:00 AM', 'nomadelcarmen@gmail.com', 'uriereu', 0, 4, 1, '2023-10-03 02:15:42', '2023-10-03 02:15:42'),
 (9, 'MANUEL', '73849935-9', '7689-6789', '2023-10-07', '10:00 AM', '--', 'nueva relacion', 0, 3, 1, '2023-10-03 02:27:12', '2023-10-03 02:27:12'),
 (10, 'MANUEL', '73849935-9', '7689-6789', '2023-10-07', '10:00 AM', '--', 'nueva relacion', 0, 3, 1, '2023-10-03 02:27:12', '2023-10-03 02:27:12'),
-(11, 'MANUEL', '87777777-7', '7689-6789', '2023-10-10', '9:30 AM', '---', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:29:39', '2023-10-03 02:29:39'),
+(11, 'MANUEL', '87777777-7', '7689-6789', '2023-10-10', '9:30 AM', '---', 'sistomas de abuxo', 1, 4, 1, '2023-10-03 02:29:39', '2023-10-03 02:29:39'),
 (12, 'MANUEL', '87777777-7', '7689-6789', '2023-10-10', '9:30 AM', '---', 'sistomas de abuxo', 0, 4, 1, '2023-10-03 02:29:39', '2023-10-03 02:29:39'),
 (13, 'OSCAR', '89321898-2', '7654-3467', '2023-10-02', '11:00 AM', '---', 'ddd', 0, 3, 1, '2023-10-03 02:30:58', '2023-10-03 02:31:44'),
 (14, 'SUSANA', '53553355-5', '4232-2232', '2023-10-10', '9:00 AM', '--', '4343', 0, 3, 1, '2023-10-03 02:54:30', '2023-10-10 15:27:19'),
@@ -156,7 +185,8 @@ INSERT INTO `consultas` (`id`, `num_clinico`, `fecha`, `hora`, `motivo_consulta`
 (6, '011020231', '2023-10-08', '22:10:26', 'Este paciente tiene dolor de cabeza', '-', '---', 1, 1, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
 (7, '7842', '2023-10-08', '23:10:57', 'Este paciente tiene dolor de cabeza', '-', '---', 2, 1, '2023-10-08 23:08:57', '2023-10-08 23:08:57'),
 (8, '7842', '2023-10-10', '07:10:01', 'revision', '-', 'diagnostico de la varables', 2, 1, '2023-10-10 07:42:01', '2023-10-10 07:42:01'),
-(9, '7842', '2023-10-10', '16:10:47', 'revision', '-', 'diagnostico de la varables', 2, 1, '2023-10-10 16:51:47', '2023-10-10 16:51:47');
+(9, '7842', '2023-10-10', '16:10:47', 'revision', '-', 'diagnostico de la varables', 2, 1, '2023-10-10 16:51:47', '2023-10-10 16:51:47'),
+(10, '20231012972', '2023-10-11', '17:10:26', 'jjj', '-', 'diagnostico de la varables', 4, 1, '2023-10-11 17:21:26', '2023-10-11 17:21:26');
 
 -- --------------------------------------------------------
 
@@ -203,7 +233,15 @@ INSERT INTO `conyuge` (`id`, `nombre`, `nivel_educativo`, `ocupacion`, `edad`, `
 (4, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 45, NULL, 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35'),
 (5, 'CARLA', 'SUPERIOR', 'VETERNIARIA', 44, NULL, 8, 1, '2023-10-10 22:45:19', '2023-10-10 22:45:19'),
 (6, NULL, NULL, NULL, NULL, NULL, 9, 1, '2023-10-11 02:52:56', '2023-10-11 02:52:56'),
-(7, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 24, 'rrrrrrrrrrrrrrrrrrrrrrrr', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14');
+(7, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 24, 'rrrrrrrrrrrrrrrrrrrrrrrr', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14'),
+(8, 'CARLA', 'SUPERIOR', 'MAESTRA', 23, 'errrrrrrrrrrrrrrrrrr', 11, 1, '2023-10-11 21:26:45', '2023-10-11 21:26:45'),
+(9, 'CARLA', 'SUPERIOR', 'MAESTRA', 23, 'errrrrrrrrrrrrrrrrrr', 12, 1, '2023-10-11 21:29:19', '2023-10-11 21:29:19'),
+(10, 'CARLA', 'SUPERIOR', 'MAESTRA', 23, 'errrrrrrrrrrrrrrrrrr', 13, 1, '2023-10-11 21:33:25', '2023-10-11 21:33:25'),
+(11, 'CARLA', 'SUPERIOR', 'MAESTRA', 23, 'errrrrrrrrrrrrrrrrrr', 14, 1, '2023-10-11 21:35:02', '2023-10-11 21:35:02'),
+(12, 'CARLA', 'SUPERIOR', 'MAESTRA', 23, 'errrrrrrrrrrrrrrrrrr', 15, 1, '2023-10-11 21:38:25', '2023-10-11 21:38:25'),
+(13, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 56, 'ggjgj', 16, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(14, NULL, NULL, NULL, NULL, NULL, 17, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29'),
+(15, NULL, NULL, NULL, NULL, NULL, 18, 1, '2023-10-12 03:11:30', '2023-10-12 03:11:30');
 
 -- --------------------------------------------------------
 
@@ -268,7 +306,15 @@ INSERT INTO `paciente` (`id`, `cod_paciente`, `fecha_naci`, `edad`, `fecha_reg`,
 (7, '20231019818', '2023-10-19', 88, '2023-10-10 15:48:35', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'Cabañas', 'Sensuntepeque', '7865-4334', '4555-3663', NULL, NULL, NULL, NULL, NULL, 18, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35'),
 (8, '19970610140', '1997-06-10', 33, '2023-10-10 22:45:19', 'femenino', 'ALBAÑIL', NULL, NULL, 'SUPERIOR', 'AVENIDA ESPAÑA', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', NULL, NULL, NULL, NULL, NULL, 17, 1, '2023-10-10 22:45:19', '2023-10-10 22:45:19'),
 (9, '20231011992', '2023-10-11', 56, '2023-10-11 02:52:56', 'masculino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'ultimo', 2, '23,45', 2, 16, 1, '2023-10-11 02:52:56', '2023-10-11 02:52:56'),
-(10, '20231011134', '2023-10-11', 23, '2023-10-11 02:59:14', 'masculino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'ultimo', 34, '23,45', 3, 16, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14');
+(10, '20231011134', '2023-10-11', 23, '2023-10-11 02:59:14', 'masculino', 'EMPRESARIO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'JDSSSSSSSSSS', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'ultimo', 34, '23,45', 3, 16, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14'),
+(11, '20231002583', '2023-10-02', 23, '2023-10-11 21:26:45', 'masculino', 'LICNECIAADO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'AVENIDAD  EL CALVARIO', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'enmedio', 1, '20', 1, 3, 1, '2023-10-11 21:26:45', '2023-10-11 21:26:45'),
+(12, '20231002374', '2023-10-02', 23, '2023-10-11 21:29:19', 'masculino', 'LICNECIAADO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'AVENIDAD  EL CALVARIO', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'enmedio', 1, '20', 1, 3, 1, '2023-10-11 21:29:19', '2023-10-11 21:29:19'),
+(13, '20231002572', '2023-10-02', 23, '2023-10-11 21:33:25', 'masculino', 'LICNECIAADO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'AVENIDAD  EL CALVARIO', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'enmedio', 1, '20', 1, 3, 1, '2023-10-11 21:33:25', '2023-10-11 21:33:25'),
+(14, '20231002429', '2023-10-02', 23, '2023-10-11 21:35:02', 'masculino', 'LICNECIAADO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'AVENIDAD  EL CALVARIO', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'enmedio', 1, '20', 1, 3, 1, '2023-10-11 21:35:02', '2023-10-11 21:35:02'),
+(15, '20231002214', '2023-10-02', 23, '2023-10-11 21:38:25', 'masculino', 'LICNECIAADO', 'CENTRO ESCOLAS EL SAUCE', 'NOVENO', 'MEDIO', 'AVENIDAD  EL CALVARIO', 'San Salvador', 'San Salvador', '7865-4334', '7865-432', 2, 'enmedio', 1, '20', 1, 3, 1, '2023-10-11 21:38:25', '2023-10-11 21:38:25'),
+(16, '20231003271', '2023-10-03', 34, '2023-10-12 02:49:43', 'masculino', 'EMPRESARIO', NULL, NULL, 'MEDIO', 'AVENIDA ESPAÑA', 'La Libertad', 'Chiltiupán', '7865-4334', '7865-432', 2, 'ultimo', 2, '23,45', 3, 4, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(17, '20231012973', '2023-10-12', 45, '2023-10-12 03:11:28', 'masculino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, 1, '2023-10-12 03:11:28', '2023-10-12 03:11:28'),
+(18, '20231012918', '2023-10-12', 45, '2023-10-12 03:11:29', 'masculino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29');
 
 -- --------------------------------------------------------
 
@@ -313,7 +359,15 @@ INSERT INTO `parentesco` (`id`, `nombre_madre`, `edad_madre`, `estado_civilm`, `
 (4, 'ALEJANDRA', 45, 'casada', 'DDADDA', 'AMA DE CASA', 'SI', '', NULL, NULL, 'ALFREDO', 56, 'casado', 'ABOGADO', 'SUPERIOR', 'NO', '', NULL, NULL, 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35'),
 (5, 'ALEJANDRA', 34, 'soltera', 'DDADDA', 'AMA DE CASA', 'NO', '', NULL, NULL, 'ALFREDO', 23, 'soltero', 'ABOGADO', 'SUPERIOR', 'NO', '', NULL, NULL, 8, 1, '2023-10-10 22:45:19', '2023-10-10 22:45:19'),
 (6, NULL, NULL, 'soltera', NULL, 'AMA DE CASA', 'SI', '64635235236', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', 'SI', NULL, 67, 'soltero', 'ABOGADO', 'SUPERIOR', 'SI', '88899887-8', 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 'SI', 9, 1, '2023-10-11 02:52:56', '2023-10-11 02:52:56'),
-(7, 'ALEJANDRA', 23, 'soltera', 'DDADDA', 'AMA DE CASA', 'SI', '64635235-7', 'rrrrrrrrrrrrrrettt', 'SI', 'ALFREDO', 34, 'soltero', 'ABOGADO', 'SUPERIOR', 'SI', '3454334-8', 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 'SI', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14');
+(7, 'ALEJANDRA', 23, 'soltera', 'DDADDA', 'AMA DE CASA', 'SI', '64635235-7', 'rrrrrrrrrrrrrrettt', 'SI', 'ALFREDO', 34, 'soltero', 'ABOGADO', 'SUPERIOR', 'SI', '3454334-8', 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 'SI', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14'),
+(8, 'KARLA', 34, 'soltera', 'BASICO', 'SECRETARIA', 'SI', '463463463', 'lllllllllllllllll', 'SI', 'ALFREDO', 23, 'casado', NULL, NULL, 'SI', NULL, NULL, 'SI', 11, 1, '2023-10-11 21:26:45', '2023-10-11 21:26:45'),
+(9, 'KARLA', 34, 'soltera', 'BASICO', 'SECRETARIA', 'SI', '463463463', 'lllllllllllllllll', 'SI', 'ALFREDO', 23, 'casado', NULL, NULL, 'SI', NULL, NULL, 'SI', 12, 1, '2023-10-11 21:29:19', '2023-10-11 21:29:19'),
+(10, 'KARLA', 34, 'soltera', 'BASICO', 'SECRETARIA', 'SI', '463463463', 'lllllllllllllllll', 'SI', 'ALFREDO', 23, 'casado', NULL, NULL, 'SI', NULL, NULL, 'SI', 13, 1, '2023-10-11 21:33:25', '2023-10-11 21:33:25'),
+(11, 'KARLA', 34, 'soltera', 'BASICO', 'SECRETARIA', 'SI', '463463463', 'lllllllllllllllll', 'SI', 'ALFREDO', 23, 'casado', NULL, NULL, 'SI', NULL, NULL, 'SI', 14, 1, '2023-10-11 21:35:02', '2023-10-11 21:35:02'),
+(12, 'KARLA', 34, 'soltera', 'BASICO', 'SECRETARIA', 'SI', '463463463', 'lllllllllllllllll', 'SI', 'ALFREDO', 23, 'casado', NULL, NULL, 'SI', NULL, NULL, 'SI', 15, 1, '2023-10-11 21:38:25', '2023-10-11 21:38:25'),
+(13, 'ELSY', 34, 'soltera', 'DDADDA', 'AMA DE CASA', 'SI', '64635235236', 'fdfss', 'SI', 'ALFREDO', 23, 'casado', 'ABOGADO', 'SUPERIOR', 'SI', '3454334-8', 'dfsg', 'SI', 16, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(14, NULL, NULL, 'soltera', NULL, NULL, 'SI', NULL, NULL, 'SI', NULL, NULL, 'soltero', NULL, NULL, 'SI', NULL, NULL, 'SI', 17, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29'),
+(15, NULL, NULL, 'soltera', NULL, NULL, 'SI', NULL, NULL, 'SI', NULL, NULL, 'soltero', NULL, NULL, 'SI', NULL, NULL, 'SI', 18, 1, '2023-10-12 03:11:30', '2023-10-12 03:11:30');
 
 -- --------------------------------------------------------
 
@@ -337,7 +391,7 @@ CREATE TABLE `responsable` (
   `id` int(11) NOT NULL,
   `nombrer` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `estado_civilr` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `nivel_educativor` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nivel_educativor` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `edadr` int(11) DEFAULT NULL,
   `ocupacionr` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `duir` varchar(15) COLLATE utf8_spanish2_ci DEFAULT NULL,
@@ -356,7 +410,14 @@ INSERT INTO `responsable` (`id`, `nombrer`, `estado_civilr`, `nivel_educativor`,
 (2, 'MARIA', 'acompañado', 'BASICO', 55, 'ODONTOLOGO', NULL, 7, 1, '2023-10-10 15:48:35', '2023-10-10 15:48:35'),
 (3, 'MARIA', 'casado', 'BASICO', 45, 'ODONTOLOGO', NULL, 8, 1, '2023-10-10 22:45:19', '2023-10-10 22:45:19'),
 (4, NULL, 'soltero', NULL, NULL, NULL, NULL, 9, 1, '2023-10-11 02:52:56', '2023-10-11 02:52:56'),
-(5, 'MARIA', 'soltero', 'BASICO', 67, 'ODONTOLOGO', '5734743-8', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14');
+(5, 'MARIA', 'soltero', 'BASICO', 67, 'ODONTOLOGO', '5734743-8', 10, 1, '2023-10-11 02:59:14', '2023-10-11 02:59:14'),
+(6, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 34, 'CAJERA', '893829523', 12, 1, '2023-10-11 21:29:19', '2023-10-11 21:29:19'),
+(7, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 34, 'CAJERA', '893829523', 13, 1, '2023-10-11 21:33:25', '2023-10-11 21:33:25'),
+(8, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 34, 'CAJERA', '893829523', 14, 1, '2023-10-11 21:35:02', '2023-10-11 21:35:02'),
+(9, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 34, 'CAJERA', '893829523', 15, 1, '2023-10-11 21:38:26', '2023-10-11 21:38:26'),
+(10, NULL, 'soltero', NULL, NULL, NULL, NULL, 16, 1, '2023-10-12 02:49:43', '2023-10-12 02:49:43'),
+(11, NULL, 'soltero', NULL, NULL, NULL, NULL, 17, 1, '2023-10-12 03:11:29', '2023-10-12 03:11:29'),
+(12, NULL, 'soltero', NULL, NULL, NULL, NULL, 18, 1, '2023-10-12 03:11:30', '2023-10-12 03:11:30');
 
 -- --------------------------------------------------------
 
@@ -385,7 +446,8 @@ INSERT INTO `sintomas` (`id`, `fecha_regis`, `hora_regis`, `sintoma`, `conflicto
 (2, '2023-10-08', '22:10:26', NULL, '---', '---', 6, '2023-10-08 22:58:26', '2023-10-08 22:58:26'),
 (3, '2023-10-08', '23:10:57', '---', '---', '---', 7, '2023-10-08 23:08:57', '2023-10-08 23:08:57'),
 (4, '2023-10-10', '07:10:01', 'fff', 'sdddd', 'sade', 8, '2023-10-10 07:42:01', '2023-10-10 07:42:01'),
-(5, '2023-10-10', '16:10:47', 'problemas', 'problemas', 'nuevas, sintomas', 9, '2023-10-10 16:51:47', '2023-10-10 16:51:47');
+(5, '2023-10-10', '16:10:47', 'problemas', 'problemas', 'nuevas, sintomas', 9, '2023-10-10 16:51:47', '2023-10-10 16:51:47'),
+(6, '2023-10-11', '17:10:26', 'problemas', 'sdddd', 'sade', 10, '2023-10-11 17:21:26', '2023-10-11 17:21:26');
 
 -- --------------------------------------------------------
 
@@ -576,13 +638,13 @@ ALTER TABLE `acciones_paciente`
 -- AUTO_INCREMENT de la tabla `adicciones`
 --
 ALTER TABLE `adicciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `antecedentes_salud`
 --
 ALTER TABLE `antecedentes_salud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `citas`
@@ -594,7 +656,7 @@ ALTER TABLE `citas`
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `control_atenciones`
@@ -606,7 +668,7 @@ ALTER TABLE `control_atenciones`
 -- AUTO_INCREMENT de la tabla `conyuge`
 --
 ALTER TABLE `conyuge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `det_control_atenciones`
@@ -618,13 +680,13 @@ ALTER TABLE `det_control_atenciones`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `parentesco`
 --
 ALTER TABLE `parentesco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -636,13 +698,13 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `responsable`
 --
 ALTER TABLE `responsable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `sintomas`
 --
 ALTER TABLE `sintomas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
