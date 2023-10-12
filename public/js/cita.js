@@ -346,19 +346,21 @@ function updateCita(element){
                     inputFecha.removeAttribute('readonly');
                 }
                 let data = response.data;
+                inputFecha.value = data.fecha;
                 setTimeout(()=>{
                     document.getElementById('hora').value = data.hora;
-                },1200)
+                },1200);
                 document.getElementById('paciente').value = data.paciente;
                 document.getElementById('dui').value = data.dui;
                 document.getElementById('email').value = data.email;
                 document.getElementById('celular').value = data.celular;
                 document.getElementById('motivo').value = data.motivo;
                 document.getElementById('terapeuta_id').value = data.terapeuta_id;
-                let fechaActual = moment();
+                //Este codigo se comento porque ya no se modificara la fecha al actualizar
+                /* let fechaActual = moment();
                 fechaActual = fechaActual.format("YYYY-MM-DD");
-                $("#fecha").val(fechaActual);
-                verifyDispHora(fechaActual);
+                $("#fecha").val(fechaActual); */
+                verifyDispHora(data.fecha);
                 //Set method put update cita
                 document.getElementById('_methodCita').value = "put";
                 //Set title modal
@@ -397,4 +399,113 @@ function verifyDate(element){
 function clsInput(input){
     let campos = document.querySelectorAll('.' + input);
     campos.forEach(element => element.value = "");
+}
+
+//Verificar DUI
+
+try{
+    const getInputDUI = document.querySelector('input[name="verify_dui"]');
+    getInputDUI.addEventListener('change', (e)=>{
+        let dui = e.target.value;
+        if(dui.length > 9){
+            let url = window.location.origin + "/citas/verifyExists/dui";
+            let data = {
+                dui
+            }
+            axios.post(url,data)
+            .then((res)=>{
+                let datos = res.data;
+                if(datos.status === "exists"){
+                    Swal.fire({
+                        title: datos.message,
+                        text: "La información se cargara automaticamente!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si',
+                        cancelButtonText: 'No'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('paciente').value = datos.data.paciente;
+                            document.getElementById('dui').value = datos.data.dui;
+                            document.getElementById('email').value = datos.data.email;
+                            document.getElementById('celular').value = datos.data.celular;
+                        }else{
+                            getInputDUI.value = '';
+                        }
+                      })
+                }else{
+                    Swal.fire(
+                        'Error',
+                        datos.message,
+                        'error'
+                    ) 
+                    getInputDUI.value = '';
+                }
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        }
+    })
+    //Eliminar cita
+    function delCita(element){
+        let id = element.dataset.id_cita;
+        let url = window.location.origin + "/citas/destroy";
+        let formData = new FormData();
+        formData.append('id',id);
+        formData.append('_method','delete');
+        Swal.fire({
+            title: 'Desea eliminar esta cita',
+            text: "La información se eliminara de forma permanente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.post(url,formData)
+                .then((response)=>{
+                    let data = response.data;
+                    if(data.status === "delete"){
+                        Swal.fire(
+                            'Eliminado',
+                            'Se ha eliminado correctamente la cita',
+                            'success'
+                        ) 
+                        $("#dt_listados_paci_cita").DataTable().ajax.reload(null,false);
+                        //Refresh fullCalendar
+                        //Get Events DB
+                        CalendarEvents();
+                        //Refresca el calendario
+                        calendar.refetchEvents();
+                        //Refresh number asider citas
+                        counterCitasDay();
+                        //Se ha comentado este reload porque no esta funcionando el de eliminar de listado general
+                        /* $("#dt_listado_general_cita").DataTable().ajax.reload(null,false); */
+                    }else if(data.status === "not-delete"){
+                        Swal.fire(
+                            'AVISO',
+                            'Este cliente ya fue atendido',
+                            'warning'
+                        )
+                    }else{
+                        Swal.fire(
+                            'Error',
+                            'Ha ocurrido un error inesperado, intente nuevamente dentro de unos minutos',
+                            'error'
+                        )
+                    }
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+            }
+          })
+    }
+}catch(err){
+    console.log()
 }

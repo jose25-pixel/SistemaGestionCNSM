@@ -35,6 +35,9 @@ Route::post('citas/cancelar',[CitaController::class,'cancelarCita']);
 Route::post('citas/edit',[CitaController::class,'getCitaById']); 
 Route::put('citas/update',[CitaController::class,'updateCita']); 
 Route::get('citas/contador/dia',[CitaController::class,'getCantidadCitaDay']);
+Route::post('citas/verifyExists/dui',[CitaController::class,'verifyExistsCita']);
+Route::delete('citas/destroy',[CitaController::class,'destroyCita']);
+
 //Routas para terapeuta
 Route::post('terapeuta/save',[TerapeutaController::class,'saveTerapeuta']);
 Route::get('terapeuta/all',[TerapeutaController::class,'getTerapeutas']);

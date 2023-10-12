@@ -32,8 +32,8 @@
 @endsection
 
 @push('js_scripts')
-    <script src="{{asset('js/cita.js')}}"></script>
-    <script src="{{asset('js/terapeuta.js')}}"></script>
+    <script src="{{asset('js/cita.js')}}?v={{rand()}}"></script>
+    <script src="{{asset('js/terapeuta.js')}}?v={{rand()}}"></script>
     <script>
     // Validaciones de input
     var celularCleave = new Cleave('#celular', {
@@ -53,6 +53,10 @@
     var celularCleave = new Cleave('#telefono_t', {
         delimiter: '-',
         blocks: [4, 4],
+    });
+    var celularCleave = new Cleave('#verify_dui', {
+        delimiter: '-',
+        blocks: [8, 1],
     });
     // Función para validar números
     function validarNumeros(event) {
