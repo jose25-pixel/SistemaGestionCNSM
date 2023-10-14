@@ -10,10 +10,13 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
+//$app->configure('dompdf');
 
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
+//$app->register(\Barryvdh\DomPDF\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+/*
 /*
 |--------------------------------------------------------------------------
 | Return The Application

@@ -34,34 +34,34 @@ function Agregar(element) {
 
 
 
- /**
-  * window.onload = function () {
-  getSelectcitas();
+/**
+ * window.onload = function () {
+ getSelectcitas();
 };
 function getSelectcitas(callback = '') {
-  let url = window.location.origin + "/citas/select";
-  axios.get(url)
-    .then((response) => {
-      if (response.status === 200) {
-        let data = response.data;
-        let selectT = document.getElementById('cita_id');
-        selectT.textContent = '';
-        let defaultOption = document.createElement('option');
-        defaultOption.value = 'none';
-        defaultOption.textContent = 'Seleccionar';
-        selectT.appendChild(defaultOption);
-        data.forEach(element => {
-          let option = document.createElement('option');
-          option.value = element.id;
-          option.textContent = element.paciente + ' (DUI. ' + element.dui + ')' + ' (fecha: ' + element.fecha + ')' + '(hora:' + element.hora + ') ';
-          selectT.appendChild(option);
-        });
-        if (callback !== '') {
-          callback(response.status);
-        }
-      }
-    })
-    .catch((err) => console.log(err))
+ let url = window.location.origin + "/citas/select";
+ axios.get(url)
+   .then((response) => {
+     if (response.status === 200) {
+       let data = response.data;
+       let selectT = document.getElementById('cita_id');
+       selectT.textContent = '';
+       let defaultOption = document.createElement('option');
+       defaultOption.value = 'none';
+       defaultOption.textContent = 'Seleccionar';
+       selectT.appendChild(defaultOption);
+       data.forEach(element => {
+         let option = document.createElement('option');
+         option.value = element.id;
+         option.textContent = element.paciente + ' (DUI. ' + element.dui + ')' + ' (fecha: ' + element.fecha + ')' + '(hora:' + element.hora + ') ';
+         selectT.appendChild(option);
+       });
+       if (callback !== '') {
+         callback(response.status);
+       }
+     }
+   })
+   .catch((err) => console.log(err))
 }*/
 
 
@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', function () {
     'Chalatenango': ['Chalatenango', 'Agua Caliente', 'Arcatao', 'Azacualpa', 'Cancasque', 'Citalá', 'Comalapa', 'Concepción Quezaltepeque', 'Dulce Nombre de María', 'El Carrizal', 'El Paraíso', 'La Laguna', 'La Palma', 'La Reina', 'Las Vueltas', 'Nombre de Jesús', 'Nueva Concepción', 'Nueva Trinidad', 'Ojos de Agua', 'Potonico', 'San Antonio de la Cruz', 'San Antonio Los Ranchos', 'San Fernando', 'San Francisco Lempa', 'San Francisco Morazán', 'San Ignacio', 'San Isidro Labrador', 'San José Cancasque', 'San José Las Flores', 'San Luis del Carmen', 'San Miguel de Mercedes', 'San Rafael', 'Santa Rita', 'Tejutla'],
     'San Vicente': ['San Vicente', 'Apastepeque', 'Guadalupe', 'San Cayetano Istepeque', 'San Esteban Catarina', 'San Ildefonso', 'San Lorenzo', 'San Sebastián', 'Santa Clara', 'Santo Domingo', 'Tecoluca', 'Tepetitán', 'Verapaz'],
     'Morazán': ['San Francisco Gotera', 'Arambala', 'Cacaopera', 'Chilanga', 'Corinto', 'Delicias de Concepción', 'El Divisadero', 'El Rosario', 'Gualococti', 'Guatajiagua', 'Joateca', 'Jocoaitique', 'Jocoro', 'Lolotiquillo', 'Meanguera', 'Osicala', 'Perquín', 'San Carlos', 'San Fernando', 'San Isidro', 'San Simón', 'Segundo Montes', 'Sensembra', 'Sociedad', 'Torola', 'Yamabal'],
-    'Union' : ['Anamorós', 'Bolívar', 'Concepción de Oriente', 'Conchagua', 'El Carmen', 'El Sauce', 'Intipucá', 'Lislique', 'Meanguera del Golfo', 'Nueva Esparta', 'Pasaquina', 'Polorós', 'San Alejo', 'San José', 'Santa Rosa de Lima', 'Yayantique', 'Yucuaiquín'],
+    'Union': ['Anamorós', 'Bolívar', 'Concepción de Oriente', 'Conchagua', 'El Carmen', 'El Sauce', 'Intipucá', 'Lislique', 'Meanguera del Golfo', 'Nueva Esparta', 'Pasaquina', 'Polorós', 'San Alejo', 'San José', 'Santa Rosa de Lima', 'Yayantique', 'Yucuaiquín'],
     'Cabañas': ['Sensuntepeque', 'Cinquera', 'Dolores', 'Guacotecti', 'Ilobasco', 'Jutiapa', 'San Isidro', 'Tejutepeque', 'Victoria'],
-    'Sonsonate':[ "Sonsonate","Nahuizalco","Izalco","Juayúa","Acajutla","Armenia","Caluco","Cuisnahuat","San Antonio del Monte","San Julián","Santo Domingo de Guzmán"],
-    'Ahuachapan':[ "Ahuachapán","Apaneca","Atiquizaya","Concepción de Ataco","El Refugio","Guaymango","Jujutla","San Francisco Menéndez","San Lorenzo","San Pedro Puxtla", "Tacuba","Turín"],
+    'Sonsonate': ["Sonsonate", "Nahuizalco", "Izalco", "Juayúa", "Acajutla", "Armenia", "Caluco", "Cuisnahuat", "San Antonio del Monte", "San Julián", "Santo Domingo de Guzmán"],
+    'Ahuachapan': ["Ahuachapán", "Apaneca", "Atiquizaya", "Concepción de Ataco", "El Refugio", "Guaymango", "Jujutla", "San Francisco Menéndez", "San Lorenzo", "San Pedro Puxtla", "Tacuba", "Turín"],
 
     // Agrega más departamentos y sus municipios según sea necesario
-  };   
+  };
 
   // Función para actualizar el campo de selección de municipios
   function actualizarMunicipios() {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         $("#modalIngresoPaciente").modal("hide");
         pacienteForm.reset();
-      
+
 
       })
       .catch(function (error) {
@@ -178,21 +178,29 @@ $(document).ready(function () {
   // Resto de tu código aquí...
 });
 
+
+
+
+
+// Resto de tu código aquí...
+
+
 // funcion para slecionar los datos de la cita
 
 window.onload = function () {
-  
+
   const btnAddSelectedPaci = document.getElementById('btnaddcita');
   btnAddSelectedPaci.addEventListener('click', () => {
-    
+
     $("#citasModal").modal('show');
+    console.log('hola');
   });
-  
+
   getSelectcitas();
 };
 
 function getSelectcitas(callback = '') {
-  
+
   let url = window.location.origin + "/citas/select";
   axios.get(url)
     .then((response) => {
@@ -220,11 +228,23 @@ function getSelectcitas(callback = '') {
       }
     })
     .catch((err) => console.log(err));
+
 }
 
 function selectCita(citaId) {
   document.getElementById('cita_id').value = citaId;
-  $('#citasModal').modal('hide'); 
+  $('#citasModal').modal('hide');
+}
+
+
+//funcion para ver los datos de un paciente
+function ver(element) {
+  var idCita = $(element).data('id_cita');
+  console.log('buenos dias')
+
+  window.open('/pacientes/ver/' + idCita + "," + "_blank");
+  // Realiza una solicitud al servidor para obtener los detalles del paciente
+
 }
 
 
