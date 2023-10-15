@@ -6,6 +6,9 @@
  * ::::::Code licence Copyleft
  */
 //Init function
+var sintomas = [];
+document.addEventListener('DOMContentLoaded',()=>{
+})
 datatable_consultas();
 
 //Function para abrir modal
@@ -98,4 +101,45 @@ try{
     })
 }catch(err){
     console.log(err)
+}
+
+/**
+ * Codigo para añadir sintomas
+ */
+try{
+  const btnAddSintoma = document.querySelector('.add-sintoma');
+  let sintoma = document.getElementById('sintomas').value;
+  let conflicto = document.getElementById('conflictos').value
+  let situacion = document.getElementById('situacion').value;
+  btnAddSintoma.addEventListener('click', ()=>{
+    let obje = {
+      sintoma,
+      conflicto,
+      situacion
+    }
+    console.log(sintoma)
+    addSintomaArray(obje);
+  })
+}catch(err){
+  console.log(err)
+}
+
+function addSintomaArray(objSintoma){
+  sintomas.push(objSintoma);
+  addSintomaTableRows();
+}
+
+function addSintomaTableRows(){
+  let rows = ``;
+  console.log(sintomas)
+  let rowsContentTable = document.getElementById('sintomas-rows');
+  sintomas.forEach((sintoma)=>{
+    rows = document.createRange().createContextualFragment(/*HTML*/`
+    <tr>
+    <td>${sintoma.sintoma}</td>
+    <td>${sintoma.conflicto}</td>
+    <td>${sintoma.situacion}</td>
+  </tr>`); 
+    rowsContentTable.appendChild(rows);
+  })
 }
