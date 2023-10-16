@@ -8,8 +8,8 @@
 //Init function
 var sintomas = [];
 document.addEventListener('DOMContentLoaded',()=>{
+  datatable_consultas();
 })
-datatable_consultas();
 
 //Function para abrir modal
 try{
@@ -21,6 +21,10 @@ try{
 
 function openModalNewConsulta(){
     document.getElementById('labelTitleConsult').textContent = 'NUEVA CONSULTA';
+    clsInputs('cls-input');
+    sintomas = [];
+    addSintomaTableRows();
+    document.getElementById('imagenSeleccionada').src = window.location.origin + "/img/icon/upload-image.png";
     $("#modalConsulta").modal('show');
 }
 
@@ -59,7 +63,10 @@ try{
     function selectedPac(element){
         console.log(element)
         let id_paciente = element.dataset.id_paciente;
-        let url = window.location.origin + "/consulta/getPaciente/selected";
+        getPacienteById(id_paciente);
+    }
+    function getPacienteById(id_paciente){
+      let url = window.location.origin + "/consulta/getPaciente/selected";
         let data = {
           'id_paciente':id_paciente
         }
@@ -80,7 +87,30 @@ try{
     const consultaForm = document.getElementById('consultaForm');
     consultaForm.addEventListener('submit', (e)=>{
       e.preventDefault();
+      //Validacion de input
+      let inputsValidation = document.querySelectorAll('.oblig-input');
+      for(let i = 0; i < inputsValidation.length; i++){
+        if(inputsValidation[i].value.trim() === ""){
+          inputsValidation[i].classList.add('is-invalid');
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: 'Por favor, rellenar todos los campos!',
+        }); return 0;
+          return 0;
+        }
+        inputsValidation[i].classList.remove('is-invalid');
+      }
       let formData = new FormData(consultaForm);
+      formData.append('sintomas',JSON.stringify(sintomas))
+      //Validacion para evitar enviar datos de sintomas vacios
+      if(sintomas.length === 0){
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: 'Por favor, ingresar sintomas!',
+      }); return 0;
+      }
       let url = window.location.origin + "/consulta/save";
       axios.post(url,formData)
       .then((res)=>{
@@ -92,7 +122,9 @@ try{
             title: "Registro",
             text: data.message,
         });
+        sintomas = [];
         $("#modalConsulta").modal('hide');
+        $('#dt_listado_general_consulta').DataTable().ajax.reload(null,false);
         }
       })
       .catch((err)=>{
@@ -108,17 +140,23 @@ try{
  */
 try{
   const btnAddSintoma = document.querySelector('.add-sintoma');
-  let sintoma = document.getElementById('sintomas').value;
-  let conflicto = document.getElementById('conflictos').value
-  let situacion = document.getElementById('situacion').value;
   btnAddSintoma.addEventListener('click', ()=>{
+    let sintoma = document.getElementById('sintomas').value;
+    let conflicto = document.getElementById('conflictos').value;
+    let situacion = document.getElementById('situacion').value;
+    if(sintoma === "" || conflicto === "" || situacion === ""){
+      return 1;
+    }
     let obje = {
       sintoma,
       conflicto,
       situacion
     }
-    console.log(sintoma)
+
     addSintomaArray(obje);
+    let inputsSintomas = document.querySelectorAll('.cls-sintomas');
+    inputsSintomas.forEach((input)=>input.value='');
+    document.getElementById('sintomas').focus();
   })
 }catch(err){
   console.log(err)
@@ -131,15 +169,68 @@ function addSintomaArray(objSintoma){
 
 function addSintomaTableRows(){
   let rows = ``;
-  console.log(sintomas)
   let rowsContentTable = document.getElementById('sintomas-rows');
+  rowsContentTable.innerHTML = '';
+  let counter = 1;
+  let index = 0;
   sintomas.forEach((sintoma)=>{
-    rows = document.createRange().createContextualFragment(/*HTML*/`
+    rows += `
     <tr>
-    <td>${sintoma.sintoma}</td>
-    <td>${sintoma.conflicto}</td>
-    <td>${sintoma.situacion}</td>
-  </tr>`); 
-    rowsContentTable.appendChild(rows);
+    <td style="width:5%">${counter}</td>
+    <td style="width:25%">${sintoma.sintoma}</td>
+    <td style="width:25%">${sintoma.conflicto}</td>
+    <td style="width:35%">${sintoma.situacion}</td>
+    <td style="width:10%; text-align:center"><i onclick="removeItem(this)" data-item='${index}' class="fas fa-trash" style="font-size:18px;cursor:pointer"></i></td>
+  </tr>`; 
+  counter ++;
+  index ++;
   })
+rowsContentTable.innerHTML = rows;
+}
+
+//Remover items
+
+function removeItem(element){
+  let index = element.dataset.item;
+  sintomas.splice(index,1);
+  addSintomaTableRows();
+}
+
+/**
+ * Funcion para editar
+ */
+function editConsult(element){
+  let id_consulta = element.dataset.id_consulta;
+  let url = window.location.origin + "/consulta/edit";
+  axios.post(url,{id_consulta})
+  .then((response)=>{
+    console.log(response)
+    let data = response.data;
+    document.getElementById('consulta').value = data.consulta.motivo_consulta;
+    document.getElementById('diagnostico').value = data.consulta.aprox_diagnostico;
+    //Cargar imagen and validation
+    if(data.consulta.genograma !== "-"){
+      document.getElementById('imagenSeleccionada').src = window.location.origin + "/storage/" + data.consulta.genograma;
+    }else{
+      document.getElementById('imagenSeleccionada').src = window.location.origin + "/img/icon/upload-image.png";
+    }
+    //Cargar datos del paciente
+    getPacienteById(data.consulta.paciente_id);
+    //Recorrer los sintomas y mostrarlo
+    sintomas = data.sintomas;
+    addSintomaTableRows();
+    $("#modalConsulta").modal('show');
+
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+/**
+ * Clear inputs
+ */
+function clsInputs(clase){
+  let inputs = document.querySelectorAll('.' + clase);
+  inputs.forEach((input)=>input.value = '');
 }

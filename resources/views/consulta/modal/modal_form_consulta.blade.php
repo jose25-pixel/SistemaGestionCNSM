@@ -4,7 +4,6 @@
     width: 100%;
     border-collapse: collapse;
     font-family: Helvetica, sans-serif;
-    background-color: #f2f2f2;
   }
   
   /* Estilo de las celdas de encabezado */
@@ -12,7 +11,7 @@
     background-color: #333;
     color: white;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     padding: 4px !important;
   }
@@ -20,8 +19,8 @@
   /* Estilo de las celdas de datos */
   td {
     border: 1px solid #ddd;
-    padding: 4px !important;
-    font-size: 12px;
+    padding: 6px !important;
+    font-size: 14px;
   }
   
   /* Cambiar el color de fondo de cada fila alternativa */
@@ -30,8 +29,8 @@
   }
 
 </style>
-<div class="modal fade" id="modalConsulta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 90%">
+<div class="modal fade modal-static" id="modalConsulta" tabindex="-1" role="dialog" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 90%">
       <div class="modal-content">
         <div class="modal-header py-1 bg-primary">
           <h5 class="modal-title" id="labelTitleConsult"></h5>
@@ -52,45 +51,45 @@
                       <div class="input-group-prepend">
                         <label class="input-group-text" style="cursor: pointer" for="cod_clinico" id="btnAddPaci"><i style="cursor: pointer" class="fas fa-plus"></i></label>
                       </div>
-                      <input class="form-control" type="text" name="cod_clinico" id="cod_clinico" readonly required>
+                      <input class="form-control cls-input" type="text" name="cod_clinico" id="cod_clinico" readonly required>
                     </div>
                   </div>
                   <div class="form-group col-sm-12 col-md-4">
                     <label for="paciente">Cliente:</label>
-                    <input type="text" class="form-control clear-input" readonly id="paciente" name="paciente" required>
+                    <input type="text" class="form-control cls-input oblig-input" readonly id="paciente" name="paciente" required>
                   </div>
                   <div class="form-group col-sm-12 col-md-3">
                     <label for="dui">Dui:</label>
-                    <input type="text" class="form-control clear-input" readonly id="dui" name="dui" required>
+                    <input type="text" class="form-control cls-input oblig-input" readonly id="dui" name="dui" required>
                   </div>
                   <div class="form-group col-sm-12 col-md-3">
                     <label for="nombre">Teléfono:</label>
-                    <input type="text" class="form-control clear-input" readonly id="telefono" name="telefono" required>
+                    <input type="text" class="form-control cls-input" readonly id="telefono" name="telefono" required>
                   </div>
                 
                 <div class="form-group col-sm-12 col-md-6">
                   <label for="consulta">Motivo de consulta:</label>
-                  <input type="text" class="form-control clear-input" id="consulta" name="consulta" required>
+                  <input type="text" class="form-control cls-input oblig-input" id="consulta" name="consulta" required>
                 </div>
                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                     <label for="diagnostico">Aprox. diagnóstico:</label>
-                    <input type="text" id="diagnostico" name="diagnostico" class="form-control clear-input">
+                    <input type="text" id="diagnostico" name="diagnostico" class="form-control cls-input oblig-input">
                   </div>
                   <div class="card p-1 m-1 col-sm-12 col-md-12">
                     <div class="card-header p-1">
-                      <strong>Agregar sintomas</strong>
+                      <span style="text-align: center">Agregar sintomas</span>
                       <div class="row form-main-sintomas">
                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                           <label for="sintomas">Sintomas:</label>
-                          <input id="sintomas" name="sintomas" class="form-control clear-input" type="text">
+                          <input id="sintomas" name="sintomas" class="form-control cls-sintomas" type="text">
                         </div>
                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                           <label for="conflictos">Conflictos:</label>
-                          <input id="conflictos" name="conflictos" class="form-control clear-input" type="text">
+                          <input id="conflictos" name="conflictos" class="form-control cls-sintomas" type="text">
                         </div>
                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
-                          <label for="situacion">Situación:</label>
-                          <textarea id="situacion" name="situacion" class="form-control clear-input" type="text"></textarea>
+                          <label for="situacion">Situación actual:</label>
+                          <textarea id="situacion" name="situacion" class="form-control cls-sintomas" type="text"></textarea>
                         </div>
                       </div>
                       <div class="d-flex justify-content-end">
@@ -101,9 +100,11 @@
                       <table class="table table-striped" style="height: 10px">
                         <thead>
                           <tr>
-                            <th>SINTOMAS</th>
-                            <th>CONFLICTOS</th>
-                            <th>SITUACIÓN ACTUAL</th>
+                            <th style="width:5%">#</th>
+                            <th style="width:25%">SINTOMAS</th>
+                            <th style="width:25%">CONFLICTOS</th>
+                            <th style="width:35%">SITUACIÓN ACTUAL</th>
+                            <th style="width:10%">Eliminar</th>
                           </tr>
                         </thead>
                         <tbody id="sintomas-rows">
@@ -118,7 +119,7 @@
                 <label for="genograma">Genograma:</label>
                 <input id="genograma" name="genograma" type="file" accept="image/png,image/jpeg" class="form-control clear-input">
               </div>
-              <img id="imagenSeleccionada" alt="genograma de consulta" width="100%">
+              <img id="imagenSeleccionada" alt="genograma de consulta" width="180">
             </div>
           </div>
             </div>
