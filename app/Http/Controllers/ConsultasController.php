@@ -17,7 +17,7 @@ class ConsultasController extends Controller
         return view('consulta.index');
     }
     public function datatable_consulta(){
-        $consulta = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.Genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id order by c.id desc');
+        $consulta = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id order by c.id desc');
         $data = [];
         $contador = 1;
         foreach($consulta as $row){
@@ -28,8 +28,8 @@ class ConsultasController extends Controller
             $array[] = $row->paciente;
             $array[] = date('d-m-Y',strtotime($row->fecha));
             $array[] = $row->hora;
-            $array[] = $row->motivo;
-            $array[] = '<button data-id_cita="'.$row->id.'" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
+            $array[] = $row->motivo_consulta;
+            $array[] = '<button data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
             <button class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
             $data[] = $array;
             $contador ++;
@@ -54,7 +54,7 @@ class ConsultasController extends Controller
             $array[] = $row->dui;
             $array[] = $row->telefono;
             $array[] = date('d-m-Y',strtotime($row->fecha_cita));
-            $array[] = '<button data-id_paciente="'.encrypt($row->id).'" onclick="selectedPac(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-plus"></i> Agregar</button>';
+            $array[] = '<button data-id_paciente="'.$row->id.'" onclick="selectedPac(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-plus"></i> Agregar</button>';
             $data[] = $array;
             $contador ++;
         }
@@ -68,7 +68,7 @@ class ConsultasController extends Controller
     }
     //Get paciente by id, para cargar en formulario de consulta
     public function getPacienteById(){
-        $id_paciente = Crypt::decrypt(request()->input('id_paciente'));
+        $id_paciente = request()->input('id_paciente');
         session(['id_paciente' => $id_paciente]);
         $consulta = DB::select('SELECT p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,c.fecha as fecha_cita,c.celular as telefono FROM `paciente` as p INNER JOIN citas as c on p.id_cita=c.id where p.id=?',[$id_paciente]);
         return response()->json($consulta[0]);
@@ -77,36 +77,56 @@ class ConsultasController extends Controller
     public function saveConsulta(Request $request){
         date_default_timezone_set('America/El_Salvador');
         $fecha = date('Y-m-d');
-        $hora = date('H:m:s');
+        $hora = date('H:i:s');
         $id_paciente = session('id_paciente');
         $usuario_id = Auth::user()->id;
+        $sintomas = json_decode(request()->input('sintomas'),true);
         // Obtener la imagen cargada
-        //$imagePath = $request->file('image')->store('public/images');
+        if($request->hasFile('genograma')){
+            $imagePath = $request->file('genograma')->store('consultas/genogramas','public');
+        }else{
+            $imagePath = '-';
+        }
         $data = [
             'num_clinico' => $request->input('cod_clinico'),
             'fecha' => $fecha,
             'hora' => $hora,
             'motivo_consulta' => $request->input('consulta'),
-            'genograma' => '-',
+            'genograma' => $imagePath,
             'aprox_diagnostico' => $request->input('diagnostico'),
             'paciente_id' => $id_paciente,
             'usuario_id' => $usuario_id
         ];
         $consulta = Consultas::create($data);
         //Save sintomas
-        $dataSintomas = [
-            'fecha_regis' => $fecha,
-            'hora_regis' => $hora,
-            'sintoma' => $request->input('sintomas'),
-            'conflicto' => $request->input('conflictos'),
-            'situacion' => $request->input('situacion'),
-            'id_consulta' => $consulta->id
-        ];
-        Sintomas::create($dataSintomas);
+        foreach($sintomas as $row){
+            $dataSintomas = [
+                'fecha_regis' => $fecha,
+                'hora_regis' => $hora,
+                'sintoma' => $row['sintoma'],
+                'conflicto' => $row['conflicto'],
+                'situacion' => $row['situacion'],
+                'id_consulta' => $consulta->id
+            ];
+            Sintomas::create($dataSintomas);
+        }
         return response()->json([
             'status' => 'inserted',
             'message' => 'Se ha registrado correctamente la consulta',
             'data' => []
         ]);
+    }
+    /**
+     * Editar consulta
+     */
+    public function editConsult(){
+        $id_consulta = request()->input('id_consulta');
+        $consulta = Consultas::find($id_consulta);
+        $sintomas = Sintomas::where('id_consulta',$id_consulta)->get();
+        $response = [
+            'consulta' => $consulta,
+            'sintomas' => $sintomas
+        ];
+        return response()->json($response);
     }
 }
