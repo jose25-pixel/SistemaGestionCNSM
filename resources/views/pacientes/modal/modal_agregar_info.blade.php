@@ -159,6 +159,7 @@
                                     <div class="form-group col-sm-12 col-md-4">
                                         <label for="estado_civilm">Estado Civil madre:</label>
                                         <select class="form-control" onkeyup="mayupaciente(this)" id="estado_civilm" name="estado_civilm">
+                                            <option value="--">--</option>
                                             <option value="soltera">SOlTERA</option>
                                             <option value="casada">CASADA</option>
                                             <option value="acompañada">ACOMPAÑADA</option>
@@ -180,6 +181,7 @@
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="vivem">Vive con madre:</label>
                                         <select class="form-control" onkeyup="mayupaciente(this)" id="vivem" name="vivem">
+                                            <option value="">---</option>
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </select>
@@ -191,8 +193,10 @@
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="viveaunm">Vive su madre Aun?:</label>
                                         <select class="form-control" onkeyup="mayupaciente(this)" id="viveaunm" name="viveaunm">
-                                            <option value="SI">SI</option>
+                                            <option value="--">--</option>
                                             <option value="NO">NO</option>
+                                            <option value="SI">SI</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -225,6 +229,7 @@
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="estado_civilp">Estado Civil Padre:</label>
                                         <select class="form-control" onkeyup="mayupaciente(this)" id="estado_civilp" name="estado_civilp">
+                                            <option value="***">***</option>
                                             <option value="soltero">SOLTERO</option>
                                             <option value="casado">CASADO</option>
                                             <option value="acompañado">ACOMPAÑADO</option>
@@ -246,8 +251,8 @@
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="viveaunp">Vive su Padre aun</label>
                                         <select type="text" class="form-control" id="viveaunp" name="viveaunp">
-                                            <option value="SI">SI</option>
                                             <option value="NO">NO</option>
+                                            <option value="SI">SIs</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -627,7 +632,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-success btn-lg"><i class="fas fa-save"></i>
                             Ingresar<span id=""></span></button>

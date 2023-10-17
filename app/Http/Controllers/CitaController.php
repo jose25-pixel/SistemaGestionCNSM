@@ -211,11 +211,13 @@ class CitaController extends Controller
         return response()->json($cantidadCita);
     }
 
-
+ 
 
  //Get cits
  public function getCitas(){
-    $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora
+
+   
+     $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora
     FROM citas
     WHERE citas.id NOT IN (
         SELECT id_cita

@@ -38,7 +38,7 @@ class Paciente extends Model
 
     public function cita()
     {
-        return $this->belongsTo(cita::class,'id_cita');
+        return $this->hasMany(Cita::class,'id');
     }
 
 
