@@ -32,14 +32,14 @@ class PacienteController extends Controller
 
 
 
-/** 
+    /** 
 
     public function  verdatos(Request $request)
     {
         $data = json_decode($request->query('data'), true);
         return view('pacientes.detalles_paciente', ['datos' => $data]);
     }
-*/
+     */
 
 
 
@@ -234,17 +234,16 @@ class PacienteController extends Controller
         Antecedente::create($datosa);
     }
 
-///funcio para ver los datos de un solo paciente!!!
+    ///funcio para ver los datos de un solo paciente!!!
     public function verDetallesPaciente(Request $request, $idCita)
     {
-
-
         try {
 
 
-
-
-            $pacienteDetalles = Paciente::join('citas', 'paciente.id_cita', '=', 'citas.id')->select(
+            //nueva_funcion
+    //$pacienteDetalles=Paciente::find($idCita);
+      //  dd( $pacienteDetalles->cita);
+       $pacienteDetalles = Paciente::join('citas', 'paciente.id_cita', '=', 'citas.id')->select(
                 'citas.paciente',
                 'citas.dui',
                 'citas.email',
@@ -263,16 +262,57 @@ class PacienteController extends Controller
                 'municipio',
                 'celular_dos',
                 'celular_tres',
-                'nu_hermano'
+                'nu_hermano',
+                'lugar_ocupa',
+                'nu_hijo',
+                'edad_hijo',
+                'ano_casado'
+            )->where('paciente.id', $idCita)->first();
+
+
+
+            $pacienteparentesco = parentesco::join('paciente', 'parentesco.id_paciente', '=', 'paciente.id')->select(
+                'paciente.id',
+                'parentesco.nombre_madre',
+                'parentesco.edad_madre',
+                'parentesco.estado_civilm',
+                'parentesco.nivel_educativom',
+                'parentesco.ocupacionm',
+                'parentesco.vivem',
+                'parentesco.duim',
+                'parentesco.notam',
+                'parentesco.viveaunm',
+                'parentesco.nombrep',
+                'parentesco.edadp',
+                'parentesco.estado_civilp',
+                'parentesco.ocupacionp',
+                'parentesco.nivel_educativop',
+                'parentesco.vivep',
+                'parentesco.duip',
+                'parentesco.notap',
+                'parentesco.viveaunp',
+                
+            )->where('paciente.id', $idCita)->first();
+
+
+            $pacienteconyuge = conyuge::join('paciente', 'conyuge.id_paciente', '=', 'paciente.id')->select(
+                'paciente.id',
+                
+                'nombre',
+                'conyuge.nivel_educativo',
+                'conyuge.ocupacion',
+                'conyuge.edad',
+                'conyuge.notac',
+            
             )->where('paciente.id', $idCita)->first();
 
             $numarticulo = Paciente::select('cod_paciente')->where('id', $idCita)->get();
 
             //return $pdf->download('cod_paciente.pdf');
 
-            $pdf = Pdf::loadView('pacientes.detalles_paciente', ['paciente' => $pacienteDetalles]);
+            $pdf = Pdf::loadView('pacientes.detalles_paciente', ['paciente' => $pacienteDetalles,'parentesco'=> $pacienteparentesco,'conyuge'=> $pacienteconyuge ]);
             return $pdf
-                ->stream('Kard-' . $numarticulo[0]->cod_paciente . '.pdf');
+                ->stream('reporte-' . $numarticulo[0]->cod_paciente . '.pdf');
 
             // return response()->json(['paciente' => $pacienteDetalles]);
 

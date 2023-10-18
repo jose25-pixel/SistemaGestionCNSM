@@ -79,6 +79,20 @@
         , blocks: [4, 4]
     , });
 
+
+
+    var duiCleave = new Cleave('#duip', {
+        delimiter: '-',
+        blocks: [8, 1],
+    });
+
+
+    var duiCleave = new Cleave('#duim', {
+        delimiter: '-',
+        blocks: [8, 1],
+    });
+
+
     // Función para validar números
     function validarNupacientes(event) {
         var input = event.target;

@@ -13,6 +13,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   listarCitaspacientes();
 })
+
+
 function listarCitaspacientes() {
   let url = window.location.origin + '/pacientes/datatable';
   dataTable('tabla-pacientes', url);
@@ -75,6 +77,29 @@ document.addEventListener('DOMContentLoaded', function () {
   var formulario = document.getElementById('pacienteForm');
   const departamentoSelect = document.getElementById('departamento');// para la funcion de selecion de los departamentos
   const municipioSelect = document.getElementById('municipio');
+  const fechaNacimiento = document.getElementById('fecha_naci');//funcion para calular la edad segun fecha nacimiento
+  const edadOutput = document.getElementById('edad');
+
+  // Escucha el evento input en el campo de fecha de nacimiento
+  fechaNacimiento.addEventListener('input', function() {
+      // Obtén la fecha de nacimiento del campo de entrada
+      const fechaNacimientoValor = new Date(fechaNacimiento.value);
+      
+      // Calcula la fecha actual
+      const fechaActual = new Date();
+      
+      // Calcula la diferencia de años
+      const diferenciaAnios = fechaActual.getFullYear() - fechaNacimientoValor.getFullYear();
+      
+      // Verifica si ya pasó el cumpleaños de este año
+      if (fechaActual.getMonth() < fechaNacimientoValor.getMonth() || (fechaActual.getMonth() === fechaNacimientoValor.getMonth() && fechaActual.getDate() < fechaNacimientoValor.getDate())) {
+          // Si no ha pasado, resta un año
+          edadOutput.value = diferenciaAnios - 1;
+      } else {
+          // Si ya pasó, muestra la edad actual
+          edadOutput.value = diferenciaAnios;
+      }
+  });
 
   // Define un objeto con los municipios para cada departamento
   const municipiosPorDepartamento = {
@@ -146,12 +171,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         Swal.fire(
           'Agregado!',
-          'Datos del paciente agragdo exitosamente.',
+          'Datos del paciente agregado exitosamente.',
           'success'
         )
 
         $("#modalIngresoPaciente").modal("hide");
         pacienteForm.reset();
+        listarCitaspacientes();
+        getSelectcitas();
+
+        window.location.href = window.location.href;
 
 
       })
@@ -216,7 +245,9 @@ function getSelectcitas(callback = '') {
             {
               data: null,
               render: function (data, type, row) {
-                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
+     //                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
+     return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\')">Seleccionar</button>';
+    
               }
             }
           ]
@@ -231,8 +262,10 @@ function getSelectcitas(callback = '') {
 
 }
 
-function selectCita(citaId) {
-  document.getElementById('cita_id').value = citaId;
+function selectCita(citaId, pacienteNombre) {
+ // let citaInfo = citaId + ' - ' + pacienteNombre;
+  document.getElementById('cita_id').value = citaId  ;
+  document.getElementById('nombre_paciente_referencia').textContent = 'Paciente: ' + pacienteNombre;
   $('#citasModal').modal('hide');
 }
 
