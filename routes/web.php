@@ -48,6 +48,7 @@ Route::get('consultas/seleccionar/pacientes', [ConsultasController::class, 'dt_p
 Route::post('consulta/getPaciente/selected', [ConsultasController::class, 'getPacienteById']);
 Route::post('consulta/save', [ConsultasController::class, 'saveConsulta']);
 Route::post('consulta/edit', [ConsultasController::class, 'editConsult']);
+Route::put('consulta/update', [ConsultasController::class, 'updateConsult']);
 
 Route::get('pacientes/datatable', [PacienteController::class, 'getpacientes']);
 Route::get('pacientes/id', [PacienteController::class, 'pacientegetid']);

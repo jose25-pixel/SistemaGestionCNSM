@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ConsultasController extends Controller
 {
@@ -121,6 +122,7 @@ class ConsultasController extends Controller
      */
     public function editConsult(){
         $id_consulta = request()->input('id_consulta');
+        session(['consulta_id'=> $id_consulta]);
         $consulta = Consultas::find($id_consulta);
         $sintomas = Sintomas::where('id_consulta',$id_consulta)->get();
         $response = [
@@ -128,5 +130,51 @@ class ConsultasController extends Controller
             'sintomas' => $sintomas
         ];
         return response()->json($response);
+    }
+    //Update consulta
+    public function updateConsult(Request $request){
+        date_default_timezone_set('America/El_Salvador');
+        $fecha = date('Y-m-d');
+        $hora = date('H:i:s');
+        $consulta_id = session('consulta_id');
+        $usuario_id = Auth::user()->id;
+        $sintomas = json_decode(request()->input('sintomas'),true);
+        // Obtener la imagen cargada
+        
+        $consulta = Consultas::find($consulta_id);
+        if($request->hasFile('genograma')){
+            $pathImage = "public/".$consulta['genograma'];
+            if(Storage::exists($pathImage)){
+                Storage::delete($pathImage); //Delete imagen antigua
+            }
+            $imagePath = $request->file('genograma')->store('consultas/genogramas','public');
+        }else{
+            $imagePath = $consulta['genograma']; //Imagen permanece
+        }
+        $data = [
+            'motivo_consulta' => $request->input('consulta'),
+            'genograma' => $imagePath,
+            'aprox_diagnostico' => $request->input('diagnostico'),
+        ];
+        $consulta = Consultas::where('id',$consulta_id)->update($data);
+        //Delete sintomas
+        Sintomas::where('id_consulta',$consulta_id)->delete();
+        //Save nuevos sintomas o actuales
+        foreach($sintomas as $row){
+            $dataSintomas = [
+                'fecha_regis' => $fecha,
+                'hora_regis' => $hora,
+                'sintoma' => $row['sintoma'],
+                'conflicto' => $row['conflicto'],
+                'situacion' => $row['situacion'],
+                'id_consulta' => $consulta_id
+            ];
+            Sintomas::create($dataSintomas);
+        }
+        return response()->json([
+            'status' => 'updated',
+            'message' => 'Se ha actualizado correctamente la consulta',
+            'data' => []
+        ]);
     }
 }

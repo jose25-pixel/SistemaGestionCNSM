@@ -26,6 +26,12 @@ function openModalNewConsulta(){
     addSintomaTableRows();
     document.getElementById('imagenSeleccionada').src = window.location.origin + "/img/icon/upload-image.png";
     $("#modalConsulta").modal('show');
+    //Set method
+    document.getElementById('_methodConsult').value ='post';
+    //Set button add paciente
+    document.getElementById('btnAddPaci').style.display = 'block';
+    //Set method post
+    document.getElementById('_methodConsult').value = 'post';
 }
 
 function datatable_consultas(){
@@ -87,6 +93,8 @@ try{
     const consultaForm = document.getElementById('consultaForm');
     consultaForm.addEventListener('submit', (e)=>{
       e.preventDefault();
+      //Get action method
+      let _method = document.getElementById('_methodConsult').value;
       //Validacion de input
       let inputsValidation = document.querySelectorAll('.oblig-input');
       for(let i = 0; i < inputsValidation.length; i++){
@@ -111,25 +119,48 @@ try{
           text: 'Por favor, ingresar sintomas!',
       }); return 0;
       }
-      let url = window.location.origin + "/consulta/save";
-      axios.post(url,formData)
-      .then((res)=>{
-        console.log(res);
-        let data = res.data;
-        if(data.status === "inserted"){
-          Swal.fire({
-            icon: "success",
-            title: "Registro",
-            text: data.message,
-        });
-        sintomas = [];
-        $("#modalConsulta").modal('hide');
-        $('#dt_listado_general_consulta').DataTable().ajax.reload(null,false);
-        }
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+      //Validacion para guardar o actualizar
+      if(_method === "post"){
+        let url = window.location.origin + "/consulta/save";
+        axios.post(url,formData)
+        .then((res)=>{
+          console.log(res);
+          let data = res.data;
+          if(data.status === "inserted"){
+            Swal.fire({
+              icon: "success",
+              title: "Registro",
+              text: data.message,
+          });
+          sintomas = [];
+          $("#modalConsulta").modal('hide');
+          $('#dt_listado_general_consulta').DataTable().ajax.reload(null,false);
+          }
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+      }else if(_method === "put"){
+        let url = window.location.origin + "/consulta/update";
+        axios.post(url,formData)
+        .then((res)=>{
+          console.log(res);
+          let data = res.data;
+          if(data.status === "updated"){
+            Swal.fire({
+              icon: "success",
+              title: "Registro",
+              text: data.message,
+          });
+          sintomas = [];
+          $("#modalConsulta").modal('hide');
+          $('#dt_listado_general_consulta').DataTable().ajax.reload(null,false);
+          }
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+      }
     })
 }catch(err){
     console.log(err)
@@ -200,11 +231,13 @@ function removeItem(element){
  * Funcion para editar
  */
 function editConsult(element){
+  document.getElementById('btnAddPaci').style.display = 'none';
   let id_consulta = element.dataset.id_consulta;
   let url = window.location.origin + "/consulta/edit";
   axios.post(url,{id_consulta})
   .then((response)=>{
-    console.log(response)
+    //Set method put
+    document.getElementById('_methodConsult').value = 'put';
     let data = response.data;
     document.getElementById('consulta').value = data.consulta.motivo_consulta;
     document.getElementById('diagnostico').value = data.consulta.aprox_diagnostico;

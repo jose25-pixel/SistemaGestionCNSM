@@ -40,7 +40,7 @@
         </div>
         <form id="consultaForm" method="POST" enctype="multipart/form-data">
           @csrf
-          <input type="hidden" name="_method" id="_methodCita" class="clear-input">
+          <input type="hidden" name="_method" id="_methodConsult" class="clear-input">
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-12 col-md-10">
