@@ -16,6 +16,7 @@ class Consultas extends Model
         'motivo_consulta',
         'genograma',
         'aprox_diagnostico',
+        'situacion_actual',
         'paciente_id',
         'usuario_id'
     ];

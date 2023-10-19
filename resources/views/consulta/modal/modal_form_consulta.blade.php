@@ -30,8 +30,8 @@
 
 </style>
 <div class="modal fade modal-static" id="modalConsulta" tabindex="-1" role="dialog" data-keyboard="false">
-    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 90%">
-      <div class="modal-content">
+    <div class="modal-dialog" style="max-width: 90%">
+      <div class="modal-content modal-dialog-scrollable">
         <div class="modal-header py-1 bg-primary">
           <h5 class="modal-title" id="labelTitleConsult"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -75,21 +75,17 @@
                     <label for="diagnostico">Aprox. diagnóstico:</label>
                     <input type="text" id="diagnostico" name="diagnostico" class="form-control cls-input oblig-input">
                   </div>
-                  <div class="card p-1 m-1 col-sm-12 col-md-12">
+                  <div class="card p-2 col-sm-12 col-md-8 col-xl-8">
                     <div class="card-header p-1">
                       <span style="text-align: center">Agregar sintomas</span>
                       <div class="row form-main-sintomas">
-                        <div class="form-group col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group col-sm-12 col-md-6 col-xl-6">
                           <label for="sintomas">Sintomas:</label>
                           <input id="sintomas" name="sintomas" class="form-control cls-sintomas" type="text">
                         </div>
-                        <div class="form-group col-sm-12 col-md-6 col-xl-4">
+                        <div class="form-group col-sm-12 col-md-6 col-xl-6">
                           <label for="conflictos">Conflictos:</label>
                           <input id="conflictos" name="conflictos" class="form-control cls-sintomas" type="text">
-                        </div>
-                        <div class="form-group col-sm-12 col-md-6 col-xl-4">
-                          <label for="situacion">Situación actual:</label>
-                          <textarea id="situacion" name="situacion" class="form-control cls-sintomas" type="text"></textarea>
                         </div>
                       </div>
                       <div class="d-flex justify-content-end">
@@ -103,7 +99,6 @@
                             <th style="width:5%">#</th>
                             <th style="width:25%">SINTOMAS</th>
                             <th style="width:25%">CONFLICTOS</th>
-                            <th style="width:35%">SITUACIÓN ACTUAL</th>
                             <th style="width:10%">Eliminar</th>
                           </tr>
                         </thead>
@@ -112,6 +107,12 @@
                       </table>
                     </div>
                   </div>
+                  
+                  <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                    <label for="situacion_actual">Situación actual:</label>
+                    <textarea id="situacion_actual" name="situacion_actual" class="form-control cls-sintomas" type="text"></textarea>
+                  </div>
+                
               </div>
             </div>
             <div class="col-sm-12 col-md-2">
