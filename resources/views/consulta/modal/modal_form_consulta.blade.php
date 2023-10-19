@@ -110,7 +110,7 @@
                   
                   <div class="form-group col-sm-12 col-md-4 col-xl-4">
                     <label for="situacion_actual">Situación actual:</label>
-                    <textarea id="situacion_actual" name="situacion_actual" class="form-control cls-sintomas" type="text"></textarea>
+                    <textarea id="situacion_actual" name="situacion_actual" class="form-control cls-input oblig-input" type="text"></textarea>
                   </div>
                 
               </div>
