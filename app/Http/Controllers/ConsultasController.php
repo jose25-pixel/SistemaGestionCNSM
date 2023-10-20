@@ -30,8 +30,8 @@ class ConsultasController extends Controller
             $array[] = date('d-m-Y',strtotime($row->fecha));
             $array[] = $row->hora;
             $array[] = $row->motivo_consulta;
-            $array[] = '<button data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
-            <button class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="'.$row->id.'"><i class="fas user-slash"></i> Cancelar</button>';
+            $array[] = '<button title="Editar información de la consulta" data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i>Editar</button>
+            <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-danger" onclick="delConsulta(this)" data-id_consulta="'.$row->id.'"><i class="fas fa-trash"></i> Eliminar</button>';
             $data[] = $array;
             $contador ++;
         }
@@ -95,6 +95,7 @@ class ConsultasController extends Controller
             'motivo_consulta' => $request->input('consulta'),
             'genograma' => $imagePath,
             'aprox_diagnostico' => $request->input('diagnostico'),
+            'situacion_actual' => $request->input('situacion_actual'),
             'paciente_id' => $id_paciente,
             'usuario_id' => $usuario_id
         ];
@@ -106,7 +107,6 @@ class ConsultasController extends Controller
                 'hora_regis' => $hora,
                 'sintoma' => $row['sintoma'],
                 'conflicto' => $row['conflicto'],
-                'situacion' => $row['situacion'],
                 'id_consulta' => $consulta->id
             ];
             Sintomas::create($dataSintomas);
@@ -155,6 +155,7 @@ class ConsultasController extends Controller
             'motivo_consulta' => $request->input('consulta'),
             'genograma' => $imagePath,
             'aprox_diagnostico' => $request->input('diagnostico'),
+            'situacion_actual' => $request->input('situacion_actual')
         ];
         $consulta = Consultas::where('id',$consulta_id)->update($data);
         //Delete sintomas
@@ -166,7 +167,6 @@ class ConsultasController extends Controller
                 'hora_regis' => $hora,
                 'sintoma' => $row['sintoma'],
                 'conflicto' => $row['conflicto'],
-                'situacion' => $row['situacion'],
                 'id_consulta' => $consulta_id
             ];
             Sintomas::create($dataSintomas);
@@ -175,6 +175,26 @@ class ConsultasController extends Controller
             'status' => 'updated',
             'message' => 'Se ha actualizado correctamente la consulta',
             'data' => []
+        ]);
+    }
+    /**
+     * Remover consulta
+     */
+    function destroyConsult(){
+        $id = request()->input('id');
+        //Validar si existe en paciente
+        $valid = Consultas::where('id',$id)->exists();
+        $validSintomas = Sintomas::where('id_consulta',$id)->exists();
+        if($valid && $validSintomas){
+            //Delete
+            Consultas::where('id',$id)->delete();
+            Sintomas::where('id_consulta',$id)->delete();
+            return response()->json([
+                'status' => 'delete'
+            ]); 
+        }
+        return response()->json([
+            'status' => 'error-500'
         ]);
     }
 }

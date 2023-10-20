@@ -14,7 +14,6 @@ class Sintomas extends Model
         'hora_regis',
         'sintoma',
         'conflicto',
-        'situacion',
         'id_consulta'
     ];
 }

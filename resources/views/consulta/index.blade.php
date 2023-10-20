@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('title','CNSM | Consulta')
+@section('content-header')
+    <span><i class="fas fa-users"></i> GESTIONAR CONSULTAS</span>
+@endsection
 @section('content')
 @include('consulta.modal.modal_form_consulta')
 @include('consulta.modal.modal_pacientes_selected')
-    <span>GESTIONAR CONSULTAS</span>
     <div class="card p-1 m-1">
         <div class="card-header" style="border-top:4px solid #050859">
-            <button class="btn btn-outline-secondary btn-sm btn-rounded" id="btnNewConsult"><i class="fas fa-user-edit"></i> Nueva consulta</button>
+            <button title="Registrar nueva consulta" class="btn btn-outline-secondary btn-sm btn-rounded" id="btnNewConsult"><i class="fas fa-user-edit"></i> Nueva consulta</button>
         </div>
         <div class="card-body">
             <table id="dt_listado_general_consulta" class="table table-custom table-hover">
