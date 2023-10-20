@@ -11,9 +11,10 @@
 
 <style>
     body {
-        font-family: 'Courier New', Courier, monospace;
+        /* font-family: 'Courier New', Courier, monospace;-->*/
+        font-family: 'Century Gothic', sans-serif;
         font-size: 15px;
-        margin-top: 182px;
+        margin-top: 20px;
         margin-bottom: 43px;
         padding: 5px;
         padding-bottom: 2px;
@@ -26,60 +27,108 @@
     }
 
     .header {
-        position: fixed;
+       /* position: fixed;*/
         top: 0cm;
         left: 0cm;
         right: 0cm;
-        height: 4.6cm;
+        height: 2.8cm;
+        z-index: 1000; /*
     }
 
     .container {
         width: 100%;
         height: 62px;
-        border-bottom: rgb(144, 140, 140) 2px solid;
+        /* border-bottom: rgb(231, 24, 24) 2px solid;*/
     }
 
     .contenedor1 {
-        width: 25%;
+        margin-top: 4px;
+
+        height: 28%;
         float: left;
+        /*        background-color: red;*/
     }
 
     img {
-        width: 70%;
-        height: 57px;
+        width: 60%;
+        height: 90px;
         margin-top: 3px;
-        margin-left: 80px;
+        margin-left: 30px;
     }
 
     .contenedor2 {
-        width: 65%;
-        height: 58px;
-        text-align: center;
-        float: right;
+        margin-top: 12px;
+        width: 75%;
+        height: 90px;
+        text-align: left;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        /* Asegura que los elementos se apilen verticalmente */
+        align-items: center;
+        margin: 0;
+        padding: 0
     }
 
-    .titulo {
-        margin: 10px;
+    .encabezado {
+        margin-top: 0px;
+        width: 100%;
+        height: 11px;
+        text-align: left;
+        float: left;
+        background-color: rgb(18, 18, 202);
+
     }
 
-    .nombre {
-        margin: 5px 10px 3px 2px;
+
+    .linea {
+        background-color: rgb(18, 18, 202);
+    }
+
+    .parafo1 {
+        margin-top: 1px;
+        font-weight: bold;
+        height: 5px;
+        font-size: 15px;
+        color: black;
+    }
+
+    .parafo2 {
+        margin-top: 1px;
+        height: 4px;
+        font-weight: bold;
+        font-size: 23px;
+        color: black;
+    }
+
+    .parrafo3 {
+
+        width: 90%;
+        font-size: 10px;
     }
 
     .medicamentos {
+
         text-align: center;
+        margin-top: 8px;
     }
 
     section {
         clear: unset;
-        margin-top: 20px;
-        margin-bottom: 30px;
+        margin-top: 0px;
+        bottom: 2cm;
+        margin-bottom: 0px;
     }
 
     .cm {
-        height: 70px;
+        height: 60px;
+       
         text-align: center;
         margin-left: 10px;
+      
+    }
+    .salto-de-pagina {
+        page-break-before: always;
     }
 
     .table {
@@ -90,6 +139,7 @@
         background-color: transparent;
         border-collapse: collapse;
         border: 1px solid #a2a7a7;
+        z-index: 1; 
 
     }
 
@@ -98,7 +148,7 @@
         display: table;
         width: 100%;
         max-width: 100%;
-        margin-bottom: 9px;
+        margin-bottom: 14px;
         background-color: transparent;
         border-collapse: collapse;
 
@@ -122,7 +172,7 @@
         text-align: center;
         color: rgb(5, 5, 5);
 
-        background-color: rgba(12, 12, 12, 0.3);
+        background-color: rgba(73, 175, 243, 0.3);
 
         border: 1px solid black;
     }
@@ -191,12 +241,12 @@
 
     footer {
         position: fixed;
-        bottom: 0cm;
+        bottom: 0.5cm;
         left: 0cm;
         right: 0cm;
-        height: 1cm;
+        height: 1.5cm;
         color: black;
-
+    
         text-align: center;
         line-height: 0.5cm;
 
@@ -205,6 +255,7 @@
     .pag:after {
         content: counter(page, disc);
     }
+    
 
 </style>
 
@@ -213,14 +264,29 @@
     <div class="header">
         <div class="container">
             <div class="contenedor1">
-                <img src="img/logocsnm.jpeg" alt="">
+                <img src="img/logo.jpg" alt="">
             </div>
 
             <div class="contenedor2">
-                <h3 class="titulo">Comíte Nacional de Salud Mental</h3>
-                <h3 class="nombre">(CNSM)</h3>
+                <div class="elemneto">
+                    <p class="parafo1">COMÍTE NACIONAL DE </p>
+                    <p class="parafo2">SALUD MENTAL</p>
+                </div>
+                <hr class="linea">
+                <div class="encabezado">
+                </div>
+                <p class="parrafo3"> REPUBLICA DE EL SALVADOR, C.S.S.P. CLÍNICA CENTRO DE SALUD MENTAL, NO. INSCRIP.12, PROPIEDAD DEL COMITÉ NACIONAL DE SALUD MENTAL. </p>
+
+
+
             </div>
-        </div>
+        </div>        
+    </div>
+
+
+
+
+    <section>
 
         <div class="medicamentos">
             <h4>Datos personales del consultante
@@ -427,26 +493,29 @@
                         </tr>
                     </tbody>
                 </table>
+               
+            </div>
+
+            <div class="cm">
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
                             <th scope="col-sm-4">Comentario</th>
 
-
+                          
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> {{$parentesco->notam}} </td>
-
+                          
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-            <!-- codigo de los familiares del consultante Padre -->
+          
             <h4>Datos del padre</h4>
-
 
 
             <div class="cm">
@@ -477,16 +546,24 @@
 
 
             </div>
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="medicamentos">
+            
             <div class="cm">
 
 
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col-sm-4">Nivel Educativo</th>
-                            <th scope="col-sm-4">Vive con su padre</th>
-                            <th scope="col-sm-4">Dui</th>
-                            <th scope="col-sm-4">vive aun su padre</th>
+                            <th scope="col-sm-4">NIVEL EDUCATIVO</th>
+                            <th scope="col-sm-4">VIVE CON SU PADRE</th>
+                            <th scope="col-sm-4">DUI</th>
+                            <th scope="col-sm-4">VIVE SU PADRE AUN</th>
 
                         </tr>
                     </thead>
@@ -501,23 +578,33 @@
                         </tr>
                     </tbody>
                 </table>
+                
+            </div>
+
+
+
+            <div class="cm">
+
+
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col-sm-4">Comentario</th>
-
+                            <th scope="col-sm-4">COMENTARIO</th>
+                           
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td> {{$parentesco->notap}} </td>
+                            <td> {{$parentesco->notam}} </td>
+                           
+
 
                         </tr>
                     </tbody>
                 </table>
+                
             </div>
-
             <h3>Datos del conyuge</h3>
 
             <div class="cm">
@@ -544,26 +631,10 @@
 
                 </table>
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">Cmentario</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$conyuge->notac}} </td>
-
-                    </tbody>
-
-                </table>
+             
             </div>
 
-            <hr>
-            <br>
-            <br>
+          
 
             <div class="cm">
 
@@ -571,101 +642,108 @@
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col-sm-4">Nombre</th>
-                            <th scope="col-sm-4">Nivel Educativo</th>
-                            <th scope="col-sm-4">Ocupacion</th>
-                            <th scope="col-sm-4">edad</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$conyuge->nombre}} </td>
-                            <td> {{$conyuge->nivel_educativo}} </td>
-                            <td> {{$conyuge->ocupacion}} </td>
-                            <td> {{$conyuge->edad}} </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">Cmentario</th>
-
+                            <th scope="col-sm-4">NOTA</th>
+                           
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> {{$conyuge->notac}} </td>
-
-                    </tbody>
-
-                </table>
-            </div>
-
-
-            <div class="cm">
-
-
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">Nombre</th>
-                            <th scope="col-sm-4">Nivel Educativo</th>
-                            <th scope="col-sm-4">Ocupacion</th>
-                            <th scope="col-sm-4">edad</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$conyuge->nombre}} </td>
-                            <td> {{$conyuge->nivel_educativo}} </td>
-                            <td> {{$conyuge->ocupacion}} </td>
-                            <td> {{$conyuge->edad}} </td>
-                        </tr>
+                           
                     </tbody>
 
                 </table>
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">Cmentario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$conyuge->notac}} </td>
-
-                    </tbody>
-
-                </table>
+             
             </div>
 
 
         </div>
+
+    </section>
+<section>
+
+    <div class="medicamentos">
+        <h4>DATOS DEL RESPONSABLE
+               
+        </h4>
+        <div class="cm">
+           
+
+            <table class="table table-responsive table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col-sm-4">NOMBRE</th>
+                        <th scope="col-sm-4">ESTADO CIVIL</th>
+                        <th scope="col-sm-4">NIVEL EDUCATIVO</th>
+                        <th scope="col-sm-4">EDAD</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{$responsable->nombrer}} </td>
+                        <td> {{$responsable->estado_civilr}} </td>
+                        <td> {{$responsable->nivel_educativor}} </td>
+                        <td> {{$responsable->edadr}} </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+
+
+
+        <div class="cm">
+
+
+            <table class="table table-responsive table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col-sm-4">OCUPACION</th>
+                        <th scope="col-sm-4">DUI</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> {{$responsable->ocupacionr}} </td>
+                        <td> {{$responsable->duir}} </td>
+                       
+
+
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+      
+      
+
+      
+
+      
+
+
     </div>
 
 
+</section>
 
+   
+  
 
-    <main>
-
-
-
-
-    </main>
-
-    <!--  <footer>
-        <p class="pag">Datos generales del cosultante-
-            <?php echo date("Y");?>
+      <footer>
+          <p>DATOS GENERALES  DE {{$paciente->paciente}}</p>
+        <p class="pag"> CODIGO CLINICO:  {{$paciente->cod_paciente}}
+            AÑO: <?php echo date("Y");?>
             Pagína
         </p>
-    </footer> --
+    </footer> 
 </body>
 
 </html>

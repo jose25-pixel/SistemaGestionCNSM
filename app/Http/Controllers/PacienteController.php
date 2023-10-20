@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Paciente;
-use Barryvdh\DomPDF\Facade\Pdf;
+//use Barryvdh\DomPDF\Facade\pdf;
+//use PDF;
 use App\Models\Cita;
 use App\Models\Adicciones;
 use App\Models\Antecedente;
 use App\Models\conyuge;
 use App\Models\parentesco;
 use App\Models\responsable;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+//use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -306,11 +309,23 @@ class PacienteController extends Controller
             
             )->where('paciente.id', $idCita)->first();
 
+            $pacienteresponsable= responsable::join('paciente', 'responsable.id_paciente', '=', 'paciente.id')->select(
+                'paciente.id',
+                
+                'nombrer',
+                'responsable.estado_civilr',
+                'responsable.nivel_educativor',
+                'responsable.edadr',
+                'responsable.ocupacionr',
+                'responsable.duir',
+            
+            )->where('paciente.id', $idCita)->first();
+
             $numarticulo = Paciente::select('cod_paciente')->where('id', $idCita)->get();
 
             //return $pdf->download('cod_paciente.pdf');
 
-            $pdf = Pdf::loadView('pacientes.detalles_paciente', ['paciente' => $pacienteDetalles,'parentesco'=> $pacienteparentesco,'conyuge'=> $pacienteconyuge ]);
+            $pdf = PDF::loadView('pacientes.detalles_paciente', ['paciente' => $pacienteDetalles,'parentesco'=> $pacienteparentesco,'conyuge'=> $pacienteconyuge,'responsable' => $pacienteresponsable ]);
             return $pdf
                 ->stream('reporte-' . $numarticulo[0]->cod_paciente . '.pdf');
 
