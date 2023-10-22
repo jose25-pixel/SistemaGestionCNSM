@@ -27,12 +27,13 @@
     }
 
     .header {
-       /* position: fixed;*/
+        /* position: fixed;*/
         top: 0cm;
         left: 0cm;
         right: 0cm;
         height: 2.8cm;
-        z-index: 1000; /*
+        z-index: 1000;
+        /*
     }
 
     .container {
@@ -122,11 +123,12 @@
 
     .cm {
         height: 60px;
-       
+
         text-align: center;
         margin-left: 10px;
-      
+
     }
+
     .salto-de-pagina {
         page-break-before: always;
     }
@@ -139,7 +141,7 @@
         background-color: transparent;
         border-collapse: collapse;
         border: 1px solid #a2a7a7;
-        z-index: 1; 
+        z-index: 1;
 
     }
 
@@ -246,7 +248,7 @@
         right: 0cm;
         height: 1.5cm;
         color: black;
-    
+
         text-align: center;
         line-height: 0.5cm;
 
@@ -255,7 +257,6 @@
     .pag:after {
         content: counter(page, disc);
     }
-    
 
 </style>
 
@@ -280,7 +281,7 @@
 
 
             </div>
-        </div>        
+        </div>
     </div>
 
 
@@ -289,7 +290,7 @@
     <section>
 
         <div class="medicamentos">
-            <h4>Datos personales del consultante
+            <h4>DATOS PERSONALES DEL CONSULTANTE
                 <?php echo date("Y");?>
             </h4>
             <!-- codigo de los datos personales del paciente -->
@@ -493,7 +494,7 @@
                         </tr>
                     </tbody>
                 </table>
-               
+
             </div>
 
             <div class="cm">
@@ -502,19 +503,19 @@
                         <tr>
                             <th scope="col-sm-4">Comentario</th>
 
-                          
+
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> {{$parentesco->notam}} </td>
-                          
+
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-          
+
             <h4>Datos del padre</h4>
 
 
@@ -553,7 +554,7 @@
     <section>
 
         <div class="medicamentos">
-            
+
             <div class="cm">
 
 
@@ -578,7 +579,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
             </div>
 
 
@@ -590,20 +591,20 @@
                     <thead>
                         <tr>
                             <th scope="col-sm-4">COMENTARIO</th>
-                           
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> {{$parentesco->notam}} </td>
-                           
+
 
 
                         </tr>
                     </tbody>
                 </table>
-                
+
             </div>
             <h3>Datos del conyuge</h3>
 
@@ -631,10 +632,10 @@
 
                 </table>
 
-             
+
             </div>
 
-          
+
 
             <div class="cm">
 
@@ -643,107 +644,442 @@
                     <thead>
                         <tr>
                             <th scope="col-sm-4">NOTA</th>
-                           
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td> {{$conyuge->notac}} </td>
-                           
+
                     </tbody>
 
                 </table>
 
-             
+
             </div>
 
 
         </div>
 
     </section>
-<section>
+    <section>
 
-    <div class="medicamentos">
-        <h4>DATOS DEL RESPONSABLE
-               
-        </h4>
-        <div class="cm">
-           
+        <div class="medicamentos">
+            <h4>DATOS DEL RESPONSABLE
 
-            <table class="table table-responsive table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col-sm-4">NOMBRE</th>
-                        <th scope="col-sm-4">ESTADO CIVIL</th>
-                        <th scope="col-sm-4">NIVEL EDUCATIVO</th>
-                        <th scope="col-sm-4">EDAD</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> {{$responsable->nombrer}} </td>
-                        <td> {{$responsable->estado_civilr}} </td>
-                        <td> {{$responsable->nivel_educativor}} </td>
-                        <td> {{$responsable->edadr}} </td>
+            </h4>
+            <div class="cm">
 
 
-                    </tr>
-                </tbody>
-            </table>
-            
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-4">NOMBRE</th>
+                            <th scope="col-sm-4">ESTADO CIVIL</th>
+                            <th scope="col-sm-4">NIVEL EDUCATIVO</th>
+                            <th scope="col-sm-4">EDAD</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{$responsable->nombrer}} </td>
+                            <td> {{$responsable->estado_civilr}} </td>
+                            <td> {{$responsable->nivel_educativor}} </td>
+                            <td> {{$responsable->edadr}} </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-4">OCUPACION</th>
+                            <th scope="col-sm-4">DUI</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{$responsable->ocupacionr}} </td>
+                            <td> {{$responsable->duir}} </td>
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
         </div>
 
 
-
-        <div class="cm">
-
-
-            <table class="table table-responsive table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col-sm-4">OCUPACION</th>
-                        <th scope="col-sm-4">DUI</th>
-                       
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> {{$responsable->ocupacionr}} </td>
-                        <td> {{$responsable->duir}} </td>
-                       
+    </section>
 
 
-                    </tr>
-                </tbody>
-            </table>
-            
+
+    <section>
+
+        <div class="medicamentos">
+            <h4>ANTECEDENTES DE SALUD
+
+            </h4>
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col-sm-4">ENFERMEDADES CRONICAS</th>
+                            <th scope="col-sm-4">ENFERMEDADES DE FAMILIARES</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td> {{$antecedente->patologias}} </td>
+                            <td> {{$antecedente->enfergenetica}} </td>
+                           
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-4">OTRAS</th>
+                          
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{$antecedente->otros}} </td>
+                          
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
         </div>
-      
-      
-
-      
-
-      
 
 
-    </div>
+    </section>
 
 
-</section>
+    <section>
 
-   
-  
+        <div class="medicamentos">
+            <h4>ANTECEDENTES LABORALES
 
-      <footer>
-          <p>DATOS GENERALES  DE {{$paciente->paciente}}</p>
-        <p class="pag"> CODIGO CLINICO:  {{$paciente->cod_paciente}}
+            </h4>
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col-sm-4">INICIO A TRABAJAR</th>
+                            <th scope="col-sm-4">HA TRABAJADO</th>
+                            <th scope="col-sm-4">TRABAJA ACTUALMENTE</th>
+                            <th scope="col-sm-4">DURACION ULTIMO EMPLEO</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td> {{$antecedente->iniciotrabajar}} </td>
+                            <td> {{$antecedente->trabaja}} </td>
+                            <td> {{$antecedente->trabaja_actualmente}} </td>
+                            <td> {{$antecedente->duracion_empleo}} </td>
+                           
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-4">DESPEDIDO</th>
+                            <th scope="col-sm-4">CAUSAS DE DESPIDO</th>
+                            <th scope="col-sm-4">SASTISFACION LABORAL</th>
+                          
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{$antecedente->despedido}} </td>
+                            <td> {{$antecedente->causa}} </td>
+                            <td> {{$antecedente->satisfecho}} </td>
+                          
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <section>
+
+        <div class="medicamentos">
+            <h4>TRATAMIENTOS PREVIOS
+
+            </h4>
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col-sm-4">RECIBIDO TRATAMIENTO PSICOLÓGICO</th>
+                            <th scope="col-sm-4">TIPO DE TRATAMIENTO RECIBIDO</th>
+                            <th scope="col-sm-4">TERAPEUTA ATENDIO</th>
+                           
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td> {{$adicciones->atencioncnsm}} </td>
+                            <td> {{$adicciones->tratamientos}} </td>
+                            <td> {{$adicciones->tipotratamiento}} </td>
+                        
+                           
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col-sm-4">DIRECCION TERAPEUTA</th>
+                            <th scope="col-sm-4">TELEFONO TERAPEUTA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> {{$adicciones->direcionatendio}} </td>
+                            <td> {{$adicciones->telefonoatendio}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <section>
+
+        <div class="medicamentos">
+            <h4>TRATAMIENTOS RECIBIDOS
+
+            </h4>
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col-sm-4">TRATAMIENTO RECIBIDOS</th>
+                            <th scope="col-sm-4">CONSUMO DE FARMACO</th>
+
+                           
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                           
+                            <td> {{$adicciones->tratamientorec}} </td>
+                            <td> {{$adicciones->tipofarmaco}} </td>
+                        
+                           
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+    
+    <section>
+
+        <div class="medicamentos">
+            <h4>CONSUMO DE SUSTANCIAS Y ADICCIONES
+
+            </h4>
+            <div class="cm">
+
+
+                <table class="table table-responsive table-borderless">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col-sm-4">SUSTANCIA CONSUMIDAD</th>
+                            <th scope="col-sm-4">TIEMPO DE CONSUMO</th>
+                            <th scope="col-sm-4">ADICCIONES</th>
+
+                           
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                           
+                            <td> {{$adicciones->tipo_sustancia}} </td>
+                            <td> {{$adicciones->tiempo_consumo}} </td>
+                            <td> {{$adicciones->adiccion}} </td>
+
+                        
+                           
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+    <footer>
+        <p>DATOS GENERALES DE {{$paciente->paciente}}</p>
+        <p class="pag"> CODIGO CLINICO: {{$paciente->cod_paciente}}
             AÑO: <?php echo date("Y");?>
             Pagína
         </p>
-    </footer> 
+    </footer>
 </body>
 
 </html>

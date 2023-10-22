@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2023 a las 05:47:26
+-- Tiempo de generación: 22-10-2023 a las 06:12:30
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -52,9 +52,11 @@ CREATE TABLE `adicciones` (
   `nombreatendio` varchar(50) DEFAULT NULL,
   `direcionatendio` varchar(150) DEFAULT NULL,
   `telefonoatendio` varchar(50) DEFAULT NULL,
+  `tratamientorec` varchar(250) DEFAULT NULL,
   `tipofarmaco` varchar(100) DEFAULT NULL,
   `tipo_sustancia` varchar(100) DEFAULT NULL,
   `tiempo_consumo` varchar(100) DEFAULT NULL,
+  `adiccion` text DEFAULT NULL,
   `id_paciente` int(11) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL,
   `created_at` varchar(50) DEFAULT NULL,
@@ -65,10 +67,8 @@ CREATE TABLE `adicciones` (
 -- Volcado de datos para la tabla `adicciones`
 --
 
-INSERT INTO `adicciones` (`id`, `fecha`, `atencioncnsm`, `tratamientos`, `tipotratamiento`, `nombreatendio`, `direcionatendio`, `telefonoatendio`, `tipofarmaco`, `tipo_sustancia`, `tiempo_consumo`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '2023-10-18 01:32:34', 'PSICOLOGÍCO', 'jksajfashjjsajf', NULL, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'AJDUASDSAKJD', 'ADICIONES', 'CONTRUCIONES', 1, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, '2023-10-18 03:22:01', 'NO', NULL, NULL, NULL, NULL, NULL, NULL, 'ADICIONES', 'CONTRUCIONES', 2, 1, '2023-10-18 03:22:01', '2023-10-18 03:22:01'),
-(3, '2023-10-18 03:44:00', 'NO', 'no', NULL, 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NUEVA DATOS', 'ALCOHOL', 'CONCAINA', 3, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+INSERT INTO `adicciones` (`id`, `fecha`, `atencioncnsm`, `tratamientos`, `tipotratamiento`, `nombreatendio`, `direcionatendio`, `telefonoatendio`, `tratamientorec`, `tipofarmaco`, `tipo_sustancia`, `tiempo_consumo`, `adiccion`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, '2023-10-22 02:13:12', 'NO', NULL, NULL, 'NO APLICA', 'NO AAPLICA', NULL, 'nuasddhoaihdajsd', 'JKADJSKAJKSD', 'NO APLICA', 'NINGUN', NULL, 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12');
 
 -- --------------------------------------------------------
 
@@ -100,9 +100,7 @@ CREATE TABLE `antecedentes_salud` (
 --
 
 INSERT INTO `antecedentes_salud` (`id`, `fecha`, `patologias`, `enfergenetica`, `otros`, `iniciotrabajar`, `trabaja`, `trabaja_actualmente`, `duracion_empleo`, `despedido`, `causa`, `satisfecho`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '2023-10-18 01:32:34', NULL, NULL, NULL, '18', 'SI', 'SI', '2 MESES', 'NO', 'NO APLICA', 'SI HASTA E MOMENTO', 1, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, '2023-10-18 03:22:02', 'NO APLICA', 'NO APLICA', 'NO APLICA', 'NO TRABAJO', 'SI', 'NO', '0', 'NO', 'NINGUNA', 'NO', 2, 1, '2023-10-18 03:22:02', '2023-10-18 03:22:02'),
-(3, '2023-10-18 03:44:00', 'DIABETES', 'INSUFECIENCIA RENAL', 'NERVIOS', 'NO TRABAJO', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 3, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+(1, '2023-10-22 02:13:12', 'DIABETES', 'NINGUNA', 'NINGUNA', '23', 'SI', 'SI', '2 AÑOS', 'NO', 'NO APLICA', 'NO APLICA', 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12');
 
 -- --------------------------------------------------------
 
@@ -131,11 +129,9 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email`, `motivo`, `estado_cita`, `terapeuta_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'JUANA GUADALUPE CAMPOS ORELLANA', '82402498-9', '7867-3292', '2023-11-03', '9:30 AM', 'JUANA@GMAIL.COM', 'revision', 1, 6, 1, '2023-10-18 01:23:18', '2023-10-18 01:23:18'),
-(2, 'MARTA ESTELA SUAREZ ORTIS', '83948274-8', '7867-3292', '2023-11-04', '11:00 AM', 'marta@gmail.com', 'seguridad', 1, 4, 1, '2023-10-18 01:24:30', '2023-10-18 01:24:30'),
-(3, 'JUANA GUADALUPE CAMPOS ORELLANA', '82402498-9', '7867-3292', '2023-11-09', '8:30 AM', 'JUANA@GMAIL.COM', 'revision', 0, 6, 1, '2023-10-18 01:35:27', '2023-10-18 01:35:27'),
-(4, 'MARTA ESTELA SUAREZ ORTIS', '83948274-8', '7867-3292', '2023-11-10', '9:00 AM', 'marta@gmail.com', 'revision', 0, 4, 1, '2023-10-18 01:37:24', '2023-10-18 01:37:24'),
-(5, 'DALIA MARLENE ASENCIO', '74282734-8', '7866-6545', '2023-10-28', '10:00 AM', '----', 'HOLA', 1, 6, 1, '2023-10-18 03:38:55', '2023-10-18 03:38:55');
+(1, 'JOSE', '90923489-2', '7689-6789', '2023-10-27', '9:00 AM', 'nomadelcarmen@gmail.com', 'revision', 1, 5, 1, '2023-10-22 02:06:01', '2023-10-22 02:06:01'),
+(2, 'MANUEL  ORELLANA CAMPOS', '94282924-0', '7689-6789', '2023-10-28', '10:30 AM', '--', 'sistomas de abuxo', 0, 4, 1, '2023-10-22 02:07:07', '2023-10-22 02:07:07'),
+(3, 'JOSE', '90923489-2', '7689-6789', '2023-11-01', '9:00 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 5, 1, '2023-10-22 02:17:05', '2023-10-22 02:17:05');
 
 -- --------------------------------------------------------
 
@@ -196,9 +192,7 @@ CREATE TABLE `conyuge` (
 --
 
 INSERT INTO `conyuge` (`id`, `nombre`, `nivel_educativo`, `ocupacion`, `edad`, `notac`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'ESMERALDA CASTILLO SUARES', 'NORMAL', 'SECRETARIO', 23, 'es desde hace años mi ser queirdad', 1, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, NULL, NULL, NULL, NULL, NULL, 2, 1, '2023-10-18 03:22:01', '2023-10-18 03:22:01'),
-(3, NULL, NULL, NULL, NULL, NULL, 3, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+(1, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 67, 'lllllllllllkkkkkkkkkkkkkkkk', 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12');
 
 -- --------------------------------------------------------
 
@@ -254,9 +248,7 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `cod_paciente`, `fecha_naci`, `edad`, `fecha_reg`, `genero`, `ocupacion`, `lugar_estudio`, `grado`, `nivel_educativo`, `direccion`, `departamento`, `municipio`, `celular_dos`, `celular_tres`, `nu_hermano`, `lugar_ocupa`, `nu_hijo`, `edad_hijo`, `ano_casado`, `id_cita`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '20040617495', '2004-06-17', 19, '2023-10-18 01:32:34', 'femenino', 'ESTUDIANTE UNIVERSITARIO', NULL, NULL, 'EDUCACION SUPERIOR', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', 'San Miguel', 'San Miguel', '4567-8926', '7653-4556', 2, 'ultimo', 0, '0', NULL, 2, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, '20080617893', '2008-06-17', 15, '2023-10-18 03:22:01', 'femenino', 'ESTUDIANTE', 'SANTIAGO TEXACUANGOS', 'NOVENO', 'BASICO', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', 'Chalatenango', 'El Paraíso', '6837-4924', '4328-9823', 2, 'ultimo', 0, '0', 0, 1, 1, '2023-10-18 03:22:01', '2023-10-18 03:22:01'),
-(3, '20110617585', '2011-06-17', 12, '2023-10-18 03:44:00', 'femenino', 'ESTUDIANTE', 'SAN ANTONIO', 'NOVENO', 'EDUCACION SUPERIOR', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', 'La Libertad', 'Colón', '4567-8926', '7858-9956', 2, 'ultimo', 0, '0', 0, 5, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+(1, '19960621354', '1996-06-21', 27, '2023-10-22 02:13:12', 'femenino', 'EMPRESARIO', NULL, NULL, 'SUPERIOR', 'AVENIDAD  EL CALVARIO', 'Morazán', 'San Francisco Gotera', '7845-6789', '7865-432', 2, 'ultimo', 1, '20', 45, 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:43:31');
 
 -- --------------------------------------------------------
 
@@ -295,9 +287,7 @@ CREATE TABLE `parentesco` (
 --
 
 INSERT INTO `parentesco` (`id`, `nombre_madre`, `edad_madre`, `estado_civilm`, `nivel_educativom`, `ocupacionm`, `vivem`, `duim`, `notam`, `viveaunm`, `nombrep`, `edadp`, `estado_civilp`, `ocupacionp`, `nivel_educativop`, `vivep`, `duip`, `notap`, `viveaunp`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'MARIA ELSY PINEDA ADALUZ', 34, 'soltera', 'PRIMERIA', 'AMA DE CASA', 'NO', '34293809-2', 'siceridad', 'SI', 'PEDRO PABLO CASTANEDA ORTIZ', 45, 'acompañado', 'CONTADOR', 'SUPERIOR', 'SI', '34890572-3', 'nuevos datos', 'NO', 1, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, 'CARMEN CUSTODIO', 45, 'soltera', 'PRIMERIA', 'AMA DE CASA', 'SI', '84282894-8', 'hola,nuevos datos', 'SI', 'ANTONIO MANUAEL', 56, 'acompañado', 'CONTADOR', 'SUPERIOR', 'NO', '78427499-2', 'jsjskjuiuiew', 'NO', 2, 1, '2023-10-18 03:22:01', '2023-10-18 03:22:01'),
-(3, 'CARMEN CUSTODIO', 36, 'casada', 'PRIMERIA', 'AMA DE CASA', 'SI', '56785867-5', 'nuevos datos', 'SI', 'ANTONIO MANUAEL', 56, 'casado', 'CONTADOR', 'SUPERIOR', 'SI', '87896676-5', NULL, 'NO', 3, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+(1, 'ALEJANDRA MARIA CAMPOS ODORNES', 45, 'casada', 'DDADDA', 'AMA DE CASA', 'SI', '64635235-2', 'Si vivo con mi madre', 'SI', 'ALFREDO MARCOS CRISTAL ORELLANA', 56, 'casado', 'ALBAÑIL', 'BASICO', 'SI', '34543348-', 'nuevos numeros', 'SI', 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12');
 
 -- --------------------------------------------------------
 
@@ -336,9 +326,7 @@ CREATE TABLE `responsable` (
 --
 
 INSERT INTO `responsable` (`id`, `nombrer`, `estado_civilr`, `nivel_educativor`, `edadr`, `ocupacionr`, `duir`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'NORMA', 'casado', 'BUENO', 34, 'NORMALES', '623487842432', 1, 1, '2023-10-18 01:32:34', '2023-10-18 01:32:34'),
-(2, NULL, 'soltero', NULL, NULL, NULL, NULL, 2, 1, '2023-10-18 03:22:01', '2023-10-18 03:22:01'),
-(3, NULL, 'soltero', NULL, NULL, NULL, NULL, 3, 1, '2023-10-18 03:44:00', '2023-10-18 03:44:00');
+(1, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 67, 'ODONTOLOGO', '5734743-8', 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12');
 
 -- --------------------------------------------------------
 
@@ -547,19 +535,19 @@ ALTER TABLE `acciones_paciente`
 -- AUTO_INCREMENT de la tabla `adicciones`
 --
 ALTER TABLE `adicciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `antecedentes_salud`
 --
 ALTER TABLE `antecedentes_salud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
@@ -577,7 +565,7 @@ ALTER TABLE `control_atenciones`
 -- AUTO_INCREMENT de la tabla `conyuge`
 --
 ALTER TABLE `conyuge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `det_control_atenciones`
@@ -589,13 +577,13 @@ ALTER TABLE `det_control_atenciones`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `parentesco`
 --
 ALTER TABLE `parentesco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -607,7 +595,7 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `responsable`
 --
 ALTER TABLE `responsable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `sintomas`

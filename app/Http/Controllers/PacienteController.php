@@ -204,10 +204,11 @@ class PacienteController extends Controller
             'tipotratamiento' => $request->input('tipotratamiento'),
             'nombreatendio' => $request->input('nombreatendio'),
             'direcionatendio' => $request->input('direcionatendio'),
-            'telefonoatendio' => $request->input('telefonoatendio'),
+            'tratamientorec' => $request->input('tratamientorec'),
             'tipofarmaco' => $request->input('tipofarmaco'),
             'tipo_sustancia' => $request->input('tipo_sustancia'),
             'tiempo_consumo' => $request->input('tiempo_consumo'),
+            'adicion' => $request->input('adicion'),
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
         ];
@@ -244,9 +245,9 @@ class PacienteController extends Controller
 
 
             //nueva_funcion
-    //$pacienteDetalles=Paciente::find($idCita);
-      //  dd( $pacienteDetalles->cita);
-       $pacienteDetalles = Paciente::join('citas', 'paciente.id_cita', '=', 'citas.id')->select(
+            //$pacienteDetalles=Paciente::find($idCita);
+            //  dd( $pacienteDetalles->cita);
+            $pacienteDetalles = Paciente::join('citas', 'paciente.id_cita', '=', 'citas.id')->select(
                 'citas.paciente',
                 'citas.dui',
                 'citas.email',
@@ -294,38 +295,74 @@ class PacienteController extends Controller
                 'parentesco.duip',
                 'parentesco.notap',
                 'parentesco.viveaunp',
-                
+
             )->where('paciente.id', $idCita)->first();
 
 
             $pacienteconyuge = conyuge::join('paciente', 'conyuge.id_paciente', '=', 'paciente.id')->select(
                 'paciente.id',
-                
+
                 'nombre',
                 'conyuge.nivel_educativo',
                 'conyuge.ocupacion',
                 'conyuge.edad',
                 'conyuge.notac',
-            
+
             )->where('paciente.id', $idCita)->first();
 
-            $pacienteresponsable= responsable::join('paciente', 'responsable.id_paciente', '=', 'paciente.id')->select(
+            $pacienteresponsable = responsable::join('paciente', 'responsable.id_paciente', '=', 'paciente.id')->select(
                 'paciente.id',
-                
                 'nombrer',
                 'responsable.estado_civilr',
                 'responsable.nivel_educativor',
                 'responsable.edadr',
                 'responsable.ocupacionr',
                 'responsable.duir',
-            
+
+            )->where('paciente.id', $idCita)->first();
+
+            $pacienteantecedente = Antecedente::join('paciente', 'antecedentes_salud.id_paciente', '=', 'paciente.id')->select(
+                'paciente.id',
+                'antecedentes_salud.fecha',
+                'antecedentes_salud.patologias',
+                'antecedentes_salud.enfergenetica',
+                'antecedentes_salud.otros',
+                'antecedentes_salud.iniciotrabajar',
+                'antecedentes_salud.trabaja',
+                'antecedentes_salud.trabaja_actualmente',
+                'antecedentes_salud.duracion_empleo',
+                'antecedentes_salud.despedido',
+                'antecedentes_salud.causa',
+                'antecedentes_salud.satisfecho',
+
+            )->where('paciente.id', $idCita)->first();
+
+
+            $pacienteadicciones = Adicciones::join('paciente', 'adicciones.id_paciente', '=', 'paciente.id')->select(
+                'paciente.id',
+                'adicciones.fecha',
+                'adicciones.atencioncnsm',
+                'adicciones.tratamientos',
+                'adicciones.tipotratamiento',
+                'adicciones.nombreatendio',
+                'adicciones.direcionatendio',
+                'adicciones.telefonoatendio',
+                'adicciones.tratamientorec',
+                'adicciones.tipofarmaco',
+                'adicciones.tipo_sustancia',
+                'adicciones.tiempo_consumo',
+                'adicciones.adiccion',
+
             )->where('paciente.id', $idCita)->first();
 
             $numarticulo = Paciente::select('cod_paciente')->where('id', $idCita)->get();
 
             //return $pdf->download('cod_paciente.pdf');
 
-            $pdf = PDF::loadView('pacientes.detalles_paciente', ['paciente' => $pacienteDetalles,'parentesco'=> $pacienteparentesco,'conyuge'=> $pacienteconyuge,'responsable' => $pacienteresponsable ]);
+            $pdf = PDF::loadView('pacientes.detalles_paciente', [
+                'paciente' => $pacienteDetalles,
+                'parentesco' => $pacienteparentesco, 'conyuge' => $pacienteconyuge, 'responsable' => $pacienteresponsable, 'antecedente' => $pacienteantecedente, 'adicciones' => $pacienteadicciones
+            ]);
             return $pdf
                 ->stream('reporte-' . $numarticulo[0]->cod_paciente . '.pdf');
 
@@ -336,4 +373,56 @@ class PacienteController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+
+
+
+
+    public function verificarPaciente()
+    {
+        //$citaId = request()->input('cita_id');
+        $dui = request()->input('dui');
+        $paciente = request()->input('paciente');
+
+        $sql = "SELECT c.id, p.id  FROM citas as c INNER JOIN paciente as
+         p on c.id=p.id_cita WHERE c.dui=? and c.paciente LIKE ? ";
+
+        //$sql="SELECT c.id, p.id as id_paciente FROM citas as c INNER JOIN paciente as 
+        //p on c.id=p.id_cita WHERE c.dui='82402498-9' and c.paciente LIKE '%JUANA GUADALUPE CAMPOS ORELLANA%'";
+
+        $verificar = DB::select($sql, [$dui, '%' . $paciente . '%']);
+
+        if ($verificar) {
+           // dd($verificar);
+
+             // Obtiene el ID del paciente
+        $idPaciente = $verificar[0]->id;
+
+            // Obtiene el ID de la cita verificada
+        $idCitaVerificada = $verificar[0]->id;
+
+       
+
+        // Actualiza el campo id_cita en la tabla paciente con el ID de la cita verificada
+        Paciente::where('id', $idPaciente)->update(['id_cita' => $idCitaVerificada]);
+
+        
+            return response()->json(
+                [
+                    'status' => 'exists',
+                    'message' => '¿los datos ya estan registrados en esistema Desea carga los datos de este cliente?!',
+                    //'data' => $verificarselect[0]
+                ]
+
+            );
+        }
+        return response()->json([
+            'status' => 'not-found',
+            'message' => 'No existe cosultante registrado anteriormente en el sistema porfavor ingrese los demas datos!',
+            'data' => []
+        ]);
+    }
+
+
+   
 }

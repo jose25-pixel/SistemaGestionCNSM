@@ -18,9 +18,11 @@ class Adicciones extends Model
         'nombreatendio',
         'direcionatendio',
         'telefonoatendio',
+        'tratamientorec',
         'tipofarmaco',
         'tipo_sustancia',
         'tiempo_consumo',
+        'adiccion',
         'id_paciente',
         'usuario_id'
     ];

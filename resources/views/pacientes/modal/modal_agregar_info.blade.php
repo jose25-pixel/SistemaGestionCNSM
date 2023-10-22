@@ -29,7 +29,7 @@
                             <div class="card-body  m-0 p-3" id="datospaciente">
                                 <div class="form-row pt-4">
                                     <div class="form-group col-sm-12 col-md-4">
-                                        <label for="numero">Selecionar Paciente:</label>
+                                        <label for="numero">Selecionar Cosultante:</label>
                                         <div class="input-group is-invalid">
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" style="cursor: pointer" for="btnaddcita"
@@ -112,7 +112,7 @@
                                             class="form-control clear-input"></select>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="celular_dos">Celular Dos*:</label>
+                                        <label for="celular_dos">Celular Dos:</label>
                                         <input type="text" class="form-control" id="celular_dos"
                                             name="celular_dos">
                                     </div>
@@ -140,7 +140,7 @@
                                         <input type="text" class="form-control" id="edad_hijo" name="edad_hijo">
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                        <label for="ano_casado">Años de casado</label>
+                                        <label for="ano_casado">Años de Casado</label>
                                         <input type="number" class="form-control" id="ano_casado"
                                             name="ano_casado">
                                     </div>
@@ -149,12 +149,12 @@
                         </div>
                     </div>
                     <h4 lass="text-center mt-2"><strong> Datos Familiares </strong></h4>
-                    <h5 class="text-center mt-2"><strong> Datos de la madre </strong></h5>
+                    <h5 class="text-center mt-2"><strong> Datos de la Madre </strong></h5>
                     <!-- input de familiares ---madre--- -->
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosMadre"
                             aria-expanded="false">
-                            <h3 class="card-title">Ingresar datos de la madre</h3>
+                            <h3 class="card-title">Ingresar Datos de la Madre</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse"
                                     title="collapse">
@@ -178,7 +178,7 @@
                                     <label for="estado_civilm">Estado Civil madre:</label>
                                     <select class="form-control" onkeyup="mayupaciente(this)" id="estado_civilm"
                                         name="estado_civilm">
-                                        <option value="--">--</option>
+                                        <option value="--">***</option>
                                         <option value="soltera">SOlTERA</option>
                                         <option value="casada">CASADA</option>
                                         <option value="acompañada">ACOMPAÑADA</option>
@@ -186,21 +186,21 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nivel_educativom">Nivel educativo madre:</label>
+                                    <label for="nivel_educativom">Nivel Educativo Madre:</label>
                                     <input type="text" onkeyup="mayupaciente(this)" class="form-control"
                                         id="nivel_educativom" name="nivel_educativom">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="ocupacionm">Ocupacion madre:</label>
+                                    <label for="ocupacionm">Ocupacion Madre:</label>
                                     <input type="text" class="form-control" onkeyup="mayupaciente(this)"
                                         id="ocupacionm" name="ocupacionm">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="duim">Dui madre:</label>
+                                    <label for="duim">Dui Madre:</label>
                                     <input type="text" class="form-control" id="duim" name="duim">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="vivem">Vive con madre:</label>
+                                    <label for="vivem">Vive con Madre:</label>
                                     <select class="form-control" onkeyup="mayupaciente(this)" id="vivem"
                                         name="vivem">
                                         <option value="">---</option>
@@ -229,7 +229,7 @@
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosPadre"
                             aria-expanded="false">
-                            <h3 class="card-title">Ingresar datos del Padre</h3>
+                            <h3 class="card-title">Ingresar Datos del Padre</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse"
                                     title="collapse">
@@ -266,19 +266,20 @@
                                         id="ocupacionp" name="ocupacionp">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="nivel_educativop">Nivel educativo Padre:</label>
+                                    <label for="nivel_educativop">Nivel Educativo Padre:</label>
                                     <input type="text" class="form-control" onkeyup="mayupaciente(this)"
                                         id="nivel_educativop" name="nivel_educativop">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="duip">Dui padre:</label>
+                                    <label for="duip">Dui Padre:</label>
                                     <input type="text" class="form-control" id="duip" name="duip">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="viveaunp">Vive su Padre aun</label>
+                                    <label for="viveaunp">Vive su Padre?</label>
                                     <select type="text" class="form-control" id="viveaunp" name="viveaunp">
+                                        <option value="--">---</option>
                                         <option value="NO">NO</option>
-                                        <option value="SI">SIs</option>
+                                        <option value="SI">SI</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -289,6 +290,7 @@
                                     <label for="vivep">Vive con su Padre: si/no</label>
                                     <select type="text" class="form-control" onkeyup="mayupaciente(this)"
                                         id="vivep" name="vivep">
+                                        <option value="--">--</option>
                                         <option value="SI">SI</option>
                                         <option value="NO">NO</option>
                                     </select>
@@ -301,7 +303,7 @@
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosConyuge"
                             aria-expanded="false">
-                            <h3 class="card-title">Ingresar datos del conyuge</h3>
+                            <h3 class="card-title">Ingresar datos del Conyuge</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse"
                                     title="collapse">
@@ -345,7 +347,7 @@
                     <div class="card">
                         <div class="card-header bg-light " data-toggle="collapse" data-target="#datosResponsable"
                             aria-expanded="false">
-                            <h3 class="card-title">Ingresar datos del responsable</h3>
+                            <h3 class="card-title">Ingresar Datos del Responsable</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse"
@@ -381,6 +383,7 @@
                                     <label for="estado_civilr">Estado Civil Responsable:</label>
                                     <select class="form-control" onkeyup="mayupaciente(this)" id="estado_civilr"
                                         name="estado_civilr">
+                                        <option value="soltero">---</option>
                                         <option value="soltero">Soltero</option>
                                         <option value="casado">Casado</option>
                                         <option value="acompañado">Acompañado</option>
@@ -395,7 +398,7 @@
                         </div>
                         <!-- /.card-footer-->
                     </div>
-                    <h5 class="text-center mt-2"> <strong>Datos antecedentes de salud </strong> </h5>
+                    <h5 class="text-center mt-2"> <strong>Datos Antecedentes de Salud </strong> </h5>
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosAntecedentes"
                             aria-expanded="false">
@@ -411,7 +414,7 @@
                             <div class="form-row pt-4">
                                 <hr>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
-                                    <label for="patologias">Enfermedades crónicas hospitalizaciones:</label>
+                                    <label for="patologias">Enfermedades Crónicas Hospitalizaciones:</label>
                                     <textarea class="form-control" id="patologias" onkeyup="mayupaciente(this)" name="patologias"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
@@ -426,7 +429,7 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="text-center mt-2"> <strong>Datos antecedentes Laborales </strong> </h5>
+                    <h5 class="text-center mt-2"> <strong>Datos Antecedentes Laborales </strong> </h5>
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosLaborales"
                             aria-expanded="false">
@@ -513,7 +516,7 @@
                         </div>
                     </div>
                     <!--  codigo de tratamientos previos -->
-                    <h5 class="text-center mt-2"> <strong>Tratamientos previos </strong> </h5>
+                    <h5 class="text-center mt-2"> <strong>Tratamientos Previos </strong> </h5>
 
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosTratamientos"
@@ -532,9 +535,10 @@
                             <div class="form-row pt-4">
                                 <hr>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="atencioncnsm">Ha recibido tratameinto psicológico: si/no</label>
+                                    <label for="atencioncnsm">Ha Recibido Tratameinto Psicológico: si/no</label>
                                     <select type="text" class="form-control" onkeyup="mayupaciente(this)"
                                         id="atencioncnsm" name="atencioncnsm">
+                                        <option value="--">--</option>
                                         <option value="NO">NO</option>
                                         <option value="SI">SI</option>
                                     </select>
@@ -544,6 +548,7 @@
                                     <select type="text" class="form-control" onkeyup="mayupaciente(this)"
                                         id="atencioncnsm" name="atencioncnsm">
                                         <option value="NO">NINGUNO</option>
+                                        <option value="OTROS">OTROS</option>
                                         <option value="PSICOLOGÍCO">PSICOLOGÍCO</option>
                                         <option value="PSIQUIÁTRICO">PSIQUIÁTRICO</option>
                                         <option value="NEUROLOGÍCO">NEUROLOGÍCO</option>
@@ -560,7 +565,7 @@
                                         onkeyup="mayupaciente(this)" name="direcionatendio">
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                    <label for="telefonoatendio">Telefono terapeuta atendio:</label>
+                                    <label for="telefonoatendio">Telefono Terapeuta Atendio:</label>
                                     <input type="text" class="form-control" id="telefonoatendio"
                                         onkeyup="mayupaciente(this)" name="telefonoatendio">
                                 </div>
@@ -568,11 +573,11 @@
                         </div>
                     </div>
                     <!--  codigo de tratamientos recibidos -->
-                    <h5 class="text-center mt-2"> <strong>Tratamientos recibidos </strong> </h5>
+                    <h5 class="text-center mt-2"> <strong>Tratamientos Recibidos </strong> </h5>
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosrecibidos"
                             aria-expanded="false">
-                            <h3 class="card-title">Ingresar datos de tratamientos recibidos</h3>
+                            <h3 class="card-title">Ingresar Datos de Tratamientos Recibidos</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse"
                                     title="collapse">
@@ -584,11 +589,11 @@
                             <div class="form-row pt-4">
                                 <hr>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-6">
-                                    <label for="tratamientos">Tratamientos recibidos:</label>
-                                    <textarea class="form-control" id="tratamientos" name="tratamientos"></textarea>
+                                    <label for="tratamientorec">Tratamientos Recibidos:</label>
+                                    <textarea class="form-control" id="tratamientorec" name="tratamientorec"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-6">
-                                    <label for="tipofarmaco">Tipo farmaco a consumido:</label>
+                                    <label for="tipofarmaco">Tipo Farmaco a Consumido:</label>
                                     <input type="text" class="form-control" id="tipofarmaco"
                                         onkeyup="mayupaciente(this)" name="tipofarmaco">
                                 </div>
@@ -596,7 +601,7 @@
                         </div>
                     </div>
                     <!--  codigo de sustancias --->
-                    <h5 class="text-center mt-2"> <strong>Consumo de sustancias y addiciones </strong> </h5>
+                    <h5 class="text-center mt-2"> <strong>Consumo de Sustancias y Addiciones </strong> </h5>
                     <div class="card">
                         <div class="card-header bg-light" data-toggle="collapse" data-target="#datosrecibidos"
                             aria-expanded="false">
@@ -618,7 +623,7 @@
 
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
-                                    <label for="tipo_sustancia">Tipo de sustancia consumida:</label>
+                                    <label for="tipo_sustancia">Tipo de Sustancia Consumida:</label>
                                     <input type="text" class="form-control" id="tipo_sustancia"
                                         onkeyup="mayupaciente(this)" name="tipo_sustancia">
                                 </div>
@@ -628,15 +633,15 @@
 
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
-                                    <label for="tiempo_consumo">Tiempo de consumo:</label>
+                                    <label for="tiempo_consumo">Tiempo de Consumo:</label>
                                     <input type="text" class="form-control" id="tiempo_consumo"
                                         onkeyup="mayupaciente(this)" name="tiempo_consumo">
                                 </div>
 
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
-                                    <label for="addiciones">Addiciones:</label>
-                                    <textarea class="form-control" id="addiciones" onkeyup="mayupaciente(this)" name="addiciones"></textarea>
+                                    <label for="adicion">Adicciones:</label>
+                                    <textarea class="form-control" id="adicion" onkeyup="mayupaciente(this)" name="adicion"></textarea>
                                 </div>
 
                             </div>

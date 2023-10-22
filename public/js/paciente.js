@@ -214,7 +214,7 @@ $(document).ready(function () {
 // Resto de tu código aquí...
 
 
-// funcion para slecionar los datos de la cita
+// funcion para selecionar los datos de la cita
 
 window.onload = function () {
 
@@ -246,7 +246,7 @@ function getSelectcitas(callback = '') {
               data: null,
               render: function (data, type, row) {
      //                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
-     return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\')">Seleccionar</button>';
+     return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\', \'' + row.dui + '\' )">Seleccionar</button>';
     
               }
             }
@@ -262,12 +262,67 @@ function getSelectcitas(callback = '') {
 
 }
 
-function selectCita(citaId, pacienteNombre) {
+function selectCita(citaId, pacienteNombre,DUI) {
  // let citaInfo = citaId + ' - ' + pacienteNombre;
   document.getElementById('cita_id').value = citaId  ;
   document.getElementById('nombre_paciente_referencia').textContent = 'Paciente: ' + pacienteNombre;
+  verificarPaciente(pacienteNombre,DUI);
+
   $('#citasModal').modal('hide');
 }
+
+//funtio para verificar si existe relacion entre cita y pacinete
+function verificarPaciente(pacienteNombre,DUI){
+
+let url= window.location.origin + "/verificar/paciente";
+let data = {
+  paciente:pacienteNombre,
+  dui:DUI
+}
+  axios.post(url,data)
+  .then((res) => {
+    console.log(res)
+
+
+    let datos = res.data;
+if(datos.status === "exists"){
+    Swal.fire({
+        title: datos.message,
+        text: "La información se cargara automaticamente!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log(datos);
+        
+              
+        }
+      })
+}else{
+  Swal.fire({
+   
+    text: datos.message,
+    icon: 'info',
+    background: '#fff', // Define el fondo del cuadro de diálogo
+    showCloseButton: false, // Oculta el botón de cierre
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'OK'
+});
+    getInputDUI.value = '';
+}
+    
+  })
+  .catch((err) => console.log(err));
+}
+
+
+
+
 
 
 //funcion para ver los datos de un paciente
