@@ -20,9 +20,9 @@ function listarCitaspacientes() {
   dataTable('tabla-pacientes', url);
 }
 
-//Funcion para abrir modal y agragar mas informacion
-function Ingresar(element) {
-  $("#modal_paciente").modal('show');
+//Funcion para abrir modal y agregar mas informacion
+function updateCita(element) {
+  $("#modal_paciente_editar").modal('show');
 
 
 }

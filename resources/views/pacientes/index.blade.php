@@ -21,7 +21,7 @@
                     </div>
                     @include('pacientes.modal.modal_agregar_info')
                     @include('pacientes.modal.modal_selec_citaid')
-                    @include('pacientes.modal.modal_agregar')
+                    @include('pacientes.modal.modal_editar')
                     <div class="modal-body">
                         <div class="card">
                             <div class="card-header py-1">

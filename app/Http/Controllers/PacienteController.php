@@ -65,8 +65,8 @@ class PacienteController extends Controller
             $array[] = $row->genero;
             $array[] = $row->ocupacion;
             $array[] = date('d-m-Y', strtotime($row->fecha_reg));
-            $array[] = '<button data-id_cita="' . $row->id . '" onclick="ver(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Verr</button>
-            <button data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
+            $array[] = '<button data-id_cita="' . $row->id . '" onclick="ver(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-eye"></i></button>
+            <button data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
             ';
             $data[] = $array;
             $contador--;
