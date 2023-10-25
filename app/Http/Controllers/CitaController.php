@@ -221,7 +221,7 @@ class CitaController extends Controller
     FROM citas
     WHERE citas.id NOT IN (
         SELECT id_cita
-        FROM paciente) and estado_cita!='-1'");
+        FROM paciente) and estado_cita='0'");
     return response()->json($citasp);
 }
 

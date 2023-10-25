@@ -1,13 +1,10 @@
 /**
- * Autor:: Jose zabaleta
- * ::::Implementado: 01-10-2023
- * 
+ * Autor:: Jose zabaleta::::::::
+ * ::::Implementado: 01-10-2023:::::::::::
+ * :::: github: @jose-pixel:::::::::
+ * ::::::Versión:1.0.0::::::
+ * ::::::: Code Licence Copyleft
  */
-/**
- $(document).ready(function() {
-  $('#cita_id').select2();
-}); */
-
 
 // Funcion para mostrar los pacientes con datatables
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +19,12 @@ function listarCitaspacientes() {
 
 //Funcion para abrir modal y agregar mas informacion
 function updateCita(element) {
+
+  var idCitaUdate = $(element).data('id_cita');
+  
   $("#modal_paciente_editar").modal('show');
+
+
 
 
 }
@@ -37,6 +39,8 @@ function Agregar(element) {
 
 
 /**
+ * 
+ * //funcion para selecionar las citas mediante selec normal!!
  * window.onload = function () {
  getSelectcitas();
 };
@@ -70,35 +74,29 @@ function getSelectcitas(callback = '') {
 function mayupaciente(element) {
   element.value = element.value.toUpperCase();
 }
-
-
-// fucnion para enviar los datos a guardar
+// funcion para enviar los datos a guardar
 document.addEventListener('DOMContentLoaded', function () {
   var formulario = document.getElementById('pacienteForm');
   const departamentoSelect = document.getElementById('departamento');// para la funcion de selecion de los departamentos
   const municipioSelect = document.getElementById('municipio');
   const fechaNacimiento = document.getElementById('fecha_naci');//funcion para calular la edad segun fecha nacimiento
   const edadOutput = document.getElementById('edad');
-
   // Escucha el evento input en el campo de fecha de nacimiento
-  fechaNacimiento.addEventListener('input', function() {
-      // Obtén la fecha de nacimiento del campo de entrada
-      const fechaNacimientoValor = new Date(fechaNacimiento.value);
-      
-      // Calcula la fecha actual
-      const fechaActual = new Date();
-      
-      // Calcula la diferencia de años
-      const diferenciaAnios = fechaActual.getFullYear() - fechaNacimientoValor.getFullYear();
-      
-      // Verifica si ya pasó el cumpleaños de este año
-      if (fechaActual.getMonth() < fechaNacimientoValor.getMonth() || (fechaActual.getMonth() === fechaNacimientoValor.getMonth() && fechaActual.getDate() < fechaNacimientoValor.getDate())) {
-          // Si no ha pasado, resta un año
-          edadOutput.value = diferenciaAnios - 1;
-      } else {
-          // Si ya pasó, muestra la edad actual
-          edadOutput.value = diferenciaAnios;
-      }
+  fechaNacimiento.addEventListener('input', function () {
+    // Obtén la fecha de nacimiento del campo de entrada
+    const fechaNacimientoValor = new Date(fechaNacimiento.value);
+    // Calcula la fecha actual
+    const fechaActual = new Date();
+    // Calcula la diferencia de años
+    const diferenciaAnios = fechaActual.getFullYear() - fechaNacimientoValor.getFullYear();
+    // Verifica si ya pasó el cumpleaños de este año
+    if (fechaActual.getMonth() < fechaNacimientoValor.getMonth() || (fechaActual.getMonth() === fechaNacimientoValor.getMonth() && fechaActual.getDate() < fechaNacimientoValor.getDate())) {
+      // Si no ha pasado, resta un año
+      edadOutput.value = diferenciaAnios - 1;
+    } else {
+      // Si ya pasó, muestra la edad actual
+      edadOutput.value = diferenciaAnios;
+    }
   });
 
   // Define un objeto con los municipios para cada departamento
@@ -117,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'Cabañas': ['Sensuntepeque', 'Cinquera', 'Dolores', 'Guacotecti', 'Ilobasco', 'Jutiapa', 'San Isidro', 'Tejutepeque', 'Victoria'],
     'Sonsonate': ["Sonsonate", "Nahuizalco", "Izalco", "Juayúa", "Acajutla", "Armenia", "Caluco", "Cuisnahuat", "San Antonio del Monte", "San Julián", "Santo Domingo de Guzmán"],
     'Ahuachapan': ["Ahuachapán", "Apaneca", "Atiquizaya", "Concepción de Ataco", "El Refugio", "Guaymango", "Jujutla", "San Francisco Menéndez", "San Lorenzo", "San Pedro Puxtla", "Tacuba", "Turín"],
-
     // Agrega más departamentos y sus municipios según sea necesario
   };
 
@@ -125,16 +122,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function actualizarMunicipios() {
     // Obtiene el departamento seleccionado
     const departamentoSeleccionado = departamentoSelect.value;
-
     // Limpia el campo de selección de municipios
     municipioSelect.innerHTML = '';
-
     // Verifica si se ha seleccionado un departamento válido
     if (departamentoSeleccionado !== '') {
       // Obtiene los municipios correspondientes al departamento seleccionado
       const municipios = municipiosPorDepartamento[departamentoSeleccionado];
-      console.log('Departamento seleccionado:', departamentoSeleccionado);
-
+      //console.log('Departamento seleccionado:', departamentoSeleccionado);
       // Agrega las opciones de municipios al campo de selección
       municipios.forEach(municipio => {
         const opcion = document.createElement('option');
@@ -144,22 +138,16 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
-
   // Agrega un event listener para el cambio en el campo de selección de departamentos
   departamentoSelect.addEventListener('change', actualizarMunicipios);
-
   // Llama a la función para asegurar que los municipios se actualicen al cargar la página
   actualizarMunicipios();
-
-
   formulario.addEventListener('submit', function (event) {
     // Evita el envío tradicional del formulario
     event.preventDefault();
-
     // Obtén los datos del formulario
     var datosFormulario = new FormData(formulario);
     console.log(datosFormulario);
-
     // Itera sobre los datos del formulario y muestra el nombre y el valor en la consola
     for (var pair of datosFormulario.entries()) {
       console.log(pair[0] + ': ' + pair[1]);
@@ -168,20 +156,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // Realiza la solicitud POST con Axios
     axios.post(url, datosFormulario)
       .then(function (response) {
-
         Swal.fire(
           'Agregado!',
           'Datos del paciente agregado exitosamente.',
           'success'
         )
 
-        $("#modalIngresoPaciente").modal("hide");
-        pacienteForm.reset();
+
+
+        $("#modalIngresoPaciente").on("hidden.bs.modal", function () {
+          $(this).find('input,textarea,select').val('').end();
+          // También puedes restablecer cualquier otro estado del formulario si es necesario
+        });
+        //pacienteForm.reset();
         listarCitaspacientes();
-        getSelectcitas();
+        $("#citasModal").on("hidden.bs.modal", function () {
+          $(this).find('input,textarea,select').val('').end();
+          // También puedes restablecer cualquier otro estado del formulario si es necesario
+        });
 
+        $("#tabla-pacientes").DataTable().ajax.reload(null, false);
         window.location.href = window.location.href;
-
 
       })
       .catch(function (error) {
@@ -192,29 +187,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// cerrar borrar informacion selecionada
 
-$(document).ready(function () {
-  // Restablecer el formulario cuando se cierra el modal
-  $('#modalIngresoPaciente').on('hidden.bs.modal', function () {
-    // Obtener el formulario por su ID
-    let formulario = document.getElementById('pacienteForm');
+// funcion para selecionar los datos de la cita 
 
-    // Restablecer el contenido del formulario
-    formulario.reset();
-  });
-
-  // Resto de tu código aquí...
-});
-
-
-
-
-
-// Resto de tu código aquí...
-
-
-// funcion para selecionar los datos de la cita
 
 window.onload = function () {
 
@@ -245,9 +220,9 @@ function getSelectcitas(callback = '') {
             {
               data: null,
               render: function (data, type, row) {
-     //                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
-     return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\', \'' + row.dui + '\' )">Seleccionar</button>';
-    
+                //                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ')">Seleccionar</button>';
+                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\', \'' + row.dui + '\' )">Seleccionar</button>';
+
               }
             }
           ]
@@ -262,70 +237,98 @@ function getSelectcitas(callback = '') {
 
 }
 
-function selectCita(citaId, pacienteNombre,DUI) {
- // let citaInfo = citaId + ' - ' + pacienteNombre;
-  document.getElementById('cita_id').value = citaId  ;
+function selectCita(citaId, pacienteNombre, DUI) {
+  // let citaInfo = citaId + ' - ' + pacienteNombre;
+  document.getElementById('cita_id').value = citaId;
   document.getElementById('nombre_paciente_referencia').textContent = 'Paciente: ' + pacienteNombre;
-  verificarPaciente(pacienteNombre,DUI);
+  verificarPaciente(citaId, pacienteNombre, DUI);
 
   $('#citasModal').modal('hide');
 }
 
+
+
+
+/**
+ * Autor:: Jose zabaleta::::::::
+ * ::::Implementado: 15-10-2023:::::::::::
+ * :::: github: @jose-pixel:::::::::
+ * ::::::Versión:1.0.0::::::
+ * ::::::: Code Licence Copyleft
+ */
+
 //funtio para verificar si existe relacion entre cita y pacinete
-function verificarPaciente(pacienteNombre,DUI){
+function verificarPaciente(citaId, pacienteNombre, DUI) {
 
-let url= window.location.origin + "/verificar/paciente";
-let data = {
-  paciente:pacienteNombre,
-  dui:DUI
+  let url = window.location.origin + "/verificar/paciente";
+  let data = {
+    paciente: pacienteNombre,
+    dui: DUI,
+    id: citaId
+  }
+  axios.post(url, data)
+    .then((res) => {
+      console.log(res)
+      let datos = res.data;
+      if (datos.status === "exists") {
+        Swal.fire({
+          title: datos.message,
+          text: "La información ya se encuentra en el sistema!",
+          icon: 'info',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK',
+          //cancelButtonText: 'No'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            console.log(datos);
+            $("#modalIngresoPaciente").on("hidden.bs.modal", function () {
+              $(this).find('input,textarea,select').val('').end();
+              // También puedes restablecer cualquier otro estado del formulario si es necesario
+            });
+            //pacienteForm.reset();
+            listarCitaspacientes();
+            $("#citasModal").on("hidden.bs.modal", function () {
+              $(this).find('input,textarea,select').val('').end();
+
+            });
+
+            window.location.href = window.location.href;
+            //const idcita = datos.data. id_paciente;
+            //const idPaciente = datos.data.id;
+            //const direccionPaciente = datos.data.direccion;   
+            //console.log(idPaciente,direccionPaciente, idcita);
+            // return [idPaciente, idcita];
+            // document.getElementById("dui").value = paciente.dui;
+
+          }
+        })
+      } else {
+        Swal.fire({
+
+          text: datos.message,
+          icon: 'info',
+          background: '#fff', // Define el fondo del cuadro de diálogo
+          showCloseButton: false, // Oculta el botón de cierre
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+        //Mas codigo
+      }
+
+    })
+    .catch((err) => console.log(err));
 }
-  axios.post(url,data)
-  .then((res) => {
-    console.log(res)
-
-
-    let datos = res.data;
-if(datos.status === "exists"){
-    Swal.fire({
-        title: datos.message,
-        text: "La información se cargara automaticamente!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si',
-        cancelButtonText: 'No'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          console.log(datos);
-        
-              
-        }
-      })
-}else{
-  Swal.fire({
-   
-    text: datos.message,
-    icon: 'info',
-    background: '#fff', // Define el fondo del cuadro de diálogo
-    showCloseButton: false, // Oculta el botón de cierre
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'OK'
-});
-    getInputDUI.value = '';
-}
-    
-  })
-  .catch((err) => console.log(err));
-}
 
 
 
 
 
 
-//funcion para ver los datos de un paciente
+
+//funcion para ver los datos de un paciente  en formato para descargar en pdf
 function ver(element) {
   var idCita = $(element).data('id_cita');
   console.log('buenos dias')

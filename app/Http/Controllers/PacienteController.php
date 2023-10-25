@@ -123,14 +123,14 @@ class PacienteController extends Controller
         $this->saveresponsable($request, $paciente, $id_usuario);
         $this->saveadiccion($request, $paciente, $id_usuario);
         $this->saveAntecedente($request, $paciente, $id_usuario);
-
         $citaId = $request->input('cita_id');
-
         // Actualiza el estado de la cita a 1 a cita atendida
         DB::table('citas')->where('id', $citaId)->update(['estado_cita' => 1]);
-
         return response()->json($paciente);
     }
+
+
+
     //funcion para guardar datos de la tabla conyuge
     public function saveconyuge($request, $paciente, $id_usuario)
     {
@@ -174,12 +174,9 @@ class PacienteController extends Controller
     }
 
     //Funcion guardar datos de la tabla responsable
-
     public function saveresponsable($request, $paciente, $id_usuario)
     {
-
         $datosr = [
-
             'nombrer' => $request->input('nombrer'),
             'estado_civilr' => $request->input('estado_civilr'),
             'nivel_educativor' => $request->input('nivel_educativor'),
@@ -189,7 +186,6 @@ class PacienteController extends Controller
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
         ];
-
         responsable::create($datosr);
     }
 
@@ -380,11 +376,11 @@ class PacienteController extends Controller
 
     public function verificarPaciente()
     {
-        //$citaId = request()->input('cita_id');
+        $citaId = request()->input('id');
         $dui = request()->input('dui');
         $paciente = request()->input('paciente');
 
-        $sql = "SELECT c.id, p.id  FROM citas as c INNER JOIN paciente as
+        $sql = "SELECT c.id  as id_paciente, p.id, p.direccion  FROM citas as c INNER JOIN paciente as
          p on c.id=p.id_cita WHERE c.dui=? and c.paciente LIKE ? ";
 
         //$sql="SELECT c.id, p.id as id_paciente FROM citas as c INNER JOIN paciente as 
@@ -393,36 +389,53 @@ class PacienteController extends Controller
         $verificar = DB::select($sql, [$dui, '%' . $paciente . '%']);
 
         if ($verificar) {
-           // dd($verificar);
+        // dd($verificar);
 
-             // Obtiene el ID del paciente
+         //Obtiene el ID del paciente
         $idPaciente = $verificar[0]->id;
 
-            // Obtiene el ID de la cita verificada
-        $idCitaVerificada = $verificar[0]->id;
+        // Obtiene el ID de la cita verificada
+       // $idCitaVerificada = $verificar[0]->id;
 
-       
+
 
         // Actualiza el campo id_cita en la tabla paciente con el ID de la cita verificada
-        Paciente::where('id', $idPaciente)->update(['id_cita' => $idCitaVerificada]);
+     Paciente::where('id', $idPaciente)->update(['id_cita' => $citaId]);
+     Cita::where('id', $citaId)->update(['estado_cita' => 1]);
+    // DB::table('citas')->where('id', $citaId)->update(['estado_cita' => 1]);
 
-        
-            return response()->json(
-                [
-                    'status' => 'exists',
-                    'message' => '¿los datos ya estan registrados en esistema Desea carga los datos de este cliente?!',
-                    //'data' => $verificarselect[0]
-                ]
+        return response()->json(
+            [
+                'status' => 'exists',
+                'message' => 'la Informacion del cosultante ya estan registrados, la cita ha sido atendida!!',
+                'data' => $verificar[0]
+            ]
 
-            );
+        );
         }
         return response()->json([
             'status' => 'not-found',
-            'message' => 'No existe cosultante registrado anteriormente en el sistema porfavor ingrese los demas datos!',
+            'message' => 'No existe  información del  cosultante anteriormente en el sistema, ¡porfavor ingrese los demas datos!!!',
             'data' => []
         ]);
     }
 
 
-   
+
+
+    public function actualizaridcita(Request  $idPaciente)
+    {
+
+        $idCita = request()->input('cita');
+
+
+        // Actualizar el campo `id_cita` del modelo del paciente
+        Paciente::where('id', $idPaciente)->update(['id_cita' => $idCita]);
+
+        // Retornar un mensaje de éxito
+        return response()->json([
+            'status' => 'exists',
+            'message' => 'El campo `id_cita` se actualizó correctamente.',
+        ]);
+    }
 }
