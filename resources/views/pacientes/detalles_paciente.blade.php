@@ -253,7 +253,11 @@
         vertical-align: middle;
         border-color: inherit;
         height: 150px;
-        background-color: yellow;
+
+        /*
+ background-color: yellow;
+*/
+          
     }
 
     tr {
