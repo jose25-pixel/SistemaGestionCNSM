@@ -25,10 +25,10 @@ class Cita extends Model
     //{
       //  return $this->hasMany('App\Paciente');
    // }
+   public function paciente()
+   {
+       return $this->belongsTo(Paciente::class, 'id_cita');
+   }
 
-
-    public function paciente()
-    {
-        return $this->hasMany(Paciente::class,'id');
-    }
+  
 }

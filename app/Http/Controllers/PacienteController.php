@@ -34,18 +34,6 @@ class PacienteController extends Controller
     }
 
 
-
-    /** 
-
-    public function  verdatos(Request $request)
-    {
-        $data = json_decode($request->query('data'), true);
-        return view('pacientes.detalles_paciente', ['datos' => $data]);
-    }
-     */
-
-
-
     public function getpacientes()
     {
         $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,
@@ -66,7 +54,7 @@ class PacienteController extends Controller
             $array[] = $row->ocupacion;
             $array[] = date('d-m-Y', strtotime($row->fecha_reg));
             $array[] = '<button data-id_cita="' . $row->id . '" onclick="ver(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-eye"></i></button>
-            <button data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
+            <button data-id_paciente="' . $row->id . '" onclick="updatepaciente(' . $row->id . ')" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
             ';
             $data[] = $array;
             $contador--;
@@ -234,7 +222,7 @@ class PacienteController extends Controller
         Antecedente::create($datosa);
     }
 
-    ///funcio para ver los datos de un solo paciente!!!
+    ///funcio para ver los datos de un solo paciente!!! y realizar reportes
     public function verDetallesPaciente(Request $request, $idCita)
     {
         try {
@@ -372,7 +360,7 @@ class PacienteController extends Controller
 
 
 
-
+/// Fucion para verificar si los datso de la cita ya se encuantra en tabla paciente
 
     public function verificarPaciente()
     {
@@ -389,29 +377,29 @@ class PacienteController extends Controller
         $verificar = DB::select($sql, [$dui, '%' . $paciente . '%']);
 
         if ($verificar) {
-        // dd($verificar);
+            // dd($verificar);
 
-         //Obtiene el ID del paciente
-        $idPaciente = $verificar[0]->id;
+            //Obtiene el ID del paciente
+            $idPaciente = $verificar[0]->id;
 
-        // Obtiene el ID de la cita verificada
-       // $idCitaVerificada = $verificar[0]->id;
+            // Obtiene el ID de la cita verificada
+            // $idCitaVerificada = $verificar[0]->id;
 
 
 
-        // Actualiza el campo id_cita en la tabla paciente con el ID de la cita verificada
-     Paciente::where('id', $idPaciente)->update(['id_cita' => $citaId]);
-     Cita::where('id', $citaId)->update(['estado_cita' => 1]);
-    // DB::table('citas')->where('id', $citaId)->update(['estado_cita' => 1]);
+            // Actualiza el campo id_cita en la tabla paciente con el ID de la cita verificada
+            Paciente::where('id', $idPaciente)->update(['id_cita' => $citaId]);
+            Cita::where('id', $citaId)->update(['estado_cita' => 1]);
+            // DB::table('citas')->where('id', $citaId)->update(['estado_cita' => 1]);
 
-        return response()->json(
-            [
-                'status' => 'exists',
-                'message' => 'la Informacion del cosultante ya estan registrados, la cita ha sido atendida!!',
-                'data' => $verificar[0]
-            ]
+            return response()->json(
+                [
+                    'status' => 'exists',
+                    'message' => 'la Informacion del cosultante ya estan registrados, la cita ha sido atendida!!',
+                    'data' => $verificar[0]
+                ]
 
-        );
+            );
         }
         return response()->json([
             'status' => 'not-found',
@@ -423,19 +411,106 @@ class PacienteController extends Controller
 
 
 
-    public function actualizaridcita(Request  $idPaciente)
+
+
+//Obtener datos de un solo paciente mediante su id para poder editar
+
+    public function getidPaciente($dPaciente)
     {
+        // $id_paciente = request()->input('id_paciente');
+        // session(['id_paciente' => $id_paciente]);
+        // $data = Paciente::find($id_cita);
 
-        $idCita = request()->input('cita');
+        //con esta linea de codigo estoy trayendo os datos segun id del paciente u la relación con sus diferentes tablas usando los modelos de laravel, configurar las relaciones en el modelo de uno auno o uno a muchos!!!
+        $data = Paciente::with('Cita', 'parentesco', 'conyuge', 'Atecedente', 'responsable', 'Adiccione')->find($dPaciente);
 
 
-        // Actualizar el campo `id_cita` del modelo del paciente
-        Paciente::where('id', $idPaciente)->update(['id_cita' => $idCita]);
+        if ($data) {
+            // Si se encontraron datos, devolver una respuesta JSON con el estado 'exists' y los datos del paciente
+            return response()->json([
+                'status' => 'exists',
+                'message' => '',
+                'data' => $data
+            ]);
+        } else {
+            // Si no se encontraron datos, devolver una respuesta JSON con el estado 'not_found'
+            return response()->json([
+                'status' => 'not_found',
+                'message' => 'No se encontraron datos para la cita especificada.'
+            ]);
+        }
+    }
 
-        // Retornar un mensaje de éxito
+    /*  public function  updatepacienteid()
+    {
+        $id_paciente = session('id_paciente');
+        $id_usuario = Auth::user()->id;
+        $nombre = request()->input('nombrecita');
+        $celular = request()->input('celularc');
+        $genero = request()->input('genero');    
+        DB::table('paciente')
+        ->join('citas', 'paciente.id_cita', '=', 'citas.id')
+        ->where('paciente.id', $id_paciente)
+        ->update([
+        
+            // ... otros campos que quieres actualizar en la tabla paciente
+            'citas.paciente' =>  $nombre,
+            'citas.celular' => $celular,
+            // ... otros campos que quieres actualizar en la tabla citas
+        ]);     
         return response()->json([
-            'status' => 'exists',
-            'message' => 'El campo `id_cita` se actualizó correctamente.',
+            'status' => 'update',
+            'data' => ''
+        ]);
+    }*/
+
+
+
+//function para poder actualizar los datos de un solo paciente
+
+    public function updatePacienteId(Request $request, $idPaciente)
+
+    {
+        // $idPaciente = session('id_paciente');
+
+        $paciente = Paciente::find($idPaciente);
+
+        // Actualiza los campos del paciente con los datos del formulario
+
+        $paciente->genero = $request->input('nombre');
+        $paciente->ocupacion = $request->input('ocupacion');
+        // ... otros campos que deseas actualizar
+
+        // Guarda los cambios en la base de datos
+        $paciente->save();
+
+
+        /*
+        //dd(session('id_paciente')); 
+        $idPaciente = session('id_paciente');
+        $nombre = request()->input('nombrecita');
+        $celular = request()->input('celularc');
+        $genero = request()->input('genero');
+    
+        // Usamos una transacción para asegurar que las actualizaciones sean atómicas
+        DB::transaction(function () use ($idPaciente, $nombre, $celular, $genero) {
+            // Actualizamos la tabla 'paciente'
+            DB::table('paciente')
+                ->where('id', $idPaciente)
+                ->update([
+                    
+                    'genero' => $genero,
+                    // ... otros campos que quieres actualizar en la tabla 'paciente'
+                ]);
+    
+            // Actualizamos la tabla 'citas'
+          
+        });*/
+
+        // Devolvemos una respuesta JSON indicando que la actualización fue exitosa
+        return response()->json([
+            'status' => 'update',
+            'message' => 'Datos del paciente y citas actualizados correctamente.'
         ]);
     }
 }

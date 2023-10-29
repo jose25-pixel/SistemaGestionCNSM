@@ -122,10 +122,11 @@
     }
 
     .cm {
-        height: 60px;
-
+        height: 100px;
+        max-width: 100%;
         text-align: center;
         margin-left: 10px;
+        
 
     }
 
@@ -167,12 +168,20 @@
 
     }
 
+    .label {
+
+        height: 30px;
+        max-width: 100%;
+        background-color: rgba(73, 175, 243, 0.3);
+    }
+
     thead {
         display: table-header-group;
         vertical-align: middle;
         border-color: inherit;
         text-align: center;
         color: rgb(5, 5, 5);
+        max-width: 50px;
 
         background-color: rgba(73, 175, 243, 0.3);
 
@@ -183,11 +192,14 @@
         display: table-row;
         vertical-align: inherit;
         border-color: inherit;
+        max-width: 50px;
+
     }
 
     .table th,
     .table td {
         padding: 1px;
+
         vertical-align: top;
         border-top: 1px solid #a1a5a7;
         text-align: center;
@@ -198,6 +210,7 @@
     .table thead th {
         vertical-align: bottom;
         border-top: 1px solid #bec6c9;
+
     }
 
     .table-bordered thead th,
@@ -215,7 +228,18 @@
         display: table-cell;
         vertical-align: inherit;
         border: 1px solid black;
+
     }
+
+    .clased {
+        word-wrap: break-word;
+        max-width: 100%;
+        /* Establece el ancho máximo de la celda */
+      
+        height: 100px;
+    }
+
+
 
     th {
         font-weight: bold;
@@ -228,6 +252,8 @@
         display: table-row-group;
         vertical-align: middle;
         border-color: inherit;
+        height: 150px;
+        background-color: yellow;
     }
 
     tr {
@@ -235,6 +261,7 @@
         vertical-align: inherit;
         border-color: inherit;
         border: 1px solid black;
+
     }
 
     .table-striped tbody tr:nth-of-type(odd) {
@@ -498,23 +525,20 @@
             </div>
 
             <div class="cm">
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">Comentario</th>
+
+                <div class="label">
+                    <h3>Nota Madre</h3>
+                </div>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$parentesco->notam}} </td>
 
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="clased">{{$parentesco->notam}}</p>
+
+
             </div>
+
+            <br>
+            <br><br>
 
             <h4>Datos del padre</h4>
 
@@ -586,26 +610,18 @@
 
             <div class="cm">
 
-
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">COMENTARIO</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$parentesco->notam}} </td>
+                <div class="label">
+                    <h3>Nota Padre</h3>
+                </div>
 
 
 
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="clased">{{$parentesco->notap}}</p>
+
 
             </div>
+            <br>
+            <br><br>
             <h3>Datos del conyuge</h3>
 
             <div class="cm">
@@ -640,21 +656,18 @@
             <div class="cm">
 
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">NOTA</th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$conyuge->notac}} </td>
 
-                    </tbody>
 
-                </table>
+                <div class="label">
+                    <h3>Nota Conyuge</h3>
+                </div>
+
+
+
+                <p class="clased">{{$conyuge->notac}} </p>
+
 
 
             </div>
@@ -663,6 +676,8 @@
         </div>
 
     </section>
+    <br>
+    <br><br>
     <section>
 
         <div class="medicamentos">
@@ -746,60 +761,47 @@
             <div class="cm">
 
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            
-                            <th scope="col-sm-4">ENFERMEDADES CRONICAS</th>
-                            <th scope="col-sm-4">ENFERMEDADES DE FAMILIARES</th>
-                            
+             
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                           
-                            <td> {{$antecedente->patologias}} </td>
-                            <td> {{$antecedente->enfergenetica}} </td>
-                           
+                <div class="label">
+                    <h3>Patologías</h3>
+                </div>
 
 
-                        </tr>
-                    </tbody>
-                </table>
+
+                <p class="clased"> {{$antecedente->patologias}} </p>
+
+
 
             </div>
-
-
 
             <div class="cm">
 
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">OTRAS</th>
-                          
 
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$antecedente->otros}} </td>
-                          
+                <div class="label">
+                    <h3>Enfermedades Geneticas</h3>
+                </div>
 
 
 
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="clased"> {{$antecedente->enfergenetica}} </p>
+
+
 
             </div>
 
+            <div class="cm">
 
 
+           
+                <div class="label">
+                    <h3>Enfermedades Geneticas</h3>
+                </div>
 
+                <p class="clased"> {{$antecedente->otros}} </p>
+
+            </div>
 
 
 
@@ -822,23 +824,25 @@
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            
+
                             <th scope="col-sm-4">INICIO A TRABAJAR</th>
                             <th scope="col-sm-4">HA TRABAJADO</th>
                             <th scope="col-sm-4">TRABAJA ACTUALMENTE</th>
                             <th scope="col-sm-4">DURACION ULTIMO EMPLEO</th>
-                            
+                            <th scope="col-sm-4">DESPEDIDO</th>
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                           
+
                             <td> {{$antecedente->iniciotrabajar}} </td>
                             <td> {{$antecedente->trabaja}} </td>
                             <td> {{$antecedente->trabaja_actualmente}} </td>
                             <td> {{$antecedente->duracion_empleo}} </td>
-                           
+                            <td> {{$antecedente->despedido}} </td>
+
 
 
                         </tr>
@@ -852,37 +856,31 @@
             <div class="cm">
 
 
-                <table class="table table-responsive table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col-sm-4">DESPEDIDO</th>
-                            <th scope="col-sm-4">CAUSAS DE DESPIDO</th>
-                            <th scope="col-sm-4">SASTISFACION LABORAL</th>
-                          
+               
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{$antecedente->despedido}} </td>
-                            <td> {{$antecedente->causa}} </td>
-                            <td> {{$antecedente->satisfecho}} </td>
-                          
+                <div class="label">
+                    <h3>CAUSAS DE DESPIDO</h3>
+                </div>
 
-
-
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="clased"> {{$antecedente->causa}} </p>
 
             </div>
 
 
+            <div class="cm">
 
 
+               
 
 
+                <div class="label">
+                    <h3>SASTISFACION LABORAL</h3>
+                </div>
+
+                <p class="clased"> {{$antecedente->satisfecho}} </p>
+
+            </div>
 
 
         </div>
@@ -904,23 +902,23 @@
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            
+
                             <th scope="col-sm-4">RECIBIDO TRATAMIENTO PSICOLÓGICO</th>
                             <th scope="col-sm-4">TIPO DE TRATAMIENTO RECIBIDO</th>
                             <th scope="col-sm-4">TERAPEUTA ATENDIO</th>
-                           
-                            
+
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                           
+
                             <td> {{$adicciones->atencioncnsm}} </td>
                             <td> {{$adicciones->tratamientos}} </td>
                             <td> {{$adicciones->tipotratamiento}} </td>
-                        
-                           
+
+
 
 
                         </tr>
@@ -977,23 +975,23 @@
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            
+
                             <th scope="col-sm-4">TRATAMIENTO RECIBIDOS</th>
                             <th scope="col-sm-4">CONSUMO DE FARMACO</th>
 
-                           
-                            
+
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                           
-                           
+
+
                             <td> {{$adicciones->tratamientorec}} </td>
                             <td> {{$adicciones->tipofarmaco}} </td>
-                        
-                           
+
+
 
 
                         </tr>
@@ -1018,7 +1016,7 @@
 
 
 
-    
+
     <section>
 
         <div class="medicamentos">
@@ -1031,26 +1029,26 @@
                 <table class="table table-responsive table-borderless">
                     <thead>
                         <tr>
-                            
+
                             <th scope="col-sm-4">SUSTANCIA CONSUMIDAD</th>
                             <th scope="col-sm-4">TIEMPO DE CONSUMO</th>
                             <th scope="col-sm-4">ADICCIONES</th>
 
-                           
-                            
+
+
 
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                           
-                           
+
+
                             <td> {{$adicciones->tipo_sustancia}} </td>
                             <td> {{$adicciones->tiempo_consumo}} </td>
                             <td> {{$adicciones->adiccion}} </td>
 
-                        
-                           
+
+
 
 
                         </tr>

@@ -55,10 +55,13 @@ Route::get('pacientes/datatable', [PacienteController::class, 'getpacientes'])->
 Route::get('pacientes/id', [PacienteController::class, 'pacientegetid'])->middleware('auth');
 Route::get('citas/select', [CitaController::class, 'getCitas'])->middleware('auth');
 Route::post('pacientes/save', [PacienteController::class, 'guardarp'])->middleware('auth');
+
 Route::get('pacientes/ver/{idCita}', [PacienteController::class, 'verDetallesPaciente'])->middleware('auth'); 
-Route::get('paciente/updateid/{idPaciente}', [PacienteController::class, 'actualizaridcita'])->middleware('auth'); 
-Route::post('verificar/paciente', [PacienteController::class, 'verificarPaciente'])->middleware('auth');     
-//Route::get('paciente/obtener/{idCita}', [PacienteController::class, 'verdatos']);
+  
+Route::post('verificar/paciente', [PacienteController::class, 'verificarPaciente'])->middleware('auth'); 
+Route::post('paciente/edit/{idPaciente}', [PacienteController::class, 'getidPaciente'])->middleware('auth'); 
+Route::put('paciente/update/{idPaciente}', [PacienteController::class, 'updatepacienteid'])->middleware('auth');   
+
 
 
 //Routas para login y register

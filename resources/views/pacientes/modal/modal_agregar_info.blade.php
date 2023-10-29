@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header py-1 bg-primary">
                 <h2 class=" text-center" id=""><strong> Datos de consultante</strong> </h2>
-                <button type="button" class="close" data-dismiss="modal" id="" onclick="cerrarCitasModal()" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" id="">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -43,7 +43,7 @@
                                     <div class="form-group col-sm-12 col-md-4">
                                         <label for="genero">Sexo*:</label>
                                         <select class="form-control" id="genero" name="genero">
-                                            <option value="masculino">HOMBRE</option>
+                                            <option value="HOLA">HOMBRE</option>
                                             <option value="femenino">MUJER</option>
                                             <option value="femenino">OTRO</option>
                                         </select>
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="municipio">Municipio*:</label>
-                                        <select id="municipio" name="municipio" onkeyup="mayupaciente(this)" class="form-control clear-input"></select>
+                                        <select id="municipio" name="municipio" onkeyup="mayupaciente(this)" class="form-control "></select>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="celular_dos">Celular Dos:</label>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="notam">Nota:</label>
-                                    <textarea onkeyup="mayupaciente(this)" class="form-control" id="notam" name="notam"></textarea>
+                                    <textarea onkeyup="mayupaciente(this)" class="form-control cls-input oblig-input" type="text" class="form-control" id="notam" name="notam"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="viveaunm">Vive su madre Aun?:</label>
@@ -251,7 +251,7 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="notap">Nota:</label>
-                                    <textarea class="form-control" id="notap" onkeyup="mayupaciente(this)" name="notap"></textarea>
+                                    <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="notap" class="form-control cls-input oblig-input" type="text" onkeyup="mayupaciente(this)" name="notap"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="vivep">Vive con su Padre: si/no</label>
@@ -297,7 +297,7 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="notac">Nota:</label>
-                                    <textarea class="form-control" id="notac" onkeyup="mayupaciente(this)" name="notac"></textarea>
+                                    <textarea class="form-control" class="form-control cls-input oblig-input" type="text" maxlength="200" rows="6" id="notac" onkeyup="mayupaciente(this)" name="notac"></textarea>
                                 </div>
 
                             </div>
@@ -368,16 +368,16 @@
                                 <hr>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                     <label for="patologias">Enfermedades Crónicas Hospitalizaciones:</label>
-                                    <textarea class="form-control" id="patologias" onkeyup="mayupaciente(this)" name="patologias"></textarea>
+                                    <textarea class="form-control" id="patologias" class="form-control cls-input oblig-input" type="text" onkeyup="mayupaciente(this)" name="patologias"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                     <label for="enfergenetica">Enfermedades Crónicas, Genéticas de importancia de
                                         familiares:</label>
-                                    <textarea class="form-control" id="enfergenetica" onkeyup="mayupaciente(this)" name="enfergenetica"></textarea>
+                                    <textarea class="form-control" id="enfergenetica" onkeyup="mayupaciente(this)" class="form-control cls-input oblig-input" type="text" name="enfergenetica"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                     <label for="otros">Otras:</label>
-                                    <textarea class="form-control" id="otros" onkeyup="mayupaciente(this)" name="otros"></textarea>
+                                    <textarea class="form-control" id="otros" class="form-control cls-input oblig-input" type="text" onkeyup="mayupaciente(this)" name="otros"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -448,12 +448,12 @@
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                     <label for="causa">Causas por las cuales fue despedida:</label>
-                                    <textarea class="form-control" id="causa" onkeyup="mayupaciente(this)" name="causa"></textarea>
+                                    <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="causa" onkeyup="mayupaciente(this)" name="causa"></textarea>
                                 </div>
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                     <label for="satisfecho">Satisfecho con trayectoria laboral:</label>
-                                    <textarea class="form-control" id="satisfecho" onkeyup="mayupaciente(this)" name="satisfecho"></textarea>
+                                    <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="satisfecho" onkeyup="mayupaciente(this)" name="satisfecho"></textarea>
                                 </div>
 
 
@@ -539,7 +539,7 @@
                     <!--  codigo de sustancias --->
                     <h5 class="text-center mt-2"> <strong>Consumo de Sustancias y Addiciones </strong> </h5>
                     <div class="card">
-                        <div class="card-header bg-light" data-toggle="collapse" data-target="#datosrecibidos" aria-expanded="false">
+                        <div class="card-header bg-light" data-toggle="collapse" data-target="#sustancias" aria-expanded="false">
                             <h3 class="card-title">Ingresar datos de consumo de sustancia y addiciones</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool collapsed" data-card-widget="collapse" title="collapse">
@@ -549,7 +549,7 @@
                             </div>
 
                         </div>
-                        <div class="card-body collapse m-0 p-3" id="datosRecibidos">
+                        <div class="card-body collapse m-0 p-3" id="sustancias">
                             <div class="form-row pt-4">
                                 <hr>
                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
@@ -564,7 +564,7 @@
 
                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                                     <label for="adicion">Adicciones:</label>
-                                    <textarea class="form-control" id="adicion" onkeyup="mayupaciente(this)" name="adicion"></textarea>
+                                    <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="adicion" onkeyup="mayupaciente(this)" name="adicion"></textarea>
                                 </div>
 
                             </div>

@@ -36,15 +36,52 @@ class Paciente extends Model
       //  return $this->belongsTo('App\Cita');
    // }
 
+
+   // Funcion de relacion con el modelo de cita
     public function cita()
     {
-        return $this->hasMany(Cita::class,'id');
+        return $this->hasOne(Cita::class,'id');
     }
 
-
+    // Funcion de relacion con el modelo parentesco
+    
+    public function parentesco()
+    {
+        return $this->hasOne(parentesco::class, 'id');
+    }
+    
+     // Funcion de relacion con el modelo conyuge
 
     public function conyuge()
     {
-        return $this->hasMany(conyuge::class,'id');
+        return $this->hasOne(conyuge::class, 'id');
     }
+
+
+    // Funcion de relacion con el modelo responsable
+
+    public function responsable()
+    {
+        return $this->hasOne(responsable::class, 'id');
+    }
+
+
+    // Funcion de relacion con el modelo Adicciones
+
+    public function Adiccione()
+    {
+        return $this->hasOne(Adicciones::class, 'id');
+    }
+
+ // Funcion de relacion con el modelo Adicciones
+
+    public function Atecedente()
+    {
+        return $this->hasOne(Antecedente::class, 'id');
+    }
+
+
+    
 }
+
+
