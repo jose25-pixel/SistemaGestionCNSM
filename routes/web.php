@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TerapeutaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,9 +61,17 @@ Route::get('pacientes/ver/{idCita}', [PacienteController::class, 'verDetallesPac
   
 Route::post('verificar/paciente', [PacienteController::class, 'verificarPaciente'])->middleware('auth'); 
 Route::post('paciente/edit/{idPaciente}', [PacienteController::class, 'getidPaciente'])->middleware('auth'); 
-Route::put('paciente/update/{idPaciente}', [PacienteController::class, 'updatepacienteid'])->middleware('auth');   
+Route::put('paciente/update/{idPaciente}', [PacienteController::class, 'updatepacienteid'])->middleware('auth');
 
-
+/**
+ * RUTAS DE USUARIOS
+ */
+Route::get('usuarios', [UserController::class, 'index'])->name('user.index')->middleware('auth');
+Route::get('usuarios/datatable', [UserController::class, 'dt_usuarios'])->middleware('auth');
+Route::post('usuarios/save', [UserController::class, 'saveUser'])->middleware('auth');
+Route::post('usuarios/edit', [UserController::class, 'editUser'])->middleware('auth');
+Route::put('usuarios/update', [UserController::class, 'updateUser'])->middleware('auth');
+Route::post('usuarios/disabled',[UserController::class,'disabledUser'])->name('user.disabled')->middleware('auth');
 
 //Routas para login y register
 Route::get('/login', [LoginController::class, 'index'])->name('login');

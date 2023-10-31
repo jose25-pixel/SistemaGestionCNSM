@@ -56,38 +56,14 @@
               </p>
             </a>
           </li>
-          
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
+            <a href="{{route('user.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
               <p>
-                Usuario
-                <i class="fas fa-users right"></i>
+                Usuarios
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
-                  <i class="far fa-users nav-icon"></i>
-                  <p>Terapeutas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Administradores</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Recepcionista</p>
-                </a>
-              </li>
-            </ul>
           </li>
-
-
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="fas fa-question-circle"></i>
