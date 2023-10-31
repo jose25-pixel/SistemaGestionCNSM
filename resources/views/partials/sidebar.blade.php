@@ -48,7 +48,7 @@
               </p>
             </a>
           </li>
-          @if(Auth()->user()->categoria == "Terapeuta" || Auth()->user()->categoria == "administrador")
+          @if(Auth()->user()->categoria == "Terapeuta" || Auth()->user()->categoria == "Admin")
           <li class="nav-item">
             <a href="{{route('consulta.index')}}" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>
