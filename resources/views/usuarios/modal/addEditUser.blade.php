@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="cod">Codigo:</label>
-                            <input type="text" class="form-control cls-input oblig-input" id="cod" name="cod">
+                            <input type="text" class="form-control cls-input" id="cod" name="cod">
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="nombre">Nombre*:</label>
@@ -31,16 +31,16 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" class="form-control cls-input oblig-input" id="direccion"
+                            <input type="text" class="form-control cls-input" id="direccion"
                                 name="direccion">
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="dui">Dui:</label>
-                            <input type="text" class="form-control cls-input oblig-input" id="dui" name="dui">
+                            <input type="text" class="form-control cls-input oblig-input dui_user" id="dui" name="dui">
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="nombre">Teléfono*:</label>
-                            <input type="text" class="form-control cls-input" id="telefono" name="telefono" required>
+                            <input type="text" class="form-control cls-input tel_user" id="telefono" name="telefono" required>
                         </div>
                         <div class="form-group col-sm-12 col-md-3">
                             <label for="email">Correo:</label>

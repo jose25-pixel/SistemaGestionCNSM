@@ -30,25 +30,17 @@
 
 @push('js_scripts')
     <script src="{{asset('js/usuarios.js')}}"></script>
+    <script src="{{asset('js/cleave/Cleave.js')}}"></script>
     <script>
     // Validaciones de input
-    var celularCleave = new Cleave('#celular', {
+    var celularCleave = new Cleave('.tel_user', {
         delimiter: '-',
         blocks: [4, 4],
     });
 
-    var duiCleave = new Cleave('#dui', {
+    var duiCleave = new Cleave('.dui_user', {
         delimiter: '-',
         blocks: [8, 1],
-    });
-    //Validaciones para terapeutas
-    var duiCleave = new Cleave('#dui_t', {
-        delimiter: '-',
-        blocks: [8, 1],
-    });
-    var celularCleave = new Cleave('#telefono_t', {
-        delimiter: '-',
-        blocks: [4, 4],
     });
     // Función para validar números
     function validarNumeros(event) {

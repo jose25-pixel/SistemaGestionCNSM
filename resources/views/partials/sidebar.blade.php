@@ -48,6 +48,7 @@
               </p>
             </a>
           </li>
+          @if(Auth()->user()->categoria == "Terapeuta" || Auth()->user()->categoria == "administrador")
           <li class="nav-item">
             <a href="{{route('consulta.index')}}" class="nav-link">
               <i class="nav-icon fas fa-user-edit"></i>
@@ -56,6 +57,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if(Auth()->user()->categoria == "Admin" || Auth()->user()->categoria == "administrador")
           <li class="nav-item">
             <a href="{{route('user.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -64,6 +67,7 @@
               </p>
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="fas fa-question-circle"></i>
