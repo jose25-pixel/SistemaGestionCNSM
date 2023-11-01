@@ -26,8 +26,8 @@ class UserController extends Controller
             $array[] = $row->telefono;
             $array[] = $row->email;
             $array[] = $row->categoria;
-            $button = $row->estado == 1 ? '<button title="Desactivar usuario" class="btn btn-xs btn-danger" onclick="disabledUser(this,0)" data-id="'.$row->id.'"><i class="fas fa-user-slash"></i> Inhabilitar</button>' : '<button title="Habilitar usuario" class="btn btn-xs btn-outline-success" onclick="disabledUser(this,1)" data-id="'.$row->id.'"><i class="fas fa-user-check"></i> Habilitar</button>';
-            $array[] = '<button title="Editar información del usuario" data-id="'.$row->id.'" onclick="editUser(this)" class="btn btn-xs btn-outline-info mr-2"><i class="fas fa-user-edit"></i>Editar</button>'.$button;
+            $button = $row->estado == 1 ? '<button title="Desactivar usuario" class="btn btn-xs btn-danger" onclick="disabledUser(this,0)" data-id="'.$row->id.'"><i class="fas fa-user-slash"></i></button>' : '<button title="Habilitar usuario" class="btn btn-xs btn-outline-success" onclick="disabledUser(this,1)" data-id="'.$row->id.'"><i class="fas fa-user-check"></i></button>';
+            $array[] = '<button title="Editar información del usuario" data-id="'.$row->id.'" onclick="editUser(this)" class="btn btn-xs btn-outline-info mr-2"><i class="fas fa-user-edit"></i></button>'.$button;
             $data[] = $array;
             $contador ++;
         }

@@ -63,7 +63,6 @@ try {
             axios
                 .post(url, formData)
                 .then((res) => {
-                    console.log(res);
                     let data = res.data;
                     if (data.status === "success") {
                         Swal.fire({
@@ -85,7 +84,6 @@ try {
             axios
                 .post(url, formData)
                 .then((res) => {
-                    console.log(res);
                     let data = res.data;
                     if (data.status === "updated") {
                         Swal.fire({
@@ -120,7 +118,6 @@ function editUser(element) {
     axios
         .post(url, { id })
         .then((response) => {
-            console.log(response)
             //Set method put
             let data = response.data;
             document.getElementById("_methodConsult").value = "put";

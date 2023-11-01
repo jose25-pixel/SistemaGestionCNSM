@@ -431,6 +431,7 @@ try{
                             document.getElementById('dui').value = datos.data.dui;
                             document.getElementById('email').value = datos.data.email;
                             document.getElementById('celular').value = datos.data.celular;
+                            document.getElementById('terapeuta_id').value = datos.data.terapeuta_id;
                         }else{
                             getInputDUI.value = '';
                         }
