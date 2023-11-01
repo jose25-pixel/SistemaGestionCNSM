@@ -85,7 +85,7 @@ class CitaController extends Controller
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,
             c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono 
             as tel_t FROM `citas` as c INNER join usuarios as u on
-            c.terapeuta_id=u.id where c.fecha=? and c.usuario_id=? order by c.id desc", [$fecha, Auth()->user()->id]);
+            c.terapeuta_id=u.id where c.fecha=? and c.terapeuta_id=? order by c.id desc", [$fecha, Auth()->user()->id]);
         }
         $data = [];
         $counter = count($citas);
@@ -151,7 +151,7 @@ class CitaController extends Controller
         }else{
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
-         as c INNER join usuarios as u on c.terapeuta_id=u.id where c.usuario_id=? order by c.id desc",[Auth()->user()->id]);
+         as c INNER join usuarios as u on c.terapeuta_id=u.id where c.terapeuta_id=? order by c.id desc",[Auth()->user()->id]);
         }
         $data = [];
         $contador = count($citas);
