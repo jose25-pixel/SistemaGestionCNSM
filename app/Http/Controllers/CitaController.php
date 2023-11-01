@@ -66,7 +66,7 @@ class CitaController extends Controller
         if (Auth()->user()->categoria == "Admin") {
             $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` GROUP BY fecha;");
         }else{
-            $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` where usuario_id=? GROUP BY fecha;",[$id_usuario]);
+            $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` where terapeuta_id=? GROUP BY fecha;",[$id_usuario]);
         }
         return response()->json($data);
     }
@@ -151,7 +151,7 @@ class CitaController extends Controller
         }else{
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
-         as c INNER join usuarios as u on c.terapeuta_id=u.id order where c.usuario_id=? by c.id desc",[Auth()->user()->id]);
+         as c INNER join usuarios as u on c.terapeuta_id=u.id where c.usuario_id=? order by c.id desc",[Auth()->user()->id]);
         }
         $data = [];
         $contador = count($citas);
@@ -242,12 +242,10 @@ class CitaController extends Controller
         if(Auth()->user()->categoria == "Admin"){
             $cantidadCita = Cita::where('fecha', $day)->count();
         }else{
-            $cantidadCita = Cita::where('fecha', $day)->where('usuario_id',$usuario_id)->count();
+            $cantidadCita = Cita::where('fecha', $day)->where('terapeuta_id',$usuario_id)->count();
         }
         return response()->json($cantidadCita);
     }
-
-
 
     //Get cits
     public function getCitas()

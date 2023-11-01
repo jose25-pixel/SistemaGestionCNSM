@@ -18,7 +18,11 @@ class ConsultasController extends Controller
         return view('consulta.index');
     }
     public function datatable_consulta(){
-        $consulta = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id order by c.id desc');
+        if(Auth()->user()->categoria == "Admin"){
+            $consulta = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id order by c.id desc');
+        }else{
+            $consulta = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id where c.usuario_id=? order by c.id desc',[Auth()->user()->id]);
+        }
         $data = [];
         $contador = 1;
         foreach($consulta as $row){
