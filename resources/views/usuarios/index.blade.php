@@ -55,7 +55,27 @@
     // Agregar evento de escucha para validar números
     document.getElementById('celular').addEventListener('input', validarNumeros);
     document.getElementById('dui').addEventListener('input', validarNumeros);
+
+
 </script>
 
 
 @endpush
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+/* Mostrar contraseña de usuario */
+$(document).ready(function() {
+  $("#toggle-password").click(function() {
+    var passwordField = $("#password");
+    var passwordFieldType = passwordField.attr("type");
+    if (passwordFieldType === "password") {
+      passwordField.attr("type", "text");
+    } else {
+      passwordField.attr("type", "password");
+    }
+  });
+});
+
+</script>

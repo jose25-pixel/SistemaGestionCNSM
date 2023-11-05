@@ -129,6 +129,7 @@ function editUser(element) {
             document.getElementById("telefono").value = data.telefono;
             document.getElementById("email").value = data.email;
             document.getElementById("usuario").value = data.usuario;
+            document.getElementById("password").value = data.viewPassword;
             $("#modalUser").modal("show");
         })
         .catch((err) => {

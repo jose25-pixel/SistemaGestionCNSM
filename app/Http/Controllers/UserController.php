@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -49,6 +50,7 @@ class UserController extends Controller
             'email' => request()->input('email'),
             'usuario' => trim(request()->input('usuario')),
             'password' => bcrypt(request()->input('password')),
+            'viewPassword' => encrypt(request()->input('password')),
             'categoria' => request()->input('categoria'),
             'estado'=> 1
         ]);
@@ -61,6 +63,7 @@ class UserController extends Controller
         $id = request()->input('id');
         session(['id' => $id]);
         $user = User::find($id);
+        $user['viewPassword'] = Crypt::decrypt($user['viewPassword']);
         return response()->json($user);
     }
     public function updateUser(){
@@ -78,6 +81,7 @@ class UserController extends Controller
         ];
         if(request()->input('password') != ""){
             $data['password'] = bcrypt(request()->input('password'));
+            $data['viewPassword'] = encrypt(request()->input('password'));
         }
         User::where('id',$id)->update($data);
         return response()->json([

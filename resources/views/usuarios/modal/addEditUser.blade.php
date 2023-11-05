@@ -50,9 +50,17 @@
                             <label for="usuario">Usuario*:</label>
                             <input type="text" class="form-control cls-input" id="usuario" name="usuario" required>
                         </div>
+                        <!-- Tu código HTML para el campo de contraseña y el ícono de ojo -->
                         <div class="form-group col-sm-12 col-md-3">
                             <label for="password">Contraseña*:</label>
-                            <input type="password" class="form-control cls-input" id="password" name="password">
+                            <div class="input-group">
+                                <input type="password" class="form-control cls-input" id="password" name="password">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,3 +72,5 @@
         </div>
     </div>
 </div>
+
+
