@@ -51,6 +51,7 @@ Route::post('consulta/save', [ConsultasController::class, 'saveConsulta'])->midd
 Route::post('consulta/edit', [ConsultasController::class, 'editConsult'])->middleware('auth');
 Route::put('consulta/update', [ConsultasController::class, 'updateConsult'])->middleware('auth');
 Route::delete('consulta/destroy',[ConsultasController::class,'destroyConsult'])->name('consulta.destroy')->middleware('auth');
+Route::post('consulta/reporte',[ConsultasController::class,'generarPDFConsult'])->name('consulta.pdf')->middleware('auth');
 
 Route::get('pacientes/datatable', [PacienteController::class, 'getpacientes'])->middleware('auth');
 Route::get('pacientes/id', [PacienteController::class, 'pacientegetid'])->middleware('auth');

@@ -342,3 +342,32 @@ function clsInputs(clase) {
     let inputs = document.querySelectorAll("." + clase);
     inputs.forEach((input) => (input.value = ""));
 }
+
+/**
+ * Codigo para generar pdf
+ */
+function genrarPDF(element){
+    let token = document.querySelector('meta[name="_token"]');
+    let tokenValue = token.getAttribute("content");
+    let id = element.dataset.id_consulta;
+    let form = document.createElement('form');
+    form.method = 'post';
+    form.target = '_blank';
+    form.action = window.location.origin + '/consulta/reporte';
+    //Input
+    let input = document.createElement('input');
+    input.name = 'consulta_id';
+    input.type = 'hidden';
+    input.value = id;
+    form.appendChild(input)
+    //Token laravel
+    let tokenInput = document.createElement('input');
+    tokenInput.name = '_token';
+    tokenInput.type = 'hidden';
+    tokenInput.value = tokenValue;
+    form.appendChild(tokenInput);
+    //Creamos en el dom
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+}

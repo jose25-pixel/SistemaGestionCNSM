@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class ConsultasController extends Controller
 {
@@ -34,8 +35,9 @@ class ConsultasController extends Controller
             $array[] = date('d-m-Y',strtotime($row->fecha));
             $array[] = $row->hora;
             $array[] = $row->motivo_consulta;
-            $array[] = '<button title="Editar información de la consulta" data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i>Editar</button>
-            <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-danger" onclick="delConsulta(this)" data-id_consulta="'.$row->id.'"><i class="fas fa-trash"></i> Eliminar</button>';
+            $array[] = '<button title="Editar información de la consulta" data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
+            <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-danger" onclick="delConsulta(this)" data-id_consulta="'.$row->id.'"><i class="fas fa-trash"></i></button>
+            <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-outline-info" onclick="genrarPDF(this)" data-id_consulta="'.$row->id.'"><i class="far fa-file-pdf" style="color: #e85e5e;"></i></button>';
             $data[] = $array;
             $contador ++;
         }
@@ -200,5 +202,16 @@ class ConsultasController extends Controller
         return response()->json([
             'status' => 'error-500'
         ]);
+    }
+    /**
+     * Reporte en PDF
+     */
+    public function generarPDFConsult(){
+        $consulta_id = request()->input('consulta_id');
+        $consultas = DB::select('SELECT c.id,c.num_clinico,c.fecha,c.hora,c.motivo_consulta,c.genograma,ct.paciente,ct.dui,ct.celular,ct.email,ct.motivo,p.cod_paciente,p.fecha_naci,p.genero,p.direccion FROM `consultas` as c inner join paciente as p on c.paciente_id=p.id inner join citas as ct on p.id_cita=ct.id where c.id=? order by c.id desc',[$consulta_id]);
+        //Data de los sintomas
+        $sintomas = Sintomas::where('id_consulta',$consulta_id)->get();
+        $pdf = PDF::loadView('consulta.pdf.consulta',compact('consultas','sintomas'));
+        return $pdf->stream('reporte-' . $consultas[0]->num_clinico . '.pdf');
     }
 }
