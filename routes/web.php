@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\PacienteController;
@@ -78,3 +79,4 @@ Route::post('usuarios/disabled',[UserController::class,'disabledUser'])->name('u
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.auth');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('graficos',[ChartController::class, 'index']);

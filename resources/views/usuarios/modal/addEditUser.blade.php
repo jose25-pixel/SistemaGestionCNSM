@@ -31,8 +31,7 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" class="form-control cls-input" id="direccion"
-                                name="direccion">
+                            <input type="text" class="form-control cls-input" id="direccion" name="direccion">
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="dui">Dui:</label>
@@ -40,7 +39,8 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="nombre">Teléfono*:</label>
-                            <input type="text" class="form-control cls-input tel_user" id="telefono" name="telefono" required>
+                            <input type="text" class="form-control cls-input tel_user" id="telefono" name="telefono"
+                                required>
                         </div>
                         <div class="form-group col-sm-12 col-md-3">
                             <label for="email">Correo:</label>
@@ -54,14 +54,37 @@
                         <div class="form-group col-sm-12 col-md-3">
                             <label for="password">Contraseña*:</label>
                             <div class="input-group">
-                                <input type="password" class="form-control cls-input" id="password" name="password">
+                                <input type="password" class="form-control cls-input" id="password" name="password" oninput="updateProgressBar()">
                                 <div class="input-group-append">
-                                    <span class="input-group-text" id="toggle-password">
-                                        <i class="fas fa-eye"></i>
+                                <span class="input-group-text" id="toggle-password">
+                                        <i class="fas fa-eye" id="eye-icon"></i>
+                                    </span>
+                                    <span class="input-group-text" id="copy-password" onclick="copyToClipboard()">
+                                        <i class="fas fa-copy"></i>
+                                        <span id="copy-confirm" style="display:none;"> ¡Copiado!</span>
                                     </span>
                                 </div>
                             </div>
+                            <progress id="password-progress" value="0" max="8"></progress>
+                            <div id="password-strength"></div>
                         </div>
+
+                        <script>
+                        function updateProgressBar() {
+                            var password = document.getElementById('password').value;
+                            var progressBar = document.getElementById('password-progress');
+                            var strengthMessage = document.getElementById('password-strength');
+
+                            progressBar.value = password.length;
+
+                            if (password.length <= 4) {
+                                strengthMessage.textContent = '¡Muy débil!';
+                            } else if (password.length >= 4 && password.length <= 8) {
+                                strengthMessage.textContent = '¡Excelente';
+                            }
+                        }
+                        </script>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -72,5 +95,3 @@
         </div>
     </div>
 </div>
-
-

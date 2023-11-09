@@ -65,17 +65,33 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-/* Mostrar contraseña de usuario */
-$(document).ready(function() {
-  $("#toggle-password").click(function() {
-    var passwordField = $("#password");
-    var passwordFieldType = passwordField.attr("type");
-    if (passwordFieldType === "password") {
-      passwordField.attr("type", "text");
-    } else {
-      passwordField.attr("type", "password");
-    }
-  });
-});
+      /* Mostrar contraseña de usuario */
+      $(document).ready(function () {
+        $("#toggle-password").click(function () {
+          var passwordField = $("#password");
+          var passwordFieldType = passwordField.attr("type");
+          if (passwordFieldType === "password") {
+            passwordField.attr("type", "text");
+            $("#eye-icon").removeClass("fa-eye").addClass("fa-eye-slash");
+          } else {
+            passwordField.attr("type", "password");
+            $("#eye-icon").removeClass("fa-eye-slash").addClass("fa-eye");
+          }
+        });
+      });
 
-</script>
+
+      function copyToClipboard() {
+    var passwordField = document.getElementById("password");
+    passwordField.select();
+    document.execCommand("copy");
+    
+    var copyConfirmText = document.getElementById("copy-confirm");
+    copyConfirmText.style.display = "inline";
+    
+    setTimeout(function() {
+        copyConfirmText.style.display = "none";
+    }, 2000); // Oculta el texto de confirmación después de 2 segundos (2000 milisegundos)
+}
+
+    </script>

@@ -139,6 +139,8 @@
 <script src="{{asset('plugins/sweetalert2/sweetalert2.all.js')}}"></script>
 <script src="{{asset('js/cleave/Cleave.js')}}"></script>
 <script src="{{asset('js/dataTable.js')}}"></script>
+
+
 <!-----Helpers------>
 <script src="{{asset('js/helpers.js')}}"></script>
 @yield('scripts')
