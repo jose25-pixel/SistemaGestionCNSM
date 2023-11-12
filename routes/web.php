@@ -22,7 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware('auth')
+    ->uses([ChartController::class, 'index']);
+
 //Rutas para citas y control citas
 Route::get('/citas/diarias', [CitaController::class, 'index'])->name('cita.index')->middleware('auth');
 Route::get('/paciente', [PacienteController::class, 'index'])->name('paciente.index')->middleware('auth');
@@ -79,4 +83,4 @@ Route::post('usuarios/disabled',[UserController::class,'disabledUser'])->name('u
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.auth');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
-Route::get('graficos',[ChartController::class, 'index']);
+
