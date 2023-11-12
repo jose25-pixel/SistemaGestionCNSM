@@ -37,7 +37,7 @@ class ConsultasController extends Controller
             $array[] = $row->motivo_consulta;
             $array[] = '<button title="Editar información de la consulta" data-id_consulta="'.$row->id.'" onclick="editConsult(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
             <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-danger" onclick="delConsulta(this)" data-id_consulta="'.$row->id.'"><i class="fas fa-trash"></i></button>
-            <button title="Eliminar o remover esta consulta" class="btn btn-xs btn-outline-info" onclick="genrarPDF(this)" data-id_consulta="'.$row->id.'"><i class="far fa-file-pdf" style="color: #e85e5e;"></i></button>';
+            <button title="Generar PDF de la consulta" class="btn btn-xs btn-outline-info" onclick="genrarPDF(this)" data-id_consulta="'.$row->id.'"><i class="far fa-file-pdf" style="color: #e85e5e;"></i></button>';
             $data[] = $array;
             $contador ++;
         }

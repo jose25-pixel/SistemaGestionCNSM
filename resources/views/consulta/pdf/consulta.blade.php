@@ -263,7 +263,6 @@
         <p class="pag"> CÓDIGO CLINICO: {{$consultas[0]->cod_paciente}}
             AÑO:
             <?php echo date("Y");?>
-            Pagína
         </p>
     </footer>
 </body>
