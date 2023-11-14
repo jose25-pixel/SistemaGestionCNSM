@@ -7,12 +7,12 @@
 <div class="row">
     <div class="col-lg-3 col-6">
     <!-- small box -->
-        <div class="small-box bg-info"> <div class="inner"> <h3>150</h3> <h3>Usuarios</h3> </div>
+        <div class="small-box bg-info"> <div class="inner"> <h3>{{ $totalUsuarios }}</h3> <h3>Usuarios</h3> </div>
             <div class="icon">
                 <i class="ion-android-contacts text-white"></i>
 
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
         </div>
 </div>
 <!-- ./col -->
@@ -20,14 +20,13 @@
     <!-- small box -->
     <div class="small-box bg-success">
         <div class="inner">
-            <h3>34<sup style="font-size: 20px"></sup></h3>
-
+            <h3>{{ $terapeutas }}</h3>
             <h3>Terapeutas</h3>
         </div>
         <div class="icon">
             <i class="ion-android-checkmark-circle text-white"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
     </div>
 </div>
 <!-- /.row -->
@@ -103,90 +102,55 @@
 });
 
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // Supongamos que tienes datos de consultas con terapeutas
-        var datosConsultas = [
-            { consulta: 'Consulta 1', terapeuta: 'Terapeuta A' },
-            { consulta: 'Consulta 2', terapeuta: 'Terapeuta B' },
-            { consulta: 'Consulta 3', terapeuta: 'Terapeuta C' },
-            { consulta: 'Consulta 4', terapeuta: 'Terapeuta D' },
-            { consulta: 'Consulta 5', terapeuta: 'Terapeuta E' },
-            { consulta: 'Consulta 6', terapeuta: 'Terapeuta F' },
-            { consulta: 'Consulta 7', terapeuta: 'Terapeuta G' },
-            { consulta: 'Consulta 8', terapeuta: 'Terapeuta H' },
-            { consulta: 'Consulta 9', terapeuta: 'Terapeuta I' },
-            { consulta: 'Consulta 10', terapeuta: 'Terapeuta J' },
-            // ... Agrega más datos según sea necesario
-        ];
+document.addEventListener('DOMContentLoaded', function () {
+    // Supongamos que tienes datos de consultas con terapeutas (obtenidos desde el controlador Laravel)
+    var terapeutasConConsultas = {!! json_encode($terapeutasConConsultas) !!};
 
-        // Crear un objeto con terapeutas y un número aleatorio de consultas para cada uno
-        var terapeutas = {};
-        datosConsultas.forEach(function (consulta) {
-            if (!terapeutas[consulta.terapeuta]) {
-                terapeutas[consulta.terapeuta] = Math.floor(Math.random() * 20) + 1; // Número aleatorio de consultas
-            } else {
-                terapeutas[consulta.terapeuta]++;
-            }
-        });
-
-        // Convertir a un formato que Highcharts pueda entender
-        var data = Object.keys(terapeutas).map(function (terapeuta) {
-            return {
-                name: terapeuta,
-                y: terapeutas[terapeuta]
-            };
-        });
-
-        // Configuración de Highcharts para un gráfico de pastel
-        Highcharts.chart('grafico2', {
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: 'Top 10 Terapeutas por Consultas'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}'
-                    }
-                }
-            },
-            series: [{
-                name: 'Consultas',
-                data: data
-            }]
-        });
+    // Convertir a un formato que Highcharts pueda entender
+    var data = terapeutasConConsultas.map(function (terapeuta) {
+        return {
+            name: terapeuta.nombre,
+            y: terapeuta.consultas.length
+        };
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // Supongamos que tienes datos de pacientes con información sobre su género
-        var datosPacientes = [
-            { paciente: 'Paciente 1', genero: 'Masculino' },
-            { paciente: 'Paciente 2', genero: 'Femenino' },
-            { paciente: 'Paciente 3', genero: 'Masculino' },
-            // ... Agrega más datos según sea necesario
-        ];
-
-        // Contar la frecuencia de cada género
-        var frecuenciaPorGenero = {};
-
-        datosPacientes.forEach(function (paciente) {
-            if (!frecuenciaPorGenero[paciente.genero]) {
-                frecuenciaPorGenero[paciente.genero] = Math.floor(Math.random() * 20) + 1;;
-            } else {
-                frecuenciaPorGenero[paciente.genero]++;
+    // Configuración de Highcharts para un gráfico de pastel
+    Highcharts.chart('grafico2', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'TOP de Últimos 10 Terapeutas con sus Consultas'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y}',
+                    style: {
+                        fontSize: '10px' // Ajustar el tamaño de la fuente según sea necesario
+                    }
+                }
             }
-        });
+        },
+        series: [{
+            name: 'Consultas',
+            data: data
+        }]
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+        // Supongamos que tienes datos de pacientes con información sobre su género
+        var datosPacientes = {!! json_encode($generoPacientes) !!};
 
         // Convertir a un formato que Highcharts pueda entender
-        var data = Object.keys(frecuenciaPorGenero).map(function (genero) {
+        var data = Object.keys(datosPacientes).map(function (genero) {
             return {
                 name: genero,
-                y: frecuenciaPorGenero[genero]
+                y: datosPacientes[genero]
             };
         });
 
@@ -199,30 +163,30 @@
                 text: 'Género de Pacientes'
             },
             xAxis: {
-                categories: ['Género']
+                categories: Object.keys(datosPacientes), // No es necesario especificar categorías adicionales
             },
             yAxis: {
-                min: 0,
-                title: {
-                    text: 'Número de Pacientes'
-                }
+            min: 0,
+            title: {
+                text: 'Número de Pacientes'
             },
+            allowDecimals: false // Configuración para permitir solo números enteros
+        },
             legend: {
                 reversed: true
             },
+            
             plotOptions: {
                 series: {
                     stacking: 'normal'
                 }
             },
             series: [{
-                name: 'Masculino',
-                data: [frecuenciaPorGenero['Masculino'] || 0]
-            }, {
-                name: 'Femenino',
-                data: [frecuenciaPorGenero['Femenino'] || 0]
+                name: 'Género',
+                data: data
             }]
         });
     });
+
 </script>
 @endsection
