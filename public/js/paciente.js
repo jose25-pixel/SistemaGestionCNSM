@@ -562,7 +562,7 @@ function getSelectcitas(callback = '') {
             {
               data: null,
               render: function (data, type, row) {
-                return '<button class="btn btn-primary" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\', \'' + row.dui + '\' )">Seleccionar</button>';
+                return '<button class="btn btn-success btn-sm" onclick="selectCita(' + row.id + ', \'' + row.paciente + '\', \'' + row.dui + '\' )"><i style="cursor: pointer" class="fas fa-plus"></i></button>';
 
               }
             }

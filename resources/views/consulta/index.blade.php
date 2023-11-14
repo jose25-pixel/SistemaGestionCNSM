@@ -22,7 +22,7 @@
                   <th>Motivo de consulta</th>
                   <th>Acciones</th>
                 </thead>
-                <tbody style="font-size: 14px;text-align:center">
+                <tbody style="font-size: 13px;text-align:center">
                 </tbody>
               </table>
         </div>
