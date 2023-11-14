@@ -25,7 +25,7 @@
           <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link">
               <p class="text-white">
-                Dashboard
+                Inicio
               </p>
             </a>
           </li>

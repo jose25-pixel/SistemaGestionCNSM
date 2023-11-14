@@ -37,6 +37,8 @@ Route::get('citas/cantidades', [CitaController::class, 'getCountDateCita'])->mid
 Route::get('cita/pacientes/datatable/{fecha}', [CitaController::class, 'getCitasPaciDT'])->middleware('auth');
 Route::post('cita/validation/dui', [CitaController::class, 'validationDUICita'])->middleware('auth');
 Route::get('citas/all', [CitaController::class, 'getListadoGenCita'])->middleware('auth');
+//Se añadio ruta para mostrar las citas por dia actual
+Route::get('citas/alert-hoy', [CitaController::class, 'alertCitasHoy'])->middleware('auth');
 Route::post('citas/cancelar', [CitaController::class, 'cancelarCita'])->middleware('auth');
 Route::post('citas/edit', [CitaController::class, 'getCitaById'])->middleware('auth');
 Route::put('citas/update', [CitaController::class, 'updateCita'])->middleware('auth');

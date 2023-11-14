@@ -1,5 +1,9 @@
 @extends('layouts.app')
+@section('title','CNSM | Inicio')
 @section('content')
+@include('citas.modal.alert_citas_diarias')
+@include('citas.modal_agendar_cita')
+@include('terapeuta.modal.modal_form_terapeuta')
 <h3>Gráficos</h3>
 <!-- Highcharts JS -->
  <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -190,3 +194,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 @endsection
+
+@push('js_scripts')
+    <script src="{{asset('js/alert.js')}}"></script>
+    <script src="{{asset('js/cita.js')}}"></script>
+    <script src="{{asset('js/terapeuta.js')}}"></script>
+@endpush
