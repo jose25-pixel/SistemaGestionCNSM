@@ -1,5 +1,5 @@
 <div class="modal fade" id="modalIngresoPaciente" tabindex="-1" role="dialog" aria-labelledby="modalNuevaCitaLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 90%">
+    <div class="modal-dialog" style="max-width:90%">
         <div class="modal-content">
             <div class="modal-header py-1 bg-primary">
                 <h2 class=" text-center" id=""><strong> Datos de consultante</strong> </h2>
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="nu_hijo">Numero de Hijos:</label>
-                                        <input type="number" class="form-control" id="nu_hijo" name="nu_hijo" placeholder="Dos hijos">
+                                        <input type="text" class="form-control" id="nu_hijo" name="nu_hijo" placeholder="Dos hijos">
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="edad_hijo">Edades Hijos:</label>
@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                         <label for="ano_casado">Años de Casado</label>
-                                        <input type="number" class="form-control" id="ano_casado" onkeyup="mayupaciente(this)" name="ano_casado" placeholder="Años de casado">
+                                        <input type="text" class="form-control" id="ano_casado" onkeyup="mayupaciente(this)" name="ano_casado" placeholder="Años de casado">
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="notam">Nota:</label>
-                                    <textarea onkeyup="mayupaciente(this)" class="form-control cls-input oblig-input" type="text" class="form-control" id="notam" name="notam"></textarea>
+                                    <textarea onkeyup="mayupaciente(this)" class="form-control cls-input oblig-input" type="text" class="form-control" id="notam" name="notam" placeholder="Ingrese datos extra"></textarea>
                                 </div>
                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                     <label for="viveaunm">Vive su madre Aun?:</label>
