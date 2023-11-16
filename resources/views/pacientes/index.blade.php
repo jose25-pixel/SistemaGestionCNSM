@@ -16,8 +16,6 @@
                 <div class="">
                     <div class=" text-center">
                         <h5 class="" id="exampleModalLabel">LISTADO GENERAL DE PACIENTES</h5>
-
-
                     </div>
                     @include('pacientes.modal.modal_agregar_info')
                     @include('pacientes.modal.modal_selec_citaid')
@@ -28,15 +26,16 @@
 
 
                                 <div style="border-top:4px solid #050859">
-                                    <button class=" m-2 btn btn-outline-secondary btn-sm btn-rounded" onclick="Agregar(this)"> <i class="nav-icon fas fa-users"></i>
+                                    <button class=" m-2 btn btn-outline-secondary btn-sm btn-rounded"
+                                        onclick="Agregar(this)"> <i class="nav-icon fas fa-users"></i>
                                         Agregar
                                         <i class="fas fa-plus"></i></button>
                                 </div>
 
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="tabla-pacientes" class="table table-striped table-bordered">
-                                        <thead class="thead-dark">
+                                    <table id="tabla-pacientes" class="table table-custom table-hover">
+                                        <thead style="text-align: center;height:12px">
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Código</th>
@@ -50,7 +49,8 @@
                                                 <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody style="font-size: 13px;text-align:center">
+                                        </tbody>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -63,8 +63,6 @@
     </div>
 </section>
 @endsection
-
-
 @push('js_scripts')
 <script src="{{ asset('js/paciente.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

@@ -40,4 +40,14 @@ class User extends Authenticatable
         //'password',
         'remember_token',
     ];
+
+    /**
+     * Definir la relación uno a muchos con el modelo Consultas.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function consultas()
+    {
+        return $this->hasMany(Consultas::class, 'usuario_id');
+    }
 }

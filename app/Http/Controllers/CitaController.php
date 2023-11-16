@@ -174,8 +174,8 @@ class CitaController extends Controller
             $array[] = $badge;
             $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled";
             $disableBtnEdit = $row->estado_cita == -1 ? "disabled" : '';
-            $array[] = '<button ' . $disableBtnEdit . ' data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas user-edit"></i>Editar</button>
-            <button ' . $disableBTNCancel . ' class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="' . $row->id . '"><i class="fas user-slash"></i> Cancelar</button>';
+            $array[] = '<button title="Editar cita" ' . $disableBtnEdit . ' data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
+            <button title="Cancelar cita"' . $disableBTNCancel . ' class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-user-slash"></i></button>';
             $data[] = $array;
             $contador--;
         }
@@ -240,9 +240,9 @@ class CitaController extends Controller
         $day = date('Y-m-d');
         $usuario_id = Auth()->user()->id;
         if(Auth()->user()->categoria == "Admin"){
-            $cantidadCita = Cita::where('fecha', $day)->count();
+            $cantidadCita = Cita::where('fecha', $day)->where('estado_cita','!=',-1)->count();
         }else{
-            $cantidadCita = Cita::where('fecha', $day)->where('terapeuta_id',$usuario_id)->count();
+            $cantidadCita = Cita::where('fecha', $day)->where('terapeuta_id',$usuario_id)->where('estado_cita','!=',-1)->count();
         }
         return response()->json($cantidadCita);
     }
@@ -299,5 +299,56 @@ class CitaController extends Controller
         return response()->json([
             'status' => 'delete'
         ]);
+    }
+    /**
+     * get citados para este dia(Actual)
+     */
+    public function alertCitasHoy()
+    {
+        date_default_timezone_set('America/El_Salvador');
+        $day = date('Y-m-d');
+        //Validacion para no mostrar todos los datos
+        if(Auth()->user()->categoria == "Admin"){
+        $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
+        c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
+         as c INNER join usuarios as u on c.terapeuta_id=u.id where c.fecha=? and c.estado_cita='0' order by c.id desc",[$day]);
+        }else{
+            $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
+        c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
+         as c INNER join usuarios as u on c.terapeuta_id=u.id where c.terapeuta_id=? and c.fecha=? and c.estado_cita='0' order by c.id desc",[Auth()->user()->id,$day]);
+        }
+        $data = [];
+        $contador = count($citas);
+        foreach ($citas as $row) {
+            $array = [];
+            $array[] = $contador;
+            $array[] = $row->paciente;
+            $array[] = $row->dui;
+            $array[] = $row->celular;
+            $array[] = date('d-m-Y', strtotime($row->fecha)) . " " . $row->hora;
+            $array[] = $row->terapeuta . " - Tel." . $row->tel_t;
+            $badge = '';
+            if ($row->estado_cita == 0) {
+                $badge = '<span style="font-size: 12px" class="badge badge-info">Pendiente</span>';
+            } else if ($row->estado_cita == -1) {
+                $badge = '<span style="font-size: 12px" class="badge badge-danger">Cancelado</span>';
+            } else {
+                $badge = '<span style="font-size: 12px" class="badge badge-success">Atendido</span>';
+            }
+            $array[] = $badge;
+            $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled";
+            $disableBtnEdit = $row->estado_cita == -1 ? "disabled" : '';
+            $array[] = '<button title="Editar la cita" ' . $disableBtnEdit . ' data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
+            <button title="Cancelar la cita" ' . $disableBTNCancel . ' class="btn btn-xs btn-danger" onclick="cancelCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-user-slash"></i></button>';
+            $data[] = $array;
+            $contador--;
+        }
+        $response = array(
+            "sEcho" => 1, //Información para el datatables
+            "iTotalRecords" => count($data), //enviamos el total registros al datatable
+            "iTotalDisplayRecords" => count($data), //enviamos el total registros a visualizar
+            "aaData" => $data
+        );
+        return response()->json($response);
     }
 }
