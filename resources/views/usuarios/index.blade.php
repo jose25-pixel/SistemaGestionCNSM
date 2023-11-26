@@ -42,6 +42,14 @@
         delimiter: '-',
         blocks: [8, 1],
     });
+
+    var codCleave = new Cleave('.cod_user', {
+        delimiter: '-',
+        blocks: [5],
+    });
+
+
+    
     // Función para validar números
     function validarNumeros(event) {
         var input = event.target;
@@ -52,7 +60,11 @@
 
         input.value = valor;
     }
+
+
+   
     // Agregar evento de escucha para validar números
+    //document.getElementById("cod").addEventListener('input', validarNumeros);
     document.getElementById('celular').addEventListener('input', validarNumeros);
     document.getElementById('dui').addEventListener('input', validarNumeros);
 

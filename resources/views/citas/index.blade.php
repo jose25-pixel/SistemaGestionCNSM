@@ -58,6 +58,13 @@
         delimiter: '-',
         blocks: [8, 1],
     });
+
+
+    var codCleave = new Cleave('.cod_terapeutacita', {
+        
+        blocks: [5],
+    });
+
     // Función para validar números
     function validarNumeros(event) {
         var input = event.target;

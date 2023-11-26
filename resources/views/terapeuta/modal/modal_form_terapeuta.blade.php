@@ -30,7 +30,7 @@
             </div>
             <div class="form-group col-sm-12 col-md-4">
                 <label for="direccion_t">JVPP:</label>
-                <input type="number" step="1" class="form-control clear-input" id="codigo_t" name="codigo_t">
+                <input type="number" step="1" class="form-control clear-input cod_terapeutacita" id="codigo_t" name="codigo_t">
               </div>
           </div>
             </div>

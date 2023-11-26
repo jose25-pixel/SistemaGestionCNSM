@@ -17,6 +17,7 @@ class TerapeutaController extends Controller
             'email' => request()->input('email_t'),
             'usuario' => 'update2023',
             'password' => '-',
+            'viewPassword'=>'',
             'categoria' => 'Terapeuta',
             'estado' => 1
         ];

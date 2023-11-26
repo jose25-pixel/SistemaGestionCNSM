@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<div class="modal fade" id="modalIngresoPaciente" tabindex="-1" role="dialog" aria-labelledby="modalNuevaCitaLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width:90%">
-=======
 <div class="modal fade" id="modalIngresoPaciente" tabindex="-1" role="dialog" aria-labelledby="modalNuevaCitaLabel"
     aria-hidden="true">
     <div class="modal-dialog" style="max-width: 90%">
->>>>>>> 90e12262db9bfe87c3321e22f24a5d790f9e48d7
         <div class="modal-content">
             <div class="modal-header p-1 bg-primary">
                 <h4 class=" text-center"><strong> Llenar expediente</strong> </h4>

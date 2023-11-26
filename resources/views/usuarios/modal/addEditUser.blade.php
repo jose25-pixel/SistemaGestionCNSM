@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="cod">Codigo:</label>
-                            <input type="text" class="form-control cls-input" id="cod" name="cod">
+                            <input type="text" class="form-control cls-input cod_user" id="cod" name="cod">
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="nombre">Nombre*:</label>
