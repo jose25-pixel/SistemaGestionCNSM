@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class TerapeutaController extends Controller
 {
     public function saveTerapeuta(){
+        $passwdView = substr(uniqid(),0,5);
         $datos = [
             'codigo' => trim(request()->input('codigo_t')),
             'nombre' => trim(request()->input('terapeuta')),
@@ -17,7 +18,7 @@ class TerapeutaController extends Controller
             'email' => request()->input('email_t'),
             'usuario' => 'update2023',
             'password' => '-',
-            'viewPassword'=>'',
+            'viewPassword'=> encrypt($passwdView),
             'categoria' => 'Terapeuta',
             'estado' => 1
         ];
