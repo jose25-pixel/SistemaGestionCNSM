@@ -36,10 +36,13 @@ class PacienteController extends Controller
 
     public function getpacientes()
     {
-        $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,
-        p.fecha_reg,p.genero,p.ocupacion, 
-        c.paciente,c.dui,c.celular,c.fecha,
-        c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id order by p.id desc");
+        //Validacion para mostrar datos
+        if (Auth()->user()->categoria == "Admin") {
+            $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion, 
+            c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id order by p.id desc");
+        } else {
+            $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id where c.terapeuta_id=? order by p.id desc",[Auth()->user()->id]);
+        }
         $data = [];
         $contador = count($pacientes);
         foreach ($pacientes as $row) {

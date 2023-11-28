@@ -250,13 +250,11 @@ class CitaController extends Controller
     //Get cits
     public function getCitas()
     {
-
-
-        $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora
-    FROM citas
-    WHERE citas.id NOT IN (
-        SELECT id_cita
-        FROM paciente) and estado_cita='0'");
+        if (Auth()->user()->categoria == "Admin") {
+            $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora FROM citas WHERE citas.id NOT IN (SELECT id_cita FROM paciente) and estado_cita='0'");
+        } else {
+            $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora FROM citas WHERE citas.id NOT IN (SELECT id_cita FROM paciente) and estado_cita='0' and terapeuta_id=?",[Auth()->user()->id]);
+        }
         return response()->json($citasp);
     }
 
