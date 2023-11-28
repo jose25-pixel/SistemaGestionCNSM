@@ -51,7 +51,12 @@ class ConsultasController extends Controller
     }
     //Mostrar todos los pacientes en consulta
     public function dt_pacientes(){
-        $consulta = DB::select('SELECT p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,c.fecha as fecha_cita,c.celular as telefono FROM `paciente` as p INNER JOIN citas as c on p.id_cita=c.id GROUP by p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,fecha_cita,telefono ORDER by p.id desc');
+        //Validacion para mostrar datos
+        if (Auth()->user()->categoria == "Admin") {
+            $consulta = DB::select('SELECT p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,c.fecha as fecha_cita,c.celular as telefono FROM `paciente` as p INNER JOIN citas as c on p.id_cita=c.id GROUP by p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,fecha_cita,telefono ORDER by p.id desc');
+        } else {
+            $consulta = DB::select('SELECT p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,c.fecha as fecha_cita,c.celular as telefono FROM `paciente` as p INNER JOIN citas as c on p.id_cita=c.id GROUP by p.id,p.cod_paciente,p.fecha_reg,c.paciente,c.dui,c.motivo,fecha_cita,telefono where c.terapeuta_id=? ORDER by p.id desc',[Auth()->user()->id]);
+        }
         $data = [];
         $contador = 1;
         foreach($consulta as $row){

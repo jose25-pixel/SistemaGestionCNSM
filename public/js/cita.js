@@ -64,14 +64,15 @@ async function CalendarEvents(){
             fechaActual = fechaActual.format("YYYY-MM-DD");
             let dateInf = new Date(formattedDate);
             let dateActual = new Date(fechaActual);
-            if(dateInf < dateActual){
+            //Se comento esta validacion porque la validacion de fecha no debia ir
+           /*  if(dateInf < dateActual){
                 Swal.fire({
                     icon: "warning",
                     title: "Fecha incorrecta",
                     text: "No puede registrar una fecha anterior a la actual!",
                 });
                 return 0;
-            }
+            } */
             $("#fecha").val(formattedDate); // Llena el campo de fecha con el dia selecionado automaticamente
             // Por ejemplo, puedes mostrar un modal de Bootstrap
             //Verificar disponibilidad
@@ -381,7 +382,8 @@ function verifyDate(element){
     fechaActual = fechaActual.format("YYYY-MM-DD");
     let dateInf = new Date(fechaSelected);
     let dateActual = new Date(fechaActual);
-    if(dateInf < dateActual){
+    //Se comento este codigo, debido a que la validacion no debe ir
+    /* if(dateInf < dateActual){
         $("#fecha").val(fechaActual); // Llena el campo de fecha con el dia selecionado automaticamente
         Swal.fire({
             icon: "warning",
@@ -389,7 +391,7 @@ function verifyDate(element){
             text: "No puede registrar una fecha anterior a la actual!",
         });
         return 0;
-    }
+    } */
     $("#fecha").val(fechaSelected); // Llena el campo de fecha con el dia selecionado automaticamente
     //Verificar disponibilidad
     verifyDispHora(fechaSelected);
