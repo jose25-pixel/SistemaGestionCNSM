@@ -65,7 +65,10 @@ class CitaController extends Controller
         //Validacion para mostrar datos
         if (Auth()->user()->categoria == "Admin") {
             $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` GROUP BY fecha;");
-        }else{
+        } elseif (Auth()->user()->categoria == "Recepcionista") {
+            $data = DB::select("SELECT COUNT(id) as cantidad_citas, fecha FROM `citas` GROUP BY fecha;");
+        }
+        else{
             $data = DB::select("SELECT COUNT(id) as cantidad_citas,fecha FROM `citas` where terapeuta_id=? GROUP BY fecha;",[$id_usuario]);
         }
         return response()->json($data);
@@ -81,7 +84,14 @@ class CitaController extends Controller
         c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono 
         as tel_t FROM `citas` as c INNER join usuarios as u on
          c.terapeuta_id=u.id where c.fecha=? order by c.id desc", [$fecha]);
-        } else {
+        }  elseif (Auth()->user()->categoria == "Recepcionista") {
+            $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,
+            c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono 
+            as tel_t FROM `citas` as c INNER join usuarios as u on
+            c.terapeuta_id=u.id where c.fecha=? order by c.id desc", [$fecha]);
+        } 
+        
+        else {
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,
             c.email,c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono 
             as tel_t FROM `citas` as c INNER join usuarios as u on
@@ -108,9 +118,13 @@ class CitaController extends Controller
             $array[] = $badge;
             $disableBTNCancel = $row->estado_cita == 0 ? "" : "disabled";
             $disableBtnEdit = $row->estado_cita == -1 ? "disabled" : '';
+            if (Auth()->user()->categoria != "Admin" && Auth()->user()->categoria != "Recepcionista"){      $array[] = '<button title="Editar cita" ' . $disableBtnEdit . ' data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
+                <button ' . $disableBTNCancel . ' class="btn btn-xs btn-danger" title="Cancelar cita" onclick="cancelCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-user-slash"></i></button>
+               ';  }
+                else {
             $array[] = '<button title="Editar cita" ' . $disableBtnEdit . ' data-id_cita="' . $row->id . '" onclick="updateCita(this)" class="btn btn-xs btn-outline-info"><i class="fas fa-user-edit"></i></button>
                         <button ' . $disableBTNCancel . ' class="btn btn-xs btn-danger" title="Cancelar cita" onclick="cancelCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-user-slash"></i></button>
-                        <button title="Eliminar cita" class="btn btn-xs btn-outline-danger" onclick="delCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-trash"></i></button>';
+                        <button title="Eliminar cita" class="btn btn-xs btn-outline-danger" onclick="delCita(this)" data-id_cita="' . $row->id . '"><i class="fas fa-trash"></i></button>';}
             $data[] = $array;
             $counter--;
         }
@@ -148,7 +162,12 @@ class CitaController extends Controller
         $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
          as c INNER join usuarios as u on c.terapeuta_id=u.id order by c.id desc");
-        }else{
+        }  else if (Auth()->user()->categoria == "Recepcionista") {
+            $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
+                c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
+                as c INNER join usuarios as u on c.terapeuta_id=u.id order by c.id desc");
+        } 
+        else{
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
          as c INNER join usuarios as u on c.terapeuta_id=u.id where c.terapeuta_id=? order by c.id desc",[Auth()->user()->id]);
@@ -241,7 +260,10 @@ class CitaController extends Controller
         $usuario_id = Auth()->user()->id;
         if(Auth()->user()->categoria == "Admin"){
             $cantidadCita = Cita::where('fecha', $day)->where('estado_cita','!=',-1)->count();
-        }else{
+        } else if (Auth()->user()->categoria == "Recepcionista") {
+            $cantidadCita = Cita::where('fecha', $day)->where('estado_cita', '!=', -1)->count();
+        }
+        else{
             $cantidadCita = Cita::where('fecha', $day)->where('terapeuta_id',$usuario_id)->where('estado_cita','!=',-1)->count();
         }
         return response()->json($cantidadCita);
@@ -252,7 +274,10 @@ class CitaController extends Controller
     {
         if (Auth()->user()->categoria == "Admin") {
             $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora FROM citas WHERE citas.id NOT IN (SELECT id_cita FROM paciente) and estado_cita='0'");
-        } else {
+        } else if (Auth()->user()->categoria == "Recepcionista") {
+            $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora FROM citas WHERE citas.id NOT IN (SELECT id_cita FROM paciente) and estado_cita='0'");
+        }
+        else {
             $citasp = DB::SELECT("SELECT citas.id, citas.paciente, citas.dui, citas.estado_cita,citas.fecha,citas.hora FROM citas WHERE citas.id NOT IN (SELECT id_cita FROM paciente) and estado_cita='0' and terapeuta_id=?",[Auth()->user()->id]);
         }
         return response()->json($citasp);
@@ -310,7 +335,12 @@ class CitaController extends Controller
         $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
          as c INNER join usuarios as u on c.terapeuta_id=u.id where c.fecha=? and c.estado_cita='0' order by c.id desc",[$day]);
-        }else{
+        }else if (Auth()->user()->categoria == "Recepcionista") {
+            $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
+                c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
+                as c INNER join usuarios as u on c.terapeuta_id=u.id where c.fecha=? and c.estado_cita='0' order by c.id desc", [$day]);
+        } 
+        else{
             $citas = DB::select("SELECT c.id,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.email,
         c.motivo,c.estado_cita,u.nombre as terapeuta,u.telefono as tel_t FROM `citas`
          as c INNER join usuarios as u on c.terapeuta_id=u.id where c.terapeuta_id=? and c.fecha=? and c.estado_cita='0' order by c.id desc",[Auth()->user()->id,$day]);

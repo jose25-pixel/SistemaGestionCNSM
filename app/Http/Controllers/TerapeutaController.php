@@ -10,14 +10,15 @@ class TerapeutaController extends Controller
 {
     public function saveTerapeuta(){
         $passwdView = substr(uniqid(),0,5);
+        $nombreUsuario = substr(request()->input('terapeuta'), 0, 5);
         $datos = [
             'codigo' => trim(request()->input('codigo_t')),
             'nombre' => trim(request()->input('terapeuta')),
             'dui' => request()->input('dui_t'),
             'telefono' => request()->input('telefono_t'),
             'email' => request()->input('email_t'),
-            'usuario' => 'update2023',
-            'password' => '-',
+            'usuario' => $nombreUsuario, // Genera un nombre de usuario aleatorio con las primeras 5 letras del nombre
+            'password' => bcrypt($passwdView),
             'viewPassword'=> encrypt($passwdView),
             'categoria' => 'Terapeuta',
             'estado' => 1
