@@ -173,17 +173,17 @@
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="nu_hijo">Numero de Hijos:</label>
-                                                    <input type="number" class="form-control" id="nu_hijo"
+                                                    <input type="text" class="form-control" id="nu_hijo" onkeyup="mayupaciente(this)"
                                                         name="nu_hijo" placeholder="Dos hijos">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="edad_hijo">Edades Hijos:</label>
-                                                    <input type="text" class="form-control" id="edad_hijo"
+                                                    <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="edad_hijo"
                                                         name="edad_hijo" placeholder="12 años, 7 años">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="ano_casado">Años de Casado</label>
-                                                    <input type="number" class="form-control"
+                                                    <input type="text" class="form-control"
                                                         id="ano_casado" onkeyup="mayupaciente(this)"
                                                         name="ano_casado" placeholder="Años de casado">
                                                 </div>
@@ -235,7 +235,7 @@
                                                                 name="nivel_educativom" placeholder=" Basico">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="ocupacionm">Ocupacion Madre:</label>
+                                                            <label for="ocupacionm">Ocupación Madre:</label>
                                                             <input type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="ocupacionm"
                                                                 name="ocupacionm" placeholder="Ama de Casa">
@@ -244,6 +244,17 @@
                                                             <label for="duim">Dui Madre:</label>
                                                             <input type="text" class="form-control" id="duim"
                                                                 name="duim" placeholder="76452345-6">
+                                                        </div>
+
+
+                                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                            <label for="viveaunm">Vive su madre Aun ?:</label>
+                                                            <select class="form-control" onkeyup="mayupaciente(this)"
+                                                                id="viveaunm" name="viveaunm">
+                                                                <option value="--">--</option>
+                                                                <option value="NO">NO</option>
+                                                                <option value="SI">SI</option>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="vivem">Vive con Madre:</label>
@@ -260,15 +271,7 @@
                                                                 class="form-control cls-input oblig-input" type="text"
                                                                 class="form-control" id="notam" name="notam"></textarea>
                                                         </div>
-                                                        <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="viveaunm">Vive su madre Aun?:</label>
-                                                            <select class="form-control" onkeyup="mayupaciente(this)"
-                                                                id="viveaunm" name="viveaunm">
-                                                                <option value="--">--</option>
-                                                                <option value="NO">NO</option>
-                                                                <option value="SI">SI</option>
-                                                            </select>
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,7 +312,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="ocupacionp">Ocupacion Padre:</label>
+                                                            <label for="ocupacionp">Ocupación Padre:</label>
                                                             <input type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="ocupacionp"
                                                                 name="ocupacionp" placeholder="Electricista">
@@ -381,7 +384,7 @@
                                                                 name="edadc" placeholder="edad">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="ocupacionc">Ocupacion Conyuge:</label>
+                                                            <label for="ocupacionc">Ocupación Conyuge:</label>
                                                             <input type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="ocupacionc"
                                                                 name="ocupacionc" placeholder="Secretaria">
@@ -431,7 +434,7 @@
                                                                 name="edadr">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="ocupacionr">Ocupacion Responsable:</label>
+                                                            <label for="ocupacionr">Ocupación Responsable:</label>
                                                             <input type="text" class="form-control" id="ocupacionr"
                                                                 onkeyup="mayupaciente(this)" name="ocupacionr">
                                                         </div>
@@ -519,6 +522,7 @@
                                                             <select type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="trabaja"
                                                                 name="trabaja">
+                                                                <option value="SI"><link href="" rel="stylesheet"></option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
                                                             </select>
@@ -532,6 +536,7 @@
                                                             <select type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="trabaja_actualmente"
                                                                 name="trabaja_actualmente">
+                                                                <option value="NO APLICA">NO APLICA</option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
                                                             </select>
@@ -557,6 +562,7 @@
                                                             <select type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="despedido"
                                                                 name="despedido">
+                                                                <option value="--">--</option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
                                                             </select>

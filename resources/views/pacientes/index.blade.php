@@ -77,6 +77,11 @@
         , blocks: [4, 4]
     , });
 
+    var celularCleave3 = new Cleave('#telefonoatendio', {
+        delimiter: '-'
+        , blocks: [4, 4]
+    , });
+
 
 
     var duiCleave = new Cleave('#duip', {
@@ -90,7 +95,10 @@
         blocks: [8, 1],
     });
 
-
+    var duiCleave = new Cleave('#duir', {
+        delimiter: '-',
+        blocks: [8, 1],
+    });
     // Función para validar números
     function validarNupacientes(event) {
         var input = event.target;
