@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2023 a las 17:49:35
+-- Tiempo de generación: 03-12-2023 a las 16:07:23
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -68,8 +68,11 @@ CREATE TABLE `adicciones` (
 --
 
 INSERT INTO `adicciones` (`id`, `fecha`, `atencioncnsm`, `tratamientos`, `tipotratamiento`, `nombreatendio`, `direcionatendio`, `telefonoatendio`, `tratamientorec`, `tipofarmaco`, `tipo_sustancia`, `tiempo_consumo`, `adiccion`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '2023-10-27 12:33:39', 'NO', NULL, NULL, 'NO APLICA', 'NO AAPLICA', NULL, 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', 'NO APLICO', 'ALCOHOL', '2 AÑOS', NULL, 1, 1, '2023-10-27 12:33:39', '2023-10-27 12:33:39'),
-(2, '2023-10-29 08:17:44', 'NO', NULL, NULL, 'NO APLICA', NULL, NULL, NULL, NULL, 'NO APLICA', 'NINGUN', NULL, 2, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, '2023-11-17 02:58:21', 'NO', NULL, NULL, 'NO APLICA', 'NO APLICA', NULL, 'NO', 'NO', 'NINGUNA', 'NO APLICA', NULL, 1, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, '2023-11-25 18:26:31', 'NO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ALCOHOL', 'DOS AÑOS', NULL, 2, 1, '2023-11-25 18:26:31', '2023-11-25 18:26:31'),
+(3, '2023-11-30 02:25:59', 'NO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ALCOHOL', '3 AÑOS', NULL, 3, 1, '2023-11-30 02:25:59', '2023-11-30 02:25:59'),
+(4, '2023-12-01 02:03:12', 'NO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ALCOHOL', '3 AÑOS', NULL, 4, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, '2023-12-01 02:32:47', 'NEUROLOGÍCO', NULL, NULL, 'NO', 'NO APLICA', NULL, 'TERAPIAS', 'NO APLICA', 'NO', 'NO', NULL, 5, 38, '2023-12-01 02:32:47', '2023-12-01 02:32:47');
 
 -- --------------------------------------------------------
 
@@ -101,8 +104,11 @@ CREATE TABLE `antecedentes_salud` (
 --
 
 INSERT INTO `antecedentes_salud` (`id`, `fecha`, `patologias`, `enfergenetica`, `otros`, `iniciotrabajar`, `trabaja`, `trabaja_actualmente`, `duracion_empleo`, `despedido`, `causa`, `satisfecho`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '2023-10-27 12:33:39', 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', '23', 'SI', 'SI', '2 MESES', 'SI', 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', 'JKFSHFSDFHSJDFHJSFDFDJHFHJFDHJSFHHFHFFJDSHSF SHFSHFJSFHS LAA NSUEC VA OSS DATO SDE LA IDNOFRMACIO NSE LA IA SERAN VBASTENATE SD DEACUANDKJAJFHJKSSFDJKASJDKSJFHJKSHFHJKSHFJDFJF', 1, 1, '2023-10-27 12:33:39', '2023-10-27 12:33:39'),
-(2, '2023-10-29 08:17:44', 'NO SE LEENCUANTRA NINGUAN ENFERMEDAD', 'NO SE NECUNETRA NINGUNA ENFERMEDA', 'NUNGUNOS CAMPOS DE LA BASE DE DATOS', '23', 'SI', 'SI', '2 AÑOS', 'NO', 'JSJDSKDJ', 'SDOSDIODSOIOIS', 2, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, '2023-11-17 02:58:21', 'NO APLICA', 'NO APLICA', 'NO', '20', 'SI', 'SI', '2 AÑOS', 'SI', 'LA EMPRESA SE FUE A LA QUIEBRA', 'SI', 1, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, '2023-11-25 18:26:31', 'NINGUNA', 'NINGUNA', 'NINGUNA', NULL, 'SI', 'SI', NULL, 'SI', NULL, NULL, 2, 1, '2023-11-25 18:26:31', '2023-11-25 18:26:31'),
+(3, '2023-11-30 02:25:59', 'NO APLICA', 'NO APLICA', 'OPERACIÓN DE OVARIOS', '20', 'SI', 'SI', '5 AÑOS', 'NO', 'NO APLICA', 'NO APLICA', 3, 1, '2023-11-30 02:25:59', '2023-11-30 02:25:59'),
+(4, '2023-12-01 02:03:12', 'PROBLEMAS DE SALUD', 'NO APLICA', 'NO PLICA', '20', 'SI', 'SI', '5 AÑOS', 'NO', 'NO APLICA', 'SI', 4, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, '2023-12-01 02:32:47', 'NO APLICA', 'SI DIABETES', 'OPERACION DE OVARIOS', '19', 'SI', 'NO APLICA', '2 AÑOS', 'SI', 'CIERE DE LA EMPRESA', 'SI', 5, 38, '2023-12-01 02:32:47', '2023-12-01 02:32:47');
 
 -- --------------------------------------------------------
 
@@ -131,19 +137,18 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id`, `paciente`, `dui`, `celular`, `fecha`, `hora`, `email`, `motivo`, `estado_cita`, `terapeuta_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'JOSE', '90923489-2', '7689-6789', '2023-10-27', '9:00 AM', 'josezavaletac@gmail.com', 'revision', 1, 5, 1, '2023-10-22 02:06:01', '2023-10-27 03:27:37'),
-(2, 'SUSANA', '94282924-0', '7348-7249', '2023-10-28', '10:30 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-22 02:07:07', '2023-10-27 03:27:59'),
-(3, 'JOSE', '90923489-2', '7689-6789', '2023-11-01', '9:00 AM', 'nomadelcarmen@gmail.com', 'sistomas de abuxo', 1, 5, 1, '2023-10-22 02:17:05', '2023-10-27 16:50:23'),
-(6, 'JOSE', '90923489-2', '7689-6789', '2023-11-02', '8:30 AM', 'nomadelcarmen@gmail.com', 'Seguimiento', 1, 5, 1, '2023-10-25 02:01:28', '2023-10-28 21:04:39'),
-(7, 'SUSANA', '78972424-4', '7689-6789', '2023-11-05', '9:00 AM', 'nomadelcarmen@gmail.com', 'revision', 0, 6, 1, '2023-10-25 02:17:50', '2023-10-25 02:18:02'),
-(11, 'MANUEL  ORELLANA CAMPOS', '94282924-0', '7689-6789', '2023-11-09', '9:00 AM', '----', 'revision', 1, 5, 1, '2023-10-25 03:08:09', '2023-10-25 03:08:29'),
-(14, 'PATRICIA  EMERALDA VAZQUES ROMAN', '74328920-2', '7866-6545', '2023-11-10', '8:30 AM', '----', 'revision', 0, 5, 1, '2023-10-25 03:40:02', '2023-10-26 20:31:35'),
-(15, 'JUANA GUADALUPE CAMPOS ORELLANA', '94282924-0', '7867-3292', '2023-11-11', '10:30 AM', 'JUANA@GMAIL.COM', 'seguridad', 0, 4, 1, '2023-10-25 03:40:36', '2023-10-25 03:54:48'),
-(16, 'MARIANA CALDERON ESTELINA CAMPOS', '64647456-4', '7348-7249', '2023-11-10', '10:00 AM', 'dsorianoa144@gmail.com', 'sistomas de abuxo', 0, 4, 1, '2023-10-27 03:33:57', '2023-10-27 03:33:57'),
-(17, 'JOSE', '90923489-2', '7689-6789', '2023-11-04', '9:30 AM', 'nomadelcarmen@gmail.com', 'consulta', 1, 5, 1, '2023-10-29 19:29:41', '2023-10-29 19:29:59'),
-(18, 'JHGJFGGDFG', '78687586-5', '7879-6565', '2023-11-17', '9:30 AM', '---', 'hola', 0, 7, 1, '2023-11-01 16:11:13', '2023-11-01 16:11:13'),
-(19, 'CARLOS OSLORSANO PINEDA', '78478439-4', '7896-5545', '2023-11-07', '10:00 AM', '--', 'revision', 0, 8, 1, '2023-11-05 13:15:35', '2023-11-05 13:15:35'),
-(20, 'MECEDEZ', '78976556-4', '7867-5454', '2023-11-18', '9:00 AM', 'MERCEDES@GMAIL.COM', 'revision', 0, 11, 1, '2023-11-05 15:45:03', '2023-11-05 15:45:03');
+(1, 'JUANA GUADALUPE CAMPOS ORELLANA', '94282924-0', '7892-4792', '2023-11-16', '9:30 AM', 'JUANA@GMAIL.COM', 'revisión', 1, 2, 1, '2023-11-17 02:37:56', '2023-11-17 02:37:56'),
+(2, 'MARTA ESTELA SUAREZ ORTIS', '89234783-2', '7897-9833', '2023-11-18', '8:30 AM', 'marta@gmail.com', 'Problemas por muerte de familiar', -1, 2, 1, '2023-11-17 02:38:38', '2023-11-17 02:47:13'),
+(3, 'DALIA MARLENE ASENCIO', '89247264-7', '6732-8495', '2023-11-23', '8:30 AM', 'dalia@gmail.com', 'Problemas por muerte de familiar', 1, 30, 1, '2023-11-17 02:39:17', '2023-11-17 02:48:26'),
+(4, 'PATRICIA  EMERALDA VAZQUES', '92989472-8', '6543-2346', '2023-11-23', '8:30 AM', '--', 'drogas', 0, 30, 1, '2023-11-17 02:40:24', '2023-11-17 02:48:08'),
+(6, 'MARIA CRISTINA PEREZ', '78928344-5', '7287-4293', '2023-11-23', '8:30 AM', 'maria@gmail.com', 'drogas', 1, 31, 1, '2023-11-17 02:49:59', '2023-11-17 02:49:59'),
+(7, 'MARTIN ESMAEL CAMPOS ORELLAN ALOPEZ IRAETA', '89349829-3', '8935-9359', '2023-11-30', '10:00 AM', 'martin@gmail.com', NULL, 0, 35, 1, '2023-11-29 01:06:08', '2023-11-29 01:06:08'),
+(8, 'MANUEL CRISTIAL CALVO ERNESTO', '89393858-9', '7387-5903', '2023-12-01', '8:30 AM', '--', 'revisión', -1, 37, 1, '2023-11-29 02:00:04', '2023-12-01 01:47:23'),
+(9, 'OLVALDO  ELEASAR MENJIVAS CANTAÑEDA', '78977878-9', '6789-4534', '2023-12-05', '10:00 AM', '--', 'sequimiento', 0, 37, 38, '2023-11-29 02:11:12', '2023-11-29 02:11:12'),
+(10, 'MAITRIS ELEAZAR ZOLORZANO', '78738959-7', '8998-3459', '2023-12-08', '8:30 AM', '--', 'lunes nahshdha¿', 1, 37, 38, '2023-11-29 03:22:59', '2023-11-29 03:22:59'),
+(11, 'IRMA SUARES DE PERES LANDA VERDE', '79724378-2', '7827-4782', '2023-11-28', '11:30 AM', '--', 'nuevos datos', 1, 37, 1, '2023-11-29 03:39:50', '2023-11-29 03:39:50'),
+(13, 'ENRIQUE MANUEL CAMPOS', '09098893-3', '7830-2736', '2023-12-03', '9:00 AM', 'enrique@gmail.com', 'revisión', -1, 37, 38, '2023-12-01 02:21:05', '2023-12-01 02:22:21'),
+(15, 'IRMA SUARES DE PERES LANDA VERDE', '79724378-2', '7827-4782', '2023-12-15', '10:00 AM', '--', 'seguimiento del preoceso', 1, 37, 38, '2023-12-01 02:35:55', '2023-12-01 02:36:21');
 
 -- --------------------------------------------------------
 
@@ -171,7 +176,10 @@ CREATE TABLE `consultas` (
 --
 
 INSERT INTO `consultas` (`id`, `num_clinico`, `fecha`, `hora`, `motivo_consulta`, `genograma`, `aprox_diagnostico`, `situacion_actual`, `paciente_id`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '19440627162', '2023-10-29', '13:32:55', 'revision', 'consultas/genogramas/GCfS9yEMgTtYg6VGGCazAH4OzTDYPaaY97cDxnpj.jpg', 'diagnostico de la varables bonitas', 'nuevos datos', 1, 1, '2023-10-29 13:32:56', '2023-10-29 13:33:16');
+(2, '19850616495', '2023-11-18', '17:00:47', 'nueva coonsulta', 'consultas/genogramas/7NLC9D7uD37rO3sdUumTSwyAA20i3f3UdOUwQOyA.jpg', 'ghjhfjdgf', 'ghfgdhfsdfs', 1, 1, '2023-11-18 17:00:48', '2023-11-25 12:39:37'),
+(3, '20060623677', '2023-11-25', '12:42:04', 'hola', 'consultas/genogramas/TB39C2tMf83dTll1yrpL6jnhg55LyCCOsj6TUMm4.jpg', 'problemas con los datos', 'se encuentra controlado y', 2, 1, '2023-11-25 12:42:04', '2023-11-25 12:42:04'),
+(4, '19900629940', '2023-11-29', '22:02:31', 'hola', 'consultas/genogramas/8eDJ4sOCprdQ27vLgL9LZGocUeMyAyCecgZAttwa.jpg', 'problemas con los datos', 'kjkskd', 3, 1, '2023-11-29 22:02:32', '2023-11-29 22:02:32'),
+(5, '19820630993', '2023-11-30', '20:08:50', 'revision', 'consultas/genogramas/hVniC5rJcNIZfKkzZNXporNHwfoTNMlT9CmqraAx.jpg', 'problemas con los datos', 'presenta prblemas de ansiedad desde la situacion de perdida', 4, 1, '2023-11-30 20:08:50', '2023-11-30 20:09:37');
 
 -- --------------------------------------------------------
 
@@ -212,15 +220,11 @@ CREATE TABLE `conyuge` (
 --
 
 INSERT INTO `conyuge` (`id`, `nombre`, `nivel_educativo`, `ocupacion`, `edad`, `notac`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'MELEINA', 'SUPERIOR', 'VETERNIARIA', 67, 'lllllllllllkkkkkkkkkkkkkkkk', 1, 1, '2023-10-22 02:13:12', '2023-10-22 02:13:12'),
-(2, 'CARLA', NULL, 'VETERNIARIA', 45, NULL, 2, 1, '2023-10-24 02:53:56', '2023-10-24 02:53:56'),
-(3, NULL, NULL, NULL, NULL, NULL, 3, 1, '2023-10-25 03:01:52', '2023-10-25 03:01:52'),
-(4, NULL, NULL, NULL, NULL, NULL, 4, 1, '2023-10-25 03:25:18', '2023-10-25 03:25:18'),
-(5, 'ANDREA PERÉZ', 'SUPERIOR', 'VETERNIARIA', 56, 'SOUCION', 5, 1, '2023-10-27 03:40:42', '2023-10-27 03:40:42'),
-(6, 'ANDREA PERÉZ', 'SUPERIOR', 'VETERNIARIA', 56, 'SOUCION', 6, 1, '2023-10-27 03:44:06', '2023-10-27 03:44:06'),
-(7, 'ANDREA PERÉZ', 'SUPERIOR', 'VETERNIARIA', 56, 'SOUCION', 7, 1, '2023-10-27 03:48:05', '2023-10-27 03:48:05'),
-(8, 'MELEINA DAIA ESTER GONZALES', 'SUPERIOR', 'MAESTRA', 34, 'HFLKFJSKLJFSKFSBFJKJKDSFHJKSFDHJSKFHJKFHJFKSDFHJKHSFJKHFDSJKHFJKDSHFJKSDFHJKHSDFJHSDJKFHJKDSHJFDKSHDSJKSDHJFHSDKFHKJHSDFJHSDHFHDSHJDFJKDSKJFDSHDJFJHSJKFSDKFSFDHSJHFJDSHHFHSDFHHFFHSD', 1, 1, '2023-10-27 12:33:39', '2023-10-27 12:33:39'),
-(9, 'MELEINA ESMERALDA CAMPOS ORELLANA', 'SUPERIOR', 'VETERNIARIA', 67, 'DJKASJDKAJDASKDJASJKDJASLKFJKAKJSF', 2, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, 'ISMAEL FRANCISCO', 'SUPERIOR', 'EMPRRESARIO', 45, 'LLEVAMOS UNA RELACION MUY BONITA', 1, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, NULL, NULL, NULL, NULL, NULL, 2, 1, '2023-11-25 18:26:30', '2023-11-25 18:26:30'),
+(3, 'TERESA ESMERALDA CASTRO LOPÉZ', 'SUPERIOR', 'SECRETARIA', 32, 'TODO BIEN CON MI PAAREJA', 3, 1, '2023-11-30 02:25:59', '2023-11-30 02:25:59'),
+(4, 'TERESA ESMERALDA', 'SUPERIOR', 'SECRETARIA', 38, 'NOTAS', 4, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, 'MANUEL ENRIQUE', 'MEDIO', 'ALABAÑIL', 56, '----', 5, 38, '2023-12-01 02:32:46', '2023-12-01 02:32:46');
 
 -- --------------------------------------------------------
 
@@ -260,11 +264,11 @@ CREATE TABLE `paciente` (
   `municipio` varchar(150) DEFAULT NULL,
   `celular_dos` varchar(12) DEFAULT NULL,
   `celular_tres` varchar(12) DEFAULT NULL,
-  `nu_hermano` int(11) DEFAULT NULL,
+  `nu_hermano` varchar(50) DEFAULT NULL,
   `lugar_ocupa` varchar(50) DEFAULT NULL,
-  `nu_hijo` int(11) DEFAULT NULL,
+  `nu_hijo` varchar(50) DEFAULT NULL,
   `edad_hijo` varchar(30) DEFAULT NULL,
-  `ano_casado` int(11) DEFAULT NULL,
+  `ano_casado` varchar(50) DEFAULT NULL,
   `id_cita` int(11) DEFAULT NULL,
   `usuario_id` int(11) NOT NULL,
   `created_at` varchar(25) NOT NULL,
@@ -276,8 +280,11 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `cod_paciente`, `fecha_naci`, `edad`, `fecha_reg`, `genero`, `ocupacion`, `lugar_estudio`, `grado`, `nivel_educativo`, `direccion`, `departamento`, `municipio`, `celular_dos`, `celular_tres`, `nu_hermano`, `lugar_ocupa`, `nu_hijo`, `edad_hijo`, `ano_casado`, `id_cita`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, '19440627162', '1944-06-27', 79, '2023-10-27 12:33:39', 'OTROS', 'EMPRESARIO', 'CENTRO ESCOLAR BUENA VISTA', 'NOVENO', 'SUPERIOR', 'AVENIDAD  EL CALVARIO', 'Cuscatlán', 'Cojutepeque', '7845-6789', '7653-4556', 2, 'ULTIMO', 1, '20', 1, 17, 1, '2023-10-27 12:33:39', '2023-10-29 19:29:59'),
-(2, '19840629857', '1984-06-29', 39, '2023-10-29 08:17:44', 'femenino', 'EMPRESARIO', 'CENTRO ESCOLAR BUENA VISTA', 'NOVENO', 'BASICO', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', 'La Libertad', 'Santa Tecla', '7865-4334', '7865-4323', 1, 'ULTIMO', 1, '20', 3, 11, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, '19850616495', '1985-06-16', 38, '2023-11-17 02:58:21', 'femenino', 'ABOGADA', NULL, NULL, 'SUPERIOR', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', 'San Miguel', 'San Luis de la Reina', '6789-6475', '6734-8934', '5', 'ULTIMO', '2', '12,14', '15', 3, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, '20060623677', '2006-06-23', 17, '2023-11-25 18:26:30', 'femenino', 'ESTUDIANTE', 'CENTRO ESCOLAR NUEVOS DATOS', 'NOVENO', 'BÁSICO', 'AVENIDAD LOS LAURELES', 'Cuscatlán', 'Cojutepeque', '7472-4855', '8934-834', '2', 'PRIMERO', NULL, NULL, '0', 1, 1, '2023-11-25 18:26:30', '2023-11-25 18:26:30'),
+(3, '19900629940', '1990-06-29', 33, '2023-11-30 02:25:59', 'femenino', 'PROFESORA', NULL, NULL, 'SUPERIOR', 'CANTON EL MORRO , SANTIGO TEXACUANGOS', 'Union', 'Pasaquina', '7834-8789', '6734-5789', '2', 'PRIMERO', '1', '8', '10', 15, 1, '2023-11-30 02:25:59', '2023-12-01 02:36:21'),
+(4, '19820630993', '1982-06-30', 41, '2023-12-01 02:03:12', 'HOLA', 'TECNICO', NULL, NULL, 'MEDIO', 'CAMPOS ILICIOS', 'Sonsonate', 'Armenia', '7829-3838', '7829-8344', '0', 'NO', '1', '20', '21', 10, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, '19840730295', '1984-07-30', 39, '2023-12-01 02:32:46', 'femenino', 'TECNICO', NULL, NULL, 'MEDIO', 'AVENIDAD LOS LAURELES', 'Cuscatlán', 'Suchitoto', '6787-2832', '7827-8438', '2', 'PRIMERO', '2', '10,8', '12', 6, 38, '2023-12-01 02:32:46', '2023-12-01 02:32:46');
 
 -- --------------------------------------------------------
 
@@ -316,8 +323,11 @@ CREATE TABLE `parentesco` (
 --
 
 INSERT INTO `parentesco` (`id`, `nombre_madre`, `edad_madre`, `estado_civilm`, `nivel_educativom`, `ocupacionm`, `vivem`, `duim`, `notam`, `viveaunm`, `nombrep`, `edadp`, `estado_civilp`, `ocupacionp`, `nivel_educativop`, `vivep`, `duip`, `notap`, `viveaunp`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'ALEJANDRA MARIA CAMPOS ODORNES CABRERA', 45, 'acompañada', 'BASICO', 'AMA DE CASA', 'SI', '64635235-2', 'LLJLLJKSDFJHSFJSDHJFB SFJHSFSKFDFJSFBUISDJBSBFJSFSJDJKSKHDJSDHJSAHDJAHSDKJASHDJKASHDKJHASJHFSJKFHJSFJKASFHJKSAHFJKFASHJKFHSAJKHFSAJSKSJASFHSJAFHASFJHFJFSAHJSFHSAFJHFKSAHFJASHFJASHFJKHAFSJFHJASHFJFSFJSAHFJAKSHFJFSAHFJSKJHSFAJHFJSJFSHJASJASJFHHASJFJKASJKFJASJFAKSFHKHASFJFKSK', 'SI', 'ALFREDO MARCOS CRISTAL ORELLANA', 60, 'acompañado', 'ALBAÑIL', 'BASICO', '--', '78329723-2', 'HJSDHJSD LA NUEVA GNERACION DEL MUNDO ESTA CRCA PUEDEN  ENCONTRA LO SIQGUINETE ES EL MANUALDE AYUFA DO NDE D¿TSDFDSHFHJFHDJSBFVSFJBVSFVBSDJKSDHFJKASDHJKASDHAJKSDHSDKJ', 'NO', 1, 1, '2023-10-27 12:33:39', '2023-10-27 12:33:39'),
-(2, 'VEATRIS CAMPOS SOLORZANO AYALA', 35, 'casada', 'BASICO', 'AMA DE CASA', 'SI', '67348297-4', 'NUEVOS DATOS DE L AQUERIDA MADRE SE PUEDE ENCONTRAR LOS DATOS DE LA MAÑANA AZUL DESDE EL CONTROLADOR Y ESPECIFICACION GENERALES DESDE AQUELLOS DIASS SERAN  LOS PUNTOS ADEBILES', 'SI', 'ALFREDO MARCOS CRISTAL ORELLANA', 60, 'soltero', 'ALBAÑIL', 'BASICO', 'SI', '34543348-5', 'KSHKASDKJSJDAJKSD', 'SI', 2, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, 'CARMEN CUSTODIO SUARES CUBIAS', 60, 'viuda', 'PRIMARIA', 'AMA DE CASA', 'NO', '89284349-9', 'NO', 'SI', NULL, NULL, '***', NULL, NULL, 'NO', NULL, 'NO VIVE', '--', 1, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, 'URSULA CAMPOS', 45, 'casada', 'BASICO', 'AMA DE CASA', 'SI', '04567294-5', 'BUENAS RRELACIONES', 'SI', 'PABLO SAMUEL ORTIS CAMPOS', 50, 'casado', 'ELECTRICISTA', 'MEDIO', 'SI', '05436789-6', 'SOLOS', 'SI', 2, 1, '2023-11-25 18:26:31', '2023-11-25 18:26:31'),
+(3, 'MARIANA CRISTINA SUARES LANDAVERDE', 50, 'casada', 'BASICO', 'AMA DE CASA', 'NO', '09859358-9', 'NOTA', 'SI', 'MARCOS ERNESTO PERÉZ SOLANO', 55, 'casado', 'ALBAÑIL', 'BASICO', 'SI', '08395388-5', 'DATOS', 'SI', 3, 1, '2023-11-30 02:25:59', '2023-11-30 02:25:59'),
+(4, 'MARIA JUANA', 60, 'casada', 'BASICO', 'AMA DE CASA', 'NO', '09092834-7', 'NOTAS', 'SI', 'IMAEL ALFREDO PEREZ', 65, 'casado', 'ALBAÑIL', 'BASICO', 'NO', '00903289-8', 'NO', 'SI', 4, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, 'MARIANA CRISTINA SUARES LANDAVERDE', 60, 'acompañada', 'BASICO', 'AMA DE CASA', 'SI', '00283948-7', '------', 'NO', NULL, NULL, '***', NULL, NULL, '--', NULL, NULL, 'NO', 5, 38, '2023-12-01 02:32:47', '2023-12-01 02:32:47');
 
 -- --------------------------------------------------------
 
@@ -356,8 +366,11 @@ CREATE TABLE `responsable` (
 --
 
 INSERT INTO `responsable` (`id`, `nombrer`, `estado_civilr`, `nivel_educativor`, `edadr`, `ocupacionr`, `duir`, `id_paciente`, `usuario_id`, `created_at`, `updated_at`) VALUES
-(1, 'CARMEN', 'casado', 'LICENCIATURA EN ADMINISTRACION DE EMPRESAS', 65, 'ODONTOLOGO', '5734743-8', 1, 1, '2023-10-27 12:33:39', '2023-10-27 12:33:39'),
-(2, 'MARIA', 'casado', 'BASICO', 45, 'ODONTOLOGO', '5734743-8', 2, 1, '2023-10-29 08:17:44', '2023-10-29 08:17:44');
+(1, 'ELSY ROSMERY', 'viudo', 'BASICO', 50, 'AMA DE CASA', '009348538-5', 1, 29, '2023-11-17 02:58:21', '2023-11-17 02:58:21'),
+(2, 'MARIA ESTER', 'acompañado', 'MEDIO', 55, 'AMA DE CASA', '065444563433', 2, 1, '2023-11-25 18:26:31', '2023-11-25 18:26:31'),
+(3, NULL, 'soltero', NULL, NULL, NULL, NULL, 3, 1, '2023-11-30 02:25:59', '2023-11-30 02:25:59'),
+(4, 'MARIA ESTER', 'soltero', 'BASICO', 45, 'NO APLICA', '90999887-6', 4, 1, '2023-12-01 02:03:12', '2023-12-01 02:03:12'),
+(5, 'PATRICIA ESMERALDA', 'viudo', 'BASICO', 45, 'AMA DE CASA', '02934989-3', 5, 38, '2023-12-01 02:32:47', '2023-12-01 02:32:47');
 
 -- --------------------------------------------------------
 
@@ -382,8 +395,12 @@ CREATE TABLE `sintomas` (
 --
 
 INSERT INTO `sintomas` (`id`, `fecha_regis`, `hora_regis`, `sintoma`, `conflicto`, `situacion`, `id_consulta`, `created_at`, `updated_at`) VALUES
-(3, '2023-10-29', '13:33:16', 'problemas', 'problemas', NULL, 1, '2023-10-29 13:33:16', '2023-10-29 13:33:16'),
-(4, '2023-10-29', '13:33:16', 'adicciones', 'nuevos problemas', NULL, 1, '2023-10-29 13:33:17', '2023-10-29 13:33:17');
+(8, '2023-11-25', '12:39:37', 'dos', 'nuevos', NULL, 2, '2023-11-25 12:39:38', '2023-11-25 12:39:38'),
+(9, '2023-11-25', '12:39:37', 'tres', 'cuatro', NULL, 2, '2023-11-25 12:39:38', '2023-11-25 12:39:38'),
+(10, '2023-11-25', '12:42:04', 'paciencia', 'segurida', NULL, 3, '2023-11-25 12:42:04', '2023-11-25 12:42:04'),
+(11, '2023-11-29', '22:02:31', 'kasdkj', 'ahshjas', NULL, 4, '2023-11-29 22:02:32', '2023-11-29 22:02:32'),
+(13, '2023-11-30', '20:09:37', 'ansieda', 'problemas', NULL, 5, '2023-11-30 20:09:38', '2023-11-30 20:09:38'),
+(14, '2023-11-30', '20:09:37', 'nuevos', 'nuevos', NULL, 5, '2023-11-30 20:09:38', '2023-11-30 20:09:38');
 
 -- --------------------------------------------------------
 
@@ -410,7 +427,7 @@ CREATE TABLE `tratamiento` (
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `codigo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `codigo` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `nombre` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `direccion` text COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `dui` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
@@ -418,7 +435,7 @@ CREATE TABLE `usuarios` (
   `email` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `usuario` varchar(25) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `password` varchar(200) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  `viewPassword` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `viewPassword` varchar(250) COLLATE utf8mb4_spanish_ci NOT NULL,
   `categoria` varchar(150) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `estado` int(11) NOT NULL,
   `created_at` varchar(25) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -432,15 +449,19 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `codigo`, `nombre`, `direccion`, `dui`, `telefono`, `email`, `usuario`, `password`, `viewPassword`, `categoria`, `estado`, `created_at`, `updated_at`) VALUES
 (1, '', 'cruz', 'santiago', '67897654.9', '6876-7896', 'cruz@gmail.com', 'cruz', '$2y$10$00AiaGU.OzGuZGqSIRv7ResQ50.uibIumdBd43msOGBGZ5Ttt1iYu', '', 'Admin', 1, '', ''),
 (2, '', 'MARTA', 'la nueva salidad', '89765468-6', '7896-5435', 'marta@gmail.com', 'update2023', '-', '', 'Terapeuta', 1, '2023-09-30 18:59:26', '2023-09-30 18:59:26'),
-(3, '6777', 'MARTA', 'la nueva salidad', '67677654-4', '7865-4533', '---', 'update2023', '$2y$10$6aru4h2x8rOlazv4cCngc.LxZ.8uFQmy5k6AxHExqdGgBHiQ0YXQq', '', 'Terapeuta', 1, '2023-10-01 15:12:22', '2023-11-01 16:08:34'),
-(4, '', 'JOSE', 'nueva', '98767777-7', '7846-7292', '--', 'update2023', '-', '', 'Terapeuta', 1, '2023-10-03 01:44:13', '2023-10-03 01:44:13'),
-(5, '4563', 'JUANA', 'la nueva salidad', '75448294-0', '7834-2352', '--', 'update2023', '$2y$10$t1NWd.G42SJAVqbg8Vh1jO56hmiR9q7SKCvSI4Cc91HQcZTEr5.2a', '', 'Terapeuta', 0, '2023-10-03 21:59:14', '2023-11-05 15:54:37'),
-(6, '3423', 'CRISTINA', NULL, '74824983-0', '6489-4328', '--', 'update2023', '-', '', 'Terapeuta', 1, '2023-10-06 03:45:52', '2023-10-06 03:45:52'),
-(7, '367634', 'marta', 'San Salvador', '78687656-4', '7866-7565', 'jose@gmail.com', 'marta', '$2y$10$8zhyqi5mZNzw74N5NI5b9O36YpLQSJa02loVvn85O.ijtR8LavAVi', '', 'Terapeuta', 1, '2023-11-01 16:08:05', '2023-11-01 16:08:05'),
-(8, '4567', 'maria', 'jrhjhjrhjwr werhwjhrhjewhjr', '89777767-6', '7866-7654', '----', 'maria', '$2y$10$dv.FNzwsqXW06pX2IniR9.3sPLOIP8.fbbY2qHvLPWPIPZh/PNjb.', '', 'Terapeuta', 1, '2023-11-05 13:14:30', '2023-11-05 13:40:52'),
-(9, '45566', 'adres', 'AVENIDAD  EL CALVARIO', '78423784-8', '7676-2376', 'josezavaletac@gmail.com', 'admin_2', 'eyJpdiI6IjFDUHg5bzVSdnlMbzNnQzg2YjMxSUE9PSIsInZhbHVlIjoic1dQWVRyK1k3Q0RRWXhFWldDOG1HQT09IiwibWFjIjoiOGQwYWZhNzExODE0NDVlYzIwNzgzNmRkZWZmNzY3OTRjNzNjMzQyNzE5NTgwOGI1ZTVkMTUxZjViODA2MDUxYiIsInRhZyI6IiJ9', '', 'Admin', 1, '2023-11-05 13:55:45', '2023-11-05 14:02:57'),
-(10, '13212', 'ADMIN_3', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', '83838383-8', '8383-8383', 'dsorianoa144@gmail.com', 'admin_3', '$2y$10$SAWDNPARtX/YdG4wlejBoODgFXiezjmeMWQHLIQdSlZQPiRjzFMgC', 'eyJpdiI6ImI3bWx2NlJUcmhYTDNrdi9jcytIWXc9PSIsInZhbHVlIjoiSFRBS2N4WEVrd045bUtXVmhkbFMwdz09IiwibWFjIjoiYjBiNjVlNDY1YzBmNjA5Mzk4NTYzYzYzMTRhMDJlNmVhMjAyODlmNzJlOTBjMDU5YTRlZTI3Y2RjMjBkNjA5OSIsInRhZyI6IiJ9', 'Admin', 1, '2023-11-05 14:17:36', '2023-11-05 14:29:56'),
-(11, '5637', 'VERONICA', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETERA A ZACATECOLUCA KM 15/2', '90923489-2', '5667-4434', 'VERONICA@GMAIL.COM', 'VERONICA', '$2y$10$XKzsvKAf7DOFibb4yElIauv.zsmJsC4v4J06w2yAfwscp8uMAbSnC', 'eyJpdiI6IjZOdG9OVjRoaTJXRHFGZG1mcGM1aUE9PSIsInZhbHVlIjoiUmtHanQxMW9rOENzbDRNSjUyS2d2dz09IiwibWFjIjoiYTM1ZTU4OGFiZDg4YmUzMmIzZjVkMTAwYzhhMTU0YmU5NzQwNjFhMDRjNzQ3MWE4ZjQzMDhlNDY0NDliODczNSIsInRhZyI6IiJ9', 'Terapeuta', 1, '2023-11-05 15:43:55', '2023-11-05 15:43:55');
+(28, '34236', 'CARLOS', NULL, '89284782-3', '7892-8745', 'carlos@gmail.com', 'update2023', '-', '', 'Terapeuta', 1, '2023-11-17 02:40:14', '2023-11-17 02:40:14'),
+(29, '--', 'veronica esmeralda gimenez', 'CANTON EL MORRRO SANTIAGO TEXACUANGOS ANTIGUA CARRETEA 15/2', '78922479-2', '7824-9826', 'veronica@gmail.com', 'veronica1', '$2y$10$GlpBdWb7Q7lL.VBOrUC2tuxcKw5teGpSnKdZ8rWhLWAWtdxMPDPvK', 'eyJpdiI6InI4bVRCUWpJVG1MT1hDdlNhMHcxOXc9PSIsInZhbHVlIjoiODdFRFpnSmNkQkt2SStBN2lGc3Aydz09IiwibWFjIjoiZjg5ZDAxYmNjNmY0YTExZGMzOTQ3N2U1YjgzYWQ2ODRlYzBjYjVkYTM4YTgzMWZmNGZlMzExZjY1NTFmNDk5NyIsInRhZyI6IiJ9', 'Admin', 1, '2023-11-17 02:44:10', '2023-11-17 02:46:27'),
+(30, '78654', 'norma del carmen solorzano', 'casa 33, la ezperanza', '07387432-7', '6758-3945', 'norma@gmail.com', 'norma', '$2y$10$Sf0r0QAqfS/L5Gpdy661CeI.36gkzOnPDtykZDdwfmMh8StOH48FG', 'eyJpdiI6IjBIbUROVUlHZ1ZaU0N4TjJReERUcVE9PSIsInZhbHVlIjoiY0Z5UXRXcjBoZU8xYm5zdWJkWjdrMXR6NWtwaURyNTVuQkpEMmZsQnFPST0iLCJtYWMiOiI4NWZjMDRjOWEyNDNjZjEyMmI1MDBlYTdjZjE5NGY2Zjc4NmRjOWMyNWI3ODFiMjQ4YWE4ZDkwMzViNWIwMzhjIiwidGFnIjoiIn0=', 'Terapeuta', 1, '2023-11-17 02:45:34', '2023-11-17 02:45:34'),
+(31, '56745', 'ELMER CARLOS', NULL, '89284237-4', '7828-3942', 'elmer@gmail.com', 'update2023', '-', '', 'Terapeuta', 1, '2023-11-17 02:49:51', '2023-11-17 02:49:51'),
+(32, '5435', 'carlos', 'nuevos datso venideros', '89358305-3', '7839-7439', 'arlos@gmail.com', 'carlitos', '$2y$10$cxmcHrVH.hQitxyyy9JOOu.BUAeVrNpaptC0CbRdAUkyTyQtZVOPy', 'eyJpdiI6ImFMd0FlSjVaanlDekRhV3g4dGY2T0E9PSIsInZhbHVlIjoiUGxQVE55QjNoNkpSVjZPY2FHYTh0MXdpc1ByakZGTXgzR0U4OXB1bmp1OD0iLCJtYWMiOiJhYjE4ZDA2NDk4ZjFjMGU0OGY4YzFhMzI2Y2M1ZjE4MDM0ZWUyYTU0NTg0ZGE4NzUwN2U4MGYzNzk0Zjg1NGY5IiwidGFnIjoiIn0=', 'Admin', 0, '2023-11-26 03:12:14', '2023-11-26 03:12:14'),
+(33, '89888', 'esteban eleazar solorzano contrafuegos', 'los nuevos datso de la vaneida españa conglomeracion las uracanacias', '85349895-4', '8897-3589', 'esteba@gmail.com', 'nuevo', '$2y$10$dRvlFk89AJ4K38UH6pjD9OQ3ELWS/p2QU/zQtYGbmfnkM7solLe2q', 'eyJpdiI6ImFIWlJ4TXBzNlFRMGkvdWFuRXF2Rnc9PSIsInZhbHVlIjoiN0VMeGFNNFdDSVZjZnNjRDJZdTVJdz09IiwibWFjIjoiNGQ1NWI0NTMwYzRmMWRkYzZhNDY2NDAyMTNjNWZlZGVhMGYyMjY3NTgzZTZiNTQ1ODAxOWQ4YWY1Mjk5YzU1ZSIsInRhZyI6IiJ9', 'Admin', 1, '2023-11-26 04:10:31', '2023-11-26 04:10:31'),
+(34, NULL, 'marlon', 'los nuevos datso de la vaneida españa conglomeracion las uracanacias', '68638942-0', '4894-9383', 'eleazar@gmail.com', 'si', '$2y$10$JOVRc1zAyFXxShHXBj5XFeiPOBcmOpXhdnf2EVa4.BzzMFfeYvSzi', 'eyJpdiI6ImpvWk54YlhJSUhoSTgvcFBobTkvS2c9PSIsInZhbHVlIjoibjFORk1kK3NacVl0dUxsRHlmRHNzZz09IiwibWFjIjoiMWU2NjM5NzZlZWViMmRjNWUwOWRhODlhMThlNzRhYTA1ZWUzM2Y4NzllNzRjYTc2OTY2MTQ1NzdkNjMzOWMxZSIsInRhZyI6IiJ9', 'Admin', 1, '2023-11-26 04:14:30', '2023-11-26 04:14:30'),
+(35, '34546', 'MAURICIO', NULL, '89239483-4', '7828-3495', 'mauricio@gmail.com', 'update2023', '-', 'eyJpdiI6InhTdlNwc2c2c2psYlkwNHZRa3RTT1E9PSIsInZhbHVlIjoiTlNVaW9Ibm0rbGpXSTNKaXY3Ny9wQT09IiwibWFjIjoiMzU3YWZkYjAzZDEwYTc4NzRmMTBjN2Q5MzQ2NGM2YjI5NDQyNmI0NWYyZDVjMTc5NjNiN2M2OTRmODg3YjZiYSIsInRhZyI6IiJ9', 'Terapeuta', 1, '2023-11-29 01:06:02', '2023-11-29 01:12:00'),
+(36, '36486', 'ESTELITA', NULL, '79248234-2', '7830-9450', 'estelita@gmail.com', 'estelita', '$2y$10$pGJKor2RQkhR5VeAnZ/PYubY/SYyi7fKRfgbphdAZ/vpCg8KpLhFu', 'eyJpdiI6Im5pMmZ0NVVSVDExOU9CLzhqaksvWnc9PSIsInZhbHVlIjoiY3ZJRHpZQzNIeGJHN3drblBoSVhHQT09IiwibWFjIjoiZDc3ZDkwNjMzMDU2NGZhNDcxYmM1NTA4NDJkOWNjNjE2MDUxMzg4YWNiMGI5NmMwZDMzYjU1NGUwNzEwOTY0OSIsInRhZyI6IiJ9', 'Terapeuta', 1, '2023-11-29 01:34:01', '2023-11-29 01:44:05'),
+(37, '45677', 'PATRICIA', NULL, '73923423-9', '7836-4723', 'patricia@gmail.com', 'PATRI', '$2y$10$WLxAf8LPhd6mRbcsGsmLwutmtw12whsSFAUxeFlOmJzp.nmU.Dp9y', 'eyJpdiI6IjFRbkw5RzdVZFJYcWxTU21kUTNOYXc9PSIsInZhbHVlIjoiUk1TVDdXSEUxejlheEUxWHVXdjNadz09IiwibWFjIjoiOWViMjcwYTY2MGZmOTBhNTgwZDQyZTM4YzUyYThjMzI1YzE5ZDM1NmVkOTNiZjkxMzA3OTZmY2EwNGE4N2UxNSIsInRhZyI6IiJ9', 'Terapeuta', 1, '2023-11-29 01:54:46', '2023-12-03 15:01:06'),
+(38, NULL, 'cruz', 'campos ilicios', '89209492-3', '7824-7282', 'cruz@gmail.com', 'marcos', '$2y$10$eXmm/QumqYwmoWzygEBOuuQE9M9PrL8qTkZwtuN1LnUEC6Tl6fViO', 'eyJpdiI6IjNDcEQwYkd3UTM5ZmFxSU1MMjlzR0E9PSIsInZhbHVlIjoiRmVmRm5UUldoSkZKRzdYZ2VxejFXZz09IiwibWFjIjoiYmEyZjExNzAzODlhZGMyZDg2ZDQzOWRjOWMyNzVhNjY0OTljZGUzN2UxMzU5Mjg2Yjc5ZDc0ODg4YjgyZDBkZiIsInRhZyI6IiJ9', 'Recepcionista', 1, '2023-11-29 02:07:14', '2023-12-01 02:14:40'),
+(39, NULL, 'pedro alfaro rolin', 'santiago texacuangos antigura carretera a zacatecoluca', '09345994-5', '7834-5873', 'pedroalfaro@gmail.com', 'pedro', '$2y$10$093GUv56e7fHE9bIopK0qOVxfj5Mh6lNfKKA6MGxIupoJVZmpA1OS', 'eyJpdiI6IkJrVnhTbTNUM1BBbk8xd0lVc2pRdUE9PSIsInZhbHVlIjoiUitZMEUyM2w3OUpBZkFJNm1CZ04zZz09IiwibWFjIjoiOGZiYzhjY2JjYTFlM2EwYzNiZWE2NDQyMDkzZDcxOTEyMmIyMWE5ZWMzMzRjMjk0ZmY4MmM5YmZmMWRkOGExMyIsInRhZyI6IiJ9', 'Recepcionista', 1, '2023-12-01 01:39:55', '2023-12-01 01:41:39'),
+(40, NULL, 'Julia Antonia', 'GHJHFHDHDG', '09898768-5', '6776-756', 'jjksdhfd@gmail.com', 'hola', '$2y$10$I9zOAvJWct7015iIEhU07ummlXOD8pDBX4sKbA2/bA.W.Nqmf5jAC', 'eyJpdiI6IkFiYzhqY09nUldpdVVEdjNVR2hXbVE9PSIsInZhbHVlIjoiSkIvZU5aOEE3ZHl2MC9Vdy9MRStZdz09IiwibWFjIjoiM2ViODhjYjhkZDNiZTBkNGQ2OTMzNTJkMTZhZmJkMDA3ZjhiMjQxZTkzZmVhOTQ5YTNmNjhiNTZjN2U0ZWNjOCIsInRhZyI6IiJ9', 'Recepcionista', 1, '2023-12-03 14:55:52', '2023-12-03 14:55:52');
 
 -- --------------------------------------------------------
 
@@ -580,25 +601,25 @@ ALTER TABLE `acciones_paciente`
 -- AUTO_INCREMENT de la tabla `adicciones`
 --
 ALTER TABLE `adicciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `antecedentes_salud`
 --
 ALTER TABLE `antecedentes_salud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `control_atenciones`
@@ -610,7 +631,7 @@ ALTER TABLE `control_atenciones`
 -- AUTO_INCREMENT de la tabla `conyuge`
 --
 ALTER TABLE `conyuge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `det_control_atenciones`
@@ -622,13 +643,13 @@ ALTER TABLE `det_control_atenciones`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `parentesco`
 --
 ALTER TABLE `parentesco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -640,13 +661,13 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `responsable`
 --
 ALTER TABLE `responsable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `sintomas`
 --
 ALTER TABLE `sintomas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -658,7 +679,7 @@ ALTER TABLE `tratamiento`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_permiso`
