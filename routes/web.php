@@ -69,7 +69,7 @@ Route::get('pacientes/ver/{idCita}', [PacienteController::class, 'verDetallesPac
   
 Route::post('verificar/paciente', [PacienteController::class, 'verificarPaciente'])->middleware('auth'); 
 Route::post('paciente/edit/{idPaciente}', [PacienteController::class, 'getidPaciente'])->middleware('auth'); 
-Route::put('paciente/update/{idPaciente}', [PacienteController::class, 'updatepacienteid'])->middleware('auth');
+Route::put('paciente/update', [PacienteController::class, 'updatePaciente'])->middleware('auth');
 
 /**
  * RUTAS DE USUARIOS

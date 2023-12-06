@@ -11,7 +11,8 @@
             <form id="pacienteForm" method="POST">
                 @csrf
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="modal-body" style="max-height: 550px; overflow-y: auto;">
+                <input type="hidden" name="_method" id="_method">
+                <div class="modal-body">
                     <div class="row">
                         <div class="col-12 col-sm-12">
                             <div class="card card-info card-tabs">
@@ -54,6 +55,8 @@
                                         <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                             aria-labelledby="custom-tabs-one-home-tab">
                                             <div class="form-row pt-4">
+                                                <input class="form-control" type="hidden"
+                                                            name="cita_id" id="cita_id" readonly required>
                                                 <div class="form-group col-sm-12 col-md-4">
                                                     <label for="numero">Selecionar Cosultante:</label>
                                                     <div class="input-group is-invalid">
@@ -62,33 +65,30 @@
                                                                 style="cursor: pointer" for="btnaddcita"
                                                                 id="btnaddcita"><i style="cursor: pointer"
                                                                     class="fas fa-plus"></i></label>
-                                                            <label for="" class="input-group-text"
-                                                                id="nombre_paciente_referencia"></label>
-                                                            <span></span>
                                                         </div>
-                                                        <input class="form-control" type="hidden"
-                                                            name="cita_id" id="cita_id" readonly required>
+                                                        <input class="form-control" type="text"
+                                                            name="cliente" id="cliente" readonly required>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4">
+                                                <div class="form-group col-sm-12 col-md-2">
                                                     <label for="fecha_naci">Fecha de Nacimiento*:</label>
                                                     <input type="date" class="form-control" id="fecha_naci"
                                                         name="fecha_naci" required>
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4">
+                                                <div class="form-group col-sm-12 col-md-2">
                                                     <label for="genero">Sexo*:</label>
                                                     <select class="form-control" id="genero" name="genero">
-                                                        <option value="HOLA">HOMBRE</option>
-                                                        <option value="femenino">MUJER</option>
-                                                        <option value="femenino">OTRO</option>
+                                                        <option value="Hombre">HOMBRE</option>
+                                                        <option value="Mujer">MUJER</option>
+                                                        <option value="Otro">OTRO</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4">
+                                                <div class="form-group col-sm-12 col-md-2">
                                                     <label for="edad">Edad*:</label>
                                                     <input type="number" class="form-control" id="edad"
                                                         name="edad" placeholder="Ingresa tu edad">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4">
+                                                <div class="form-group col-sm-12 col-md-2">
                                                     <label for="grado">Grado:(niño/niña)</label>
                                                     <input type="text" class="form-control"
                                                         onkeyup="mayupaciente(this)" id="grado" name="grado"
@@ -120,7 +120,7 @@
                                                         onkeyup="mayupaciente(this)" id="nivel_educativo"
                                                         name="nivel_educativo" placeholder="Basico">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4">
+                                                <div class="form-group col-sm-12 col-md-2">
                                                     <label for="departamento">Departamento*:</label>
                                                     <select class="form-control"
                                                         onkeyup="mayupaciente(this)" name="departamento"
@@ -142,36 +142,36 @@
                                                         <option value="Usulutan">Usulután</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="municipio">Municipio*:</label>
                                                     <select id="municipio" name="municipio"
                                                         onkeyup="mayupaciente(this)"
                                                         class="form-control "></select>
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="celular_dos">Celular Dos:</label>
                                                     <input type="text" class="form-control" id="celular_dos"
                                                         name="celular_dos" placeholder="6745-3456">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="celular_tres">Celular Tres:</label>
                                                     <input type="text" class="form-control"
                                                         id="celular_tres" name="celular_tres"
                                                         placeholder="6436-2331">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="nu_hermano">Numero de Hermanos:</label>
                                                     <input type="text" class="form-control" id="nu_hermano"
                                                         name="nu_hermano" placeholder="2 hermanos">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="lugar_ocupa">Lugar que Ocupa
                                                         hermanos/as:</label>
                                                     <input type="text" onkeyup="mayupaciente(this)"
                                                         class="form-control" id="lugar_ocupa"
                                                         name="lugar_ocupa" placeholder="Ultimo">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="nu_hijo">Numero de Hijos:</label>
                                                     <input type="text" class="form-control" id="nu_hijo" onkeyup="mayupaciente(this)"
                                                         name="nu_hijo" placeholder="Dos hijos">
@@ -181,7 +181,7 @@
                                                     <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="edad_hijo"
                                                         name="edad_hijo" placeholder="12 años, 7 años">
                                                 </div>
-                                                <div class="form-group col-sm-12 col-md-4 col-xl-4">
+                                                <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="ano_casado">Años de Casado</label>
                                                     <input type="text" class="form-control"
                                                         id="ano_casado" onkeyup="mayupaciente(this)"
@@ -195,7 +195,7 @@
                                             <div class="card">
                                                 <div class="card-header bg-light" data-toggle="collapse"
                                                     data-target="#datosMadre" aria-expanded="false">
-                                                    <h3 class="card-title">Ingresar Datos de la Madre</h3>
+                                                    <h3 class="card-title">Ingresar datos de la madre</h3>
                                                     <div class="card-tools">
                                                         <button type="button" class="btn btn-tool collapsed"
                                                             data-card-widget="collapse" title="collapse">

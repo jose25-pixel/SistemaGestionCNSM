@@ -40,13 +40,11 @@ class PacienteController extends Controller
         if (Auth()->user()->categoria == "Admin") {
             $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion, 
             c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id order by p.id desc");
-        }else if(Auth()->user()->categoria == "Recepcionista"){
+        } else if (Auth()->user()->categoria == "Recepcionista") {
             $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion, 
             c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id order by p.id desc");
-
-        }
-         else {
-            $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id where c.terapeuta_id=? order by p.id desc",[Auth()->user()->id]);
+        } else {
+            $pacientes = DB::select("SELECT p.id,p.cod_paciente, p.fecha_naci,p.fecha_reg,p.genero,p.ocupacion,c.paciente,c.dui,c.celular,c.fecha,c.hora,c.motivo FROM `paciente` as p INNER join citas as c on p.id_cita=c.id where c.terapeuta_id=? order by p.id desc", [Auth()->user()->id]);
         }
         $data = [];
         $contador = count($pacientes);
@@ -368,7 +366,7 @@ class PacienteController extends Controller
 
 
 
-/// Fucion para verificar si los datso de la cita ya se encuantra en tabla paciente
+    /// Fucion para verificar si los datso de la cita ya se encuantra en tabla paciente
 
     public function verificarPaciente()
     {
@@ -421,19 +419,14 @@ class PacienteController extends Controller
 
 
 
-//Obtener datos de un solo paciente mediante su id para poder editar
+    //Obtener datos de un solo paciente mediante su id para poder editar
 
     public function getidPaciente($dPaciente)
     {
-        // $id_paciente = request()->input('id_paciente');
-        // session(['id_paciente' => $id_paciente]);
-        // $data = Paciente::find($id_cita);
-
         //con esta linea de codigo estoy trayendo os datos segun id del paciente u la relación con sus diferentes tablas usando los modelos de laravel, configurar las relaciones en el modelo de uno auno o uno a muchos!!!
         $data = Paciente::with('Cita', 'parentesco', 'conyuge', 'Atecedente', 'responsable', 'Adiccione')->find($dPaciente);
-
-
         if ($data) {
+            session(['paciente_id' => $dPaciente]);
             // Si se encontraron datos, devolver una respuesta JSON con el estado 'exists' y los datos del paciente
             return response()->json([
                 'status' => 'exists',
@@ -449,76 +442,105 @@ class PacienteController extends Controller
         }
     }
 
-    /*  public function  updatepacienteid()
+    public function  updatePaciente(Request $request)
     {
-        $id_paciente = session('id_paciente');
-        $id_usuario = Auth::user()->id;
-        $nombre = request()->input('nombrecita');
-        $celular = request()->input('celularc');
-        $genero = request()->input('genero');    
-        DB::table('paciente')
-        ->join('citas', 'paciente.id_cita', '=', 'citas.id')
-        ->where('paciente.id', $id_paciente)
-        ->update([
-        
-            // ... otros campos que quieres actualizar en la tabla paciente
-            'citas.paciente' =>  $nombre,
-            'citas.celular' => $celular,
-            // ... otros campos que quieres actualizar en la tabla citas
-        ]);     
+        $paciente_id = session('paciente_id');
+
+        $fechaNacimiento = $request->input('fecha_naci');
+        $fechaNacimientoFormat = date("Ymd", strtotime($fechaNacimiento));
+        $codPaciente = $fechaNacimientoFormat . rand(100, 999);
+        $datosPaciente = [
+            "fecha_naci" => $request->input('fecha_naci'),
+            "edad" => $request->input('edad'),
+            "genero" => $request->input('genero'),
+            "ocupacion" => $request->input('ocupacion'),
+            "lugar_estudio" => $request->input('lugar_estudio'),
+            "grado" => $request->input('grado'),
+            "nivel_educativo" => $request->input('nivel_educativo'),
+            "direccion" => $request->input('direccion'),
+            "departamento" => $request->input('departamento'),
+            "municipio" => $request->input('municipio'),
+            "celular_dos" => $request->input('celular_dos'),
+            "celular_tres" => $request->input('celular_tres'),
+            "nu_hermano" => $request->input('nu_hermano'),
+            "lugar_ocupa" => $request->input('lugar_ocupa'),
+            "nu_hijo" => $request->input('nu_hijo'),
+            "edad_hijo" => $request->input('edad_hijo'),
+            "ano_casado" => $request->input('ano_casado')
+        ];
+        Paciente::where('id',$paciente_id)->update($datosPaciente);
+        //Actualizar conyuge
+        $datos = [
+            'nombre' => $request->input('nombrec'),
+            'nivel_educativo' => $request->input('nivel_educativoc'),
+            'ocupacion' => $request->input('ocupacionc'),
+            'edad' => $request->input('edadc'),
+            'notac' => $request->input('notac')
+        ];
+        conyuge::where('id_paciente',$paciente_id)->update($datos);
+        //Actualizar parentesco
+        $datoParentesco = [
+            'nombre_madre' => $request->input('nombre_madre'),
+            'edad_madre' => $request->input('edad_madre'),
+            'estado_civilm' => $request->input('estado_civilm'),
+            'nivel_educativom' => $request->input('nivel_educativom'),
+            'ocupacionm' => $request->input('ocupacionm'),
+            'vivem' => $request->input('vivem'),
+            'duim' => $request->input('duim'),
+            'notam' => $request->input('notam'),
+            'viveaunm' => $request->input('viveaunm'),
+            'duip' => $request->input('duip'),
+            'notap' => $request->input('notap'),
+            'viveaunp' => $request->input('viveaunp'),
+            'nombrep' => $request->input('nombrep'),
+            'edadp' => $request->input('edadp'),
+            'estado_civilp' => $request->input('estado_civilp'),
+            'ocupacionp' => $request->input('ocupacionp'),
+            'nivel_educativop' => $request->input('nivel_educativop'),
+            'vivep' => $request->input('vivep')
+        ];
+        parentesco::where('id_paciente',$paciente_id)->update($datoParentesco);
+        //Actualizar responsable
+        $datosr = [
+            'nombrer' => $request->input('nombrer'),
+            'estado_civilr' => $request->input('estado_civilr'),
+            'nivel_educativor' => $request->input('nivel_educativor'),
+            'edadr' => $request->input('edadr'),
+            'ocupacionr' => $request->input('ocupacionr'),
+            'duir' => $request->input('duir')
+        ];
+        responsable::where('id_paciente',$paciente_id)->update($datosr);
+        //Actualizar adicciones
+        $datosa = [
+            'atencioncnsm' => $request->input('atencioncnsm'),
+            'tratamientos' => $request->input('tratamientos'),
+            'tipotratamiento' => $request->input('tipotratamiento'),
+            'nombreatendio' => $request->input('nombreatendio'),
+            'direcionatendio' => $request->input('direcionatendio'),
+            'tratamientorec' => $request->input('tratamientorec'),
+            'tipofarmaco' => $request->input('tipofarmaco'),
+            'tipo_sustancia' => $request->input('tipo_sustancia'),
+            'tiempo_consumo' => $request->input('tiempo_consumo'),
+            'adiccion' => $request->input('adicion')
+        ];
+        Adicciones::where('id_paciente',$paciente_id)->update($datosa);
+        //Actualizar antecedentes
+        $datosa = [
+            'patologias' => $request->input('patologias'),
+            'enfergenetica' => $request->input('enfergenetica'),
+            'otros' => $request->input('otros'),
+            'iniciotrabajar' => $request->input('iniciotrabajar'),
+            'trabaja' => $request->input('trabaja'),
+            'trabaja_actualmente' => $request->input('trabaja_actualmente'),
+            'duracion_empleo' => $request->input('duracion_empleo'),
+            'despedido' => $request->input('despedido'),
+            'causa' => $request->input('causa'),
+            'satisfecho' => $request->input('satisfecho')
+        ];
+        Antecedente::where('id_paciente',$paciente_id)->update($datosa);
         return response()->json([
             'status' => 'update',
             'data' => ''
-        ]);
-    }*/
-
-
-
-//function para poder actualizar los datos de un solo paciente
-
-    public function updatePacienteId(Request $request, $idPaciente)
-
-    {
-        // $idPaciente = session('id_paciente');
-
-        $paciente = Paciente::find($idPaciente);
-
-        // Actualiza los campos del paciente con los datos del formulario
-
-        $paciente->genero = $request->input('nombre');
-        $paciente->ocupacion = $request->input('ocupacion');
-        // ... otros campos que deseas actualizar
-
-        // Guarda los cambios en la base de datos
-        $paciente->save();
-
-
-        /*
-        //dd(session('id_paciente')); 
-        $idPaciente = session('id_paciente');
-        $nombre = request()->input('nombrecita');
-        $celular = request()->input('celularc');
-        $genero = request()->input('genero');
-    
-        // Usamos una transacción para asegurar que las actualizaciones sean atómicas
-        DB::transaction(function () use ($idPaciente, $nombre, $celular, $genero) {
-            // Actualizamos la tabla 'paciente'
-            DB::table('paciente')
-                ->where('id', $idPaciente)
-                ->update([
-                    
-                    'genero' => $genero,
-                    // ... otros campos que quieres actualizar en la tabla 'paciente'
-                ]);
-    
-            // Actualizamos la tabla 'citas'
-          
-        });*/
-
-        // Devolvemos una respuesta JSON indicando que la actualización fue exitosa
-        return response()->json([
-            'status' => 'update',
-            'message' => 'Datos del paciente y citas actualizados correctamente.'
         ]);
     }
 }
