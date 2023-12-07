@@ -65,6 +65,35 @@
             </a>
           </li>
           @endif
+   
+          @if(Auth()->user()->categoria == "Terapeuta" )
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-question-circle"></i>
+              <p>
+                Ayuda terapeuta
+                      <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="nav-icon fas fa-newspaper"></i>
+                  <p>Manual</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://youtu.be/I_izvAbhExY?si=cEU3vB09ADNy7tky" target="_blank" class="nav-link">
+                  
+                  <i class="fa fa-video nav-icon"></i>
+                  <p>Video Tutorial</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
           @if(Auth()->user()->categoria == "Admin" || Auth()->user()->categoria == "administrador")
           <li class="nav-item">
             <a href="{{route('user.index')}}" class="nav-link">
@@ -74,15 +103,61 @@
               </p>
             </a>
           </li>
-          @endif
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="fas fa-question-circle"></i>
               <p>
-                Ayuda
+                Ayuda usuarios
+                <i class="fas fa-angle-left right"></i>
+                
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="https://youtu.be/ER_3h03omdE?si=B-BMO1CoCMPoYso3" class="nav-link">
+                  <i class="nav-icon fas fa-newspaper"></i>
+                  <p>Manual</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('cita.index') }}" class="nav-link">
+                  
+                  <i class="fa fa-video nav-icon"></i>
+                  <p>Video Tutorial</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          @endif
+         
+          @if(Auth()->user()->categoria == "Recepcionista" )
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-question-circle"></i>
+              <p>
+                Ayuda recepcionista
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="https://youtu.be/ER_3h03omdE?si=B-BMO1CoCMPoYso3" class="nav-link">
+                  <i class="nav-icon fas fa-newspaper"></i>
+                  <p>Manual</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('cita.index') }}" class="nav-link">
+                  
+                  <i class="fa fa-video nav-icon"></i>
+                  <p>Video Tutorial</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
