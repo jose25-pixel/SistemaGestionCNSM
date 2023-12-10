@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
       <img src="{{ asset('dist/img/logocsnm.jpeg')}}" alt="Logo" class="brand-image img-circle elevation-2" style="opacity: .9">
-      <span class="brand-text font-weight-light">CSNM</span>
+      <span class="brand-text font-weight-light">CNSM</span>
     </a>
 
     <!-- Sidebar -->

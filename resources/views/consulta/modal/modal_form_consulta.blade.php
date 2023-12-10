@@ -29,9 +29,11 @@
   }
 
 </style>
-<div class="modal fade modal-static" id="modalConsulta" tabindex="-1" role="dialog" data-keyboard="false">
-    <div class="modal-dialog" style="max-width: 90%">
-      <div class="modal-content modal-dialog-scrollable">
+
+<div class="modal fade" id="modalConsulta" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-width: 90%;">
+        <div class="modal-content" style="overflow-y: auto;">
         <div class="modal-header py-1 bg-primary">
           <h5 class="modal-title" id="labelTitleConsult"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

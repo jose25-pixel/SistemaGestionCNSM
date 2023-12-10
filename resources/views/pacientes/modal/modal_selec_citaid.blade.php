@@ -2,7 +2,7 @@
 <!-- Modal -->
 <div class="modal fade" id="citasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 80%">
-        <div class="modal-content">
+        <div class="modal-content" style="overflow-y: auto;">
             <div class="modal-header py-1">
                 <h5 class="modal-title" id="exampleModalLabel">Selecciona una cita</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

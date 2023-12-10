@@ -1,7 +1,7 @@
-<div class="modal fade" id="modalIngresoPaciente" tabindex="-1" role="dialog" aria-labelledby="modalNuevaCitaLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 90%; overflow-y: scroll;" >
-        <div class="modal-content">
+<div class="modal fade" id="modalIngresoPaciente" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-width: 90%;">
+        <div class="modal-content" style="overflow-y: auto;">
             <div class="modal-header p-1 bg-primary">
                 <h4 class=" text-center"><strong> Llenar expediente</strong> </h4>
                 <button type="button" class="close" data-dismiss="modal" id="">
@@ -55,19 +55,19 @@
                                         <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                             aria-labelledby="custom-tabs-one-home-tab">
                                             <div class="form-row pt-4">
-                                                <input class="form-control" type="hidden"
-                                                            name="cita_id" id="cita_id" readonly required>
+                                                <input class="form-control" type="hidden" name="cita_id" id="cita_id"
+                                                    readonly required>
                                                 <div class="form-group col-sm-12 col-md-4">
                                                     <label for="numero">Selecionar Cosultante:</label>
                                                     <div class="input-group is-invalid">
                                                         <div class="input-group-prepend">
-                                                            <label class="input-group-text"
-                                                                style="cursor: pointer" for="btnaddcita"
-                                                                id="btnaddcita"><i style="cursor: pointer"
+                                                            <label class="input-group-text" style="cursor: pointer"
+                                                                for="btnaddcita" id="btnaddcita"><i
+                                                                    style="cursor: pointer"
                                                                     class="fas fa-plus"></i></label>
                                                         </div>
-                                                        <input class="form-control" type="text"
-                                                            name="cliente" id="cliente" readonly required>
+                                                        <input class="form-control" type="text" name="cliente"
+                                                            id="cliente" readonly required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2">
@@ -104,14 +104,14 @@
                                                 <div class="form-group col-sm-12 col-md-4">
                                                     <label for="ocupacion">Ocupación*:</label>
                                                     <input type="text" class="form-control"
-                                                        onkeyup="mayupaciente(this)" id="ocupacion"
-                                                        name="ocupacion" placeholder="Profeción y oficio">
+                                                        onkeyup="mayupaciente(this)" id="ocupacion" name="ocupacion"
+                                                        placeholder="Profeción y oficio">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="dirrecion">Dirreción*:</label>
                                                     <input id="direccion" name="direccion"
-                                                        onkeyup="mayupaciente(this)"
-                                                        class="form-control clear-input" placeholder="Avenida Principal
+                                                        onkeyup="mayupaciente(this)" class="form-control clear-input"
+                                                        placeholder="Avenida Principal
                                                 Colonia San Benito">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4">
@@ -122,9 +122,8 @@
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2">
                                                     <label for="departamento">Departamento*:</label>
-                                                    <select class="form-control"
-                                                        onkeyup="mayupaciente(this)" name="departamento"
-                                                        id="departamento">
+                                                    <select class="form-control" onkeyup="mayupaciente(this)"
+                                                        name="departamento" id="departamento">
                                                         <option value="">Seleccionar</option>
                                                         <option value="San Salvador">San Salvador</option>
                                                         <option value="Santa Ana">Santa Ana</option>
@@ -145,8 +144,7 @@
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="municipio">Municipio*:</label>
                                                     <select id="municipio" name="municipio"
-                                                        onkeyup="mayupaciente(this)"
-                                                        class="form-control "></select>
+                                                        onkeyup="mayupaciente(this)" class="form-control "></select>
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="celular_dos">Celular Dos:</label>
@@ -155,9 +153,8 @@
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="celular_tres">Celular Tres:</label>
-                                                    <input type="text" class="form-control"
-                                                        id="celular_tres" name="celular_tres"
-                                                        placeholder="6436-2331">
+                                                    <input type="text" class="form-control" id="celular_tres"
+                                                        name="celular_tres" placeholder="6436-2331">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="nu_hermano">Numero de Hermanos:</label>
@@ -168,30 +165,32 @@
                                                     <label for="lugar_ocupa">Lugar que Ocupa
                                                         hermanos/as:</label>
                                                     <input type="text" onkeyup="mayupaciente(this)"
-                                                        class="form-control" id="lugar_ocupa"
-                                                        name="lugar_ocupa" placeholder="Ultimo">
+                                                        class="form-control" id="lugar_ocupa" name="lugar_ocupa"
+                                                        placeholder="Ultimo">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="nu_hijo">Numero de Hijos:</label>
-                                                    <input type="text" class="form-control" id="nu_hijo" onkeyup="mayupaciente(this)"
-                                                        name="nu_hijo" placeholder="Dos hijos">
+                                                    <input type="text" class="form-control" id="nu_hijo"
+                                                        onkeyup="mayupaciente(this)" name="nu_hijo"
+                                                        placeholder="Dos hijos">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="edad_hijo">Edades Hijos:</label>
-                                                    <input type="text" class="form-control" onkeyup="mayupaciente(this)" id="edad_hijo"
-                                                        name="edad_hijo" placeholder="12 años, 7 años">
+                                                    <input type="text" class="form-control"
+                                                        onkeyup="mayupaciente(this)" id="edad_hijo" name="edad_hijo"
+                                                        placeholder="12 años, 7 años">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-2 col-xl-2">
                                                     <label for="ano_casado">Años de Casado</label>
-                                                    <input type="text" class="form-control"
-                                                        id="ano_casado" onkeyup="mayupaciente(this)"
-                                                        name="ano_casado" placeholder="Años de casado">
+                                                    <input type="text" class="form-control" id="ano_casado"
+                                                        onkeyup="mayupaciente(this)" name="ano_casado"
+                                                        placeholder="Años de casado">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
                                             aria-labelledby="custom-tabs-one-profile-tab">
-                                    
+
                                             <div class="card">
                                                 <div class="card-header bg-light" data-toggle="collapse"
                                                     data-target="#datosMadre" aria-expanded="false">
@@ -214,8 +213,8 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="edad_madre">Edad madre:</label>
-                                                            <input type="number" class="form-control" id="edad_madre"
-                                                                name="edad_madre" placeholder="30">
+                                                            <input type="number" class="form-control"
+                                                                id="edad_madre" name="edad_madre" placeholder="30">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4">
                                                             <label for="estado_civilm">Estado Civil madre:</label>
@@ -229,7 +228,8 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="nivel_educativom">Nivel Educativo Madre:</label>
+                                                            <label for="nivel_educativom">Nivel Educativo
+                                                                Madre:</label>
                                                             <input type="text" onkeyup="mayupaciente(this)"
                                                                 class="form-control" id="nivel_educativom"
                                                                 name="nivel_educativom" placeholder=" Basico">
@@ -267,11 +267,10 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="notam">Nota:</label>
-                                                            <textarea onkeyup="mayupaciente(this)"
-                                                                class="form-control cls-input oblig-input" type="text"
+                                                            <textarea onkeyup="mayupaciente(this)" class="form-control cls-input oblig-input" type="text"
                                                                 class="form-control" id="notam" name="notam"></textarea>
                                                         </div>
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -292,8 +291,8 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="nombrep">Nombre Padre:</label>
                                                             <input type="text" class="form-control"
-                                                                onkeyup="mayupaciente(this)" id="nombrep" name="nombrep"
-                                                                placeholder="Pedro Enesto Escalante">
+                                                                onkeyup="mayupaciente(this)" id="nombrep"
+                                                                name="nombrep" placeholder="Pedro Enesto Escalante">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="edadp">Edad Padre:</label>
@@ -318,7 +317,8 @@
                                                                 name="ocupacionp" placeholder="Electricista">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="nivel_educativop">Nivel Educativo Padre:</label>
+                                                            <label for="nivel_educativop">Nivel Educativo
+                                                                Padre:</label>
                                                             <input type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="nivel_educativop"
                                                                 name="nivel_educativop" placeholder="Basico">
@@ -340,15 +340,14 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="notap">Nota:</label>
-                                                            <textarea class="form-control cls-input oblig-input"
-                                                                type="text" class="form-control" id="notap"
-                                                                class="form-control cls-input oblig-input" type="text"
-                                                                onkeyup="mayupaciente(this)" name="notap"></textarea>
+                                                            <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="notap"
+                                                                class="form-control cls-input oblig-input" type="text" onkeyup="mayupaciente(this)" name="notap"></textarea>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="vivep">Vive con su Padre: si/no</label>
                                                             <select type="text" class="form-control"
-                                                                onkeyup="mayupaciente(this)" id="vivep" name="vivep">
+                                                                onkeyup="mayupaciente(this)" id="vivep"
+                                                                name="vivep">
                                                                 <option value="--">--</option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
@@ -375,8 +374,8 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="nombrec">Nombre Conyuge:</label>
                                                             <input type="text" class="form-control"
-                                                                onkeyup="mayupaciente(this)" id="nombrec" name="nombrec"
-                                                                placeholder="Juana Guadalupe ">
+                                                                onkeyup="mayupaciente(this)" id="nombrec"
+                                                                name="nombrec" placeholder="Juana Guadalupe ">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="edadc">Edad Conyuge:</label>
@@ -398,10 +397,8 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="notac">Nota:</label>
-                                                            <textarea class="form-control"
-                                                                class="form-control cls-input oblig-input" type="text"
-                                                                maxlength="200" rows="6" id="notac"
-                                                                onkeyup="mayupaciente(this)" name="notac"></textarea>
+                                                            <textarea class="form-control" class="form-control cls-input oblig-input" type="text" maxlength="200"
+                                                                rows="6" id="notac" onkeyup="mayupaciente(this)" name="notac"></textarea>
                                                         </div>
 
                                                     </div>
@@ -435,8 +432,9 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="ocupacionr">Ocupación Responsable:</label>
-                                                            <input type="text" class="form-control" id="ocupacionr"
-                                                                onkeyup="mayupaciente(this)" name="ocupacionr">
+                                                            <input type="text" class="form-control"
+                                                                id="ocupacionr" onkeyup="mayupaciente(this)"
+                                                                name="ocupacionr">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="nivel_educativor">Nivel educativo
@@ -446,7 +444,8 @@
                                                                 name="nivel_educativor">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="estado_civilr">Estado Civil Responsable:</label>
+                                                            <label for="estado_civilr">Estado Civil
+                                                                Responsable:</label>
                                                             <select class="form-control" onkeyup="mayupaciente(this)"
                                                                 id="estado_civilr" name="estado_civilr">
                                                                 <option value="soltero">---</option>
@@ -478,24 +477,19 @@
                                                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                                             <label for="patologias">Enfermedades Crónicas
                                                                 Hospitalizaciones:</label>
-                                                            <textarea class="form-control" id="patologias"
-                                                                class="form-control cls-input oblig-input" type="text"
-                                                                onkeyup="mayupaciente(this)"
-                                                                name="patologias"></textarea>
+                                                            <textarea class="form-control" id="patologias" class="form-control cls-input oblig-input" type="text"
+                                                                onkeyup="mayupaciente(this)" name="patologias"></textarea>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                                             <label for="enfergenetica">Enfermedades Crónicas, Genéticas
                                                                 de importancia de
                                                                 familiares:</label>
-                                                            <textarea class="form-control" id="enfergenetica"
-                                                                onkeyup="mayupaciente(this)"
-                                                                class="form-control cls-input oblig-input" type="text"
-                                                                name="enfergenetica"></textarea>
+                                                            <textarea class="form-control" id="enfergenetica" onkeyup="mayupaciente(this)"
+                                                                class="form-control cls-input oblig-input" type="text" name="enfergenetica"></textarea>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                                             <label for="otros">Otras:</label>
-                                                            <textarea class="form-control" id="otros"
-                                                                class="form-control cls-input oblig-input" type="text"
+                                                            <textarea class="form-control" id="otros" class="form-control cls-input oblig-input" type="text"
                                                                 onkeyup="mayupaciente(this)" name="otros"></textarea>
                                                         </div>
                                                     </div>
@@ -513,8 +507,9 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="iniciotrabajar">Edad en la que inicio a
                                                                 trabajar:</label>
-                                                            <input type="text" class="form-control" id="iniciotrabajar"
-                                                                onkeyup="mayupaciente(this)" name="iniciotrabajar">
+                                                            <input type="text" class="form-control"
+                                                                id="iniciotrabajar" onkeyup="mayupaciente(this)"
+                                                                name="iniciotrabajar">
                                                         </div>
 
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -522,7 +517,9 @@
                                                             <select type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="trabaja"
                                                                 name="trabaja">
-                                                                <option value="SI"><link href="" rel="stylesheet"></option>
+                                                                <option value="SI">
+                                                                    <link href="" rel="stylesheet">
+                                                                </option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
                                                             </select>
@@ -573,18 +570,15 @@
                                                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                                             <label for="causa">Causas por las cuales fue
                                                                 despedida:</label>
-                                                            <textarea class="form-control cls-input oblig-input"
-                                                                type="text" class="form-control" id="causa"
+                                                            <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="causa"
                                                                 onkeyup="mayupaciente(this)" name="causa"></textarea>
                                                         </div>
 
                                                         <div class="form-group col-sm-12 col-md-6 col-xl-4">
                                                             <label for="satisfecho">Satisfecho con trayectoria
                                                                 laboral:</label>
-                                                            <textarea class="form-control cls-input oblig-input"
-                                                                type="text" class="form-control" id="satisfecho"
-                                                                onkeyup="mayupaciente(this)"
-                                                                name="satisfecho"></textarea>
+                                                            <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="satisfecho"
+                                                                onkeyup="mayupaciente(this)" name="satisfecho"></textarea>
                                                         </div>
 
 
@@ -630,41 +624,44 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="nombreatendio">Nombre De terapeuta
                                                                 atendio:</label>
-                                                            <input type="text" class="form-control" id="nombreatendio"
-                                                                onkeyup="mayupaciente(this)" name="nombreatendio">
+                                                            <input type="text" class="form-control"
+                                                                id="nombreatendio" onkeyup="mayupaciente(this)"
+                                                                name="nombreatendio">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="direcionatendio">Dirección terapeuta
                                                                 atendio:</label>
-                                                            <input type="text" class="form-control" id="direcionatendio"
-                                                                onkeyup="mayupaciente(this)" name="direcionatendio">
+                                                            <input type="text" class="form-control"
+                                                                id="direcionatendio" onkeyup="mayupaciente(this)"
+                                                                name="direcionatendio">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="telefonoatendio">Telefono Terapeuta
                                                                 Atendio:</label>
-                                                            <input type="text" class="form-control" id="telefonoatendio"
-                                                                onkeyup="mayupaciente(this)" name="telefonoatendio">
+                                                            <input type="text" class="form-control"
+                                                                id="telefonoatendio" onkeyup="mayupaciente(this)"
+                                                                name="telefonoatendio">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="card">
                                                 <div class="card-header p-1 bg-light">
-                                                    <h3 class="card-title">Ingresar Datos de Tratamientos Recibidos</h3>
+                                                    <h3 class="card-title">Ingresar Datos de Tratamientos Recibidos
+                                                    </h3>
                                                 </div>
                                                 <div class="card-body p-1">
                                                     <div class="form-row pt-4">
                                                         <hr>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-6">
                                                             <label for="tratamientorec">Tratamientos Recibidos:</label>
-                                                            <textarea class="form-control" id="tratamientorec"
-                                                                onkeyup="mayupaciente(this)"
-                                                                name="tratamientorec"></textarea>
+                                                            <textarea class="form-control" id="tratamientorec" onkeyup="mayupaciente(this)" name="tratamientorec"></textarea>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-6">
                                                             <label for="tipofarmaco">Tipo Farmaco a Consumido:</label>
-                                                            <input type="text" class="form-control" id="tipofarmaco"
-                                                                onkeyup="mayupaciente(this)" name="tipofarmaco">
+                                                            <input type="text" class="form-control"
+                                                                id="tipofarmaco" onkeyup="mayupaciente(this)"
+                                                                name="tipofarmaco">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -689,8 +686,7 @@
 
                                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                                                     <label for="adicion">Adicciones:</label>
-                                                    <textarea class="form-control cls-input oblig-input"
-                                                        type="text" class="form-control" id="adicion"
+                                                    <textarea class="form-control cls-input oblig-input" type="text" class="form-control" id="adicion"
                                                         onkeyup="mayupaciente(this)" name="adicion"></textarea>
                                                 </div>
 
@@ -707,8 +703,7 @@
                     <button type="submit" class="btn btn-outline-success btn-sm"><i class="fas fa-save"></i>
                         Registrar<span id=""></span></button>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 </div>
