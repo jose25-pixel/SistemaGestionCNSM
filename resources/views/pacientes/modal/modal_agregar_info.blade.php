@@ -1,6 +1,6 @@
 <div class="modal fade" id="modalIngresoPaciente" tabindex="-1" role="dialog" aria-labelledby="modalNuevaCitaLabel"
     aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 90%">
+    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 90%; overflow-y: scroll;" >
         <div class="modal-content">
             <div class="modal-header p-1 bg-primary">
                 <h4 class=" text-center"><strong> Llenar expediente</strong> </h4>
