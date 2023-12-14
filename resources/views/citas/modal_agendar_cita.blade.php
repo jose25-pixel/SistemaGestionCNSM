@@ -12,7 +12,7 @@
           <input type="hidden" name="_method" id="_methodCita" class="clear-input">
         <div class="modal-body"  style="max-height: 400px; overflow-y: auto;">
           <div class="form-group col-sm-12 col-md-4">
-            <label for="verify_dui"> Agendar nueva cita, al consultante mediante el dui:</label>
+            <label for="verify_dui"> Agendar nueva cita al consultante ingrese el dui:</label>
             <input type="text" class="form-control clear-input" id="verify_dui" name="verify_dui" placeholder="Ingresar DUI">
           </div>
           <div class="form-row">
@@ -57,7 +57,7 @@
             </div>
             <div class="form-group col-sm-12 col-md-12 col-xl-12">
               <label for="comentario">Motivo:</label>
-              <input id="motivo" name="motivo" class="form-control clear-input">
+              <input id="motivo" name="motivo" onkeyup="mayus(this)" class="form-control clear-input">
             </div>
           </div>
             </div>

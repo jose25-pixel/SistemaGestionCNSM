@@ -398,7 +398,7 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="notac">Nota:</label>
                                                             <textarea class="form-control" class="form-control cls-input oblig-input" type="text" maxlength="200"
-                                                                rows="6" id="notac" onkeyup="mayupaciente(this)" name="notac"></textarea>
+                                                                rows="2" id="notac" onkeyup="mayupaciente(this)" name="notac"></textarea>
                                                         </div>
 
                                                     </div>
@@ -680,9 +680,9 @@
 
                                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                                                     <label for="tiempo_consumo">Tiempo de Consumo:</label>
-                                                    <input type="text" class="form-control" id="tiempo_consumo"
-                                                        onkeyup="mayupaciente(this)" name="tiempo_consumo">
-                                                </div>
+                                                    <input type="text" class="form-control" id="tiempo_consumo" onkeyup="mayupaciente(this)"
+                                                        name="tiempo_consumo">
+                                                </div> 
 
                                                 <div class="form-group col-sm-12 col-md-6 col-xl-6">
                                                     <label for="adicion">Adicciones:</label>

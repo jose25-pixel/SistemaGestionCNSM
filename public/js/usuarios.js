@@ -33,6 +33,11 @@ function datatable_consultas() {
     dataTable("dt_users_lists", url, {}, 5);
 }
 
+function mayusuario(element) {
+    element.value = element.value.toUpperCase();
+}
+
+
 //ABRIR MODAL
 try {
     //Save consulta

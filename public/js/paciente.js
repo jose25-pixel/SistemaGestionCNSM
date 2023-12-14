@@ -1017,7 +1017,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   });
                   //pacienteForm.reset();
                   listarCitaspacientes();
-                  $("#citasModal").on("hidden.bs.modal", function () {
+                  $("#citaModal").on("hidden.bs.modal", function () {
                       $(this).find("input,textarea,select").val("").end();
                       // También puedes restablecer cualquier otro estado del formulario si es necesario
                   });

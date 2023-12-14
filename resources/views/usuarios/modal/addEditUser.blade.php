@@ -26,16 +26,16 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="nombre">Nombre*:</label>
-                            <input type="text" class="form-control cls-input oblig-input" id="nombre" name="nombre"
+                            <input type="text"  onkeyup="mayusuario(this)" class="form-control cls-input oblig-input" id="nombre" name="nombre"
                                 required>
                         </div>
                         <div class="form-group col-sm-12 col-md-4">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" class="form-control cls-input" id="direccion" name="direccion">
+                            <input type="text" onkeyup="mayusuario(this)" class="form-control cls-input" id="direccion" name="direccion" required>
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="dui">Dui:</label>
-                            <input type="text" class="form-control cls-input oblig-input dui_user" id="dui" name="dui">
+                            <input type="text" class="form-control cls-input oblig-input dui_user" id="dui" name="dui" required>
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="nombre">Teléfono*:</label>
@@ -44,11 +44,11 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-3">
                             <label for="email">Correo:</label>
-                            <input type="text" class="form-control cls-input" id="email" name="email">
+                            <input type="text" class="form-control cls-input" id="email" name="email" required>
                         </div>
                         <div class="form-group col-sm-12 col-md-2">
                             <label for="usuario">Usuario*:</label>
-                            <input type="text" class="form-control cls-input" id="usuario" name="usuario" required>
+                            <input type="text"  class="form-control cls-input" id="usuario" name="usuario" required>
                         </div>
                         <!-- Tu código HTML para el campo de contraseña y el ícono de ojo -->
                         <div class="form-group col-sm-12 col-md-3">

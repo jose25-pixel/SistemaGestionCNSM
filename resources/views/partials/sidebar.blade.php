@@ -79,13 +79,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="https://www.calameo.com/books/007547742cb016c0df838" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-newspaper"></i>
                   <p>Manual</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="https://youtu.be/I_izvAbhExY?si=cEU3vB09ADNy7tky" target="_blank" class="nav-link">
+                <a href="" target="_blank" class="nav-link">
                   
                   <i class="fa fa-video nav-icon"></i>
                   <p>Video Tutorial</p>
@@ -114,13 +114,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="https://youtu.be/ER_3h03omdE?si=B-BMO1CoCMPoYso3" class="nav-link">
+                <a href="https://www.calameo.com/read/007547742c313bcc3146a" target="_blank"  class="nav-link">
                   <i class="nav-icon fas fa-newspaper"></i>
                   <p>Manual</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('cita.index') }}" class="nav-link">
+                <a href="https://youtu.be/0mpcYPpNtfg?si=gIDdRZ8S4Hp44OJK" target="_blank"  class="nav-link">
                   
                   <i class="fa fa-video nav-icon"></i>
                   <p>Video Tutorial</p>
@@ -143,13 +143,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="https://youtu.be/ER_3h03omdE?si=B-BMO1CoCMPoYso3" class="nav-link">
+                <a href="https://www.calameo.com/read/007547742c463af82eabe"   target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-newspaper"></i>
                   <p>Manual</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('cita.index') }}" class="nav-link">
+                <a href="https://youtu.be/0mpcYPpNtfg?si=EhF-E-W83j91eIGp"  target="_blank" class="nav-link">
                   
                   <i class="fa fa-video nav-icon"></i>
                   <p>Video Tutorial</p>
