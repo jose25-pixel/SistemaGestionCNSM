@@ -518,7 +518,7 @@
                                                                 onkeyup="mayupaciente(this)" id="trabaja"
                                                                 name="trabaja">
                                                                 <option value="SI">
-                                                                    <link href="" rel="stylesheet">
+                                                            --
                                                                 </option>
                                                                 <option value="SI">SI</option>
                                                                 <option value="NO">NO</option>
@@ -612,8 +612,8 @@
                                                             <label for="atencioncnsm">Que tipo de tratamiento ha
                                                                 recibido:</label>
                                                             <select type="text" class="form-control"
-                                                                onkeyup="mayupaciente(this)" id="atencioncnsm"
-                                                                name="atencioncnsm">
+                                                                onkeyup="mayupaciente(this)" id="tipotratamiento"
+                                                                name="tipotratamiento">
                                                                 <option value="NO">NINGUNO</option>
                                                                 <option value="OTROS">OTROS</option>
                                                                 <option value="PSICOLOGÍCO">PSICOLOGÍCO</option>
@@ -623,7 +623,7 @@
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="nombreatendio">Nombre De terapeuta
-                                                                atendio:</label>
+                                                                atendio:</label> 
                                                             <input type="text" class="form-control"
                                                                 id="nombreatendio" onkeyup="mayupaciente(this)"
                                                                 name="nombreatendio">

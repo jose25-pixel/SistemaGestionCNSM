@@ -97,7 +97,14 @@ function updatepaciente(idPaciente) {
             document.getElementById("causa").value = datos.atecedente.causa;
             document.getElementById("satisfecho").value = datos.atecedente.satisfecho;
             //Adicciones
-            document.getElementById('tipo_sustancia').value = datos.adiccione.tipo_sustancia;
+            document.getElementById('atencioncnsm').value = datos.adiccione.atencioncnsm;
+            document.getElementById('tipotratamiento').value = datos.adiccione.tipotratamiento;
+            document.getElementById('nombreatendio').value = datos.adiccione.nombreatendio;
+            document.getElementById('direcionatendio').value = datos.adiccione.direcionatendio;
+            document.getElementById('telefonoatendio').value = datos.adiccione.telefonoatendio;
+            document.getElementById('tratamientorec').value = datos.adiccione.tratamientorec;
+            document.getElementById('tipofarmaco').value = datos.adiccione.tipofarmaco;
+            document.getElementById('tipo_sustancia').value = datos.adiccione.tipo_sustancia;  
             document.getElementById('tiempo_consumo').value = datos.adiccione.tiempo_consumo;
             document.getElementById('adicion').value = datos.adiccione.adiccion;
         })
@@ -641,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function (idPaciente) {
         axios.put(url, datoseditar).then(function (response) {
             Swal.fire(
                 "Editada",
-                "Datos del scosultant editato correctamente",
+                "Datos del cosultante editato correctamente",
                 "success"
             );
 
@@ -1008,13 +1015,10 @@ document.addEventListener("DOMContentLoaded", function () {
               .then(function (response) {
                   Swal.fire(
                       "Agregado!",
-                      "Datos del paciente agregado exitosamente.",
+                      "Datos del consultante agregado exitosamente.",
                       "success"
                   );
-                  $("#modalIngresoPaciente").on("hidden.bs.modal", function () {
-                      $(this).find("input,textarea,select").val("").end();
-                      // También puedes restablecer cualquier otro estado del formulario si es necesario
-                  });
+                  $("#modalIngresoPaciente").modal('hide');
                   //pacienteForm.reset();
                   listarCitaspacientes();
                   $("#citaModal").on("hidden.bs.modal", function () {

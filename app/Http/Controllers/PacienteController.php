@@ -190,15 +190,16 @@ class PacienteController extends Controller
 
             'fecha' => now(),
             'atencioncnsm' => $request->input('atencioncnsm'),
-            'tratamientos' => $request->input('tratamientos'),
+            //'tratamientos' => $request->input('tratamientorec'),
             'tipotratamiento' => $request->input('tipotratamiento'),
             'nombreatendio' => $request->input('nombreatendio'),
+            'telefonoatendio' => $request->input('telefonoatendio'),
             'direcionatendio' => $request->input('direcionatendio'),
             'tratamientorec' => $request->input('tratamientorec'),
             'tipofarmaco' => $request->input('tipofarmaco'),
             'tipo_sustancia' => $request->input('tipo_sustancia'),
             'tiempo_consumo' => $request->input('tiempo_consumo'),
-            'adicion' => $request->input('adicion'),
+            'adiccion' => $request->input('adicion'),
             'id_paciente' => $paciente->id,
             'usuario_id' => $id_usuario
         ];
@@ -516,6 +517,7 @@ class PacienteController extends Controller
             'tratamientos' => $request->input('tratamientos'),
             'tipotratamiento' => $request->input('tipotratamiento'),
             'nombreatendio' => $request->input('nombreatendio'),
+            'telefonoatendio' => $request->input('telefonoatendio'),
             'direcionatendio' => $request->input('direcionatendio'),
             'tratamientorec' => $request->input('tratamientorec'),
             'tipofarmaco' => $request->input('tipofarmaco'),
