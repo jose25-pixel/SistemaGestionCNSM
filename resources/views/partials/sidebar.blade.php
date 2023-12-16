@@ -72,7 +72,7 @@
             <a href="#" class="nav-link">
               <i class="fas fa-question-circle"></i>
               <p>
-                Ayuda terapeuta
+                Ayuda 
                       <i class="fas fa-angle-left right"></i>
                 
               </p>
@@ -107,7 +107,7 @@
             <a href="#" class="nav-link">
               <i class="fas fa-question-circle"></i>
               <p>
-                Ayuda usuarios
+                Ayuda
                 <i class="fas fa-angle-left right"></i>
                 
               </p>
@@ -136,7 +136,7 @@
             <a href="#" class="nav-link">
               <i class="fas fa-question-circle"></i>
               <p>
-                Ayuda recepcionista
+                Ayuda 
                 <i class="fas fa-angle-left right"></i>
                 
               </p>

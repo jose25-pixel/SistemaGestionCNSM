@@ -46,7 +46,7 @@
                                             <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
                                                 href="#custom-tabs-one-consumos" role="tab"
                                                 aria-controls="custom-tabs-one-settings"
-                                                aria-selected="false">Consumos</a>
+                                                aria-selected="false">Consumos y adicciones</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -105,14 +105,13 @@
                                                     <label for="ocupacion">Ocupación*:</label>
                                                     <input type="text" class="form-control"
                                                         onkeyup="mayupaciente(this)" id="ocupacion" name="ocupacion"
-                                                        placeholder="Profeción y oficio">
+                                                        placeholder="Oficio Profeción">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="dirrecion">Dirreción*:</label>
                                                     <input id="direccion" name="direccion"
                                                         onkeyup="mayupaciente(this)" class="form-control clear-input"
-                                                        placeholder="Avenida Principal
-                                                Colonia San Benito">
+                                                        placeholder="Avenida Principal.....">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4">
                                                     <label for="nivel_educativo">Nivel Educativo*:</label>
@@ -172,7 +171,7 @@
                                                     <label for="nu_hijo">Numero de Hijos:</label>
                                                     <input type="text" class="form-control" id="nu_hijo"
                                                         onkeyup="mayupaciente(this)" name="nu_hijo"
-                                                        placeholder="Dos hijos">
+                                                        placeholder="2">
                                                 </div>
                                                 <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                     <label for="edad_hijo">Edades Hijos:</label>
@@ -184,7 +183,7 @@
                                                     <label for="ano_casado">Años de Casado</label>
                                                     <input type="text" class="form-control" id="ano_casado"
                                                         onkeyup="mayupaciente(this)" name="ano_casado"
-                                                        placeholder="Años de casado">
+                                                        placeholder="10 años">
                                                 </div>
                                             </div>
                                         </div>
@@ -212,12 +211,12 @@
                                                                 name="nombre_madre" placeholder="Maria Ester">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
-                                                            <label for="edad_madre">Edad madre:</label>
+                                                            <label for="edad_madre">Edad Madre:</label>
                                                             <input type="number" class="form-control"
                                                                 id="edad_madre" name="edad_madre" placeholder="30">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4">
-                                                            <label for="estado_civilm">Estado Civil madre:</label>
+                                                            <label for="estado_civilm">Estado Civil Madre:</label>
                                                             <select class="form-control" onkeyup="mayupaciente(this)"
                                                                 id="estado_civilm" name="estado_civilm">
                                                                 <option value="--">***</option>
@@ -225,6 +224,7 @@
                                                                 <option value="casada">CASADA</option>
                                                                 <option value="acompañada">ACOMPAÑADA</option>
                                                                 <option value="viuda">VIUDA</option>
+                                                                <option value="novio">NOVIO</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -232,7 +232,7 @@
                                                                 Madre:</label>
                                                             <input type="text" onkeyup="mayupaciente(this)"
                                                                 class="form-control" id="nivel_educativom"
-                                                                name="nivel_educativom" placeholder=" Basico">
+                                                                name="nivel_educativom" placeholder="Básico">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="ocupacionm">Ocupación Madre:</label>
@@ -243,7 +243,7 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="duim">Dui Madre:</label>
                                                             <input type="text" class="form-control" id="duim"
-                                                                name="duim" placeholder="76452345-6">
+                                                                name="duim" placeholder="08678764-6">
                                                         </div>
 
 
@@ -308,6 +308,7 @@
                                                                 <option value="casado">CASADO</option>
                                                                 <option value="acompañado">ACOMPAÑADO</option>
                                                                 <option value="viudo">VIUDO</option>
+                                                                <option value="novia">NOVIA</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -321,12 +322,12 @@
                                                                 Padre:</label>
                                                             <input type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="nivel_educativop"
-                                                                name="nivel_educativop" placeholder="Basico">
+                                                                name="nivel_educativop" placeholder="Básico">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="duip">Dui Padre:</label>
                                                             <input type="text" class="form-control" id="duip"
-                                                                name="duip" placeholder="34356325-5">
+                                                                name="duip" placeholder="04356325-5">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="viveaunp">Vive su Padre?</label>
@@ -380,7 +381,7 @@
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="edadc">Edad Conyuge:</label>
                                                             <input type="number" class="form-control" id="edadc"
-                                                                name="edadc" placeholder="edad">
+                                                                name="edadc" placeholder="35">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
                                                             <label for="ocupacionc">Ocupación Conyuge:</label>
@@ -448,11 +449,17 @@
                                                                 Responsable:</label>
                                                             <select class="form-control" onkeyup="mayupaciente(this)"
                                                                 id="estado_civilr" name="estado_civilr">
-                                                                <option value="soltero">---</option>
+                                                                <option value="---">---</option>
                                                                 <option value="soltero">Soltero</option>
                                                                 <option value="casado">Casado</option>
                                                                 <option value="acompañado">Acompañado</option>
                                                                 <option value="viudo">Viudo</option>
+                                                                <option value="soltera">Soltera</option>
+                                                                <option value="casada">Casada</option>
+                                                                <option value="acompañada">Acompañada</option>
+                                                                <option value="viuda">Viuda</option>
+                                                                <option value="novia">Novia</option>
+                                                                <option value="novio">Novio</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-12 col-md-4 col-xl-4">
@@ -517,7 +524,7 @@
                                                             <select type="text" class="form-control"
                                                                 onkeyup="mayupaciente(this)" id="trabaja"
                                                                 name="trabaja">
-                                                                <option value="SI">
+                                                                <option value="--">
                                                             --
                                                                 </option>
                                                                 <option value="SI">SI</option>
